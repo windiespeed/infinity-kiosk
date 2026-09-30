@@ -1,0 +1,22 @@
+# Runs on every pull request and every change to main.
+# Installs the project fresh and builds it. The build runs the color contrast check first,
+# so a PR that breaks WCAG contrast, or that doesn't build at all, shows a red X
+# and (with branch protection) can't be merged.
+name: Build check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
