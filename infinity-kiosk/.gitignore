@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+data/backups/
+# Real museum media stays out of Git (share it via drive). Sample images are kept.
+data/media/*
+!data/media/sample-*

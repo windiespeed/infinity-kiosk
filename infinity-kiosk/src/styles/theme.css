@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/*
+  THEME TOKENS: the only place colors are defined.
+  When the museum sends its brand colors, change the hex values below,
+  then run `npm run check:contrast`. Components never use raw colors.
+  Keep every value as a 6-digit hex so the contrast checker can read it.
+*/
+
+@theme static {
+  /* Remove Tailwind's default palette so classes like bg-blue-500 don't exist.
+     Only the semantic tokens below can be used in components. */
+  --color-*: initial;
+
+  /* Surfaces */
+  --color-bg: #0B1B3A;          /* page background */
+  --color-surface: #15295A;     /* cards, panels, event detail */
+
+  /* Text */
+  --color-text: #FFFFFF;        /* primary text */
+  --color-text-muted: #B8C4E0;  /* secondary text, captions */
+
+  /* Primary action (buttons) and the text/outline that sits on it */
+  --color-accent: #B8216B;
+  --color-on-accent: #FFFFFF;
+  --color-accent-outline: #F3B6D2;
+
+  /* Era segments, selected states */
+  --color-primary: #2F5BD3;
+  --color-on-primary: #FFFFFF;
+  --color-primary-outline: #9DB5F2;
+
+  /* Active event marker and keyboard/tactile focus ring */
+  --color-highlight: #F5B942;
+
+  /* Fonts (bundled offline via @fontsource, imported in main.jsx) */
+  --font-display: "Alegreya", Georgia, serif;
+  --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+
+  /* Quiz feedback (always paired with an icon + text, never color alone) */
+  --color-success: #5FD08A;
+  --color-danger: #FF8A80;
+}
+
+/* High-contrast mode, toggled from the accessibility panel:
+   document.documentElement.dataset.contrast = "high" */
+[data-contrast="high"] {
+  --color-bg: #000000;
+  --color-surface: #000000;
+  --color-text: #FFFFFF;
+  --color-text-muted: #FFFFFF;
+  --color-accent: #FFD400;
+  --color-on-accent: #000000;
+  --color-accent-outline: #FFFFFF;
+  --color-primary: #FFFFFF;
+  --color-on-primary: #000000;
+  --color-primary-outline: #FFFFFF;
+  --color-highlight: #00E5FF;
+  --color-success: #7CFF9B;
+  --color-danger: #FF9C9C;
+}
+
+/* ---------- Base styles ---------- */
+@layer base {
+  /* Everything is sized in rem, so this one number scales the whole UI.
+     Phones/laptops get 16px; the 1920px kiosk gets 28px. */
+  html {
+    font-size: 16px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+  }
+  @media (min-width: 1600px) {
+    html { font-size: 28px; }
+  }
+  /* "Larger text" in the accessibility panel */
+  html[data-text-size="large"] { font-size: 20px; }
+  @media (min-width: 1600px) {
+    html[data-text-size="large"] { font-size: 35px; }
+  }
+
+  body {
+    margin: 0;
+    overscroll-behavior: none;   /* no bounce or swipe-to-go-back */
+    touch-action: pan-x pan-y;   /* no pinch-zooming the whole UI */
+    user-select: none;           /* no accidental text highlighting */
+  }
+
+  h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; }
+
+  /* Headings focused by code (tabindex -1) don't need a ring. */
+  [tabindex="-1"]:focus { outline: none; }
+
+  :focus-visible {
+    outline: 0.15rem solid var(--color-highlight);
+    outline-offset: 0.15rem;
+  }
+
+  html[data-motion="reduce"] *,
+  html[data-motion="reduce"] *::before,
+  html[data-motion="reduce"] *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@keyframes panel-up {
+  from { transform: translateY(8%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

@@ -1,0 +1,330 @@
+{
+  "settings": {
+    "idleSeconds": 75,
+    "warningSeconds": 15,
+    "attractVideo": null,
+    "credits": "Built by Mississippi Coding Academies technologists for the Infinity Science Center."
+  },
+  "eras": [
+    {
+      "id": "early",
+      "title": "Early Beginnings",
+      "subtitle": "The first satellites and the founding of NASA.",
+      "startYear": 1957,
+      "endYear": 1969,
+      "order": 1
+    },
+    {
+      "id": "apollo",
+      "title": "The Apollo Missions",
+      "subtitle": "The race to put people on the Moon.",
+      "startYear": 1961,
+      "endYear": 1972,
+      "order": 2
+    },
+    {
+      "id": "shuttle",
+      "title": "The Space Shuttle Era",
+      "subtitle": "A reusable spacecraft and three decades of missions.",
+      "startYear": 1981,
+      "endYear": 2011,
+      "order": 3
+    },
+    {
+      "id": "iss",
+      "title": "The International Space Station",
+      "subtitle": "A permanent home for people in orbit.",
+      "startYear": 1998,
+      "endYear": null,
+      "order": 4
+    },
+    {
+      "id": "future",
+      "title": "Recent Developments and the Future",
+      "subtitle": "Artemis and the next era of exploration.",
+      "startYear": 2021,
+      "endYear": null,
+      "order": 5
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-1957-sputnik",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1957-10-04",
+        "display": "1957",
+        "status": "historical"
+      },
+      "shortTitle": "Sputnik 1",
+      "title": "The Soviet Union launches Sputnik 1",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-1"
+      ],
+      "published": true
+    },
+    {
+      "id": "evt-1958-nasa",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1958-10-01",
+        "display": "1958",
+        "status": "historical"
+      },
+      "shortTitle": "NASA is founded",
+      "title": "NASA begins operations",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-2"
+      ],
+      "published": true
+    },
+    {
+      "id": "evt-1961-shepard",
+      "eraIds": [
+        "early",
+        "apollo"
+      ],
+      "date": {
+        "sort": "1961-05-05",
+        "display": "1961",
+        "status": "historical"
+      },
+      "shortTitle": "First American in space",
+      "title": "Alan Shepard flies Freedom 7",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-3"
+      ],
+      "published": true
+    },
+    {
+      "id": "evt-1969-apollo11",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1969-07-20",
+        "display": "1969",
+        "status": "historical"
+      },
+      "shortTitle": "Apollo 11",
+      "title": "Apollo 11 lands on the Moon",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-4",
+        "img-5"
+      ],
+      "published": true
+    },
+    {
+      "id": "evt-1981-sts1",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1981-04-12",
+        "display": "1981",
+        "status": "historical"
+      },
+      "shortTitle": "First Shuttle flight",
+      "title": "Space Shuttle Columbia flies STS-1",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-6"
+      ],
+      "published": true
+    },
+    {
+      "id": "evt-2011-sts135",
+      "eraIds": [
+        "shuttle",
+        "iss"
+      ],
+      "date": {
+        "sort": "2011-07-08",
+        "display": "2011",
+        "status": "historical"
+      },
+      "shortTitle": "Final Shuttle flight",
+      "title": "The last Space Shuttle mission, STS-135",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-1"
+      ],
+      "published": true
+    },
+    {
+      "id": "evt-1998-zarya",
+      "eraIds": [
+        "iss"
+      ],
+      "date": {
+        "sort": "1998-11-20",
+        "display": "1998",
+        "status": "historical"
+      },
+      "shortTitle": "First ISS module",
+      "title": "The first ISS module reaches orbit",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-2"
+      ],
+      "published": true
+    },
+    {
+      "id": "evt-2000-expedition1",
+      "eraIds": [
+        "iss"
+      ],
+      "date": {
+        "sort": "2000-11-02",
+        "display": "2000",
+        "status": "historical"
+      },
+      "shortTitle": "First crew arrives",
+      "title": "Expedition 1 crew arrives at the ISS",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-3"
+      ],
+      "published": true
+    },
+    {
+      "id": "evt-2022-artemis1",
+      "eraIds": [
+        "future"
+      ],
+      "date": {
+        "sort": "2022-11-16",
+        "display": "2022",
+        "status": "historical"
+      },
+      "shortTitle": "Artemis I",
+      "title": "Artemis I launches an uncrewed test flight around the Moon",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-4"
+      ],
+      "published": true
+    },
+    {
+      "id": "evt-future-placeholder",
+      "eraIds": [
+        "future"
+      ],
+      "date": {
+        "sort": "2030-01-01",
+        "display": "2030 and beyond",
+        "status": "planned"
+      },
+      "shortTitle": "Planned missions",
+      "title": "Placeholder for planned future missions",
+      "summary": "Placeholder text. Replace with museum-approved copy.",
+      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "mediaIds": [
+        "img-5"
+      ],
+      "published": true
+    }
+  ],
+  "media": [
+    {
+      "id": "img-1",
+      "file": "sample-1.svg",
+      "alt": "Placeholder image 1. Replace with a real photo and a description of what it shows.",
+      "caption": "Placeholder caption 1. Replace with museum-approved caption.",
+      "credit": "Placeholder credit"
+    },
+    {
+      "id": "img-2",
+      "file": "sample-2.svg",
+      "alt": "Placeholder image 2. Replace with a real photo and a description of what it shows.",
+      "caption": "Placeholder caption 2. Replace with museum-approved caption.",
+      "credit": "Placeholder credit"
+    },
+    {
+      "id": "img-3",
+      "file": "sample-3.svg",
+      "alt": "Placeholder image 3. Replace with a real photo and a description of what it shows.",
+      "caption": "Placeholder caption 3. Replace with museum-approved caption.",
+      "credit": "Placeholder credit"
+    },
+    {
+      "id": "img-4",
+      "file": "sample-4.svg",
+      "alt": "Placeholder image 4. Replace with a real photo and a description of what it shows.",
+      "caption": "Placeholder caption 4. Replace with museum-approved caption.",
+      "credit": "Placeholder credit"
+    },
+    {
+      "id": "img-5",
+      "file": "sample-5.svg",
+      "alt": "Placeholder image 5. Replace with a real photo and a description of what it shows.",
+      "caption": "Placeholder caption 5. Replace with museum-approved caption.",
+      "credit": "Placeholder credit"
+    },
+    {
+      "id": "img-6",
+      "file": "sample-6.svg",
+      "alt": "Placeholder image 6. Replace with a real photo and a description of what it shows.",
+      "caption": "Placeholder caption 6. Replace with museum-approved caption.",
+      "credit": "Placeholder credit"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-1",
+      "eventId": "evt-1958-nasa",
+      "prompt": "In what year did NASA begin operations?",
+      "choices": [
+        "1955",
+        "1958",
+        "1961",
+        "1969"
+      ],
+      "correctIndex": 1,
+      "explanation": "NASA began operations on October 1, 1958."
+    },
+    {
+      "id": "q-2",
+      "eventId": "evt-1961-shepard",
+      "prompt": "Who was the first American in space?",
+      "choices": [
+        "John Glenn",
+        "Neil Armstrong",
+        "Alan Shepard",
+        "Gus Grissom"
+      ],
+      "correctIndex": 2,
+      "explanation": "Alan Shepard flew aboard Freedom 7 on May 5, 1961."
+    },
+    {
+      "id": "q-3",
+      "eventId": "evt-1969-apollo11",
+      "prompt": "What was Apollo 11's main goal?",
+      "choices": [
+        "Orbit Mars",
+        "Land people on the Moon and return them safely",
+        "Launch a space station",
+        "Test a reusable spacecraft"
+      ],
+      "correctIndex": 1,
+      "explanation": "Apollo 11 landed astronauts on the Moon in July 1969 and returned them safely to Earth."
+    }
+  ]
+}
