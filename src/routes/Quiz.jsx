@@ -1,6 +1,5 @@
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useContent } from "../hooks/useContent.jsx";
-import { buttonClass } from "../lib/ui.js";
 
 // TODO (quiz issue): build the quiz component.
 // - Event quiz: questionsForEvent(eventId)
@@ -31,11 +30,6 @@ export function EventQuiz() {
       <h1 className="text-6xl">Test yourself: {event?.shortTitle}</h1>
       <p className="mt-4 text-text-muted">This event has {questions.length} question(s) ready.</p>
       <p className="mt-8 rounded-xl border-2 border-highlight p-4">Quiz coming soon (starter placeholder).</p>
-      {event && (
-        <Link to={`/era/${event.eraIds[0]}/event/${event.id}`} className={buttonClass("secondary", "mt-6")}>
-          Back to the event
-        </Link>
-      )}
     </div>
   );
 }

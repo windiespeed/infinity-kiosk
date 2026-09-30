@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router";
+import { Navigate, Route, Routes, useLocation } from "react-router";
 import { useContent } from "./hooks/useContent.jsx";
 import { useIdleTimer } from "./hooks/useIdleTimer.js";
+import { useStartOver } from "./hooks/useStartOver.js";
 import { useKiosk } from "./store/useKiosk.js";
 import HiddenAdminTrigger from "./components/HiddenAdminTrigger.jsx";
 import BottomNav from "./components/BottomNav.jsx";
@@ -20,7 +21,7 @@ import Dashboard from "./routes/admin/Dashboard.jsx";
 export default function App() {
   const { content } = useContent();
   const location = useLocation();
-  const navigate = useNavigate();
+  const startOver = useStartOver();
   const kiosk = useKiosk();
 
   // Accessibility settings are applied as attributes on <html>; theme.css reacts to them.
@@ -38,10 +39,7 @@ export default function App() {
     idleSeconds: content?.settings.idleSeconds ?? 75,
     warningSeconds: content?.settings.warningSeconds ?? 15,
     enabled: !onAttract,
-    onReset: () => {
-      kiosk.resetVisitor();
-      navigate("/", { replace: true });
-    },
+    onReset: startOver,
   });
 
   return (
