@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n server,app -c blue,magenta \"node --watch server/index.js\" \"vite\"",
+    "dev": "concurrently -n server,app -c blue,magenta \"node --watch server/index.js\" \"vite\"",
+    "dev:host": "concurrently -n server,app -c blue,magenta \"node --watch server/index.js\" \"vite --host\"",
     "build": "vite build",
     "prebuild": "npm run check:contrast",
     "start": "node server/index.js",
