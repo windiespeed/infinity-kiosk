@@ -1,0 +1,9 @@
+{
+  "git.autofetch": true,
+  "git.pruneOnFetch": true,
+  "git.branchProtection": ["main"],
+  "git.branchProtectionPrompt": "alwaysPrompt",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
+}
