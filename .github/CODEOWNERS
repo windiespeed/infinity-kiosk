@@ -1,0 +1,7 @@
+# Changes to these need Windie's approval
+/server/                    @windiespeed
+/.github/                   @windiespeed
+/data/content.json          @windiespeed
+
+
+/src/styles/theme.css       @windiespeed
