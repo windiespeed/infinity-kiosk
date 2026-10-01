@@ -9,3 +9,11 @@ data/media/*
 *.jks
 *.keystore
 keystore.properties
+# Video and backup files never belong in Git (keep them on the shared drive)
+*.mp4
+*.mov
+*.m4v
+*.webm
+*.avi
+*.mkv
+*.zip

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
@@ -18,10 +18,17 @@ export default function AdminLogin() {
   const [pin, setPin] = useState("");
   const [firstPin, setFirstPin] = useState("");
   const [error, setError] = useState("");
+  const inputRef = useRef(null);
 
   useEffect(() => {
     store.hasPin().then((has) => setMode(has ? "signin" : "setup"));
   }, [store]);
+
+  // Put the cursor in the PIN field on arrival and whenever the step changes,
+  // so keyboard users can type right away.
+  useEffect(() => {
+    if (mode !== "loading") inputRef.current?.focus();
+  }, [mode]);
 
   const signIn = async (value) => {
     const session = await store.signIn(value);
@@ -76,10 +83,33 @@ export default function AdminLogin() {
           This kiosk has no PIN yet. Choose 4 to 8 digits and store it somewhere safe; it can't be recovered.
         </p>
       )}
-      <p className="mt-4 text-2xl" aria-live="polite">
-        {pin ? "•".repeat(pin.length) : "Enter PIN"}
-      </p>
-      {error && <p role="alert" className="mt-2 text-danger">{error}</p>}
+      {/* A real field, so physical keyboards can type the PIN and press Enter.
+          inputMode="none" keeps Android's on-screen keyboard closed on the kiosk,
+          where staff use the large keypad below instead. */}
+      <label htmlFor="pin" className="mt-6 block text-text-muted">Staff PIN</label>
+      <input
+        id="pin"
+        ref={inputRef}
+        type="password"
+        inputMode="none"
+        autoComplete="off"
+        maxLength={8}
+        value={pin}
+        disabled={mode === "loading"}
+        aria-describedby={error ? "pin-error" : undefined}
+        onChange={(e) => {
+          setError("");
+          setPin(e.target.value.replace(/\D/g, "").slice(0, 8));
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            submit();
+          }
+        }}
+        className="mt-2 min-h-14 w-full rounded-xl border-2 border-text-muted bg-bg px-4 text-3xl tracking-[0.5em] text-text"
+      />
+      {error && <p id="pin-error" role="alert" className="mt-2 text-danger">{error}</p>}
       <div className="mt-6 grid grid-cols-3 gap-3">
         {KEYS.map((key) => (
           <button
