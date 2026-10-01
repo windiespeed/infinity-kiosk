@@ -20,10 +20,10 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
         aria-modal="true"
         aria-labelledby="event-title"
         onClick={(e) => e.stopPropagation()}
-        className="flex max-h-[88vh] w-full flex-col rounded-t-3xl border-t-2 border-text-muted bg-surface [animation:panel-up_250ms_ease-out]"
+        className="flex max-h-[88vh] w-full flex-col rounded-t-3xl border-t-2 border-accent bg-surface [animation:panel-up_250ms_ease-out]"
       >
         <div className="overflow-y-auto px-8 pt-8">
-          <p className="text-text-muted">
+          <p className="font-display text-xl font-bold text-accent">
             {event.date.display} · {era.title}
             {event.date.status !== "historical" && (
               <span className="ml-3 rounded-lg border-2 border-highlight px-2 text-highlight">

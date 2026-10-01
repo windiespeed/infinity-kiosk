@@ -6,7 +6,7 @@ const base =
 
 const variants = {
   primary: "bg-accent text-on-accent border-accent-outline",
-  secondary: "bg-surface text-text border-text-muted",
+  secondary: "bg-surface/80 text-text border-text-muted/70",
   era: "bg-primary text-on-primary border-primary-outline",
 };
 
