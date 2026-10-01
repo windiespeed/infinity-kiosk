@@ -1,15 +1,27 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 
 const TAPS_NEEDED = 5;
 const WITHIN_MS = 3000;
 
-// An invisible square in the top-left corner. Five taps within three seconds opens the
-// admin PIN screen. It is hidden from screen readers and keyboard focus on purpose;
-// the PIN is the real protection.
+// Two ways for staff to reach the admin PIN screen:
+// - Touch: five taps within three seconds in the invisible top-left square.
+// - Keyboard: Ctrl + Alt + A (for staff who use a keyboard or switch device).
+// Both are hidden from visitors on purpose; the PIN is the real protection.
 export default function HiddenAdminTrigger() {
   const taps = useRef([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "a") {
+        e.preventDefault();
+        navigate("/admin");
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [navigate]);
 
   const onPointerDown = () => {
     const now = Date.now();

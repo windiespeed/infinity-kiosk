@@ -20,9 +20,10 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
         aria-modal="true"
         aria-labelledby="event-title"
         onClick={(e) => e.stopPropagation()}
-        className="flex max-h-[88vh] w-full flex-col rounded-t-3xl border-t-2 border-accent panel [animation:panel-up_250ms_ease-out]"
+        className="flex max-h-[88vh] w-full flex-col rounded-t-3xl border-t-2 border-accent bg-surface [animation:panel-up_250ms_ease-out]"
       >
-        <div className="overflow-y-auto px-8 pt-8">
+        {/* tabIndex lets keyboard users scroll long event text with the arrow keys. */}
+        <div className="overflow-y-auto px-8 pt-8" tabIndex={0} role="region" aria-label="Event details">
           <p className="font-display text-xl font-bold text-accent">
             {event.date.display} · {era.title}
             {event.date.status !== "historical" && (
