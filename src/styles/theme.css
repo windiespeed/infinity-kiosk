@@ -13,17 +13,17 @@
   --color-*: initial;
 
   /* Surfaces */
-  --color-bg: #0B1B3A;          /* page background */
-  --color-surface: #15295A;     /* cards, panels, event detail */
+  --color-bg: #070C1B;          /* page background: deep space navy */
+  --color-surface: #111B36;     /* cards, panels, event detail */
 
   /* Text */
   --color-text: #FFFFFF;        /* primary text */
   --color-text-muted: #B8C4E0;  /* secondary text, captions */
 
   /* Primary action (buttons) and the text/outline that sits on it */
-  --color-accent: #B8216B;
-  --color-on-accent: #FFFFFF;
-  --color-accent-outline: #F3B6D2;
+  --color-accent: #E0A93B;          /* Apollo gold: buttons, rules, years */
+  --color-on-accent: #0A0F1F;
+  --color-accent-outline: #F5D58C;
 
   /* Era segments, selected states */
   --color-primary: #2F5BD3;
