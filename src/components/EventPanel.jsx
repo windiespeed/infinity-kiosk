@@ -2,13 +2,12 @@ import { Link } from "react-router";
 import { useContent } from "../hooks/useContent.jsx";
 import { useDialog } from "../hooks/useDialog.js";
 import { buttonClass } from "../lib/ui.js";
-import { mediaUrl } from "../lib/format.js";
 
 // Slides up over the era screen so visitors keep their place on the timeline.
 // Everything needed to understand the event is here, so it makes sense to someone
 // who walks up and sees only this panel.
 export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
-  const { mediaById, questionsForEvent } = useContent();
+  const { mediaById, mediaUrl, questionsForEvent } = useContent();
   const ref = useDialog(onClose);
   const images = event.mediaIds.map(mediaById).filter(Boolean);
   const hasQuiz = questionsForEvent(event.id).length > 0;
