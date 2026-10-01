@@ -38,7 +38,7 @@ export default function Library() {
 
       <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {items.map(({ img, ev }) => (
-          <li key={img.id} className="rounded-2xl bg-surface p-4">
+          <li key={img.id} className="panel rounded-2xl p-4">
             <img src={mediaUrl(img)} alt={img.alt} loading="lazy" className="aspect-video w-full rounded-xl object-cover" />
             <p className="mt-3 text-base">{img.caption}</p>
             <Link to={`/era/${ev.eraIds[0]}/event/${ev.id}`} className={buttonClass("secondary", "mt-3 w-full")}>

@@ -15,7 +15,7 @@ export default function StartOverDialog({ onConfirm, onCancel }) {
         aria-labelledby="restart-title"
         aria-describedby="restart-desc"
         onClick={(e) => e.stopPropagation()}
-        className="mb-[10vh] w-full max-w-3xl rounded-2xl border-2 border-text-muted bg-surface p-8 text-center"
+        className="mb-[10vh] w-full max-w-3xl rounded-2xl border-2 border-text-muted panel p-8 text-center"
       >
         <h2 id="restart-title" className="text-4xl">Start over?</h2>
         <p id="restart-desc" className="mt-3 text-text-muted">
