@@ -30,6 +30,8 @@ Open **http://localhost:5173**. Saving a file updates the browser automatically.
 | `npm run hash-pin -- 482913` | Makes a PIN hash to paste into `.env` (dev server only) |
 | `npm run android:sync` | Builds the app and copies it into the Android project |
 | `npm run android:open` | Opens the Android project in Android Studio |
+| `npm run android:run` | Builds the app, installs it on a plugged-in device or open emulator, and opens it |
+| `npm run android:dev` | Same, with live reload: saved changes appear on the device without rebuilding |
 
 ## Where things live
 
@@ -41,7 +43,7 @@ data/
 server/index.js       Development server: content, media, admin sign-in and saving (not used on the kiosk)
 android/              The Android app project (Capacitor). See docs/ANDROID.md
 docs/ANDROID.md       How to build the APK and set up the kiosk
-scripts/              Contrast checker and PIN hasher
+scripts/              Contrast checker, PIN hasher and the Android run script
 src/
   styles/theme.css    ALL colors and fonts. Change brand colors here only.
   store/useKiosk.js   Visitor settings (text size, contrast, etc.), reset when idle

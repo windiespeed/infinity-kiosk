@@ -26,6 +26,30 @@ the **Build** menu to build an APK. Menu wording changes between versions; look 
 
 Run `npm run android:sync` again every time the web code changes, before building.
 
+## Test on a tablet or emulator from the command line
+
+Both commands need a device with USB debugging on, plugged in by USB, or an emulator
+that is already open (start one in Android Studio's **Device Manager**). If more than
+one is available, you are asked which to use.
+
+```bash
+npm run android:run      # full build: builds everything, installs it and opens the app
+npm run android:dev      # live reload: saved changes appear on the device in seconds
+```
+
+- **`android:run`** does the web build, the sync and the APK build in one step, with no
+  Android Studio clicks. The result is the real offline app, the same as on the kiosk.
+- **`android:dev`** starts the dev server and installs a version of the app that loads
+  its screens from your computer through the USB connection. Leave it running while
+  you work and press Ctrl+C to stop.
+
+The live reload version only works while `android:dev` is running; after you stop it,
+the app shows "Webpage not available". Run `npm run android:run` to put the normal app
+back. Never install a live reload build on the kiosk.
+
+Run `android:dev` again (or `android:run`) after adding a Capacitor plugin or changing
+anything in `android/`. Live reload only covers the web code.
+
 ## Build the real kiosk version (signed)
 
 The kiosk must always get APKs signed with the **same key**, or Android refuses to

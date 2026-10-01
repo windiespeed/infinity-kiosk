@@ -12,7 +12,9 @@
     "check:contrast": "node scripts/check-contrast.mjs",
     "hash-pin": "node scripts/hash-pin.mjs",
     "android:sync": "npm run build && cap sync android",
-    "android:open": "cap open android"
+    "android:open": "cap open android",
+    "android:run": "node scripts/android-run.mjs",
+    "android:dev": "node scripts/android-run.mjs --live"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",
