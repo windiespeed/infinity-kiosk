@@ -1,13 +1,12 @@
 import { useSearchParams, Link } from "react-router";
 import { useContent } from "../hooks/useContent.jsx";
 import { buttonClass } from "../lib/ui.js";
-import { mediaUrl } from "../lib/format.js";
 
 // Every image, filterable by era. Each image links back to its event.
 // TODO (image viewer issue): tapping an image opens a full-screen viewer with zoom
 // (react-zoom-pan-pinch), using thumbnail / display / zoom sizes from the server.
 export default function Library() {
-  const { content, eras, eventsForEra } = useContent();
+  const { content, eras, eventsForEra, mediaUrl } = useContent();
   const [params, setParams] = useSearchParams();
   const eraFilter = params.get("era");
 

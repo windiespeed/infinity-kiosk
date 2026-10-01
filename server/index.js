@@ -104,7 +104,27 @@ app.put("/api/content", requireAdmin, async (req, res) => {
   }
 });
 
-// TODO (media issue): POST /api/media for uploads, generating thumb / display / zoom sizes with `sharp`.
+// Media upload (used by backup import in the browser). One raw file per request.
+// TODO (media issue): generate thumb / display / zoom sizes with `sharp`.
+app.post(
+  "/api/media/:name",
+  requireAdmin,
+  express.raw({ type: () => true, limit: "2gb" }),
+  async (req, res) => {
+    const name = req.params.name;
+    if (!/^[\w][\w.-]{0,199}$/.test(name)) return res.status(400).json({ error: "Unsafe file name." });
+    try {
+      await mkdir(path.join(DATA_DIR, "media"), { recursive: true });
+      const tmp = path.join(DATA_DIR, "media", `${name}.tmp`);
+      await writeFile(tmp, req.body);
+      await rename(tmp, path.join(DATA_DIR, "media", name));
+      res.json({ ok: true });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: `Could not save ${name}.` });
+    }
+  }
+);
 
 // ---------- Static files ----------
 app.use("/media", express.static(path.join(DATA_DIR, "media"), { maxAge: "1h" }));

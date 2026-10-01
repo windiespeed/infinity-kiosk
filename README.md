@@ -23,10 +23,13 @@ Open **http://localhost:5173**. Saving a file updates the browser automatically.
 | Command | What it does |
 |---|---|
 | `npm run dev` | Development: app on :5173, server on :5050 |
+| `npm run dev:host` | Same, but reachable from other devices on your network (for testing on the kiosk's browser) |
 | `npm run build` | Checks color contrast, then builds the app into `dist/` |
 | `npm start` | Runs the server alone, serving the built app at http://localhost:5050 (this is what the kiosk runs) |
 | `npm run check:contrast` | Tests every color pairing in the theme against WCAG AA |
-| `npm run hash-pin -- 482913` | Makes a PIN hash to paste into `.env` |
+| `npm run hash-pin -- 482913` | Makes a PIN hash to paste into `.env` (dev server only) |
+| `npm run android:sync` | Builds the app and copies it into the Android project |
+| `npm run android:open` | Opens the Android project in Android Studio |
 
 ## Where things live
 
@@ -35,12 +38,16 @@ data/
   content.json        All eras, events, images, and quiz questions (the "database")
   media/              Images and videos. Only sample-* files are in Git.
   backups/            Automatic copies made before every admin save (not in Git)
-server/index.js       Local server: serves the app, content, media; admin sign-in and saving
+server/index.js       Development server: content, media, admin sign-in and saving (not used on the kiosk)
+android/              The Android app project (Capacitor). See docs/ANDROID.md
+docs/ANDROID.md       How to build the APK and set up the kiosk
 scripts/              Contrast checker and PIN hasher
 src/
   styles/theme.css    ALL colors and fonts. Change brand colors here only.
   store/useKiosk.js   Visitor settings (text size, contrast, etc.), reset when idle
   hooks/              useContent (loads content), useIdleTimer, useDialog (focus handling)
+  lib/store/          Content store: dev server in a browser, kiosk storage in the Android app
+  lib/backup.js       Backup zip export/import (also how content moves onto the kiosk)
   components/         Bottom nav, accessibility panel, idle prompt, event panel
   routes/             One file per screen; admin screens in routes/admin/
 ```
@@ -65,16 +72,20 @@ src/
 - **Quiz** (`routes/Quiz.jsx`): event quiz, timeline challenge (one question per era), retry with explanations
 - **QR certificate**: completion screen with `qrcode.react`, plus the companion-site certificate page
 - **Image viewer**: full-screen viewer with zoom (`react-zoom-pan-pinch`), used by library and event panel
-- **Media pipeline** (server): uploads, thumbnail/display/zoom sizes with `sharp`
+- **Media upload** (admin): pick images and videos and save them through the content store (`openMediaWriter`); shrink very large photos in the browser before saving
 - **Admin editors**: events, questions, eras, media; backup/restore; "planned events need review" flag
 - **Attract loop**: background video from `content.settings.attractVideo`
-- **Read aloud**: audio mode with `window.speechSynthesis`
 - **Video player**: captions (`<track>`), mark the kiosk busy while playing (`addBusy`/`removeBusy`)
 - **Accessibility testing**: `eslint-plugin-jsx-a11y` and Playwright + axe tests
-- **Kiosk setup guide**: Windows service for the server, Edge kiosk mode, Assigned Access
+- **Read aloud** on the kiosk needs a native text-to-speech plugin (`@capacitor-community/text-to-speech`)
 
-## Before it goes on the kiosk
+## How the kiosk runs
 
-- Copy `.env.example` to `.env` and set `ADMIN_PIN_HASH` (never leave the dev PIN).
-- Replace placeholder content and sample images in `data/`.
-- Run `npm run build`, then `npm start`, and point Edge kiosk mode at http://localhost:5050.
+The kiosk is a 43" Android 13 touchscreen running this project as an Android app (APK),
+fully offline. Content, media and the admin PIN live on the kiosk. Content moves between
+a laptop and the kiosk as a backup zip (admin dashboard: Export backup / Import backup).
+Build and setup steps: **docs/ANDROID.md**.
+
+In a browser, the app talks to the development server instead, so everything can be built
+and tested without the kiosk. Screens never need to know which one is running; they use
+the content store (`src/lib/store/`).

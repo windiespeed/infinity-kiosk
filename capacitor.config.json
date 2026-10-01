@@ -1,0 +1,5 @@
+{
+  "appId": "org.infinityscience.kiosk",
+  "appName": "Infinity Kiosk",
+  "webDir": "dist"
+}
