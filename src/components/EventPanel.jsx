@@ -20,7 +20,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
         aria-modal="true"
         aria-labelledby="event-title"
         onClick={(e) => e.stopPropagation()}
-        className="flex max-h-[88vh] w-full flex-col rounded-t-3xl border-t-2 border-accent bg-surface [animation:panel-up_250ms_ease-out]"
+        className="flex max-h-[88vh] w-full flex-col rounded-t-3xl border-t-2 border-accent panel [animation:panel-up_250ms_ease-out]"
       >
         <div className="overflow-y-auto px-8 pt-8">
           <p className="font-display text-xl font-bold text-accent">

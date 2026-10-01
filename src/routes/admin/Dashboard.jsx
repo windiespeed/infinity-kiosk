@@ -88,14 +88,14 @@ export default function Dashboard() {
 
       <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {["eras", "events", "media", "questions"].map((key) => (
-          <div key={key} className="rounded-xl bg-surface p-4">
+          <div key={key} className="panel rounded-xl p-4">
             <dt className="capitalize text-text-muted">{key}</dt>
             <dd className="text-4xl font-bold">{content[key].length}</dd>
           </div>
         ))}
       </dl>
 
-      <section className="mt-10 rounded-xl bg-surface p-6">
+      <section className="mt-10 panel rounded-xl p-6">
         <h2 className="text-3xl">Settings</h2>
         <label htmlFor="idle" className="mt-4 block">Seconds before the “Are you still exploring?” prompt</label>
         <input
@@ -113,7 +113,7 @@ export default function Dashboard() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-xl bg-surface p-6">
+      <section className="mt-10 panel rounded-xl p-6">
         <h2 className="text-3xl">Backups</h2>
         <p className="mt-2 text-text-muted">
           A backup is one .zip file with all content and media. Export one after every round of changes and keep a

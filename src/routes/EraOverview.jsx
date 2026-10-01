@@ -24,7 +24,7 @@ export default function EraOverview() {
               <span aria-hidden="true" className="absolute left-1/2 top-0 hidden size-5 -translate-x-1/2 rounded-full border-4 border-bg bg-accent lg:block" />
               <Link
                 to={`/era/${era.id}`}
-                className="flex h-full min-h-48 flex-col justify-end gap-1 rounded-2xl border-2 border-accent/50 bg-surface/80 p-4 transition-colors hover:border-accent"
+                className="flex h-full min-h-48 flex-col justify-end gap-1 rounded-2xl border-2 border-accent/50 panel p-4 transition-colors hover:border-accent"
               >
                 <span className="font-display text-xl font-bold text-accent">{eraYears(era)}</span>
                 <span className="font-display text-lg font-semibold [overflow-wrap:anywhere]">{era.title}</span>

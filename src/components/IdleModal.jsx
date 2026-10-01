@@ -11,7 +11,7 @@ export default function IdleModal({ remaining, onStay }) {
         aria-modal="true"
         aria-labelledby="idle-title"
         aria-describedby="idle-desc"
-        className="mb-[10vh] w-full max-w-3xl rounded-2xl border-2 border-text-muted bg-surface p-8 text-center"
+        className="mb-[10vh] w-full max-w-3xl rounded-2xl border-2 border-text-muted panel p-8 text-center"
       >
         <h2 id="idle-title" className="text-3xl">Are you still exploring?</h2>
         <p id="idle-desc" className="mt-3 text-text-muted" aria-live="polite">

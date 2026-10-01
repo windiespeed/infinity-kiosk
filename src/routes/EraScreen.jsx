@@ -60,7 +60,7 @@ export default function EraScreen() {
                   to={eventPath(ev)}
                   data-event-id={ev.id}
                   aria-current={ev.id === eventId ? "true" : undefined}
-                  className={`flex min-h-28 w-full flex-col items-center justify-center gap-1 rounded-2xl border-2 bg-surface/80 px-5 py-3 text-center transition-colors md:w-60 ${
+                  className={`flex min-h-28 w-full flex-col items-center justify-center gap-1 rounded-2xl border-2 panel px-5 py-3 text-center transition-colors md:w-60 ${
                     ev.id === eventId ? "border-highlight" : "border-accent/50 hover:border-accent"
                   }`}
                 >

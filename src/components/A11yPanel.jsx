@@ -32,7 +32,7 @@ export default function A11yPanel() {
         aria-modal="true"
         aria-labelledby="a11y-title"
         onClick={(e) => e.stopPropagation()}
-        className="mb-4 w-full max-w-4xl rounded-2xl border-2 border-text-muted bg-surface p-6"
+        className="mb-4 w-full max-w-4xl rounded-2xl border-2 border-text-muted panel p-6"
       >
         <h2 id="a11y-title" tabIndex={-1} data-autofocus className="text-3xl">Accessibility</h2>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
