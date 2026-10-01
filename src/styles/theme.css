@@ -4,7 +4,11 @@
   THEME TOKENS: the only place colors are defined.
   When the museum sends its brand colors, change the hex values below,
   then run `npm run check:contrast`. Components never use raw colors.
+  
   IMPORTANT: Keep every value as a 6-digit hex so the contrast checker can read it.
+  For transparency, don't put it in the token. Use Tailwind's opacity shortcut in 
+  the class instead, like bg-surface/80, which the code already does in a few places. 
+  The token stays a solid color the checker can verify.
 */
 
 @theme static {
