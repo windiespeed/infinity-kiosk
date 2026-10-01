@@ -4,7 +4,7 @@
   THEME TOKENS: the only place colors are defined.
   When the museum sends its brand colors, change the hex values below,
   then run `npm run check:contrast`. Components never use raw colors.
-  Keep every value as a 6-digit hex so the contrast checker can read it.
+  IMPORTANT: Keep every value as a 6-digit hex so the contrast checker can read it.
 */
 
 @theme static {
@@ -14,8 +14,8 @@
 
   /* Surfaces */
   --color-bg: #080b13;          /* page background: deep space navy (top of the page gradient) */
-  --color-bg-glow: #17233d;     /* lightest point of the page gradient (bottom) */
-  --color-surface: #282a31;     /* cards, panels, event detail: warm charcoal grey */
+  --color-bg-glow: #040914;     /* lightest point of the page gradient (bottom) */
+  --color-surface: #040914;     /* cards, panels, event detail: warm charcoal grey */
 
   /* Text */
   --color-text: #FFFFFF;        /* primary text */
