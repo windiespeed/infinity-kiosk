@@ -17,7 +17,11 @@
   --color-*: initial;
 
   /* Surfaces */
+<<<<<<< Updated upstream
   --color-bg: #080b12;          /* page background: deep space navy (top of the page gradient) */
+=======
+  --color-bg: #090e1b;          /* page background: deep space navy (top of the page gradient) */
+>>>>>>> Stashed changes
   --color-bg-glow: #040914;     /* lightest point of the page gradient (bottom) */
   --color-surface: #040914;     /* cards, panels, event detail: warm charcoal grey */
 
