@@ -17,7 +17,7 @@
   --color-*: initial;
 
   /* Surfaces */
-  --color-bg: #c7cddd;          /* page background: deep space navy (top of the page gradient) */
+  --color-bg: #080b12;          /* page background: deep space navy (top of the page gradient) */
   --color-bg-glow: #040914;     /* lightest point of the page gradient (bottom) */
   --color-surface: #040914;     /* cards, panels, event detail: warm charcoal grey */
 
@@ -26,7 +26,7 @@
   --color-text-muted: #BFCBE6;  /* secondary text, captions */
 
   /* Primary action (buttons) and the text/outline that sits on it */
-  --color-accent: #f0d4a0;          /* Apollo gold: buttons, rules, years */
+  --color-accent: #d4bd91;          /* Apollo gold: buttons, rules, years */
   --color-on-accent: #0A0F1F;
   --color-accent-outline: #F6D689;
 
