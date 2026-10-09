@@ -159,7 +159,6 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
           initialIndex={selectedImageIndex}
           mediaUrl={mediaUrl}
           onClose={closeViewer}
-          disableAnimation={reduceMotion}
         />
       )}
     </div>
