@@ -1,9 +1,11 @@
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
     TransformComponent,
     TransformWrapper,
 } from "react-zoom-pan-pinch";
 import { useDialog } from "../hooks/useDialog.js";
+import { useKiosk } from "../store/useKiosk.js";
 
 export default function ImageViewer({
     images = [],
@@ -13,7 +15,13 @@ export default function ImageViewer({
 }) {
     const [currentIndex, setCurrentIndex] = useState(initialIndex);
     const [zoom, setZoom] = useState(1);
-    const [reduceMotion, setReduceMotion] = useState(false);
+
+    // DONE by Joshua Craven: respect both kiosk and system motion preferences.
+    const kioskReduceMotion = useKiosk((state) => state.reduceMotion);
+    const [systemReduceMotion, setSystemReduceMotion] = useState(() =>
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+    const reduceMotion = kioskReduceMotion || systemReduceMotion;
 
     const transformRef = useRef(null);
     const dialogRef = useDialog(onClose);
@@ -29,7 +37,7 @@ export default function ImageViewer({
         );
 
         const updateMotionPreference = () => {
-            setReduceMotion(mediaQuery.matches);
+            setSystemReduceMotion(mediaQuery.matches);
         };
 
         updateMotionPreference();
@@ -58,47 +66,27 @@ export default function ImageViewer({
         setZoom(1);
     }, [reduceMotion]);
 
-    const zoomIn = useCallback(() => {
-        const instance = transformRef.current;
+    
+const zoomIn = useCallback(() => {
+    const instance = transformRef.current;
 
-        if (!instance) {
-            return;
-        }
+    if (!instance) {
+        return;
+    }
 
-        if (reduceMotion) {
-            const nextScale = Math.min(instance.state.scale + 1, 5);
+    instance.zoomIn(1, reduceMotion ? 0 : 200);
+}, [reduceMotion]);
 
-            instance.setTransform(
-                instance.state.positionX,
-                instance.state.positionY,
-                nextScale,
-                0
-            );
-        } else {
-            instance.zoomIn(1, 200);
-        }
-    }, [reduceMotion]);
+    
+const zoomOut = useCallback(() => {
+    const instance = transformRef.current;
 
-    const zoomOut = useCallback(() => {
-        const instance = transformRef.current;
+    if (!instance) {
+        return;
+    }
 
-        if (!instance) {
-            return;
-        }
-
-        if (reduceMotion) {
-            const nextScale = Math.max(instance.state.scale - 1, 1);
-
-            instance.setTransform(
-                instance.state.positionX,
-                instance.state.positionY,
-                nextScale,
-                0
-            );
-        } else {
-            instance.zoomOut(1, 200);
-        }
-    }, [reduceMotion]);
+    instance.zoomOut(1, reduceMotion ? 0 : 200);
+}, [reduceMotion]);
 
     const changeImage = useCallback(
         (newIndex) => {
@@ -206,16 +194,10 @@ export default function ImageViewer({
             }
         };
 
-        document.addEventListener(
-            "keydown",
-            handleKeyDown
-        );
+        document.addEventListener("keydown", handleKeyDown);
 
         return () => {
-            document.removeEventListener(
-                "keydown",
-                handleKeyDown
-            );
+            document.removeEventListener("keydown", handleKeyDown);
         };
     }, [
         dialogRef,
@@ -246,7 +228,7 @@ export default function ImageViewer({
     return (
         <div
             ref={dialogRef}
-            className="fixed inset-0 z-[100] flex flex-col bg-black/95 text-white"
+            className="fixed inset-0 z-[100] flex flex-col bg-surface text-text"
             role="dialog"
             aria-modal="true"
             aria-label="Image viewer"
@@ -265,7 +247,7 @@ export default function ImageViewer({
                     type="button"
                     onClick={onClose}
                     data-autofocus
-                    className="rounded-xl px-5 py-3 text-lg font-semibold hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white"
+                    className="rounded-xl border-2 border-accent bg-accent px-5 py-3 text-lg font-semibold text-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
                     aria-label="Close image viewer"
                 >
                     Close
@@ -295,8 +277,12 @@ export default function ImageViewer({
                         disabled: false,
                         step: 0.5,
                     }}
-                    onTransformed={(ref) => {
-                        setZoom(ref.state.scale);
+                    onTransformed={(ref, state) => {
+                        const scale = state?.scale ?? ref?.state?.scale;
+
+                        if (typeof scale === "number") {
+                            setZoom(scale);
+                        }
                     }}
                 >
                     <TransformComponent
@@ -347,7 +333,7 @@ export default function ImageViewer({
                             type="button"
                             onClick={goPrevious}
                             disabled={!hasPrevious || zoom !== 1}
-                            className="min-w-16 rounded-xl px-5 py-4 text-2xl font-bold hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:opacity-40"
+                            className="min-w-16 rounded-xl border-2 border-accent bg-surface px-5 py-4 text-2xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-40"
                             aria-label="Previous image"
                         >
                             ←
@@ -357,7 +343,7 @@ export default function ImageViewer({
                             type="button"
                             onClick={goNext}
                             disabled={!hasNext || zoom !== 1}
-                            className="min-w-16 rounded-xl px-5 py-4 text-2xl font-bold hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:opacity-40"
+                            className="min-w-16 rounded-xl border-2 border-accent bg-surface px-5 py-4 text-2xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-40"
                             aria-label="Next image"
                         >
                             →
@@ -368,7 +354,7 @@ export default function ImageViewer({
                 <button
                     type="button"
                     onClick={zoomOut}
-                    className="min-w-16 rounded-xl px-5 py-4 text-3xl font-bold hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white"
+                    className="min-w-16 rounded-xl border-2 border-accent bg-surface px-5 py-4 text-3xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent"
                     aria-label="Zoom out"
                 >
                     −
@@ -384,7 +370,7 @@ export default function ImageViewer({
                 <button
                     type="button"
                     onClick={zoomIn}
-                    className="min-w-16 rounded-xl px-5 py-4 text-3xl font-bold hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white"
+                    className="min-w-16 rounded-xl border-2 border-accent bg-surface px-5 py-4 text-3xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent"
                     aria-label="Zoom in"
                 >
                     +
@@ -393,7 +379,7 @@ export default function ImageViewer({
                 <button
                     type="button"
                     onClick={resetZoom}
-                    className="rounded-xl px-5 py-4 text-lg font-semibold hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white"
+                    className="rounded-xl border-2 border-accent bg-accent px-5 py-4 text-lg font-semibold text-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
                     aria-label="Reset zoom"
                 >
                     Reset
@@ -402,4 +388,3 @@ export default function ImageViewer({
         </div>
     );
 }
-
