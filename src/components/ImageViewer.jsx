@@ -66,27 +66,62 @@ export default function ImageViewer({
         setZoom(1);
     }, [reduceMotion]);
 
-    
-const zoomIn = useCallback(() => {
-    const instance = transformRef.current;
+    const zoomIn = useCallback(() => {
+        const instance = transformRef.current;
 
-    if (!instance) {
-        return;
-    }
+        if (!instance) {
+            return;
+        }
 
-    instance.zoomIn(1, reduceMotion ? 0 : 200);
-}, [reduceMotion]);
+        const nextScale = Math.min(instance.state.scale + 1, 5);
 
-    
-const zoomOut = useCallback(() => {
-    const instance = transformRef.current;
+        instance.zoomIn(1, reduceMotion ? 0 : 200);
+        setZoom(nextScale);
+    }, [reduceMotion]);
 
-    if (!instance) {
-        return;
-    }
+    const zoomOut = useCallback(() => {
+        const instance = transformRef.current;
 
-    instance.zoomOut(1, reduceMotion ? 0 : 200);
-}, [reduceMotion]);
+        if (!instance) {
+            return;
+        }
+
+        const nextScale = Math.max(instance.state.scale - 1, 1);
+
+        instance.zoomOut(1, reduceMotion ? 0 : 200);
+        setZoom(nextScale);
+    }, [reduceMotion]);
+
+    const panImage = useCallback((key) => {
+        const instance = transformRef.current;
+
+        if (!instance || instance.state.scale <= 1) {
+            return;
+        }
+
+        const step = 40;
+        const { positionX, positionY, scale } = instance.state;
+
+        const offsets = {
+            ArrowLeft: [step, 0],
+            ArrowRight: [-step, 0],
+            ArrowUp: [0, step],
+            ArrowDown: [0, -step],
+        };
+
+        const offset = offsets[key];
+
+        if (!offset) {
+            return;
+        }
+
+        instance.setTransform(
+            positionX + offset[0],
+            positionY + offset[1],
+            scale,
+            0
+        );
+    }, []);
 
     const changeImage = useCallback(
         (newIndex) => {
@@ -164,21 +199,20 @@ const zoomOut = useCallback(() => {
                 return;
             }
 
-            if (event.key === "ArrowLeft") {
+            if (
+                event.key === "ArrowLeft" ||
+                event.key === "ArrowRight"
+            ) {
                 event.preventDefault();
 
                 if (zoom === 1) {
-                    goPrevious();
-                }
-
-                return;
-            }
-
-            if (event.key === "ArrowRight") {
-                event.preventDefault();
-
-                if (zoom === 1) {
-                    goNext();
+                    if (event.key === "ArrowLeft") {
+                        goPrevious();
+                    } else {
+                        goNext();
+                    }
+                } else {
+                    panImage(event.key);
                 }
 
                 return;
@@ -188,8 +222,9 @@ const zoomOut = useCallback(() => {
                 event.key === "ArrowUp" ||
                 event.key === "ArrowDown"
             ) {
-                if (zoom !== 1) {
+                if (zoom > 1) {
                     event.preventDefault();
+                    panImage(event.key);
                 }
             }
         };
@@ -203,6 +238,7 @@ const zoomOut = useCallback(() => {
         dialogRef,
         goNext,
         goPrevious,
+        panImage,
         resetZoom,
         zoom,
         zoomIn,
@@ -277,10 +313,27 @@ const zoomOut = useCallback(() => {
                         disabled: false,
                         step: 0.5,
                     }}
+
                     onTransformed={(ref, state) => {
                         const scale = state?.scale ?? ref?.state?.scale;
 
-                        if (typeof scale === "number") {
+                        if (typeof scale === "number" && Number.isFinite(scale)) {
+                            setZoom(scale);
+                        }
+                    }}
+                    onWheel={(ref) => {
+                        requestAnimationFrame(() => {
+                            const scale = ref?.state?.scale;
+
+                            if (typeof scale === "number" && Number.isFinite(scale)) {
+                                setZoom(scale);
+                            }
+                        });
+                    }}
+                    onWheelStop={(ref) => {
+                        const scale = ref?.state?.scale;
+
+                        if (typeof scale === "number" && Number.isFinite(scale)) {
                             setZoom(scale);
                         }
                     }}
@@ -364,7 +417,7 @@ const zoomOut = useCallback(() => {
                     className="min-w-20 rounded-xl px-4 py-4 text-center text-lg font-semibold"
                     aria-live="polite"
                 >
-                    {Math.round(zoom)}×
+                    {`${Number(zoom.toFixed(1))}×`}
                 </span>
 
                 <button
