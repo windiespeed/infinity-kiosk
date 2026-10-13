@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { useContent } from "../hooks/useContent.jsx";
+import Certificate from "./Certificate.jsx";
 
 // TODO (quiz issue): build the quiz component.
 // - Event quiz: questionsForEvent(eventId)
@@ -37,11 +38,15 @@ export function EventQuiz() {
 // TODO (certificate issue): show a large QR code (qrcode.react) linking to the
 // companion site's certificate page, e.g. https://COMPANION/certificate?d=2026-10-30&c=timeline
 // Pause the idle timer here or give it extra time.
+
+// const certificate =
+
 export function QuizComplete() {
   return (
     <div className="p-10">
       <h1 className="text-6xl">You finished the challenge!</h1>
       <p className="mt-8 rounded-xl border-2 border-highlight p-4">QR certificate coming soon (starter placeholder).</p>
+      <Certificate/>
     </div>
   );
 }
