@@ -670,11 +670,11 @@
       "prompt": "In what year did NASA begin operations?",
       "choices": [
         "1955",
-        "1958",
         "1961",
+        "1958",
         "1969"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "NASA began operations on October 1, 1958."
     },
     {
@@ -682,13 +682,13 @@
       "eventId": "evt-1961-shepard",
       "prompt": "Who was the first American in space?",
       "choices": [
-        "John Glenn",
-        "Neil Armstrong",
         "Alan Shepard",
+        "Neil Armstrong",
+        "John Glenn",
         "Gus Grissom"
       ],
-      "correctIndex": 2,
-      "explanation": "Alan Shepard flew aboard Freedom 7 on May 5, 1961."
+      "correctIndex": 0,
+      "explanation": "Alan Shepard flew aboard Freedom 7 on May 5, 1961, on a suborbital flight."
     },
     {
       "id": "q-3",
@@ -696,12 +696,116 @@
       "prompt": "What was Apollo 11's main goal?",
       "choices": [
         "Orbit Mars",
-        "Land people on the Moon and return them safely",
         "Launch a space station",
-        "Test a reusable spacecraft"
+        "Test a reusable spacecraft",
+        "Land people on the Moon and return them safely"
+      ],
+      "correctIndex": 3,
+      "explanation": "Apollo 11 achieved the goal of landing astronauts on the Moon and returning them safely to Earth."
+    },
+    {
+      "id": "q-4",
+      "eventId": "evt-1957-sputnik",
+      "prompt": "What was Sputnik 1?",
+      "choices": [
+        "The first American satellite",
+        "The first artificial satellite to orbit Earth",
+        "The first crewed spacecraft",
+        "The first space station"
       ],
       "correctIndex": 1,
-      "explanation": "Apollo 11 landed astronauts on the Moon in July 1969 and returned them safely to Earth."
+      "explanation": "Launched by the Soviet Union on October 4, 1957, Sputnik 1 became the first artificial satellite to orbit Earth."
+    },
+    {
+      "id": "q-5",
+      "eventId": "evt-1968-apollo8",
+      "prompt": "What milestone did Apollo 8 achieve in December 1968?",
+      "choices": [
+        "The first crewed lunar landing",
+        "The first American spacewalk",
+        "The first Space Shuttle flight",
+        "The first crewed mission to orbit the Moon"
+      ],
+      "correctIndex": 3,
+      "explanation": "Apollo 8 carried astronauts around the Moon, becoming the first crewed mission to orbit it. The crew did not land."
+    },
+    {
+      "id": "q-6",
+      "eventId": "evt-1981-sts1",
+      "prompt": "Which Space Shuttle flew NASA's first orbital Shuttle mission in 1981?",
+      "choices": [
+        "Challenger",
+        "Discovery",
+        "Columbia",
+        "Atlantis"
+      ],
+      "correctIndex": 2,
+      "explanation": "Columbia flew STS-1 in April 1981, the first orbital test flight of NASA's Space Shuttle program."
+    },
+    {
+      "id": "q-7",
+      "eventId": "evt-1983-sally-ride",
+      "prompt": "What milestone did Sally Ride achieve aboard STS-7?",
+      "choices": [
+        "First American woman in space",
+        "First person to walk on the Moon",
+        "First woman to command the ISS",
+        "First Space Shuttle pilot"
+      ],
+      "correctIndex": 0,
+      "explanation": "Sally Ride became the first American woman in space when Challenger launched on June 18, 1983."
+    },
+    {
+      "id": "q-8",
+      "eventId": "evt-1998-zarya",
+      "prompt": "What was Zarya's significance to the International Space Station?",
+      "choices": [
+        "The first Space Shuttle",
+        "The Apollo 11 lunar module",
+        "A lunar rover",
+        "The first ISS module to reach orbit"
+      ],
+      "correctIndex": 3,
+      "explanation": "Zarya launched on November 20, 1998, and became the first module of the International Space Station."
+    },
+    {
+      "id": "q-9",
+      "eventId": "evt-2000-expedition1",
+      "prompt": "What did the arrival of Expedition 1 mark?",
+      "choices": [
+        "The first Space Shuttle flight",
+        "The start of continuous human residence aboard the ISS",
+        "The launch of the first ISS module",
+        "The first crewed lunar landing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Expedition 1 arrived at the ISS on November 2, 2000, beginning continuous human presence aboard the station."
+    },
+    {
+      "id": "q-10",
+      "eventId": "evt-2022-artemis1",
+      "prompt": "What was the main purpose of Artemis I?",
+      "choices": [
+        "Carry astronauts to the Moon's surface",
+        "Build the International Space Station",
+        "Test the SLS rocket and Orion spacecraft on an uncrewed lunar flight",
+        "Deploy the Hubble Space Telescope"
+      ],
+      "correctIndex": 2,
+      "explanation": "Artemis I tested the Space Launch System rocket, Orion spacecraft, and supporting systems on an uncrewed mission around the Moon."
+    },
+    {
+      "id": "q-11",
+      "eventId": "evt-2026-artemis2",
+      "prompt": "What did Artemis II accomplish in 2026?",
+      "choices": [
+        "The first ISS module launch",
+        "The first crewed Artemis mission around the Moon",
+        "The final Space Shuttle flight",
+        "The first American satellite launch"
+      ],
+      "correctIndex": 1,
+      "explanation": "Artemis II carried four astronauts around the Moon and returned them safely to Earth in April 2026."
     }
   ]
 }
