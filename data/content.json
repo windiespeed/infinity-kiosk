@@ -10,6 +10,7 @@
       "id": "early",
       "title": "Early Beginnings",
       "subtitle": "The first satellites and the founding of NASA.",
+      "overview": "The launch of Sputnik 1 in 1957 began the space age. The United States responded by creating NASA and developing early human spaceflight programs that led to missions carrying astronauts into orbit.",
       "startYear": 1957,
       "endYear": 1969,
       "order": 1
@@ -18,6 +19,7 @@
       "id": "apollo",
       "title": "The Apollo Missions",
       "subtitle": "The race to put people on the Moon.",
+      "overview": "During the Apollo era, NASA developed the systems needed to send astronauts to the Moon. Apollo 11 achieved the first crewed lunar landing in July 1969, and Apollo 17 was the program's final crewed Moon landing in 1972.",
       "startYear": 1961,
       "endYear": 1972,
       "order": 2
@@ -26,6 +28,7 @@
       "id": "shuttle",
       "title": "The Space Shuttle Era",
       "subtitle": "A reusable spacecraft and three decades of missions.",
+      "overview": "The Space Shuttle was designed as a reusable spacecraft for trips to orbit. Across three decades, shuttle missions carried crews and satellites, supported scientific research, and helped assemble the International Space Station.",
       "startYear": 1981,
       "endYear": 2011,
       "order": 3
@@ -34,6 +37,7 @@
       "id": "iss",
       "title": "The International Space Station",
       "subtitle": "A permanent home for people in orbit.",
+      "overview": "The International Space Station grew through international cooperation, beginning with the launch of its first module in 1998. Since the first long-duration crew arrived in 2000, the station has supported research in microgravity.",
       "startYear": 1998,
       "endYear": null,
       "order": 4
@@ -42,6 +46,7 @@
       "id": "future",
       "title": "Recent Developments and the Future",
       "subtitle": "Artemis and the next era of exploration.",
+      "overview": "Recent exploration efforts include the Artemis program, which is working toward sustained human exploration of the Moon. Artemis I tested an uncrewed flight around the Moon in 2022, while future mission plans continue to develop.",
       "startYear": 2021,
       "endYear": null,
       "order": 5
