@@ -106,6 +106,12 @@
     user-select: none;           /* no accidental text highlighting */
   }
 
+  /* No visible scrollbars anywhere. Visitors scroll the timeline and panels by
+     swiping, and keyboard users by Tab or the arrow keys, so a desktop-style
+     scrollbar only adds clutter on the touch screen. */
+  * { scrollbar-width: none; }
+  *::-webkit-scrollbar { display: none; }
+
   h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; }
   /* Page titles fade very slightly from white to a pale blue. */
   h1 {
