@@ -27,7 +27,7 @@ export default function EraOverview() {
                 <span aria-hidden="true" className="absolute left-1/2 top-0 hidden size-5 -translate-x-1/2 rounded-full border-4 border-bg bg-accent lg:block" />
                 <Link
                   to={`/era/${era.id}`}
-                  className="relative flex h-full min-h-48 flex-col justify-end overflow-hidden rounded-2xl border-2 border-accent/50 panel transition-colors hover:border-accent"
+                  className="relative flex h-full min-h-48 flex-col justify-end overflow-hidden rounded-2xl border border-accent/25 panel transition-colors hover:border-accent"
                 >
                   {cover && <CardImage src={mediaUrl(cover)} />}
                   <span className="relative flex flex-col gap-1 p-4">
