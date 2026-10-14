@@ -71,6 +71,9 @@ export default function EraScreen() {
                 >
                   {eventCover(ev) && <CardImage src={mediaUrl(eventCover(ev))} />}
                   <span className="relative flex flex-col items-center gap-1 px-5 py-3">
+                    {ev.tags?.includes("mississippi") && (
+                      <span className="rounded-md border border-accent px-2 text-sm font-bold uppercase tracking-wider text-accent">Mississippi</span>
+                    )}
                     <span className="font-display text-3xl font-bold text-accent">{ev.date.display}</span>
                     <span className="text-base font-bold">{ev.shortTitle}</span>
                   </span>

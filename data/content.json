@@ -617,6 +617,321 @@
         "img-5"
       ],
       "published": true
+    },
+    {
+      "id": "evt-1961-pearl-river-site",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1961-10-25",
+        "display": "1961",
+        "status": "historical"
+      },
+      "shortTitle": "Mississippi chosen",
+      "title": "NASA picks Hancock County to test the Moon rockets",
+      "summary": "On October 25, 1961, NASA announced it would build a rocket test site along the Pearl River in Hancock County, Mississippi.",
+      "body": "NASA needed a remote place to test-fire the huge Saturn V rocket stages that would carry astronauts to the Moon. The Pearl River site had water routes for moving rocket stages by barge and room for a large buffer zone to protect nearby towns from the noise. The announcement surprised almost everyone. The site became the Mississippi Test Operations, known today as NASA's John C. Stennis Space Center.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997",
+      "published": true
+    },
+    {
+      "id": "evt-1961-stennis-land",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1961-11-01",
+        "display": "1961",
+        "status": "historical"
+      },
+      "shortTitle": "Senator Stennis",
+      "title": "Senator John C. Stennis helps the community through the move",
+      "summary": "U.S. Senator John C. Stennis of Mississippi championed the test site and helped the families who had to sell their land to make room for it.",
+      "body": "Building the site meant buying about 13,500 acres and creating a buffer zone of more than 125,000 acres, which moved whole communities such as Gainesville, Logtown and Napoleon. Senator Stennis spoke to landowners, warned them about land speculators, and promised the government would try to lighten their burden. Over the next few years, local families turned to him many times as land deals and relocation went on. The center was later named in his honor.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997",
+      "published": true
+    },
+    {
+      "id": "evt-1963-construction",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1963-05-17",
+        "display": "1963",
+        "status": "historical"
+      },
+      "shortTitle": "Construction begins",
+      "title": "Work crews cut the first trees in Devil's Swamp",
+      "summary": "Construction of the Mississippi Test Operations began on May 17, 1963, when crews cut one of the first trees in Devil's Swamp.",
+      "body": "The tree was cut near the spot where a construction dock was built on the turning basin of a new man-made canal system. Crews dug foundations about 50 feet deep for the giant test stands and drove steel beams nearly 100 feet deeper to hold them up. Thousands of workers came to Hancock County to build the facility.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997",
+      "published": true
+    },
+    {
+      "id": "evt-1963-von-braun",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1963-06-01",
+        "display": "1963",
+        "status": "historical"
+      },
+      "shortTitle": "Von Braun visits",
+      "title": "Wernher von Braun guides the building of the test site",
+      "summary": "Wernher von Braun, director of NASA's Marshall Space Flight Center and designer of the Saturn V, approved the site's master plan and visited often during construction.",
+      "body": "Von Braun's team helped evaluate the Pearl River site in 1961, and he approved the master test site plan in July 1962. He made many visits while construction was under way, meeting with engineers, NASA and Army Corps of Engineers employees, and local citizens. People at the site came to call him the \"father of the MTF,\" the Mississippi Test Facility.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997",
+      "published": true
+    },
+    {
+      "id": "evt-1966-first-firing",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1966-04-23",
+        "display": "1966",
+        "status": "historical"
+      },
+      "shortTitle": "First test firing",
+      "title": "The first rocket stage roars to life in Mississippi",
+      "summary": "On April 23, 1966, the site fired its first rocket stage: a test version of the Saturn V's second stage, for 18 seconds.",
+      "body": "A giant plume of vapor billowed skyward from the A-2 test stand during the static firing, in which the rocket is held down while its engines run. The test proved the stand and the stage worked. Over the next few years, the Mississippi site tested the second stages and first stages for the Saturn V rockets that carried astronauts to the Moon.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997",
+      "published": true
+    },
+    {
+      "id": "evt-1967-first-stage",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1967-03-03",
+        "display": "1967",
+        "status": "historical"
+      },
+      "shortTitle": "First stage tested",
+      "title": "The Saturn V first stage fires at the B-2 test stand",
+      "summary": "On March 3, 1967, the test version of the Saturn V first stage fired for the first time at the site's B-1/B-2 test stand.",
+      "body": "The first stage was powered by five F-1 engines that together produced more than 7.5 million pounds of thrust. Before the test, sound experts set up equipment in nearby communities to measure the noise. Every Saturn V first and second stage that flew Apollo astronauts to the Moon was tested in Mississippi.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997",
+      "published": true
+    },
+    {
+      "id": "evt-1970-haise-apollo13",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1970-04-11",
+        "display": "1970",
+        "status": "historical"
+      },
+      "shortTitle": "Fred Haise, Apollo 13",
+      "title": "Biloxi native Fred Haise flies on Apollo 13",
+      "summary": "Fred Haise, who grew up in Biloxi, Mississippi, was the lunar module pilot on Apollo 13 in April 1970.",
+      "body": "An oxygen tank exploded on the way to the Moon, and the crew of Jim Lovell, Jack Swigert and Fred Haise used the lunar module as a lifeboat to get home safely. Later in 1970, Haise returned to the Mississippi Test Facility with Wernher von Braun for the ceremony marking the end of Saturn V testing.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Way Station to Space (NASA SP-4310); NASA astronaut biography of Fred Haise",
+      "published": true
+    },
+    {
+      "id": "evt-1975-shuttle-engine",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1975-05-19",
+        "display": "1975",
+        "status": "historical"
+      },
+      "shortTitle": "Shuttle engine tests",
+      "title": "The first Space Shuttle Main Engine test in Mississippi",
+      "summary": "On May 19, 1975, the Space Shuttle Main Engine was test-fired for the first time at the site, then called the National Space Technology Laboratories.",
+      "body": "The Space Shuttle Main Engine was designed to be reused flight after flight. Every main engine that flew on the Space Shuttle was tested in Mississippi first, on the A-1, A-2 and B-1 test stands.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997",
+      "published": true
+    },
+    {
+      "id": "evt-1977-enterprise",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1977-08-12",
+        "display": "1977",
+        "status": "historical"
+      },
+      "shortTitle": "Enterprise glides",
+      "title": "Two Mississippians fly the Space Shuttle Enterprise",
+      "summary": "In 1977, Fred Haise of Biloxi and Richard Truly of Fayette were two of the four pilots who flew the shuttle Enterprise in its approach and landing tests.",
+      "body": "Enterprise was a test shuttle that never went to space. It was carried on top of a Boeing 747 and released in the air so astronauts could prove the shuttle could glide and land on a runway. Haise commanded one crew and Truly was the pilot of the other.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA astronaut biographies of Fred Haise and Richard Truly",
+      "published": true
+    },
+    {
+      "id": "evt-1981-truly-sts2",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1981-11-12",
+        "display": "1981",
+        "status": "historical"
+      },
+      "shortTitle": "Richard Truly, STS-2",
+      "title": "Richard Truly pilots the second Space Shuttle flight",
+      "summary": "Richard Truly, born in Fayette, Mississippi, was the pilot of STS-2 aboard Columbia in November 1981.",
+      "body": "STS-2 was the first time a spacecraft flew to orbit a second time. Truly later commanded STS-8 in 1983, the first Space Shuttle mission to launch and land at night.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA astronaut biography of Richard Truly",
+      "published": true
+    },
+    {
+      "id": "evt-1983-peterson-sts6",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1983-04-04",
+        "display": "1983",
+        "status": "historical"
+      },
+      "shortTitle": "Donald Peterson, STS-6",
+      "title": "Donald Peterson makes the first Space Shuttle spacewalk",
+      "summary": "Donald Peterson, born in Winona, Mississippi, flew on STS-6 in April 1983, the first flight of Challenger.",
+      "body": "During the mission, Peterson and Story Musgrave made the first spacewalk of the Space Shuttle program, testing the suits and tools that later astronauts used to build and repair things in space.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA astronaut biography of Donald Peterson",
+      "published": true
+    },
+    {
+      "id": "evt-1988-stennis-renamed",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1988-05-20",
+        "display": "1988",
+        "status": "historical"
+      },
+      "shortTitle": "Named for Stennis",
+      "title": "The center becomes the John C. Stennis Space Center",
+      "summary": "In May 1988, President Ronald Reagan renamed the site the John C. Stennis Space Center, honoring the senator who had supported it from the start.",
+      "body": "Senator Stennis served in the U.S. Senate for 41 years. At the dedication ceremony, he was joined by Mississippi Governor Ray Mabus, NASA Administrator James Fletcher, Senator Thad Cochran, and Mississippi astronaut Richard Truly, then NASA's associate administrator for space flight.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997",
+      "published": true
+    },
+    {
+      "id": "evt-1989-truly-administrator",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1989-07-01",
+        "display": "1989",
+        "status": "historical"
+      },
+      "shortTitle": "Truly leads NASA",
+      "title": "Richard Truly becomes NASA Administrator",
+      "summary": "In 1989, Mississippi astronaut Richard Truly became the head of NASA, the first astronaut to lead the agency.",
+      "body": "Truly led NASA as the Space Shuttle returned to flight after the Challenger accident, and during the launch of the Hubble Space Telescope.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA astronaut biography of Richard Truly",
+      "published": true
+    },
+    {
+      "id": "evt-2012-infinity-opens",
+      "eraIds": [
+        "iss"
+      ],
+      "date": {
+        "sort": "2012-04-11",
+        "display": "2012",
+        "status": "historical"
+      },
+      "shortTitle": "INFINITY opens",
+      "title": "INFINITY Science Center opens its doors",
+      "summary": "In 2012, INFINITY Science Center opened in Pearlington, Mississippi, as the official visitor center for NASA's Stennis Space Center.",
+      "body": "INFINITY tells the story of Stennis Space Center and Mississippi's role in space exploration. During its construction, Fred Haise and the daughter of Apollo 14 astronaut Stuart Roosa planted a tree on the grounds.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "INFINITY Science Center (to be confirmed by the museum)",
+      "published": true
+    },
+    {
+      "id": "evt-2021-green-run",
+      "eraIds": [
+        "future"
+      ],
+      "date": {
+        "sort": "2021-03-18",
+        "display": "2021",
+        "status": "historical"
+      },
+      "shortTitle": "Artemis Green Run",
+      "title": "The Artemis Moon rocket's core stage fires at Stennis",
+      "summary": "On March 18, 2021, the core stage for NASA's Artemis I Moon rocket fired all four of its engines for more than eight minutes on the B-2 test stand at Stennis.",
+      "body": "The Green Run test proved the core stage of the Space Launch System rocket was ready to fly. More than 50 years after Saturn V stages were tested on the same stand, Mississippi helped send the next rocket toward the Moon. Its four RS-25 engines are upgraded Space Shuttle Main Engines, also tested at Stennis.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Artemis Green Run news releases (to be confirmed)",
+      "published": true
     }
   ],
   "media": [
