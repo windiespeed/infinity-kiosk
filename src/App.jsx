@@ -9,6 +9,7 @@ import BottomNav from "./components/BottomNav.jsx";
 import A11yPanel from "./components/A11yPanel.jsx";
 import IdleModal from "./components/IdleModal.jsx";
 import PageStatus from "./components/PageStatus.jsx";
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import Attract from "./routes/Attract.jsx";
 import EraOverview from "./routes/EraOverview.jsx";
 import EraScreen from "./routes/EraScreen.jsx";
@@ -36,8 +37,8 @@ export default function App() {
   const inAdmin = location.pathname.startsWith("/admin");
 
   const idle = useIdleTimer({
-    idleSeconds: content?.settings.idleSeconds ?? 75,
-    warningSeconds: content?.settings.warningSeconds ?? 15,
+    idleSeconds: content?.settings?.idleSeconds ?? 75,
+    warningSeconds: content?.settings?.warningSeconds ?? 15,
     enabled: !onAttract,
     onReset: startOver,
   });
@@ -49,20 +50,22 @@ export default function App() {
         {!content ? (
           <PageStatus />
         ) : (
-          <Routes>
-            <Route path="/" element={<Attract />} />
-            <Route path="/timeline" element={<EraOverview />} />
-            <Route path="/era/:eraId" element={<EraScreen />} />
-            <Route path="/era/:eraId/event/:eventId" element={<EraScreen />} />
-            <Route path="/library" element={<Library />} />
-            <Route path="/quiz" element={<QuizHome />} />
-            <Route path="/quiz/event/:eventId" element={<EventQuiz />} />
-            <Route path="/quiz/complete" element={<QuizComplete />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/admin" element={<AdminLogin />} />
-            <Route path="/admin/dashboard" element={<Dashboard />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <ErrorBoundary resetKey={location.pathname}>
+            <Routes>
+              <Route path="/" element={<Attract />} />
+              <Route path="/timeline" element={<EraOverview />} />
+              <Route path="/era/:eraId" element={<EraScreen />} />
+              <Route path="/era/:eraId/event/:eventId" element={<EraScreen />} />
+              <Route path="/library" element={<Library />} />
+              <Route path="/quiz" element={<QuizHome />} />
+              <Route path="/quiz/event/:eventId" element={<EventQuiz />} />
+              <Route path="/quiz/complete" element={<QuizComplete />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/admin" element={<AdminLogin />} />
+              <Route path="/admin/dashboard" element={<Dashboard />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </ErrorBoundary>
         )}
       </main>
       {!onAttract && !inAdmin && <BottomNav />}

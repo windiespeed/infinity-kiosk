@@ -6,6 +6,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFile, writeFile, rename, mkdir, readdir, unlink } from "node:fs/promises";
 import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
+import { SAFE_NAME, validateContent } from "../src/lib/content.js";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_DIR = path.join(ROOT, "data");
@@ -71,14 +72,6 @@ app.get("/api/content", async (_req, res) => {
   }
 });
 
-function validateContent(c) {
-  if (!c || typeof c !== "object") return "Content must be an object.";
-  for (const key of ["eras", "events", "media", "questions"]) {
-    if (!Array.isArray(c[key])) return `Content is missing the "${key}" list.`;
-  }
-  return null;
-}
-
 app.put("/api/content", requireAdmin, async (req, res) => {
   const problem = validateContent(req.body);
   if (problem) return res.status(400).json({ error: problem });
@@ -112,7 +105,7 @@ app.post(
   express.raw({ type: () => true, limit: "2gb" }),
   async (req, res) => {
     const name = req.params.name;
-    if (!/^[\w][\w.-]{0,199}$/.test(name)) return res.status(400).json({ error: "Unsafe file name." });
+    if (!SAFE_NAME.test(name)) return res.status(400).json({ error: "Unsafe file name." });
     try {
       await mkdir(path.join(DATA_DIR, "media"), { recursive: true });
       const tmp = path.join(DATA_DIR, "media", `${name}.tmp`);
