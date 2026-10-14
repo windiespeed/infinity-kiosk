@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { useContent } from "../hooks/useContent.jsx";
 import EventPanel from "../components/EventPanel.jsx";
+import CardImage from "../components/CardImage.jsx";
 import { buttonClass } from "../lib/ui.js";
 import { eraYears } from "../lib/format.js";
 import GoldRule from "../components/GoldRule.jsx";
@@ -11,7 +12,7 @@ import GoldRule from "../components/GoldRule.jsx";
 export default function EraScreen() {
   const { eraId, eventId } = useParams();
   const navigate = useNavigate();
-  const { eras, eraById, eventsForEra } = useContent();
+  const { eras, eraById, eventsForEra, eventCover, mediaUrl } = useContent();
   const trackRef = useRef(null);
   const lastOpened = useRef(null);
 
@@ -43,6 +44,11 @@ export default function EraScreen() {
         <h1 className="mt-1 text-7xl">{era.title}</h1>
         <GoldRule className="mt-5" />
         <p className="mt-5 max-w-[50ch] font-serif text-3xl text-accent">{era.subtitle}</p>
+        {era.overview && (
+          <p className="mt-3 max-w-[65ch] text-lg text-text-muted">
+            {era.overview}
+          </p>
+        )}
       </header>
 
       <div className="flex items-center gap-4">
@@ -60,12 +66,17 @@ export default function EraScreen() {
                   to={eventPath(ev)}
                   data-event-id={ev.id}
                   aria-current={ev.id === eventId ? "true" : undefined}
-                  className={`flex min-h-28 w-full flex-col items-center justify-center gap-1 rounded-2xl border-2 panel px-5 py-3 text-center transition-colors md:w-60 ${
-                    ev.id === eventId ? "border-highlight" : "border-accent/50 hover:border-accent"
-                  }`}
+                  className={`relative flex min-h-36 w-full flex-col justify-end overflow-hidden rounded-2xl border-2 panel text-center transition-colors md:w-60 ${ev.id === eventId ? "border-highlight" : "border-accent/50 hover:border-accent"
+                    }`}
                 >
-                  <span className="font-display text-3xl font-bold text-accent">{ev.date.display}</span>
-                  <span className="text-base font-bold">{ev.shortTitle}</span>
+                  {eventCover(ev) && <CardImage src={mediaUrl(eventCover(ev))} />}
+                  <span className="relative flex flex-col items-center gap-1 px-5 py-3">
+                    {ev.tags?.includes("mississippi") && (
+                      <span className="rounded-md border border-accent px-2 text-sm font-bold uppercase tracking-wider text-accent">Mississippi</span>
+                    )}
+                    <span className="font-display text-3xl font-bold text-accent">{ev.date.display}</span>
+                    <span className="text-base font-bold">{ev.shortTitle}</span>
+                  </span>
                 </Link>
               </li>
             ))}

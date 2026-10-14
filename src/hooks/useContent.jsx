@@ -58,6 +58,16 @@ function helpers(content, store) {
     eventsForEra: (eraId) => published.filter((e) => e.eraIds.includes(eraId)).sort(byDate),
     eventById: (id) => published.find((e) => e.id === id),
     mediaById: (id) => content.media.find((m) => m.id === id),
+    // Photo for an event card: the event's first image.
+    eventCover: (ev) => content.media.find((m) => m.id === ev.mediaIds?.[0]),
+    // Photo for an era card: the era's coverMediaId if set, otherwise the first
+    // image of its earliest event that has one.
+    eraCover: (eraId) => {
+      const era = content.eras.find((e) => e.id === eraId);
+      const id = era?.coverMediaId
+        ?? published.filter((e) => e.eraIds.includes(eraId)).sort(byDate).find((e) => e.mediaIds?.length)?.mediaIds[0];
+      return content.media.find((m) => m.id === id);
+    },
     mediaUrl: (item) => store.mediaUrl(item),
     questionsForEvent: (id) => content.questions.filter((q) => q.eventId === id),
   };
