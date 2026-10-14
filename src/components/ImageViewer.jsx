@@ -283,7 +283,7 @@ export default function ImageViewer({
                     type="button"
                     onClick={onClose}
                     data-autofocus
-                    className="rounded-xl border-2 border-accent bg-accent px-5 py-3 text-lg font-semibold text-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="rounded-xl border border-accent bg-accent px-5 py-3 text-lg font-semibold text-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
                     aria-label="Close image viewer"
                 >
                     Close
@@ -386,7 +386,7 @@ export default function ImageViewer({
                             type="button"
                             onClick={goPrevious}
                             disabled={!hasPrevious || zoom !== 1}
-                            className="min-w-16 rounded-xl border-2 border-accent bg-surface px-5 py-4 text-2xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-40"
+                            className="min-w-16 rounded-xl border border-accent/30 bg-surface px-5 py-4 text-2xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-40"
                             aria-label="Previous image"
                         >
                             ←
@@ -396,7 +396,7 @@ export default function ImageViewer({
                             type="button"
                             onClick={goNext}
                             disabled={!hasNext || zoom !== 1}
-                            className="min-w-16 rounded-xl border-2 border-accent bg-surface px-5 py-4 text-2xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-40"
+                            className="min-w-16 rounded-xl border border-accent/30 bg-surface px-5 py-4 text-2xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-40"
                             aria-label="Next image"
                         >
                             →
@@ -407,7 +407,7 @@ export default function ImageViewer({
                 <button
                     type="button"
                     onClick={zoomOut}
-                    className="min-w-16 rounded-xl border-2 border-accent bg-surface px-5 py-4 text-3xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="min-w-16 rounded-xl border border-accent/30 bg-surface px-5 py-4 text-3xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent"
                     aria-label="Zoom out"
                 >
                     −
@@ -423,7 +423,7 @@ export default function ImageViewer({
                 <button
                     type="button"
                     onClick={zoomIn}
-                    className="min-w-16 rounded-xl border-2 border-accent bg-surface px-5 py-4 text-3xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="min-w-16 rounded-xl border border-accent/30 bg-surface px-5 py-4 text-3xl font-bold text-text hover:bg-bg focus:outline-none focus:ring-2 focus:ring-accent"
                     aria-label="Zoom in"
                 >
                     +
@@ -432,7 +432,7 @@ export default function ImageViewer({
                 <button
                     type="button"
                     onClick={resetZoom}
-                    className="rounded-xl border-2 border-accent bg-accent px-5 py-4 text-lg font-semibold text-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="rounded-xl border border-accent bg-accent px-5 py-4 text-lg font-semibold text-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
                     aria-label="Reset zoom"
                 >
                     Reset

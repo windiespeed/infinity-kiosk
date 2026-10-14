@@ -43,6 +43,11 @@
   --font-serif: "Source Serif 4", Georgia, serif;           /* gold subtitles */
   --font-sans: "Inter", system-ui, sans-serif;
 
+  /* Corner rounding. Lower numbers make buttons, cards and panels more square.
+     Tailwind's defaults are xl = 0.75rem and 2xl = 1rem. */
+  --radius-xl: 0.375rem;   /* buttons, inputs */
+  --radius-2xl: 0.5rem;    /* cards, panels, dialogs */
+
   /* Quiz feedback (always paired with an icon + text, never color alone) */
   --color-success: #6FD98F;
   --color-danger: #FF8F85;
