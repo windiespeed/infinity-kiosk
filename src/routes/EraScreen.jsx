@@ -68,6 +68,9 @@ export default function EraScreen() {
                   className={`flex min-h-28 w-full flex-col items-center justify-center gap-1 rounded-2xl border-2 panel px-5 py-3 text-center transition-colors md:w-60 ${ev.id === eventId ? "border-highlight" : "border-accent/50 hover:border-accent"
                     }`}
                 >
+                  {ev.tags?.includes("mississippi") && (
+                    <span className="rounded-md border border-accent px-2 text-sm font-bold uppercase tracking-wider text-accent">Mississippi</span>
+                  )}
                   <span className="font-display text-3xl font-bold text-accent">{ev.date.display}</span>
                   <span className="text-base font-bold">{ev.shortTitle}</span>
                 </Link>
