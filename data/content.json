@@ -10,6 +10,7 @@
       "id": "early",
       "title": "Early Beginnings",
       "subtitle": "The first satellites and the founding of NASA.",
+      "overview": "The launch of Sputnik 1 in 1957 began the space age. The United States responded by creating NASA and developing early human spaceflight programs that led to missions carrying astronauts into orbit.",
       "startYear": 1957,
       "endYear": 1969,
       "order": 1
@@ -18,6 +19,7 @@
       "id": "apollo",
       "title": "The Apollo Missions",
       "subtitle": "The race to put people on the Moon.",
+      "overview": "During the Apollo era, NASA developed the systems needed to send astronauts to the Moon. Apollo 11 achieved the first crewed lunar landing in July 1969, and Apollo 17 was the program's final crewed Moon landing in 1972.",
       "startYear": 1961,
       "endYear": 1972,
       "order": 2
@@ -26,6 +28,7 @@
       "id": "shuttle",
       "title": "The Space Shuttle Era",
       "subtitle": "A reusable spacecraft and three decades of missions.",
+      "overview": "The Space Shuttle was designed as a reusable spacecraft for trips to orbit. Across three decades, shuttle missions carried crews and satellites, supported scientific research, and helped assemble the International Space Station.",
       "startYear": 1981,
       "endYear": 2011,
       "order": 3
@@ -34,6 +37,7 @@
       "id": "iss",
       "title": "The International Space Station",
       "subtitle": "A permanent home for people in orbit.",
+      "overview": "The International Space Station grew through international cooperation, beginning with the launch of its first module in 1998. Since the first long-duration crew arrived in 2000, the station has supported research in microgravity.",
       "startYear": 1998,
       "endYear": null,
       "order": 4
@@ -42,6 +46,7 @@
       "id": "future",
       "title": "Recent Developments and the Future",
       "subtitle": "Artemis and the next era of exploration.",
+      "overview": "Recent exploration efforts include the Artemis program, which is working toward sustained human exploration of the Moon. Artemis I tested an uncrewed flight around the Moon in 2022, while future mission plans continue to develop.",
       "startYear": 2021,
       "endYear": null,
       "order": 5
@@ -60,11 +65,28 @@
       },
       "shortTitle": "Sputnik 1",
       "title": "The Soviet Union launches Sputnik 1",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "summary": "Sputnik 1 became the first artificial satellite to orbit Earth, marking the beginning of the Space Age.",
+      "body": "Launched by the Soviet Union on October 4, 1957, Sputnik 1 was a small satellite that transmitted radio signals from orbit. Its success drew worldwide attention and intensified the space race between the Soviet Union and the United States.",
       "mediaIds": [
         "img-1"
       ],
+      "published": true
+    },
+    {
+      "id": "evt-1958-explorer1",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1958-01-31",
+        "display": "1958",
+        "status": "historical"
+      },
+      "shortTitle": "Explorer 1",
+      "title": "Explorer 1 becomes the first U.S. satellite",
+      "summary": "Explorer 1 became the first American satellite to reach orbit and made important measurements of Earth's space environment.",
+      "body": "Launched on January 31, 1958, Explorer 1 carried scientific instruments designed to study cosmic rays and other conditions in orbit. Its data helped reveal the radiation belts around Earth later known as the Van Allen belts.",
+      "mediaIds": [],
       "published": true
     },
     {
@@ -77,32 +99,187 @@
         "display": "1958",
         "status": "historical"
       },
-      "shortTitle": "NASA is founded",
+      "shortTitle": "NASA begins",
       "title": "NASA begins operations",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "summary": "The United States established NASA as its civilian agency for aeronautics and space exploration.",
+      "body": "President Dwight D. Eisenhower signed the National Aeronautics and Space Act in July 1958. NASA officially began operating on October 1, 1958, bringing together existing aeronautics and space research work under one civilian agency.",
       "mediaIds": [
         "img-2"
       ],
       "published": true
     },
     {
+      "id": "evt-1961-gagarin",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1961-04-12",
+        "display": "1961",
+        "status": "historical"
+      },
+      "shortTitle": "Yuri Gagarin",
+      "title": "Yuri Gagarin becomes the first human in space",
+      "summary": "Soviet cosmonaut Yuri Gagarin became the first human to travel into space and orbit Earth.",
+      "body": "On April 12, 1961, Gagarin flew aboard Vostok 1 and completed one orbit of Earth. His flight marked a major milestone in human spaceflight and came before the first American astronaut flew into space.",
+      "mediaIds": [
+        "img-3"
+      ],
+      "published": true
+    },
+    {
       "id": "evt-1961-shepard",
       "eraIds": [
-        "early",
-        "apollo"
+        "early"
       ],
       "date": {
         "sort": "1961-05-05",
         "display": "1961",
         "status": "historical"
       },
-      "shortTitle": "First American in space",
-      "title": "Alan Shepard flies Freedom 7",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "shortTitle": "Alan Shepard",
+      "title": "Alan Shepard becomes the first American in space",
+      "summary": "Alan Shepard became the first American in space during a short, suborbital flight aboard Freedom 7.",
+      "body": "On May 5, 1961, NASA astronaut Alan Shepard flew the Mercury spacecraft Freedom 7 on a suborbital trajectory. Unlike Yuri Gagarin's earlier flight, Shepard's mission did not complete an orbit of Earth, but it established an important American human-spaceflight milestone.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1962-glenn",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1962-02-20",
+        "display": "1962",
+        "status": "historical"
+      },
+      "shortTitle": "John Glenn",
+      "title": "John Glenn becomes the first American to orbit Earth",
+      "summary": "John Glenn became the first American to orbit Earth during the Mercury-Atlas 6 mission.",
+      "body": "Glenn launched aboard Friendship 7 on February 20, 1962, and completed three orbits of Earth before returning safely. The mission demonstrated that American astronauts could operate in orbit and return to Earth.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1966-surveyor1",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1966-06-02",
+        "display": "1966",
+        "status": "historical"
+      },
+      "shortTitle": "Surveyor 1",
+      "title": "Surveyor 1 makes a soft landing on the Moon",
+      "summary": "Surveyor 1 completed the first successful U.S. soft landing on the Moon, returning images from the lunar surface.",
+      "body": "Surveyor 1 launched on May 30, 1966, and landed on the Moon on June 2. Its photographs and engineering data helped scientists understand the lunar surface and supported preparations for later crewed lunar missions.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1968-oao2",
+      "eraIds": [
+        "early"
+      ],
+      "date": {
+        "sort": "1968-12-07",
+        "display": "1968",
+        "status": "historical"
+      },
+      "shortTitle": "OAO-2 Stargazer",
+      "title": "OAO-2 opens a new window on the universe",
+      "summary": "NASA's OAO-2 observatory began studying stars in ultraviolet light from orbit.",
+      "body": "Launched on December 7, 1968, the Orbiting Astronomical Observatory 2, nicknamed Stargazer, made ultraviolet observations of stars that could not be studied in the same way from the ground because Earth's atmosphere blocks much ultraviolet light. It showed that space missions could advance astronomy as well as human exploration.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1961-kennedy-moon-goal",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1961-05-25",
+        "display": "1961",
+        "status": "historical"
+      },
+      "shortTitle": "Moon Landing Goal",
+      "title": "President Kennedy sets the Moon-landing goal",
+      "summary": "President John F. Kennedy challenged the United States to land astronauts on the Moon and return them safely before the decade ended.",
+      "body": "In an address to Congress on May 25, 1961, Kennedy called for a crewed lunar landing before the end of the 1960s. Meeting the goal required years of spacecraft design, rocket development, mission planning, astronaut training, and scientific work.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1967-apollo1",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1967-01-27",
+        "display": "1967",
+        "status": "historical"
+      },
+      "shortTitle": "Apollo 1",
+      "title": "The Apollo 1 crew is lost in a test fire",
+      "summary": "A cabin fire during a preflight test killed astronauts Gus Grissom, Ed White, and Roger B. Chaffee.",
+      "body": "On January 27, 1967, a fire swept through the Apollo command module during a ground test. The tragedy led to extensive investigation and major changes to spacecraft design, procedures, and safety before crewed Apollo flights resumed. This is a solemn but important part of the program's history.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1968-apollo7",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1968-10-11",
+        "display": "1968",
+        "status": "historical"
+      },
+      "shortTitle": "Apollo 7",
+      "title": "Apollo 7 completes the first crewed Apollo flight",
+      "summary": "Apollo 7 tested the Apollo command and service module in Earth orbit with astronauts aboard.",
+      "body": "Launched on October 11, 1968, Apollo 7 was the first crewed mission of the Apollo program. The crew tested spacecraft systems and procedures needed for future missions, helping restore confidence in the program after the Apollo 1 tragedy.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1968-apollo8",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1968-12-24",
+        "display": "1968",
+        "status": "historical"
+      },
+      "shortTitle": "Apollo 8",
+      "title": "Apollo 8 becomes the first crewed mission to orbit the Moon",
+      "summary": "Apollo 8 carried astronauts around the Moon for the first time and returned them safely to Earth.",
+      "body": "Apollo 8 launched on December 21, 1968, and entered lunar orbit on December 24. Frank Borman, Jim Lovell, and Bill Anders saw Earth from lunar orbit and helped demonstrate that people could travel to the Moon and navigate safely around it.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1969-apollo10",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1969-05-22",
+        "display": "1969",
+        "status": "historical"
+      },
+      "shortTitle": "Apollo 10",
+      "title": "Apollo 10 rehearses the lunar landing",
+      "summary": "Apollo 10 tested the crewed lunar landing procedures without actually landing on the Moon.",
+      "body": "Apollo 10 launched on May 18, 1969. During the mission, the lunar module descended to about nine miles above the Moon's surface before returning to the command module. This full dress rehearsal tested procedures and systems for the upcoming Apollo 11 landing.",
       "mediaIds": [
-        "img-3"
+        "img-4",
+        "img-5"
       ],
       "published": true
     },
@@ -117,13 +294,44 @@
         "status": "historical"
       },
       "shortTitle": "Apollo 11",
-      "title": "Apollo 11 lands on the Moon",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
-      "mediaIds": [
-        "img-4",
-        "img-5"
+      "title": "Apollo 11 lands astronauts on the Moon",
+      "summary": "Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon while Michael Collins orbited above.",
+      "body": "Apollo 11 achieved the national goal announced by President Kennedy. The lunar module landed on July 20, 1969, and Armstrong and Aldrin explored the surface while Collins remained in lunar orbit. The crew returned safely to Earth on July 24.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1970-apollo13",
+      "eraIds": [
+        "apollo"
       ],
+      "date": {
+        "sort": "1970-04-13",
+        "display": "1970",
+        "status": "historical"
+      },
+      "shortTitle": "Apollo 13",
+      "title": "Apollo 13 faces an emergency in space",
+      "summary": "An oxygen tank failure forced Apollo 13 to abandon its planned Moon landing and focus on bringing the crew home.",
+      "body": "On April 13, 1970, an explosion damaged Apollo 13's service module. The crew and mission-control teams worked together to conserve power and supplies, use the lunar module as a lifeboat, and return the astronauts safely to Earth on April 17.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1972-apollo17",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1972-12-11",
+        "display": "1972",
+        "status": "historical"
+      },
+      "shortTitle": "Apollo 17",
+      "title": "Apollo 17 makes the final Apollo lunar landing",
+      "summary": "Apollo 17 became the last crewed mission to land on the Moon during the Apollo program.",
+      "body": "Apollo 17 landed in the Taurus-Littrow region on December 11, 1972. The crew conducted extensive geology work and collected lunar samples. Harrison Schmitt, a geologist, became the first professional scientist to explore the Moon's surface, and Apollo 17 remains the most recent crewed lunar landing as of this draft.",
+      "mediaIds": [],
       "published": true
     },
     {
@@ -136,30 +344,114 @@
         "display": "1981",
         "status": "historical"
       },
-      "shortTitle": "First Shuttle flight",
-      "title": "Space Shuttle Columbia flies STS-1",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "shortTitle": "First Shuttle Flight",
+      "title": "Columbia flies the first Space Shuttle mission",
+      "summary": "The first Space Shuttle flight tested a reusable spacecraft in orbit and demonstrated its return as a runway landing.",
+      "body": "Space Shuttle Columbia launched on April 12, 1981, with astronauts John Young and Robert Crippen aboard. STS-1 was the first orbital test flight of NASA's Space Shuttle system, beginning three decades of shuttle missions.",
       "mediaIds": [
         "img-6"
       ],
       "published": true
     },
     {
+      "id": "evt-1983-sally-ride",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1983-06-18",
+        "display": "1983",
+        "status": "historical"
+      },
+      "shortTitle": "Sally Ride",
+      "title": "Sally Ride becomes the first American woman in space",
+      "summary": "Astronaut Sally Ride flew aboard Challenger on STS-7 and became the first American woman in space.",
+      "body": "Launched on June 18, 1983, STS-7 also deployed communications satellites and conducted experiments. Ride's flight marked a milestone in expanding who could take part in American human spaceflight.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1986-challenger",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1986-01-28",
+        "display": "1986",
+        "status": "historical"
+      },
+      "shortTitle": "Challenger Accident",
+      "title": "The Space Shuttle Challenger is lost",
+      "summary": "Challenger broke apart shortly after launch, killing all seven crew members and prompting a major safety investigation.",
+      "body": "On January 28, 1986, Challenger was lost shortly after liftoff on mission STS-51L. The accident led to a lengthy pause in shuttle flights and changes to the program's hardware, management, and safety practices. This is a solemn but important part of the Shuttle era.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1990-hubble",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1990-04-25",
+        "display": "1990",
+        "status": "historical"
+      },
+      "shortTitle": "Hubble Telescope",
+      "title": "The Space Shuttle deploys the Hubble Space Telescope",
+      "summary": "Discovery deployed Hubble into orbit, giving astronomers a powerful space-based observatory.",
+      "body": "Space Shuttle Discovery launched on STS-31 on April 24, 1990, and released the Hubble Space Telescope into orbit on April 25. Hubble has helped scientists study stars, galaxies, planets, and the evolution of the universe.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-1995-sts71-mir",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1995-06-29",
+        "display": "1995",
+        "status": "historical"
+      },
+      "shortTitle": "Shuttle–Mir Docking",
+      "title": "Atlantis docks with Russia's Mir space station",
+      "summary": "The first Space Shuttle–Mir docking demonstrated a new level of U.S.–Russian cooperation in human spaceflight.",
+      "body": "During STS-71, Space Shuttle Atlantis docked with Mir on June 29, 1995. The joint mission included crew exchange and scientific work and helped build experience for later international operations aboard the International Space Station.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-2003-columbia",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "2003-02-01",
+        "display": "2003",
+        "status": "historical"
+      },
+      "shortTitle": "Columbia Accident",
+      "title": "The Space Shuttle Columbia is lost during reentry",
+      "summary": "Columbia broke apart during reentry after a scientific research mission, killing all seven crew members.",
+      "body": "On February 1, 2003, Columbia was lost during its return to Earth after STS-107. The accident led to a renewed investigation of shuttle safety and further changes before flights resumed. This is a solemn but important part of the Shuttle era.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
       "id": "evt-2011-sts135",
       "eraIds": [
-        "shuttle",
-        "iss"
+        "shuttle"
       ],
       "date": {
         "sort": "2011-07-08",
         "display": "2011",
         "status": "historical"
       },
-      "shortTitle": "Final Shuttle flight",
-      "title": "The last Space Shuttle mission, STS-135",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "shortTitle": "Final Shuttle Flight",
+      "title": "Atlantis launches the final Space Shuttle mission",
+      "summary": "Atlantis began STS-135, the final mission of NASA's Space Shuttle Program.",
+      "body": "Space Shuttle Atlantis launched on July 8, 2011, carrying supplies and equipment to the International Space Station. After the mission returned to Earth, NASA's 30-year Space Shuttle Program came to an end. The station remained in operation, but the Shuttle timeline tells the story of the spacecraft and its missions.",
       "mediaIds": [
         "img-1"
       ],
@@ -176,9 +468,9 @@
         "status": "historical"
       },
       "shortTitle": "First ISS module",
-      "title": "The first ISS module reaches orbit",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "title": "The first International Space Station module launches",
+      "summary": "The Zarya control module reached orbit and began the assembly of the International Space Station.",
+      "body": "Launched on November 20, 1998, Zarya provided early power, propulsion, and control functions for the growing station. Its launch marked the beginning of the on-orbit assembly of the International Space Station.",
       "mediaIds": [
         "img-2"
       ],
@@ -195,12 +487,80 @@
         "status": "historical"
       },
       "shortTitle": "First crew arrives",
-      "title": "Expedition 1 crew arrives at the ISS",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "title": "The first long-duration crew begins living on the ISS",
+      "summary": "Expedition 1 arrived at the International Space Station and began continuous human occupancy of the station.",
+      "body": "On November 2, 2000, NASA astronaut William Shepherd and cosmonauts Yuri Gidzenko and Sergei Krikalev began the first long-duration stay aboard the ISS. Crews have lived and worked on the station continuously since then.",
       "mediaIds": [
         "img-3"
       ],
+      "published": true
+    },
+    {
+      "id": "evt-2001-iss-lab-arm",
+      "eraIds": [
+        "iss"
+      ],
+      "date": {
+        "sort": "2001-04-22",
+        "display": "2001",
+        "status": "historical"
+      },
+      "shortTitle": "Lab and Robotic Arm",
+      "title": "The ISS gains a major laboratory and robotic arm",
+      "summary": "The Destiny research laboratory and Canadarm2 gave crews more space for science and a powerful tool for station assembly.",
+      "body": "Destiny, the U.S. laboratory module, was installed in February 2001. Canadarm2 was installed during the STS-100 mission in April 2001. Together, these additions strengthened the ISS as a research workplace and made it easier to assemble and maintain the growing station. The event is dated to the Canadarm2 installation, the later of these two 2001 milestones.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-2008-international-labs",
+      "eraIds": [
+        "iss"
+      ],
+      "date": {
+        "sort": "2008-06-03",
+        "display": "2008",
+        "status": "historical"
+      },
+      "shortTitle": "International Labs",
+      "title": "European and Japanese laboratories expand ISS research",
+      "summary": "The European Columbus and Japanese Kibo laboratories added major research facilities to the International Space Station in 2008.",
+      "body": "Columbus was attached to the station in February 2008, and Kibo's pressurized laboratory module was installed in June. These laboratories provided additional research space and represented the contributions of international partners.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-2010-cupola",
+      "eraIds": [
+        "iss"
+      ],
+      "date": {
+        "sort": "2010-02-15",
+        "display": "2010",
+        "status": "historical"
+      },
+      "shortTitle": "Cupola Window",
+      "title": "The ISS gains the Cupola observation window",
+      "summary": "The Cupola gave astronauts a wide view of Earth and a useful vantage point for observing station operations.",
+      "body": "Delivered with the Tranquility module, the Cupola was installed on the ISS in February 2010. Its seven windows provide views of Earth and space and help crews observe robotic operations outside the station.",
+      "mediaIds": [],
+      "published": true
+    },
+    {
+      "id": "evt-iss-ongoing-research",
+      "eraIds": [
+        "iss"
+      ],
+      "date": {
+        "sort": "2000-11-02",
+        "display": "2000–today",
+        "status": "ongoing"
+      },
+      "shortTitle": "ISS Science Today",
+      "title": "The ISS continues to support research in orbit",
+      "summary": "The International Space Station remains a platform for international research in microgravity, Earth observation, technology, and human health.",
+      "body": "Since the first long-duration crew arrived in 2000, astronauts and partner organizations have used the station to conduct experiments that are difficult or impossible to perform on Earth. This is an ongoing story: its details should be reviewed as the station's research and operating plans change.",
+      "mediaIds": [],
       "published": true
     },
     {
@@ -214,12 +574,29 @@
         "status": "historical"
       },
       "shortTitle": "Artemis I",
-      "title": "Artemis I launches an uncrewed test flight around the Moon",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "title": "Artemis I tests the rocket and Orion spacecraft",
+      "summary": "The uncrewed Artemis I mission tested NASA's Space Launch System rocket, Orion spacecraft, and supporting ground systems on a flight around the Moon.",
+      "body": "Artemis I launched on November 16, 2022, traveled beyond the Moon, and returned to Earth on December 11, 2022. The flight tested systems intended to support future crewed Artemis missions.",
       "mediaIds": [
         "img-4"
       ],
+      "published": true
+    },
+    {
+      "id": "evt-2026-artemis2",
+      "eraIds": [
+        "future"
+      ],
+      "date": {
+        "sort": "2026-04-01",
+        "display": "2026",
+        "status": "historical"
+      },
+      "shortTitle": "Artemis II",
+      "title": "Astronauts fly around the Moon on Artemis II",
+      "summary": "Artemis II carried four astronauts on the first crewed Artemis lunar flyby, testing systems for future human missions.",
+      "body": "Artemis II launched on April 1, 2026, and splashed down on April 10 after a crewed flight around the Moon. The mission marked an important step toward future lunar exploration.",
+      "mediaIds": [],
       "published": true
     },
     {
@@ -228,14 +605,14 @@
         "future"
       ],
       "date": {
-        "sort": "2030-01-01",
-        "display": "2030 and beyond",
-        "status": "planned"
+        "sort": "2026-10-12",
+        "display": "Today",
+        "status": "ongoing"
       },
-      "shortTitle": "Planned missions",
-      "title": "Placeholder for planned future missions",
-      "summary": "Placeholder text. Replace with museum-approved copy.",
-      "body": "Placeholder text. Replace with museum-approved copy.\n\nA second paragraph of placeholder text shows how longer stories are split into readable chunks.",
+      "shortTitle": "Artemis Next Steps",
+      "title": "Artemis prepares for future lunar missions",
+      "summary": "NASA is continuing work toward future lunar exploration, with later Artemis missions planned to test spacecraft operations and return astronauts to the Moon.",
+      "body": "As of October 2026, NASA describes Artemis III as a planned 2027 mission to test rendezvous and docking with lunar-lander test articles in Earth orbit, with Artemis IV targeted for 2028 and intended to return astronauts to the lunar surface. These are plans, not completed events, and schedules can change.",
       "mediaIds": [
         "img-5"
       ],
@@ -293,11 +670,11 @@
       "prompt": "In what year did NASA begin operations?",
       "choices": [
         "1955",
-        "1958",
         "1961",
+        "1958",
         "1969"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "NASA began operations on October 1, 1958."
     },
     {
@@ -305,13 +682,13 @@
       "eventId": "evt-1961-shepard",
       "prompt": "Who was the first American in space?",
       "choices": [
-        "John Glenn",
-        "Neil Armstrong",
         "Alan Shepard",
+        "Neil Armstrong",
+        "John Glenn",
         "Gus Grissom"
       ],
-      "correctIndex": 2,
-      "explanation": "Alan Shepard flew aboard Freedom 7 on May 5, 1961."
+      "correctIndex": 0,
+      "explanation": "Alan Shepard flew aboard Freedom 7 on May 5, 1961, on a suborbital flight."
     },
     {
       "id": "q-3",
@@ -319,12 +696,116 @@
       "prompt": "What was Apollo 11's main goal?",
       "choices": [
         "Orbit Mars",
-        "Land people on the Moon and return them safely",
         "Launch a space station",
-        "Test a reusable spacecraft"
+        "Test a reusable spacecraft",
+        "Land people on the Moon and return them safely"
+      ],
+      "correctIndex": 3,
+      "explanation": "Apollo 11 achieved the goal of landing astronauts on the Moon and returning them safely to Earth."
+    },
+    {
+      "id": "q-4",
+      "eventId": "evt-1957-sputnik",
+      "prompt": "What was Sputnik 1?",
+      "choices": [
+        "The first American satellite",
+        "The first artificial satellite to orbit Earth",
+        "The first crewed spacecraft",
+        "The first space station"
       ],
       "correctIndex": 1,
-      "explanation": "Apollo 11 landed astronauts on the Moon in July 1969 and returned them safely to Earth."
+      "explanation": "Launched by the Soviet Union on October 4, 1957, Sputnik 1 became the first artificial satellite to orbit Earth."
+    },
+    {
+      "id": "q-5",
+      "eventId": "evt-1968-apollo8",
+      "prompt": "What milestone did Apollo 8 achieve in December 1968?",
+      "choices": [
+        "The first crewed lunar landing",
+        "The first American spacewalk",
+        "The first Space Shuttle flight",
+        "The first crewed mission to orbit the Moon"
+      ],
+      "correctIndex": 3,
+      "explanation": "Apollo 8 carried astronauts around the Moon, becoming the first crewed mission to orbit it. The crew did not land."
+    },
+    {
+      "id": "q-6",
+      "eventId": "evt-1981-sts1",
+      "prompt": "Which Space Shuttle flew NASA's first orbital Shuttle mission in 1981?",
+      "choices": [
+        "Challenger",
+        "Discovery",
+        "Columbia",
+        "Atlantis"
+      ],
+      "correctIndex": 2,
+      "explanation": "Columbia flew STS-1 in April 1981, the first orbital test flight of NASA's Space Shuttle program."
+    },
+    {
+      "id": "q-7",
+      "eventId": "evt-1983-sally-ride",
+      "prompt": "What milestone did Sally Ride achieve aboard STS-7?",
+      "choices": [
+        "First American woman in space",
+        "First person to walk on the Moon",
+        "First woman to command the ISS",
+        "First Space Shuttle pilot"
+      ],
+      "correctIndex": 0,
+      "explanation": "Sally Ride became the first American woman in space when Challenger launched on June 18, 1983."
+    },
+    {
+      "id": "q-8",
+      "eventId": "evt-1998-zarya",
+      "prompt": "What was Zarya's significance to the International Space Station?",
+      "choices": [
+        "The first Space Shuttle",
+        "The Apollo 11 lunar module",
+        "A lunar rover",
+        "The first ISS module to reach orbit"
+      ],
+      "correctIndex": 3,
+      "explanation": "Zarya launched on November 20, 1998, and became the first module of the International Space Station."
+    },
+    {
+      "id": "q-9",
+      "eventId": "evt-2000-expedition1",
+      "prompt": "What did the arrival of Expedition 1 mark?",
+      "choices": [
+        "The first Space Shuttle flight",
+        "The start of continuous human residence aboard the ISS",
+        "The launch of the first ISS module",
+        "The first crewed lunar landing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Expedition 1 arrived at the ISS on November 2, 2000, beginning continuous human presence aboard the station."
+    },
+    {
+      "id": "q-10",
+      "eventId": "evt-2022-artemis1",
+      "prompt": "What was the main purpose of Artemis I?",
+      "choices": [
+        "Carry astronauts to the Moon's surface",
+        "Build the International Space Station",
+        "Test the SLS rocket and Orion spacecraft on an uncrewed lunar flight",
+        "Deploy the Hubble Space Telescope"
+      ],
+      "correctIndex": 2,
+      "explanation": "Artemis I tested the Space Launch System rocket, Orion spacecraft, and supporting systems on an uncrewed mission around the Moon."
+    },
+    {
+      "id": "q-11",
+      "eventId": "evt-2026-artemis2",
+      "prompt": "What did Artemis II accomplish in 2026?",
+      "choices": [
+        "The first ISS module launch",
+        "The first crewed Artemis mission around the Moon",
+        "The final Space Shuttle flight",
+        "The first American satellite launch"
+      ],
+      "correctIndex": 1,
+      "explanation": "Artemis II carried four astronauts around the Moon and returned them safely to Earth in April 2026."
     }
   ]
 }
