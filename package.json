@@ -12,6 +12,7 @@
     "check:contrast": "node scripts/check-contrast.mjs",
     "check:content": "node scripts/check-content.mjs",
     "hash-pin": "node scripts/hash-pin.mjs",
+    "make-stars": "node scripts/make-starfield.mjs",
     "android:sync": "npm run build && cap sync android",
     "android:open": "cap open android",
     "android:run": "node scripts/android-run.mjs",
