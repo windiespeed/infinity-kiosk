@@ -7,12 +7,16 @@
     "dev": "concurrently -n server,app -c blue,magenta \"node --watch server/index.js\" \"vite\"",
     "dev:host": "concurrently -n server,app -c blue,magenta \"node --watch server/index.js\" \"vite --host\"",
     "build": "vite build",
-    "prebuild": "npm run check:contrast",
+    "prebuild": "npm run check:contrast && npm run check:content",
     "start": "node server/index.js",
     "check:contrast": "node scripts/check-contrast.mjs",
+    "check:content": "node scripts/check-content.mjs",
     "hash-pin": "node scripts/hash-pin.mjs",
+    "make-stars": "node scripts/make-starfield.mjs",
     "android:sync": "npm run build && cap sync android",
-    "android:open": "cap open android"
+    "android:open": "cap open android",
+    "android:run": "node scripts/android-run.mjs",
+    "android:dev": "node scripts/android-run.mjs --live"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

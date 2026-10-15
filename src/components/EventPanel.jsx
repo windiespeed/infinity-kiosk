@@ -60,6 +60,9 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
                   : "Ongoing"}
               </span>
             )}
+            {event.tags?.includes("mississippi") && (
+              <span className="ml-3 rounded-lg border-2 border-accent px-2">Mississippi</span>
+            )}
           </p>
 
           <h2
