@@ -3,6 +3,7 @@ import { useKiosk } from "../store/useKiosk.js";
 import { buttonClass } from "../lib/ui.js";
 import GoldRule from "../components/GoldRule.jsx";
 import engineFiring from "../assets/engine-test-firing.jpg";
+import earthAtNight from "../assets/earth-at-night-iss040e090540.jpg";
 
 // The screen the kiosk returns to when idle. Three ways in, so visitors choose
 // their own starting point.
@@ -22,6 +23,16 @@ export default function Attract() {
         aria-hidden="true"
         draggable="false"
         className="pointer-events-none absolute bottom-0 left-0 h-full w-[60%] object-cover object-[center_35%] opacity-55 [mask-image:linear-gradient(72deg,black_20%,transparent_70%)] [[data-contrast=high]_&]:hidden"
+      />
+      {/* Earth at night from the ISS (NASA photo ISS040-E-090540), barely visible in the
+          lower right to balance the engine. opacity-30 is the brightness; the mask
+          fades it out from the corner. */}
+      <img
+        src={earthAtNight}
+        alt=""
+        aria-hidden="true"
+        draggable="false"
+        className="pointer-events-none absolute right-0 bottom-0 h-[70%] w-[55%] object-cover object-[center_40%] opacity-30 [mask-image:radial-gradient(ellipse_at_100%_100%,black_20%,transparent_70%)] [[data-contrast=high]_&]:hidden"
       />
       <header className="relative pt-[6vh] text-center">
         <p className="font-display text-2xl tracking-[0.2em] text-accent uppercase">Infinity Science Center</p>
