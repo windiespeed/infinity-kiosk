@@ -99,15 +99,28 @@
     background-image:
       radial-gradient(ellipse 50% 40% at 90% 4%, rgb(170 195 245 / 0.08), transparent 70%),
       radial-gradient(ellipse 90% 45% at 50% 112%, rgb(70 140 255 / 0.12), transparent 70%),
-      url("../assets/starfield.svg"),   /* random stars: scripts/make-starfield.mjs */
+      /* url("../assets/starfield.svg"),    random stars: scripts/make-starfield.mjs */
       linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg) 35%, var(--color-bg-glow) 100%);
-    background-size: cover, cover, cover, cover;
+    background-size: cover, cover, cover;
+    isolation: isolate;
     background-attachment: fixed;
     margin: 0;
     overscroll-behavior: none;   /* no bounce or swipe-to-go-back */
     touch-action: pan-x pan-y;   /* no pinch-zooming the whole UI */
     user-select: none;           /* no accidental text highlighting */
   }
+
+  /* Starfield is a separate layer so it can be animated independently of the background gradient. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -5%;               /* a little extra so edges never show while moving */
+    z-index: -1;
+    pointer-events: none;
+    background: url("../assets/starfield.svg") center / cover no-repeat;
+  }
+ 
+  html[data-contrast="high"] body::before { display: none; }
 
   /* No visible scrollbars anywhere. Visitors scroll the timeline and panels by
      swiping, and keyboard users by Tab or the arrow keys, so a desktop-style
