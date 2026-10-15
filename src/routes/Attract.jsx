@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { useKiosk } from "../store/useKiosk.js";
 import { buttonClass } from "../lib/ui.js";
 import GoldRule from "../components/GoldRule.jsx";
+import engineFiring from "../assets/engine-test-firing.jpg";
 
 // The screen the kiosk returns to when idle. Three ways in, so visitors choose
 // their own starting point.
@@ -10,15 +11,26 @@ export default function Attract() {
   const toggle = useKiosk((s) => s.toggle);
 
   return (
-    <div className="flex h-full flex-col justify-between p-10">
-      <header className="pt-[6vh] text-center">
+    <div className="relative flex h-full flex-col justify-between p-10">
+      {/* Engine test photo in the lower left. The mask fades it into the stars along
+          a slightly tilted line that reaches about the middle of the screen.
+          Tune it with opacity-55 (brightness), the angle (72deg) and the two
+          percentages (where the fade starts and ends). */}
+      <img
+        src={engineFiring}
+        alt=""
+        aria-hidden="true"
+        draggable="false"
+        className="pointer-events-none absolute bottom-0 left-0 h-full w-[60%] object-cover object-[center_35%] opacity-55 [mask-image:linear-gradient(72deg,black_20%,transparent_70%)] [[data-contrast=high]_&]:hidden"
+      />
+      <header className="relative pt-[6vh] text-center">
         <p className="font-display text-2xl tracking-[0.2em] text-accent uppercase">Infinity Science Center</p>
         <h1 className="mx-auto mt-4 max-w-[22ch] text-7xl">The history of spaceflight</h1>
         <GoldRule className="mt-6 justify-center" />
         <p className="m-6 font-serif text-3xl text-accent">From the first satellites to tomorrow's missions</p>
       </header>
 
-      <nav aria-label="Start exploring" className="pb-[4vh]">
+      <nav aria-label="Start exploring" className="relative pb-[4vh]">
         <ul className="grid gap-4 sm:grid-cols-3">
           <li><Link to="/timeline" className={buttonClass("primary", "w-full min-h-24 text-2xl")}>Explore the timeline</Link></li>
           <li><Link to="/library" className={buttonClass("secondary", "w-full min-h-24 text-2xl")}>Browse images</Link></li>
