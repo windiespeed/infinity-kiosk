@@ -43,6 +43,11 @@
   --font-serif: "Source Serif 4", Georgia, serif;           /* gold subtitles */
   --font-sans: "Inter", system-ui, sans-serif;
 
+  /* Corner rounding. Lower numbers make buttons, cards and panels more square.
+     Tailwind's defaults are xl = 0.75rem and 2xl = 1rem. */
+  --radius-xl: 0.375rem;   /* buttons, inputs */
+  --radius-2xl: 0.5rem;    /* cards, panels, dialogs */
+
   /* Quiz feedback (always paired with an icon + text, never color alone) */
   --color-success: #6FD98F;
   --color-danger: #FF8F85;
@@ -94,11 +99,9 @@
     background-image:
       radial-gradient(ellipse 50% 40% at 90% 4%, rgb(170 195 245 / 0.08), transparent 70%),
       radial-gradient(ellipse 90% 45% at 50% 112%, rgb(70 140 255 / 0.12), transparent 70%),
-      radial-gradient(1.5px 1.5px at 30px 40px, rgb(255 255 255 / 0.75) 50%, transparent 52%),
-      radial-gradient(1px 1px at 120px 150px, rgb(255 255 255 / 0.55) 50%, transparent 52%),
-      radial-gradient(1px 1px at 200px 80px, rgb(255 236 200 / 0.5) 50%, transparent 52%),
+      url("../assets/starfield.svg"),   /* random stars: scripts/make-starfield.mjs */
       linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg) 35%, var(--color-bg-glow) 100%);
-    background-size: cover, cover, 240px 240px, 330px 330px, 410px 410px, cover;
+    background-size: cover, cover, cover, cover;
     background-attachment: fixed;
     margin: 0;
     overscroll-behavior: none;   /* no bounce or swipe-to-go-back */

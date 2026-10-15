@@ -66,7 +66,7 @@ export default function EraScreen() {
                   to={eventPath(ev)}
                   data-event-id={ev.id}
                   aria-current={ev.id === eventId ? "true" : undefined}
-                  className={`relative flex min-h-36 w-full flex-col justify-end overflow-hidden rounded-2xl border-2 panel text-center transition-colors md:w-60 ${ev.id === eventId ? "border-highlight" : "border-accent/50 hover:border-accent"
+                  className={`relative flex min-h-36 w-full flex-col justify-end overflow-hidden rounded-2xl panel text-center transition-colors md:w-60 ${ev.id === eventId ? "border-2 border-highlight" : "border border-accent/25 hover:border-accent"
                     }`}
                 >
                   {eventCover(ev) && <CardImage src={mediaUrl(eventCover(ev))} />}
