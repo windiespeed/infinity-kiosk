@@ -28,6 +28,7 @@ Open **http://localhost:5173**. Saving a file updates the browser automatically.
 | `npm start` | Runs the server alone, serving the built app at http://localhost:5050 (this is what the kiosk runs) |
 | `npm run check:contrast` | Tests every color pairing in the theme against WCAG AA |
 | `npm run hash-pin -- 482913` | Makes a PIN hash to paste into `.env` (dev server only) |
+| `npm run media:pull` | Copies new photos and videos from the team's Drive Media folder into `data/media/` |
 | `npm run android:sync` | Builds the app and copies it into the Android project |
 | `npm run android:open` | Opens the Android project in Android Studio |
 | `npm run android:run` | Builds the app, installs it on a plugged-in device or open emulator, and opens it |
@@ -89,6 +90,12 @@ folder, **Media** (ask Windie for access):
 - **Media/**: every approved photo and video. Name new files by their Media ID from the tracker.
 - **Media/Kiosk Media Tracker**: one row per image: its Drive link, source, credit, and where it goes in the kiosk.
 - **Media/Kiosk-Backups/**: backup zips exported from the admin dashboard, with the date in the file name.
+
+To keep your own `data/media/` up to date, install Google Drive for desktop, add the Media
+folder to My Drive, and run `npm run media:pull` after every `git pull`. It copies new and
+changed photos into `data/media/` and lists any file `content.json` uses that is still
+missing. File names in Drive must match the names in `content.json` exactly. If it can't find
+the folder, set `MEDIA_DRIVE_DIR` in `.env` (see `.env.example`).
 
 The newest zip in Kiosk-Backups is what the kiosk shows. To see the same content, import it
 (admin dashboard: Import backup). To build a new one, pull `main`, copy the Media folder into
