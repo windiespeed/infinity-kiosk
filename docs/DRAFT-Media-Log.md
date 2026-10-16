@@ -77,4 +77,4 @@ This working log was prepared because the task references a Media Log but none w
 2. Select one candidate image for an event and capture its direct asset URL and exact credit/reuse information.
 3. Submit that row for approval; keep the status Pending until approved.
 4. After approval, use the final approved filename in `data/media/`, update the media record and the event's `mediaIds`, then test locally offline.
-5. When all approved media are collected, create the requested backup ZIP and put it in Drive's `3-Kiosk-Backups` folder.
+5. When all approved media are collected, create the requested backup ZIP and put it in Drive's `Media/Kiosk-Backups` folder.
