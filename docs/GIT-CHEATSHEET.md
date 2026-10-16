@@ -42,11 +42,20 @@ and will conflict next time. Start a new branch from the latest main instead:
 
 ```bash
 git checkout main
-git pull
+git pull --prune                 # --prune forgets branches GitHub already deleted
+git branch -D your-old-branch    # delete your local copy of the merged branch
 git checkout -b your-new-branch
 ```
 
-To reuse the same name, run `git branch -D your-branch` first, then `git checkout -b your-branch`.
+To reuse the same name, just use it again in the last line.
+
+**Why not keep pushing the old branch?** GitHub deletes a branch automatically after its pull
+request merges. If you push your old local copy, the push works and creates the branch on
+GitHub again, but it still carries the commits that were already squash-merged. A new pull
+request from it shows those old changes again and often conflicts with main.
+
+**Tip:** in VS Code, open Settings, search for **Git: Prune On Fetch** and turn it on, so
+VS Code forgets deleted branches by itself.
 
 ## Handy checks
 
