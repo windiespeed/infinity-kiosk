@@ -81,6 +81,21 @@ src/
 - **Accessibility testing**: `eslint-plugin-jsx-a11y` and Playwright + axe tests
 - **Read aloud** on the kiosk needs a native text-to-speech plugin (`@capacitor-community/text-to-speech`)
 
+## Where media lives
+
+Exhibit photos and videos stay out of Git. The team keeps them in one shared Google Drive
+folder, **Media** (ask Windie for access):
+
+- **Media/**: every approved photo and video. Name new files by their Media ID from the tracker.
+- **Media/Kiosk Media Tracker**: one row per image: its Drive link, source, credit, and where it goes in the kiosk.
+- **Media/Kiosk-Backups/**: backup zips exported from the admin dashboard, with the date in the file name.
+
+The newest zip in Kiosk-Backups is what the kiosk shows. To see the same content, import it
+(admin dashboard: Import backup). To build a new one, pull `main`, copy the Media folder into
+`data/media/`, attach the photos in the admin screen, then Export backup and upload the zip.
+Your own `data/backups/` folder only holds automatic copies of your own saves; it appears
+after your first admin save.
+
 ## How the kiosk runs
 
 The kiosk is a 43" Android 13 touchscreen running this project as an Android app (APK),
