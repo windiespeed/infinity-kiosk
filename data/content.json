@@ -501,7 +501,7 @@
         "iss"
       ],
       "date": {
-        "sort": "2001-04-22",
+        "sort": "2001-04-21",
         "display": "2001",
         "status": "historical"
       },
@@ -714,13 +714,13 @@
       },
       "shortTitle": "First test firing",
       "title": "The first rocket stage roars to life in Mississippi",
-      "summary": "On April 23, 1966, the site fired its first rocket stage: a test version of the Saturn V's second stage, for 18 seconds.",
+      "summary": "On April 23, 1966, the site fired its first rocket stage: a test version of the Saturn V's second stage, for 15 seconds.",
       "body": "A giant plume of vapor billowed skyward from the A-2 test stand during the static firing, in which the rocket is held down while its engines run. The test proved the stand and the stage worked. Over the next few years, the Mississippi site tested the second stages and first stages for the Saturn V rockets that carried astronauts to the Moon.",
       "mediaIds": [],
       "tags": [
         "mississippi"
       ],
-      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997",
+      "source": "Way Station to Space (NASA SP-4310), Mack R. Herring, 1997; NASA, 55 Years Ago: First Saturn V Stage Tested in Mississippi Facility (15-second firing)",
       "published": true
     },
     {
@@ -897,19 +897,19 @@
         "iss"
       ],
       "date": {
-        "sort": "2012-04-11",
+        "sort": "2012-04-13",
         "display": "2012",
         "status": "historical"
       },
       "shortTitle": "INFINITY opens",
       "title": "INFINITY Science Center opens its doors",
-      "summary": "In 2012, INFINITY Science Center opened in Pearlington, Mississippi, as the official visitor center for NASA's Stennis Space Center.",
+      "summary": "In April 2012, INFINITY Science Center opened in Hancock County, Mississippi, as the official visitor center for NASA's Stennis Space Center.",
       "body": "INFINITY tells the story of Stennis Space Center and Mississippi's role in space exploration. During its construction, Fred Haise and the daughter of Apollo 14 astronaut Stuart Roosa planted a tree on the grounds.",
       "mediaIds": [],
       "tags": [
         "mississippi"
       ],
-      "source": "INFINITY Science Center (to be confirmed by the museum)",
+      "source": "NASA Stennis Space Center chronology, 2010s (opening date); location to be confirmed by the museum",
       "published": true
     },
     {
@@ -930,7 +930,7 @@
       "tags": [
         "mississippi"
       ],
-      "source": "NASA Artemis Green Run news releases (to be confirmed)",
+      "source": "NASA Stennis Space Center chronology, 2020s",
       "published": true
     }
   ],
