@@ -82,6 +82,8 @@ src/
 - **Accessibility testing**: `eslint-plugin-jsx-a11y` and Playwright + axe tests
 - **Read aloud** on the kiosk needs a native text-to-speech plugin (`@capacitor-community/text-to-speech`)
 
+Keeping your branch up to date with `main`: see **docs/GIT-CHEATSHEET.md**.
+
 ## Where media lives
 
 Exhibit photos and videos stay out of Git. The team keeps them in one shared Google Drive
