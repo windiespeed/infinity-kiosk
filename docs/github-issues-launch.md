@@ -89,7 +89,7 @@ Replace the sample content with the museum's: five eras, 32 events, and the quiz
 - [ ] The 11 quiz questions, each linked to its event.
 - [ ] Photos attached to events by file name, once approved in the Media Log.
 - [ ] Sample events, questions and `sample-*` media removed from `content.json` (keep the `sample-*` image files themselves; the Android app uses them on first launch).
-- [ ] Export a backup zip with all approved media and put it in the Drive's **3-Kiosk-Backups** folder.
+- [ ] Export a backup zip with all approved media and put it in the Drive's **Media/Kiosk-Backups** folder.
 
 ## Notes
 - Start with the draft text now; update it as the museum approves sections.
@@ -140,7 +140,7 @@ The README and the team guide still describe parts of the old setup (a local ser
 - [ ] README describes the Android app as how the kiosk runs, linking to `docs/ANDROID.md`.
 - [ ] Team guide: the after-merge section no longer says GitHub deletes branches automatically. Keep the routine: switch to main, pull, start a new branch.
 - [ ] Team guide: add `npm run dev:host` for testing on the kiosk, and the Ctrl + Alt + A admin shortcut.
-- [ ] README: a "Where media lives" note linking to the shared Drive folder and the Media Log.
+- [x] README: a "Where media lives" note pointing to the shared Drive folder and the media tracker.
 
 ## Notes
 - Size: under 1 day.
@@ -159,7 +159,7 @@ Museum staff need a one-page guide kept with the kiosk: how to reach the admin s
 ## Done when
 - [ ] Opening the admin screen: five quick taps in the top-left corner (or Ctrl + Alt + A on a keyboard), then the PIN.
 - [ ] Editing content and adding photos (once the admin editors are merged).
-- [ ] Exporting a backup after every round of changes, and where to copy it (the Drive's **3-Kiosk-Backups** folder).
+- [ ] Exporting a backup after every round of changes, and where to copy it (the Drive's **Media/Kiosk-Backups** folder).
 - [ ] If the screen freezes: restart the kiosk; the app opens by itself.
 - [ ] If the PIN is lost: who to contact (it can't be recovered without erasing content).
 - [ ] Who to contact for help.
