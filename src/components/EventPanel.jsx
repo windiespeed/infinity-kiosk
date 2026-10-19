@@ -105,7 +105,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
                     <img
                       src={mediaUrl(img)}
                       alt={img.alt}
-                      className="aspect-video w-full rounded-xl object-cover"
+                      className="aspect-video w-full rounded-xl bg-bg object-contain"
                     />
                   </button>
 
