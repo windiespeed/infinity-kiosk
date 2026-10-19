@@ -24,13 +24,5 @@ export function getStore() {
   return storePromise;
 }
 
-export function validateContent(c) {
-  if (!c || typeof c !== "object") return "Content must be an object.";
-  for (const key of ["eras", "events", "media", "questions"]) {
-    if (!Array.isArray(c[key])) return `Content is missing the "${key}" list.`;
-  }
-  return null;
-}
-
-// Media file names must be plain names: no folders, no "..".
-export const SAFE_NAME = /^[\w][\w.-]{0,199}$/;
+// The content rules live in lib/content.js so the dev server can use them too.
+export { SAFE_NAME, validateContent } from "../content.js";

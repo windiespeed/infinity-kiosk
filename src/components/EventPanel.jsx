@@ -60,6 +60,9 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
                   : "Ongoing"}
               </span>
             )}
+            {event.tags?.includes("mississippi") && (
+              <span className="ml-3 rounded-lg border-2 border-accent px-2">Mississippi</span>
+            )}
           </p>
 
           <h2
@@ -102,7 +105,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
                     <img
                       src={mediaUrl(img)}
                       alt={img.alt}
-                      className="aspect-video w-full rounded-xl object-cover"
+                      className="aspect-video w-full rounded-xl bg-bg object-contain"
                     />
                   </button>
 

@@ -9,7 +9,7 @@ import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { Preferences } from "@capacitor/preferences";
 import seed from "../../../data/content.json";
 import { hashPin, verifyPin, isValidPin } from "../pin.js";
-import { SAFE_NAME } from "./index.js";
+import { SAFE_NAME, validateContent } from "../content.js";
 
 const DATA = Directory.Data;
 const MAX_VERSIONS = 10;
@@ -87,6 +87,31 @@ async function writeContent(content) {
   }
 }
 
+async function readJson(path) {
+  try {
+    const { data } = await Filesystem.readFile({ directory: DATA, path, encoding: Encoding.UTF8 });
+    return JSON.parse(data);
+  } catch {
+    return null;
+  }
+}
+
+// Newest kept version that passes the content rules, or null.
+async function newestGoodVersion() {
+  let names = [];
+  try {
+    const { files } = await Filesystem.readdir({ directory: DATA, path: "backups" });
+    names = files.map((f) => f.name).sort().reverse();
+  } catch {
+    return null;
+  }
+  for (const name of names) {
+    const content = await readJson(`backups/${name}`);
+    if (content && !validateContent(content)) return { name, content };
+  }
+  return null;
+}
+
 async function keepVersion() {
   if (!(await exists("content.json"))) return;
   const stamp = new Date().toISOString().replace(/[:.]/g, "-");
@@ -125,11 +150,24 @@ export function createDeviceStore() {
         await writeContent(seed);
         return structuredClone(seed);
       }
-      const { data } = await Filesystem.readFile({ directory: DATA, path: "content.json", encoding: Encoding.UTF8 });
-      return JSON.parse(data);
+      const content = await readJson("content.json");
+      const problem = content ? validateContent(content) : "content.json is damaged.";
+      if (!problem) return content;
+
+      // Content the screens can't show would crash the app on every start.
+      // Fall back to the newest good version kept from an earlier save.
+      console.error(`Stored content rejected: ${problem}`);
+      const good = await newestGoodVersion();
+      if (good) {
+        console.warn(`Showing the kept version ${good.name} instead.`);
+        return good.content;
+      }
+      throw new Error(`The kiosk's content can't be shown: ${problem}`);
     },
 
     async saveContent(content) {
+      const problem = validateContent(content);
+      if (problem) throw new Error(problem);
       await keepVersion();
       await writeContent(content);
     },
