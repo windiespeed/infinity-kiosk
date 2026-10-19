@@ -12,7 +12,8 @@ git merge origin/main         # 3. bring main's changes into your branch
 git push                      # 4. send the updated branch back to GitHub
 ```
 
-Then run `npm install` if `package.json` changed, and `npm run media:pull` for new photos.
+Then run `npm install` if `package.json` changed. New photos come along with the merge,
+since media lives in GitHub for now.
 
 ## If step 3 says there's a conflict
 
