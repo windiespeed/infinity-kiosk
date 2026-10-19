@@ -18,6 +18,7 @@ import About from "./routes/About.jsx";
 import { QuizHome, EventQuiz, QuizComplete } from "./routes/Quiz.jsx";
 import AdminLogin from "./routes/admin/AdminLogin.jsx";
 import Dashboard from "./routes/admin/Dashboard.jsx";
+import Certificate from "./routes/Certificate.jsx";
 
 export default function App() {
   const { content } = useContent();
