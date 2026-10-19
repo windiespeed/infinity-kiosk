@@ -1,11 +1,11 @@
 import React from 'react'
-import certTemp from './certificate.png'
+// import certTemp from './certificate.png'
 
 const Certificate = () => {
   return (
     <>
         <div>
-            <img src={certTemp}/>
+            {/* <img src={certTemp}/> */}
         </div>
     </>
   )
