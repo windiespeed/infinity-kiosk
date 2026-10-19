@@ -43,6 +43,11 @@ export default function EraScreen() {
         <h1 className="mt-1 text-7xl">{era.title}</h1>
         <GoldRule className="mt-5" />
         <p className="mt-5 max-w-[50ch] font-serif text-3xl text-accent">{era.subtitle}</p>
+        {era.overview && (
+          <p className="mt-3 max-w-[65ch] text-lg text-text-muted">
+            {era.overview}
+          </p>
+        )}
       </header>
 
       <div className="flex items-center gap-4">
@@ -60,9 +65,8 @@ export default function EraScreen() {
                   to={eventPath(ev)}
                   data-event-id={ev.id}
                   aria-current={ev.id === eventId ? "true" : undefined}
-                  className={`flex min-h-28 w-full flex-col items-center justify-center gap-1 rounded-2xl border-2 panel px-5 py-3 text-center transition-colors md:w-60 ${
-                    ev.id === eventId ? "border-highlight" : "border-accent/50 hover:border-accent"
-                  }`}
+                  className={`flex min-h-28 w-full flex-col items-center justify-center gap-1 rounded-2xl border-2 panel px-5 py-3 text-center transition-colors md:w-60 ${ev.id === eventId ? "border-highlight" : "border-accent/50 hover:border-accent"
+                    }`}
                 >
                   <span className="font-display text-3xl font-bold text-accent">{ev.date.display}</span>
                   <span className="text-base font-bold">{ev.shortTitle}</span>
