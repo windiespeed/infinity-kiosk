@@ -35,15 +35,16 @@ export default function Attract() {
         draggable="false"
         className="pointer-events-none absolute right-0 bottom-0 h-[70%] w-[55%] object-cover object-[center_40%] opacity-30 [mask-image:radial-gradient(ellipse_at_100%_100%,black_20%,transparent_70%)] [[data-contrast=high]_&]:hidden"
       />
-      {/* Infinity Science Center logo in the upper right. This copy has white lettering
-          so it reads on the dark background (the original's gray letters disappear).
-          w-44 sets its size. alt is empty because the heading below already says the name. */}
+      {/* Infinity Science Center logo in the upper right, faded like the photos. This copy
+          has white lettering so it reads on the dark background (the original's gray letters
+          disappear). w-44 is the size, opacity-60 the brightness, and the mask fades it out
+          from the top right corner. alt is empty because the heading below already says the name. */}
       <img
         src={infinityLogo}
         alt=""
         aria-hidden="true"
         draggable="false"
-        className="pointer-events-none absolute top-8 right-8 w-44"
+        className="pointer-events-none absolute top-8 right-8 w-44 opacity-60 [mask-image:radial-gradient(ellipse_at_100%_0%,black_45%,transparent_100%)] [[data-contrast=high]_&]:opacity-100 [[data-contrast=high]_&]:[mask-image:none]"
       />
       <header className="relative pt-[6vh] text-center">
         <p className="font-display text-2xl tracking-[0.2em] text-accent uppercase">Infinity Science Center</p>
