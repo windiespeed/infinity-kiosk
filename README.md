@@ -25,6 +25,7 @@ Open **http://localhost:5173**. Saving a file updates the browser automatically.
 | `npm run dev` | Development: app on :5173, server on :5050 |
 | `npm run dev:host` | Same, but reachable from other devices on your network (for testing on the kiosk's browser) |
 | `npm run build` | Checks color contrast, then builds the app into `dist/` |
+| `npm run build:pages` | Builds the read-only companion site for GitHub Pages into `dist/` |
 | `npm start` | Runs the server alone, serving the built app at http://localhost:5050 (this is what the kiosk runs) |
 | `npm run check:contrast` | Tests every color pairing in the theme against WCAG AA |
 | `npm run hash-pin -- 482913` | Makes a PIN hash to paste into `.env` (dev server only) |
@@ -83,6 +84,14 @@ src/
 - **Read aloud** on the kiosk needs a native text-to-speech plugin (`@capacitor-community/text-to-speech`)
 
 Keeping your branch up to date with `main`: see **docs/GIT-CHEATSHEET.md**.
+
+## Live web preview
+
+Every merge to `main` publishes a read-only copy of the app to
+**https://windiespeed.github.io/infinity-kiosk/** (the "companion site"), so anyone can click
+through the current content and photos in a browser. Nothing can be saved there and the admin
+screens don't work. It's public, like the repo. The workflow is
+`.github/workflows/pages.yml`.
 
 ## Where media lives
 

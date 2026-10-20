@@ -42,7 +42,8 @@
 // Three versions share the same functions, so screens never care which one is running:
 // - serverStore: in a normal browser during development (talks to server/index.js)
 // - deviceStore: inside the Android app on the kiosk (saves to the kiosk's own storage)
-// - staticStore: the public companion site (read-only, bundled content, no admin)
+// - staticStore: the public companion site on GitHub Pages (read-only, bundled content
+//   and photos, no admin), built with `npm run build:pages`
 //
 // Every store has:
 //   init(), loadContent(), saveContent(content, session), mediaUrl(item),
