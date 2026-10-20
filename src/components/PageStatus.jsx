@@ -11,6 +11,7 @@ export default function PageStatus() {
           <p className="mt-3 text-text-muted">
             Check that the kiosk server is running, then restart the kiosk.
           </p>
+          {error.message && <p className="mt-3 text-sm text-text-muted">{error.message}</p>}
         </div>
       ) : (
         <p aria-live="polite" className="text-text-muted">Loading…</p>

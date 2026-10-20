@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { getStore } from "../lib/store/index.js";
+import { getStore, validateContent } from "../lib/store/index.js";
 
 const ContentContext = createContext(null);
 
@@ -15,7 +15,7 @@ export function ContentProvider({ children }) {
       try {
         const s = await getStore();
         setStore(s);
-        setContent(await s.loadContent());
+        setContent(await loadChecked(s));
       } catch (err) {
         console.error(err);
         setError(err);
@@ -25,7 +25,7 @@ export function ContentProvider({ children }) {
 
   const reload = useCallback(async () => {
     const s = await getStore();
-    setContent(await s.loadContent());
+    setContent(await loadChecked(s));
   }, []);
 
   const value = useMemo(
@@ -33,6 +33,14 @@ export function ContentProvider({ children }) {
     [content, error, reload, store]
   );
   return <ContentContext.Provider value={value}>{children}</ContentContext.Provider>;
+}
+
+// Content the screens can't show is reported as a load error instead of crashing them.
+async function loadChecked(store) {
+  const content = await store.loadContent();
+  const problem = validateContent(content);
+  if (problem) throw new Error(`The content can't be shown: ${problem}`);
+  return content;
 }
 
 export function useContent() {
@@ -50,6 +58,16 @@ function helpers(content, store) {
     eventsForEra: (eraId) => published.filter((e) => e.eraIds.includes(eraId)).sort(byDate),
     eventById: (id) => published.find((e) => e.id === id),
     mediaById: (id) => content.media.find((m) => m.id === id),
+    // Photo for an event card: the event's first image.
+    eventCover: (ev) => content.media.find((m) => m.id === ev.mediaIds?.[0]),
+    // Photo for an era card: the era's coverMediaId if set, otherwise the first
+    // image of its earliest event that has one.
+    eraCover: (eraId) => {
+      const era = content.eras.find((e) => e.id === eraId);
+      const id = era?.coverMediaId
+        ?? published.filter((e) => e.eraIds.includes(eraId)).sort(byDate).find((e) => e.mediaIds?.length)?.mediaIds[0];
+      return content.media.find((m) => m.id === id);
+    },
     mediaUrl: (item) => store.mediaUrl(item),
     questionsForEvent: (id) => content.questions.filter((q) => q.eventId === id),
   };

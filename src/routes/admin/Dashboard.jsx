@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from "react-router";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { exportBackup, importBackup } from "../../lib/backup.js";
+import { IDLE_MAX, IDLE_MIN } from "../../lib/content.js";
 import { buttonClass } from "../../lib/ui.js";
 
 // Starter dashboard: settings (shows the full save path working) and backups.
@@ -11,6 +12,8 @@ import { buttonClass } from "../../lib/ui.js";
 export default function Dashboard() {
   const token = useKiosk((s) => s.adminToken);
   const update = useKiosk((s) => s.update);
+  const addBusy = useKiosk((s) => s.addBusy);
+  const removeBusy = useKiosk((s) => s.removeBusy);
   const { content, reload, store } = useContent();
   const navigate = useNavigate();
   const [idleSeconds, setIdleSeconds] = useState(content.settings.idleSeconds);
@@ -23,9 +26,15 @@ export default function Dashboard() {
   if (!token) return <Navigate to="/admin" replace />;
 
   const save = async () => {
+    // An empty field reads as 0, which would show the idle prompt nonstop.
+    const seconds = Number(idleSeconds);
+    if (idleSeconds === "" || !Number.isInteger(seconds) || seconds < IDLE_MIN || seconds > IDLE_MAX) {
+      setStatus(`Enter a whole number from ${IDLE_MIN} to ${IDLE_MAX}.`);
+      return;
+    }
     setStatus("Saving…");
     try {
-      await store.saveContent({ ...content, settings: { ...content.settings, idleSeconds: Number(idleSeconds) } }, token);
+      await store.saveContent({ ...content, settings: { ...content.settings, idleSeconds: seconds } }, token);
       await reload();
       setStatus("Saved.");
     } catch (err) {
@@ -33,8 +42,19 @@ export default function Dashboard() {
     }
   };
 
-  const doExport = async () => {
+  // While a backup runs, mark the kiosk busy so the idle timer can't reset to the
+  // welcome screen (and sign staff out) partway through a long export or import.
+  const startBackupWork = () => {
     setBusy(true);
+    addBusy();
+  };
+  const endBackupWork = () => {
+    setBusy(false);
+    removeBusy();
+  };
+
+  const doExport = async () => {
+    startBackupWork();
     setBackupStatus("Creating backup… this can take a minute with videos.");
     try {
       const { where, skipped } = await exportBackup(store, content);
@@ -44,14 +64,14 @@ export default function Dashboard() {
     } catch (err) {
       setBackupStatus(`Backup failed: ${err.message}`);
     } finally {
-      setBusy(false);
+      endBackupWork();
     }
   };
 
   const doImport = async () => {
     const file = pendingImport;
     setPendingImport(null);
-    setBusy(true);
+    startBackupWork();
     setBackupStatus("Importing… 0%");
     try {
       const result = await importBackup(store, file, token, (p) =>
@@ -69,7 +89,7 @@ export default function Dashboard() {
     } catch (err) {
       setBackupStatus(`Import failed, nothing was changed: ${err.message}`);
     } finally {
-      setBusy(false);
+      endBackupWork();
     }
   };
 
@@ -101,8 +121,9 @@ export default function Dashboard() {
         <input
           id="idle"
           type="number"
-          min="30"
-          max="600"
+          min={IDLE_MIN}
+          max={IDLE_MAX}
+          step="1"
           value={idleSeconds}
           onChange={(e) => setIdleSeconds(e.target.value)}
           className="mt-2 min-h-14 w-40 rounded-xl border-2 border-text-muted bg-bg px-4 text-text"
