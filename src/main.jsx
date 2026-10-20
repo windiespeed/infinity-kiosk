@@ -18,7 +18,7 @@ window.addEventListener("contextmenu", (e) => e.preventDefault());
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ErrorBoundary>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ContentProvider>
           <App />
         </ContentProvider>

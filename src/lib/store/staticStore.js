@@ -3,6 +3,12 @@
 // There is no server, no device storage and no admin access.
 import seed from "../../../data/content.json";
 
+// Every file in data/media/, bundled into the site so photos show. Keyed by file name.
+const files = import.meta.glob("../../../data/media/*", { eager: true, query: "?url", import: "default" });
+const urlByName = Object.fromEntries(
+  Object.entries(files).map(([path, url]) => [path.slice(path.lastIndexOf("/") + 1), url]),
+);
+
 const readOnly = (what) => () => {
   throw new Error(`${what} is not available on the companion site.`);
 };
@@ -19,12 +25,11 @@ export function createStaticStore() {
 
     saveContent: readOnly("Saving content"),
 
-    // The companion doesn't ship the media folder. Nothing on it shows media.
-    mediaUrl: () => "",
+    mediaUrl: (item) => urlByName[item.file] ?? "",
 
-    // No admin here: no PIN is set, and no one can sign in.
+    // No admin here: the sign-in screen shows, but no PIN works and none can be created.
     async hasPin() {
-      return false;
+      return true;
     },
     setPin: readOnly("Setting a PIN"),
     async signIn() {
