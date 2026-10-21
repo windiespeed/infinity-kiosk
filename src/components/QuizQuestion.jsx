@@ -113,7 +113,7 @@ export default function QuizQuestion({
               className={buttonClass("primary", "mt-5 w-full text-xl")}
               onClick={continueQuiz}
             >
-              Next question
+              {isLastQuestion ? "Finish Quiz" : "Next Question"}
             </button>
           ) : (
             <p className="mt-4 text-base">
