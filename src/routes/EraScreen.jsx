@@ -39,7 +39,7 @@ export default function EraScreen() {
   const eventPath = (ev) => `/era/${era.id}/event/${ev.id}`;
 
   return (
-    <div className="flex h-full flex-col justify-between p-10">
+    <div className="flex min-h-full flex-col justify-between gap-10 p-10">
       <header>
         <p className="font-display text-2xl font-bold text-accent">{eraYears(era)}</p>
         <h1 className="mt-1 text-7xl">{era.title}</h1>

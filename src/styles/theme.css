@@ -17,7 +17,7 @@
   --color-*: initial;
 
   /* Surfaces */
-  --color-bg: #2A3649;          /* page background: deep slate navy (top of the page gradient) */
+  --color-bg: #1E1F23;          /* page background: the wall header's charcoal (top of the page gradient) */
   --color-bg-glow: #38475E;     /* lightest point of the page gradient (bottom): the wall's slate navy */
   --color-surface: #263244;     /* cards, panels, event detail: a little darker than the page */
 
@@ -100,7 +100,7 @@
       radial-gradient(ellipse 50% 40% at 90% 4%, rgb(170 195 245 / 0.08), transparent 70%),
       radial-gradient(ellipse 90% 45% at 50% 112%, rgb(70 140 255 / 0.12), transparent 70%),
       /* url("../assets/starfield.svg"),    random stars: scripts/make-starfield.mjs */
-      linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg) 35%, var(--color-bg-glow) 100%);
+      linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg) 20%, var(--color-bg-glow) 70%);
     background-size: cover, cover, cover;
     isolation: isolate;
     background-attachment: fixed;
