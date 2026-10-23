@@ -5,6 +5,7 @@ import GoldRule from "../components/GoldRule.jsx";
 import engineFiring from "../assets/engine-test-firing.jpg";
 import earthAtNight from "../assets/earth-at-night-iss040e090540.jpg";
 import infinityLogo from "../assets/infinity-logo-white.png";
+import nasaMeatball from "../assets/nasa-meatball.png";
 
 // The screen the kiosk returns to when idle. Three ways in, so visitors choose
 // their own starting point.
@@ -45,6 +46,15 @@ export default function Attract() {
         aria-hidden="true"
         draggable="false"
         className="pointer-events-none absolute top-8 right-8 w-44 opacity-60 [mask-image:radial-gradient(ellipse_at_100%_0%,black_45%,transparent_100%)] [[data-contrast=high]_&]:opacity-100 [[data-contrast=high]_&]:[mask-image:none]"
+      />
+      {/* NASA "meatball" insignia in the upper left, like the exhibit wall. NASA's rules
+          say it must not be altered, so it is shown at full color and opacity, with no
+          mask or effects, and with open space around it. Use still needs museum review. */}
+      <img
+        src={nasaMeatball}
+        alt="NASA"
+        draggable="false"
+        className="pointer-events-none absolute top-8 left-8 w-44"
       />
       <header className="relative pt-[6vh] text-center">
         <p className="font-display text-2xl tracking-[0.2em] text-accent uppercase">Infinity Science Center</p>
