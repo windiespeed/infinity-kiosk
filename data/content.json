@@ -85,7 +85,7 @@
       },
       "shortTitle": "Explorer 1",
       "title": "Explorer 1 becomes the first U.S. satellite",
-      "summary": "Explorer 1 became the first American satellite to reach orbit and made important measurements of Earth's space environment.",
+      "summary": "Its instruments made a surprising discovery about the space around Earth.",
       "body": "Launched on January 31, 1958, Explorer 1 carried scientific instruments designed to study cosmic rays and other conditions in orbit. Its data helped reveal the radiation belts around Earth later known as the Van Allen belts.",
       "mediaIds": [],
       "published": true
@@ -119,7 +119,7 @@
       },
       "shortTitle": "Yuri Gagarin",
       "title": "Yuri Gagarin becomes the first human in space",
-      "summary": "Soviet cosmonaut Yuri Gagarin became the first human to travel into space and orbit Earth.",
+      "summary": "His flight around Earth lasted about 108 minutes.",
       "body": "On April 12, 1961, Gagarin flew aboard Vostok 1 and completed one orbit of Earth. His flight marked a major milestone in human spaceflight and came before the first American astronaut flew into space.",
       "mediaIds": [],
       "published": true
@@ -136,7 +136,7 @@
       },
       "shortTitle": "Alan Shepard",
       "title": "Alan Shepard becomes the first American in space",
-      "summary": "Alan Shepard became the first American in space during a short, suborbital flight aboard Freedom 7.",
+      "summary": "His 15-minute flight put the United States in the race to send people into space.",
       "body": "On May 5, 1961, NASA astronaut Alan Shepard flew the Mercury spacecraft Freedom 7 on a suborbital trajectory. Unlike Yuri Gagarin's earlier flight, Shepard's mission did not complete an orbit of Earth, but it established an important American human-spaceflight milestone.",
       "mediaIds": [],
       "published": true
@@ -153,7 +153,7 @@
       },
       "shortTitle": "John Glenn",
       "title": "John Glenn becomes the first American to orbit Earth",
-      "summary": "John Glenn became the first American to orbit Earth during the Mercury-Atlas 6 mission.",
+      "summary": "Glenn's flight lasted just under five hours.",
       "body": "Glenn launched aboard Friendship 7 on February 20, 1962, and completed three orbits of Earth before returning safely. The mission demonstrated that American astronauts could operate in orbit and return to Earth.",
       "mediaIds": [],
       "published": true
@@ -170,7 +170,7 @@
       },
       "shortTitle": "Surveyor 1",
       "title": "Surveyor 1 makes a soft landing on the Moon",
-      "summary": "Surveyor 1 completed the first successful U.S. soft landing on the Moon, returning images from the lunar surface.",
+      "summary": "A robot lander showed that the Moon's surface could hold up a spacecraft.",
       "body": "Surveyor 1 launched on May 30, 1966, and landed on the Moon on June 2. Its photographs and engineering data helped scientists understand the lunar surface and supported preparations for later crewed lunar missions.",
       "mediaIds": [],
       "published": true
@@ -272,7 +272,7 @@
       },
       "shortTitle": "Apollo 10",
       "title": "Apollo 10 rehearses the lunar landing",
-      "summary": "Apollo 10 tested the crewed lunar landing procedures without actually landing on the Moon.",
+      "summary": "The crew flew every step of a Moon landing except the landing itself.",
       "body": "Apollo 10 launched on May 18, 1969. During the mission, the lunar module descended to about nine miles above the Moon's surface before returning to the command module. This full dress rehearsal tested procedures and systems for the upcoming Apollo 11 landing.",
       "mediaIds": [],
       "published": true
@@ -357,7 +357,7 @@
       },
       "shortTitle": "Sally Ride",
       "title": "Sally Ride becomes the first American woman in space",
-      "summary": "Astronaut Sally Ride flew aboard Challenger on STS-7 and became the first American woman in space.",
+      "summary": "She flew aboard Challenger on STS-7.",
       "body": "Launched on June 18, 1983, STS-7 also deployed communications satellites and conducted experiments. Ride's flight marked a milestone in expanding who could take part in American human spaceflight.",
       "mediaIds": [],
       "published": true
@@ -442,7 +442,7 @@
       },
       "shortTitle": "Final Shuttle Flight",
       "title": "Atlantis launches the final Space Shuttle mission",
-      "summary": "Atlantis began STS-135, the final mission of NASA's Space Shuttle Program.",
+      "summary": "STS-135 closed out 30 years of Space Shuttle flights.",
       "body": "Space Shuttle Atlantis launched on July 8, 2011, carrying supplies and equipment to the International Space Station. After the mission returned to Earth, NASA's 30-year Space Shuttle Program came to an end. The station remained in operation, but the Shuttle timeline tells the story of the spacecraft and its missions.",
       "mediaIds": [],
       "published": true
@@ -561,7 +561,7 @@
       },
       "shortTitle": "Artemis I",
       "title": "Artemis I tests the rocket and Orion spacecraft",
-      "summary": "The uncrewed Artemis I mission tested NASA's Space Launch System rocket, Orion spacecraft, and supporting ground systems on a flight around the Moon.",
+      "summary": "The uncrewed flight around the Moon paved the way for astronauts to follow.",
       "body": "Artemis I launched on November 16, 2022, traveled beyond the Moon, and returned to Earth on December 11, 2022. The flight tested systems intended to support future crewed Artemis missions.",
       "mediaIds": [],
       "published": true
@@ -595,7 +595,7 @@
       },
       "shortTitle": "Artemis Next Steps",
       "title": "Artemis prepares for future lunar missions",
-      "summary": "NASA is continuing work toward future lunar exploration, with later Artemis missions planned to test spacecraft operations and return astronauts to the Moon.",
+      "summary": "Later Artemis missions aim to return astronauts to the surface of the Moon.",
       "body": "As of October 2026, NASA describes Artemis III as a planned 2027 mission to test rendezvous and docking with lunar-lander test articles in Earth orbit, with Artemis IV targeted for 2028 and intended to return astronauts to the lunar surface. These are plans, not completed events, and schedules can change.",
       "mediaIds": [],
       "published": true
@@ -657,7 +657,7 @@
       },
       "shortTitle": "Construction begins",
       "title": "Work crews cut the first trees in Devil's Swamp",
-      "summary": "Construction of the Mississippi Test Operations began on May 17, 1963, when crews cut one of the first trees in Devil's Swamp.",
+      "summary": "On May 17, 1963, construction began on the Mississippi Test Operations.",
       "body": "The tree was cut near the spot where a construction dock was built on the turning basin of a new man-made canal system. Crews dug foundations about 50 feet deep for the giant test stands and drove steel beams nearly 100 feet deeper to hold them up. Thousands of workers came to Hancock County to build the facility.",
       "mediaIds": [
         "img-first-tree-cut-1963-ssc-63-021",
@@ -731,7 +731,7 @@
       },
       "shortTitle": "First stage tested",
       "title": "The Saturn V first stage fires at the B-2 test stand",
-      "summary": "On March 3, 1967, the test version of the Saturn V first stage fired for the first time at the site's B-1/B-2 test stand.",
+      "summary": "On March 3, 1967, a test version of the Moon rocket's first stage fired for the first time in Mississippi.",
       "body": "The first stage was powered by five F-1 engines that together produced more than 7.5 million pounds of thrust. Before the test, sound experts set up equipment in nearby communities to measure the noise. Every Saturn V first and second stage that flew Apollo astronauts to the Moon was tested in Mississippi.",
       "mediaIds": [
         "img-saturn-v-first-stage-b2-1967-ssc-67-2537"
@@ -754,7 +754,7 @@
       },
       "shortTitle": "Fred Haise, Apollo 13",
       "title": "Biloxi native Fred Haise flies on Apollo 13",
-      "summary": "Fred Haise, who grew up in Biloxi, Mississippi, was the lunar module pilot on Apollo 13 in April 1970.",
+      "summary": "Haise was the lunar module pilot in April 1970, when the mission became a fight to get home.",
       "body": "An oxygen tank exploded on the way to the Moon, and the crew of Jim Lovell, Jack Swigert and Fred Haise used the lunar module as a lifeboat to get home safely. Later in 1970, Haise returned to the Mississippi Test Facility with Wernher von Braun for the ceremony marking the end of Saturn V testing.",
       "mediaIds": [
         "img-haise-portrait-ecn-1203"
@@ -777,7 +777,7 @@
       },
       "shortTitle": "Shuttle engine tests",
       "title": "The first Space Shuttle Main Engine test in Mississippi",
-      "summary": "On May 19, 1975, the Space Shuttle Main Engine was test-fired for the first time at the site, then called the National Space Technology Laboratories.",
+      "summary": "It happened on May 19, 1975, at the site then called the National Space Technology Laboratories.",
       "body": "The Space Shuttle Main Engine was designed to be reused flight after flight. Every main engine that flew on the Space Shuttle was tested in Mississippi first, on the A-1, A-2 and B-1 test stands.",
       "mediaIds": [
         "img-ssme-test-firing",
@@ -871,7 +871,7 @@
       },
       "shortTitle": "Named for Stennis",
       "title": "The center becomes the John C. Stennis Space Center",
-      "summary": "In May 1988, President Ronald Reagan renamed the site the John C. Stennis Space Center, honoring the senator who had supported it from the start.",
+      "summary": "In May 1988, President Ronald Reagan honored the senator who had supported the site from the start.",
       "body": "Senator Stennis served in the U.S. Senate for 41 years. At the dedication ceremony, he was joined by Mississippi Governor Ray Mabus, NASA Administrator James Fletcher, Senator Thad Cochran, and Mississippi astronaut Richard Truly, then NASA's associate administrator for space flight.",
       "mediaIds": [
         "img-renaming-ceremony-1988-ssc-88-471"
@@ -945,7 +945,7 @@
       },
       "shortTitle": "Artemis Green Run",
       "title": "The Artemis Moon rocket's core stage fires at Stennis",
-      "summary": "On March 18, 2021, the core stage for NASA's Artemis I Moon rocket fired all four of its engines for more than eight minutes on the B-2 test stand at Stennis.",
+      "summary": "On March 18, 2021, all four engines fired for more than eight minutes on the B-2 test stand.",
       "body": "The Green Run test proved the core stage of the Space Launch System rocket was ready to fly. More than 50 years after Saturn V stages were tested on the same stand, Mississippi helped send the next rocket toward the Moon. Its four RS-25 engines are upgraded Space Shuttle Main Engines, also tested at Stennis.",
       "mediaIds": [],
       "tags": [
@@ -966,7 +966,7 @@
       },
       "shortTitle": "Stennis is born",
       "title": "A Mississippi farm boy",
-      "summary": "John C. Stennis was born on a farm near De Kalb, Mississippi, in 1901.",
+      "summary": "Long before the space center carried his name, he was a farm boy from Kemper County.",
       "body": "John Cornelius Stennis was born on August 3, 1901, on a farm near De Kalb in Kemper County, Mississippi. He studied at Mississippi A&M (now Mississippi State University) and earned a law degree from the University of Virginia.",
       "mediaIds": [],
       "tags": [
@@ -987,7 +987,7 @@
       },
       "shortTitle": "Stennis elected",
       "title": "Elected to the U.S. Senate",
-      "summary": "Stennis won a special election to the U.S. Senate in 1947 and served for more than 41 years.",
+      "summary": "He became Mississippi's longest-serving senator and a powerful voice on budget and defense.",
       "body": "Stennis won a special election to the U.S. Senate in 1947. He served for more than 41 years, longer than any other senator from Mississippi, and became a powerful voice on the committees that decided the nation's budget and defense.",
       "mediaIds": [
         "img-stennis-1947"
@@ -1058,7 +1058,7 @@
       },
       "shortTitle": "Stennis's legacy",
       "title": "A lasting legacy",
-      "summary": "Stennis retired from the Senate in 1989 and died in 1995 at age 93.",
+      "summary": "After 41 years in the Senate, Stennis went home to Mississippi.",
       "body": "Stennis retired from the Senate in 1989 and returned to Mississippi State University. He died on April 23, 1995, at age 93.",
       "mediaIds": [
         "img-stennis-old-timers-day-ssc-91-666"
@@ -1081,7 +1081,7 @@
       },
       "shortTitle": "Von Braun is born",
       "title": "A boy who dreamed of space",
-      "summary": "Wernher von Braun was born in Germany in 1912 and taught himself advanced math to understand rockets.",
+      "summary": "The man who would design the Moon rocket started out as a curious teenager.",
       "body": "Wernher von Braun was born on March 23, 1912, in Wirsitz, Germany. As a teenager he read about rockets and space travel and taught himself advanced math so he could understand how they worked.",
       "mediaIds": [],
       "tags": [
@@ -1102,7 +1102,7 @@
       },
       "shortTitle": "Rockets in Germany",
       "title": "Building rockets in Germany",
-      "summary": "Von Braun led the German army's rocket team, which built the V-2 missile used in World War II.",
+      "summary": "His rocket work began in Germany, before and during World War II.",
       "body": "Von Braun earned a doctorate in physics in 1934 and led the German army's rocket team, which built the V-2, a long-range missile used in World War II.",
       "mediaIds": [
         "img-vonbraun-1930s"
@@ -1125,7 +1125,7 @@
       },
       "shortTitle": "A new start in America",
       "title": "A new start in America",
-      "summary": "After the war, von Braun and his rocket team came to the United States.",
+      "summary": "In America, his team would launch the country's first satellite.",
       "body": "At the end of the war, von Braun surrendered to American forces and came to the United States with his rocket team. In 1950 they moved to Huntsville, Alabama, to build rockets for the U.S. Army. He became a U.S. citizen in 1955, and in 1958 his team's Jupiter C rocket launched Explorer 1, America's first satellite.",
       "mediaIds": [
         "img-vonbraun-1964"
@@ -1148,7 +1148,7 @@
       },
       "shortTitle": "Saturn V architect",
       "title": "Architect of the Saturn V",
-      "summary": "Von Braun became director of NASA's Marshall Space Flight Center and led the design of the Saturn V.",
+      "summary": "His team's biggest job was building a rocket powerful enough to reach the Moon.",
       "body": "In 1960 von Braun's team joined NASA, and he became director of the Marshall Space Flight Center. He was the chief architect of the Saturn V, the giant rocket that would carry astronauts to the Moon.",
       "mediaIds": [
         "img-vonbraun-portrait",
@@ -1172,8 +1172,8 @@
       },
       "shortTitle": "\"Go through Mississippi\"",
       "title": "\"Go through Mississippi\"",
-      "summary": "Von Braun said America would \"have to go through Mississippi\" to reach the Moon.",
-      "body": "To reach the Moon, the Saturn V's huge stages had to be tested on the ground first. Von Braun famously said that whatever way America got to the Moon, \"we will have to go through Mississippi to get there.\" He personally chose Navy Capt. William Fortune to build the Mississippi test site, and Fortune became its first manager on October 1, 1962.",
+      "summary": "To reach the Moon, the Saturn V's huge stages first had to be tested on the ground.",
+      "body": "Von Braun famously said that whatever way America got to the Moon, \"we will have to go through Mississippi to get there.\" He personally chose Navy Capt. William Fortune to build the Mississippi test site, and Fortune became its first manager on October 1, 1962.",
       "mediaIds": [],
       "tags": [
         "mississippi"
@@ -1194,7 +1194,7 @@
       "shortTitle": "Von Braun's later years",
       "title": "Later years",
       "summary": "Every Saturn V first and second stage for Apollo was tested in Mississippi, and none failed in flight.",
-      "body": "Every Saturn V first and second stage for Apollo was tested in Mississippi, and none failed in flight. Von Braun believed in thorough testing, saying, \"One good test is worth a thousand expert opinions.\" In 1970 von Braun moved to Washington, D.C., to lead NASA's planning, then retired from NASA in 1972. He died on June 16, 1977.",
+      "body": "Von Braun believed in thorough testing, saying, \"One good test is worth a thousand expert opinions.\" In 1970 von Braun moved to Washington, D.C., to lead NASA's planning, then retired from NASA in 1972. He died on June 16, 1977.",
       "mediaIds": [
         "img-vonbraun-1967"
       ],
@@ -1216,7 +1216,7 @@
       },
       "shortTitle": "Haise is born",
       "title": "Fred Haise born in Biloxi",
-      "summary": "Fred Haise was born in Biloxi in 1933.",
+      "summary": "He would one day fly on Apollo 13 and pilot the shuttle Enterprise.",
       "body": "Fred Wallace Haise Jr. was born in Biloxi on November 14, 1933. He graduated from Biloxi High School, attended Perkinston Junior College, and earned an aeronautical engineering degree with honors from the University of Oklahoma in 1959.",
       "mediaIds": [
         "img-haise-portrait-ecn-1203"
@@ -1239,7 +1239,7 @@
       },
       "shortTitle": "Haise chosen",
       "title": "Haise chosen as an astronaut",
-      "summary": "Haise was one of 19 astronauts NASA selected in April 1966.",
+      "summary": "He trained as a backup crew member for two of Apollo's most famous flights.",
       "body": "After years as a military and NASA research pilot, Haise was one of 19 astronauts NASA selected in April 1966. He trained as the backup lunar module pilot for Apollo 8 and Apollo 11.",
       "mediaIds": [
         "img-haise-1970"
@@ -1262,7 +1262,7 @@
       },
       "shortTitle": "A Moon rock for Biloxi",
       "title": "A Moon rock for Biloxi",
-      "summary": "NASA honored Haise with its Ambassador of Exploration Award in Biloxi, and he gave its Moon rock to a school.",
+      "summary": "A Biloxi elementary school got a piece of the Moon to keep.",
       "body": "NASA honored Haise with its Ambassador of Exploration Award at Gorenflo Elementary School in Biloxi on December 2, 2009. Haise gave the award's Moon rock to the school to display.",
       "mediaIds": [
         "img-haise-award-2009-ssc-20091202-s02357"
@@ -1285,7 +1285,7 @@
       },
       "shortTitle": "A Moon tree at INFINITY",
       "title": "A Moon tree at INFINITY",
-      "summary": "Haise and Rosemary Roosa stood beside a Moon tree at INFINITY Science Center.",
+      "summary": "Two Apollo families came together at INFINITY Science Center.",
       "body": "On February 3, 2011, Haise joined Rosemary Roosa, daughter of Apollo 14 astronaut Stuart Roosa, beside a Moon tree at INFINITY Science Center. Moon trees descend from seeds Stuart Roosa carried around the Moon in 1971.",
       "mediaIds": [
         "img-haise-roosa-moon-tree-2011-ssc-20110203-s00095"
@@ -1308,7 +1308,7 @@
       },
       "shortTitle": "Fred Haise Test Stand",
       "title": "The Fred Haise Test Stand",
-      "summary": "NASA renamed Stennis's A-1 Test Stand the Fred Haise Test Stand.",
+      "summary": "A Stennis test stand now carries the name of a Mississippi astronaut.",
       "body": "On December 7, 2021, NASA renamed Stennis's A-1 Test Stand the Fred Haise Test Stand. During Apollo, that stand tested the J-2 engines that helped send Haise toward the Moon.",
       "mediaIds": [
         "img-haise-test-stand-2021-ssc-20211207-s00284"
@@ -1331,7 +1331,7 @@
       },
       "shortTitle": "Truly is born",
       "title": "Richard Truly born in Fayette",
-      "summary": "Richard Truly was born in Fayette, Mississippi, in 1937.",
+      "summary": "He would become a shuttle pilot, a shuttle commander, and later the head of NASA.",
       "body": "Richard Harrison Truly was born in Fayette, Mississippi, on November 12, 1937. He attended schools in Fayette and Meridian and earned an aeronautical engineering degree from Georgia Tech in 1959.",
       "mediaIds": [
         "img-truly-portrait-1979"
@@ -1354,7 +1354,7 @@
       },
       "shortTitle": "Truly joins NASA",
       "title": "Truly: from Navy pilot to NASA astronaut",
-      "summary": "Navy fighter pilot Richard Truly became a NASA astronaut in 1969.",
+      "summary": "His road to space took an unexpected turn.",
       "body": "A Navy fighter pilot who made more than 300 aircraft carrier landings, Truly first trained for an Air Force space station program. When it was canceled in 1969, he joined NASA as an astronaut.",
       "mediaIds": [
         "img-truly-1981",
@@ -1378,8 +1378,8 @@
       },
       "shortTitle": "Truly commands STS-8",
       "title": "Truly commands STS-8",
-      "summary": "Truly commanded STS-8, the Shuttle program's first night launch and landing.",
-      "body": "Truly commanded STS-8 aboard Challenger, the Shuttle program's first night launch and landing. The crew included Guion Bluford, the first African American to fly in space.",
+      "summary": "STS-8 was the Shuttle program's first night launch and landing.",
+      "body": "The mission flew aboard Challenger, and its crew included Guion Bluford, the first African American to fly in space.",
       "mediaIds": [
         "img-truly-1983-b",
         "img-truly-1983-c",
@@ -1403,7 +1403,7 @@
       },
       "shortTitle": "Truly remembered",
       "title": "Truly remembered",
-      "summary": "Richard Truly died on February 27, 2024.",
+      "summary": "Mississippi remembers the Fayette native who flew the shuttle and led NASA.",
       "body": "Truly died on February 27, 2024.",
       "mediaIds": [
         "img-truly-2024"
@@ -1426,7 +1426,7 @@
       },
       "shortTitle": "Peterson is born",
       "title": "Donald Peterson born in Winona",
-      "summary": "Donald Peterson was born in Winona, Mississippi, in 1933.",
+      "summary": "He would grow up to make the first spacewalk of the Space Shuttle program.",
       "body": "Donald Herod Peterson was born in Winona, Mississippi, on October 22, 1933. He graduated from West Point in 1955 and later earned a master's degree in nuclear engineering.",
       "mediaIds": [],
       "tags": [
@@ -1470,7 +1470,7 @@
       },
       "shortTitle": "Peterson remembered",
       "title": "Peterson remembered",
-      "summary": "Donald Peterson left NASA in 1984 and died on May 27, 2018.",
+      "summary": "Mississippi remembers the Winona native who made the Shuttle program's first spacewalk.",
       "body": "Peterson left NASA in 1984 and died on May 27, 2018.",
       "mediaIds": [
         "img-peterson-2018"
