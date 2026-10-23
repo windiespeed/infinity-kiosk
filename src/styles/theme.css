@@ -19,6 +19,7 @@
   /* Surfaces */
   --color-bg: #2A3649;          /* page background: deep slate navy (top of the page gradient) */
   --color-bg-glow: #38475E;     /* lightest point of the page gradient (bottom): the wall's slate navy */
+  --color-space: #0E121B;       /* dark header band on the welcome screen, like the top of the wall */
   --color-surface: #263244;     /* cards, panels, event detail: a little darker than the page */
 
   /* Text */
@@ -58,6 +59,7 @@
 [data-contrast="high"] {
   --color-bg: #000000;
   --color-bg-glow: #000000;
+  --color-space: #000000;
   --color-surface: #000000;
   --color-text: #FFFFFF;
   --color-text-muted: #FFFFFF;
