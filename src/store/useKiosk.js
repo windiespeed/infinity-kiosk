@@ -6,6 +6,7 @@ const visitorDefaults = {
   contrast: "default", // "default" | "high"
   reduceMotion: false,
   reach: false, // moves content lower on the screen
+  readAloud: false,
   a11yOpen: false,
 };
 
