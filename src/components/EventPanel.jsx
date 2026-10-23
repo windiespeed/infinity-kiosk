@@ -69,7 +69,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
             id="event-title"
             tabIndex={-1}
             data-autofocus
-            className="mt-2 text-5xl"
+            className="mt-2 text-4xl font-bold uppercase text-accent"
           >
             {event.title}
           </h2>
@@ -105,7 +105,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
                     <img
                       src={mediaUrl(img)}
                       alt={img.alt}
-                      className="aspect-video w-full rounded-xl bg-bg object-contain"
+                      className="aspect-video w-full rounded-sm border-4 border-accent bg-bg object-contain"
                     />
                   </button>
 

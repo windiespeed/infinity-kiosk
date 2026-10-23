@@ -98,7 +98,7 @@ export default function Library() {
                 src={mediaUrl(img)}
                 alt={img.alt}
                 loading="lazy"
-                className="aspect-video w-full rounded-xl bg-bg object-contain"
+                className="aspect-video w-full rounded-sm border-4 border-accent bg-bg object-contain"
               />
             </button>
 
