@@ -58,11 +58,11 @@ export default function EraScreen() {
         ) : <span className="w-14 shrink-0" />}
 
         <div className="min-w-0 flex-1 overflow-x-auto">
-          <ol ref={trackRef} className="relative flex flex-col gap-4 py-2 md:min-w-max md:flex-row md:justify-between">
+          <ol ref={trackRef} className="relative flex flex-col gap-4 pt-2 pb-8 md:min-w-max md:flex-row md:justify-between">
             <span aria-hidden="true" className="absolute left-0 right-0 top-[1.5625rem] hidden h-0.5 bg-accent/70 md:block" />
             {events.map((ev) => (
-              <li key={ev.id} className="relative md:pt-12">
-                <StarMarker className="absolute left-1/2 top-[1.625rem] hidden size-9 -translate-1/2 md:block" />
+              <li key={ev.id} className="relative md:pt-10">
+                <StarMarker className="absolute left-1/2 top-[1.125rem] hidden size-9 -translate-1/2 md:block" />
                 <Link
                   to={eventPath(ev)}
                   data-event-id={ev.id}
