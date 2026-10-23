@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { useKiosk } from "../store/useKiosk.js";
 import { buttonClass } from "../lib/ui.js";
-import WallMoon from "../components/WallMoon.jsx";
+import GoldRule from "../components/GoldRule.jsx";
 import engineFiring from "../assets/engine-test-firing.jpg";
 import earthAtNight from "../assets/earth-at-night-iss040e090540.jpg";
 import infinityLogo from "../assets/infinity-logo-white.png";
@@ -35,21 +35,22 @@ export default function Attract() {
         draggable="false"
         className="pointer-events-none absolute right-0 bottom-0 h-[70%] w-[55%] object-cover object-[center_40%] opacity-30 [mask-image:radial-gradient(ellipse_at_100%_100%,black_20%,transparent_70%)] [[data-contrast=high]_&]:hidden"
       />
-      {/* Header band, like the top of the exhibit wall: a darker strip of space
-          across the top with the Moon in the upper right, edged by a thin gold line. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[46%] overflow-hidden border-b border-accent/40 bg-space/95 [[data-contrast=high]_&]:bg-transparent">
-        <WallMoon className="absolute -top-[18%] -right-[7%] h-[118%] opacity-90 [[data-contrast=high]_&]:hidden" />
-      </div>
-      {/* Infinity Science Center logo in the upper left, where the wall has the NASA logo. */}
+      {/* Infinity Science Center logo in the upper right, faded like the photos. This copy
+          has white lettering so it reads on the dark background (the original's gray letters
+          disappear). w-44 is the size, opacity-60 the brightness, and the mask fades it out
+          from the top right corner. alt is empty because the heading below already says the name. */}
       <img
         src={infinityLogo}
-        alt="INFINITY Science Center"
+        alt=""
+        aria-hidden="true"
         draggable="false"
-        className="pointer-events-none absolute top-10 left-10 w-40"
+        className="pointer-events-none absolute top-8 right-8 w-44 opacity-60 [mask-image:radial-gradient(ellipse_at_100%_0%,black_45%,transparent_100%)] [[data-contrast=high]_&]:opacity-100 [[data-contrast=high]_&]:[mask-image:none]"
       />
-      <header className="relative pt-[12vh] text-center">
-        <h1 className="text-5xl font-bold">The history of spaceflight</h1>
-        <p className="mt-5 font-display text-3xl text-accent">From the first satellites to tomorrow's missions</p>
+      <header className="relative pt-[6vh] text-center">
+        <p className="font-display text-2xl tracking-[0.2em] text-accent uppercase">Infinity Science Center</p>
+        <h1 className="mx-auto mt-4 max-w-[22ch] text-7xl">The history of spaceflight</h1>
+        <GoldRule className="mt-6 justify-center" />
+        <p className="m-6 font-display text-3xl text-accent">From the first satellites to tomorrow's missions</p>
       </header>
 
       <nav aria-label="Start exploring" className="relative pb-[4vh]">

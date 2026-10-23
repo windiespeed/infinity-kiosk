@@ -15,8 +15,6 @@ const PAIRS = [
   ["accent", "bg-glow", 4.5, "Gold years and subtitles on the page gradient"],
   ["accent", "surface", 4.5, "Gold years on panels"],
   ["text-muted", "surface", 4.5, "Captions on panels"],
-  ["text", "space", 4.5, "Welcome title on the header band"],
-  ["accent", "space", 4.5, "Welcome subtitle on the header band"],
   ["on-accent", "accent", 4.5, "Button label"],
   ["accent-outline", "bg", 3, "Button edge on page"],
   ["on-primary", "primary", 4.5, "Era segment label"],
