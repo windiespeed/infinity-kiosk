@@ -27,8 +27,8 @@ export default function BottomNav() {
   const parent = parentOf(pathname, content);
 
   return (
-    <nav aria-label="Main" className="flex flex-wrap items-center justify-between gap-4 border-t border-accent/40 bg-bg/90 px-4 py-3">
-      <div className="min-w-[12rem]">
+    <nav aria-label="Main" className="flex flex-wrap items-center justify-between gap-3 border-t border-accent/40 bg-bg-glow/95 px-4 py-3">
+      <div className="min-w-[11rem]">
         {parent && (
           <Link to={parent.to} className={buttonClass("secondary")}>
             <span aria-hidden="true">‹</span> {parent.label}
@@ -36,7 +36,7 @@ export default function BottomNav() {
         )}
       </div>
 
-      <ul className="flex flex-wrap justify-center gap-4">
+      <ul className="flex flex-wrap justify-center gap-3">
         {LINKS.map((link) => (
           <li key={link.to}>
             <NavLink
@@ -49,7 +49,7 @@ export default function BottomNav() {
         ))}
       </ul>
 
-      <div className="flex gap-4">
+      <div className="flex gap-3">
         <button onClick={() => setConfirming(true)} className={buttonClass("secondary")}>
           Start over
         </button>
