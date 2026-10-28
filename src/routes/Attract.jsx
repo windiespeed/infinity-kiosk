@@ -7,13 +7,7 @@ import engineFiring from "../assets/engine-test-firing.jpg";
 import earthAtNight from "../assets/earth-at-night-iss040e090540.jpg";
 import infinityLogo from "../assets/infinity-logo-white.png";
 import nasaMeatball from "../assets/nasa-meatball.png";
-
-// Background video. Videos are kept out of Git (see .gitignore), so the file may
-// not be here: glob returns nothing when it is missing and the screen shows
-// without the video instead of breaking the build.
-const stennisVideo = Object.values(
-  import.meta.glob("../assets/stennis-overview.mp4", { eager: true, query: "?url", import: "default" }),
-)[0];
+import stennisVideo from "../assets/media/stennis-overview.mp4";
 
 // The screen the kiosk returns to when idle. Three ways in, so visitors choose
 // their own starting point.
@@ -42,7 +36,6 @@ export default function Attract() {
   }, []);
   return (
     <div className="relative flex h-full flex-col justify-between p-10">
-      {stennisVideo && (
       <video
         ref={videoRef}
         src={stennisVideo}
@@ -59,7 +52,6 @@ export default function Attract() {
     [mask-image:radial-gradient(ellipse_at_70%_30%,black_10%,transparent_75%)]
     ${showVideo ? "opacity-30" : "opacity-0"}`}
       />
-      )}
       {/* Engine test photo in the lower left. The mask fades it into the stars along
           a slightly tilted line that reaches about the middle of the screen.
           Tune it with opacity-55 (brightness), the angle (72deg) and the two
