@@ -7,7 +7,6 @@ import engineFiring from "../assets/engine-test-firing.jpg";
 import earthAtNight from "../assets/earth-at-night-iss040e090540.jpg";
 import infinityLogo from "../assets/infinity-logo-white.png";
 import nasaMeatball from "../assets/nasa-meatball.png";
-import stennisVideo from "../assets/stennis-overview.mp4";
 
 // The screen the kiosk returns to when idle. Three ways in, so visitors choose
 // their own starting point.
@@ -36,22 +35,6 @@ export default function Attract() {
   }, []);
   return (
     <div className="relative flex h-full flex-col justify-between p-10">
-      <video
-        ref={videoRef}
-        src={stennisVideo}
-        autoPlay={!reduceMotion}
-        muted
-        loop
-        preload="auto"
-        draggable="false"
-        playsInline
-        aria-hidden="true"
-        className={`pointer-events-none absolute right-0 top-0 z-0
-    h-[55vh] w-[65vw] object-cover
-    transition-opacity duration-100
-    [mask-image:radial-gradient(ellipse_at_70%_30%,black_10%,transparent_75%)]
-    ${showVideo ? "opacity-30" : "opacity-0"}`}
-      />
       {/* Engine test photo in the lower left. The mask fades it into the stars along
           a slightly tilted line that reaches about the middle of the screen.
           Tune it with opacity-55 (brightness), the angle (72deg) and the two
