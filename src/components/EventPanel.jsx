@@ -4,6 +4,8 @@ import { useContent } from "../hooks/useContent.jsx";
 import { useDialog } from "../hooks/useDialog.js";
 import { buttonClass } from "../lib/ui.js";
 import ImageViewer from "./ImageViewer.jsx";
+import { useKiosk } from "../store/useKiosk.js";
+import { speak, stop } from "../lib/speech.js";
 
 // Slides up over the era screen so visitors keep their place on the timeline.
 // Everything needed to understand the event is here, so it makes sense to someone
@@ -11,6 +13,15 @@ import ImageViewer from "./ImageViewer.jsx";
 export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
   const { mediaById, mediaUrl, questionsForEvent } = useContent();
   const ref = useDialog(onClose);
+  const closeEvent = () => {
+    stop();
+    onClose();
+  };
+
+  const goToEvent = (target) => {
+    stop();
+    onGo(target);
+  };
 
   const [viewerOpen, setViewerOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -27,12 +38,36 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
     setViewerOpen(false);
   };
 
+  const readAloud = useKiosk((s) => s.readAloud);
+
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  async function toggleEventSpeech() {
+    if (isSpeaking) {
+      await stop();
+      setIsSpeaking(false);
+      return;
+    }
+
+    const text = `${event.title}. ${event.summary}. ${event.body}`;
+
+    setIsSpeaking(true);
+
+    try {
+      await speak(text);
+    } catch (error) {
+      console.error("Unable to read event aloud:", error);
+    } finally {
+      setIsSpeaking(false);
+    }
+  }
+
   return (
     <div
       className="fixed inset-0 z-30 flex items-end bg-bg/70"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
-          onClose();
+          closeEvent();
         }
       }}
     >
@@ -51,28 +86,67 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
           role="region"
           aria-label="Event details"
         >
-          <p className="font-display text-xl font-bold text-accent">
-            {event.date.display} · {era.title}
-            {event.date.status !== "historical" && (
-              <span className="ml-3 rounded-lg border-2 border-highlight px-2 text-highlight">
-                {event.date.status === "planned"
-                  ? "Planned"
-                  : "Ongoing"}
-              </span>
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0 flex-1">
+              {/* Your existing date, era, and status-tag content stays here. */}
+              <p className="font-display text-xl font-bold text-accent">
+                {event.date.display} · {era.title}
+                {event.date.status !== "historical" && (
+                  <span className="ml-3 rounded-lg border-2 border-highlight px-2 text-highlight">
+                    {event.date.status === "planned"
+                      ? "Planned"
+                      : "Ongoing"}
+                  </span>
+                )}
+                {event.tags?.includes("mississippi") && (
+                  <span className="ml-3 rounded-lg border-2 border-accent px-2">Mississippi</span>
+                )}
+              </p>
+            </div>
+
+            {/* The read-aloud button goes here. */}
+            {readAloud && (
+              <button
+                type="button"
+                onClick={toggleEventSpeech}
+                className="group relative grid size-14 shrink-0 place-items-center rounded-full border border-highlight/40 bg-gradient-to-br from-surface to-bg shadow-lg transition-transform duration-300 hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-highlight motion-reduce:transition-none"
+                aria-label={isSpeaking ? "Stop reading event" : "Read event aloud"}
+                aria-pressed={isSpeaking}
+                title={isSpeaking ? "Stop reading" : "Read event aloud"}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`absolute -inset-1 rounded-full border-2 border-highlight/60 ${isSpeaking ? "animate-pulse opacity-100" : "opacity-40"
+                    }`}
+                />
+                <span aria-hidden="true" className="relative h-6 w-6">
+                  <span
+                    className={`absolute inset-0 bg-text ${isSpeaking
+                      ? "scale-75 rounded-sm"
+                      : "[clip-path:polygon(22%_6%,50%_24%,50%_76%,22%_94%)]"
+                      }`}
+                  />
+                  <span
+                    className={`absolute inset-0 bg-text ${isSpeaking
+                      ? "scale-75 rounded-sm"
+                      : "[clip-path:polygon(50%_24%,90%_50%,90%_50%,50%_76%)]"
+                      }`}
+                  />
+                </span>
+              </button>
             )}
-            {event.tags?.includes("mississippi") && (
-              <span className="ml-3 rounded-lg border-2 border-accent px-2">Mississippi</span>
-            )}
-          </p>
+          </div>
 
           <h2
             id="event-title"
             tabIndex={-1}
             data-autofocus
-            className="mt-2 text-5xl"
+            className="mt-2 text-4xl font-bold uppercase text-accent"
           >
             {event.title}
           </h2>
+
+
 
           <p className="mt-4 max-w-[60ch] text-xl">
             {event.summary}
@@ -96,16 +170,15 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
                     type="button"
                     onClick={() => openViewer(index)}
                     className="block w-full rounded-xl focus:outline-none focus:ring-4 focus:ring-accent"
-                    aria-label={`Open ${
-                      img.alt ||
+                    aria-label={`Open ${img.alt ||
                       img.caption ||
                       "image"
-                    } full-screen`}
+                      } full-screen`}
                   >
                     <img
                       src={mediaUrl(img)}
                       alt={img.alt}
-                      className="aspect-video w-full rounded-xl bg-bg object-contain"
+                      className="aspect-video w-full object-contain"
                     />
                   </button>
 
@@ -122,7 +195,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
         <div className="flex flex-wrap items-center justify-between gap-3 border-t-2 border-bg px-8 py-4">
           <button
             disabled={!prev}
-            onClick={() => onGo(prev)}
+            onClick={() => goToEvent(prev)}
             className={buttonClass("secondary")}
           >
             ‹ Previous event
@@ -132,6 +205,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
             {hasQuiz && (
               <Link
                 to={`/quiz/event/${event.id}`}
+                onClick={stop}
                 className={buttonClass("era")}
               >
                 Test yourself
@@ -139,7 +213,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
             )}
 
             <button
-              onClick={onClose}
+              onClick={closeEvent}
               className={buttonClass("primary")}
             >
               Close
@@ -148,7 +222,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
 
           <button
             disabled={!next}
-            onClick={() => onGo(next)}
+            onClick={() => goToEvent(next)}
             className={buttonClass("secondary")}
           >
             Next event ›

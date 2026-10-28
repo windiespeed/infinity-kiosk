@@ -17,16 +17,16 @@
   --color-*: initial;
 
   /* Surfaces */
-  --color-bg: #080b12;          /* page background: deep space navy (top of the page gradient) */
-  --color-bg-glow: #040914;     /* lightest point of the page gradient (bottom) */
-  --color-surface: #040914;     /* cards, panels, event detail: warm charcoal grey */
+  --color-bg: #1E1F23;          /* page background: the wall header's charcoal (top of the page gradient) */
+  --color-bg-glow: #38475E;     /* lightest point of the page gradient (bottom): the wall's slate navy */
+  --color-surface: #263244;     /* cards, panels, event detail: a little darker than the page */
 
   /* Text */
   --color-text: #FFFFFF;        /* primary text */
-  --color-text-muted: #BFCBE6;  /* secondary text, captions */
+  --color-text-muted: #B4C4DC;  /* secondary text, captions: pale steel blue like the wall's taglines */
 
   /* Primary action (buttons) and the text/outline that sits on it */
-  --color-accent: #d4bd91;          /* Apollo gold: buttons, rules, years */
+  --color-accent: #D9B15C;          /* Apollo gold from the wall: buttons, rules, years, headings */
   --color-on-accent: #0A0F1F;
   --color-accent-outline: #F6D689;
 
@@ -39,9 +39,9 @@
   --color-highlight: #6FD3FF;
 
   /* Fonts (bundled offline via @fontsource, imported in main.jsx) */
+  /* The wall uses Montserrat for everything: bold caps headings, regular body, italic quotes. */
   --font-display: "Montserrat", system-ui, sans-serif;     /* headings */
-  --font-serif: "Source Serif 4", Georgia, serif;           /* gold subtitles */
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
 
   /* Corner rounding. Lower numbers make buttons, cards and panels more square.
      Tailwind's defaults are xl = 0.75rem and 2xl = 1rem. */
@@ -100,7 +100,7 @@
       radial-gradient(ellipse 50% 40% at 90% 4%, rgb(170 195 245 / 0.08), transparent 70%),
       radial-gradient(ellipse 90% 45% at 50% 112%, rgb(70 140 255 / 0.12), transparent 70%),
       /* url("../assets/starfield.svg"),    random stars: scripts/make-starfield.mjs */
-      linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg) 35%, var(--color-bg-glow) 100%);
+      linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg) 20%, var(--color-bg-glow) 70%);
     background-size: cover, cover, cover;
     isolation: isolate;
     background-attachment: fixed;
