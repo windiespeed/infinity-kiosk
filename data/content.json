@@ -2348,6 +2348,201 @@
       ],
       "correctIndex": 1,
       "explanation": "Artemis II carried four astronauts around the Moon and returned them safely to Earth in April 2026."
+    },
+    {
+      "id": "q-12",
+      "eventId": "evt-1961-pearl-river-site",
+      "prompt": "Why did NASA select the Pearl River area in Mississippi for a rocket test site?",
+      "choices": [
+        "It was close to the Moon",
+        "It already had a space station",
+        "It offered water routes for transporting rocket stages and room for a safety buffer",
+        "It was the first place to launch an American astronaut"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Pearl River site offered water routes for moving large rocket stages by barge and space for a buffer zone to protect nearby communities."
+    },
+    {
+      "id": "q-13",
+      "eventId": "evt-1963-construction",
+      "prompt": "What happened in Mississippi on May 17, 1963?",
+      "choices": [
+        "Construction began on the Mississippi Test Operations site",
+        "Apollo 11 landed on the Moon",
+        "The International Space Station opened",
+        "The first Space Shuttle launched"
+      ],
+      "correctIndex": 0,
+      "explanation": "Construction began at the Mississippi Test Operations site in Hancock County in May 1963."
+    },
+    {
+      "id": "q-14",
+      "eventId": "evt-1966-first-firing",
+      "prompt": "What did Mississippi's first rocket-stage firing in 1966 test?",
+      "choices": [
+        "The Space Shuttle's landing gear",
+        "The first International Space Station module",
+        "A lunar rover",
+        "A test version of the Saturn V's second stage"
+      ],
+      "correctIndex": 3,
+      "explanation": "On April 23, 1966, a test version of the Saturn V's second stage fired for 15 seconds at the Mississippi test site."
+    },
+    {
+      "id": "q-15",
+      "eventId": "evt-1967-first-stage",
+      "prompt": "How many F-1 engines powered the Saturn V rocket's first stage?",
+      "choices": [
+        "Two",
+        "Five",
+        "Seven",
+        "Ten"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Saturn V first stage used five F-1 engines that together produced more than 7.5 million pounds of thrust."
+    },
+    {
+      "id": "q-16",
+      "eventId": "evt-1970-haise-apollo13",
+      "prompt": "What was Mississippi-born Fred Haise's role on Apollo 13?",
+      "choices": [
+        "Mission director in Florida",
+        "Commander of the first Space Shuttle flight",
+        "Lunar module pilot",
+        "First American to orbit Earth"
+      ],
+      "correctIndex": 2,
+      "explanation": "Fred Haise, a Biloxi native, served as the lunar module pilot on Apollo 13."
+    },
+    {
+      "id": "q-17",
+      "eventId": "evt-1975-shuttle-engine",
+      "prompt": "Where were the Space Shuttle Main Engines tested before flying?",
+      "choices": [
+        "At the Mississippi test site",
+        "Only aboard the International Space Station",
+        "On the Moon",
+        "Inside the Hubble Space Telescope"
+      ],
+      "correctIndex": 0,
+      "explanation": "Every Space Shuttle Main Engine that flew was tested in Mississippi before its flight."
+    },
+    {
+      "id": "q-18",
+      "eventId": "evt-1977-enterprise",
+      "prompt": "What made the Space Shuttle Enterprise different from operational shuttles?",
+      "choices": [
+        "It was the first spacecraft to orbit the Moon",
+        "It carried the first ISS crew",
+        "It was the first shuttle to land on Mars",
+        "It was a test vehicle that never traveled into space"
+      ],
+      "correctIndex": 3,
+      "explanation": "Enterprise was used for approach and landing tests. It was carried by an aircraft and released so crews could test its glide and landing."
+    },
+    {
+      "id": "q-19",
+      "eventId": "evt-1981-truly-sts2",
+      "prompt": "What connection did Mississippi-born Richard Truly have to STS-2?",
+      "choices": [
+        "He commanded Apollo 11",
+        "He piloted the second Space Shuttle flight",
+        "He built the first ISS module",
+        "He was the first person to walk on the Moon"
+      ],
+      "correctIndex": 1,
+      "explanation": "Richard Truly, born in Fayette, Mississippi, piloted Columbia on STS-2 in November 1981."
+    },
+    {
+      "id": "q-20",
+      "eventId": "evt-2012-infinity-opens",
+      "prompt": "What is INFINITY Science Center's connection to Mississippi's space program?",
+      "choices": [
+        "It is a spacecraft that orbits Earth",
+        "It is NASA's astronaut training capsule",
+        "It serves as a visitor center sharing the story of Stennis Space Center and Mississippi's role in space exploration",
+        "It is the launch site for every Space Shuttle"
+      ],
+      "correctIndex": 2,
+      "explanation": "INFINITY Science Center, located in Hancock County, Mississippi, shares the story of Stennis Space Center and the state's contributions to space exploration."
+    },
+    {
+      "id": "q-21",
+      "eventId": "evt-2001-iss-lab-arm",
+      "prompt": "What is Canadarm2 used for on the International Space Station?",
+      "choices": [
+        "Helping assemble and maintain the station and support its operations",
+        "Launching astronauts from Earth",
+        "Providing all the station's oxygen",
+        "Landing the station on a runway"
+      ],
+      "correctIndex": 0,
+      "explanation": "Canadarm2 is a robotic arm that helps crews assemble, maintain, and operate the International Space Station."
+    },
+    {
+      "id": "q-22",
+      "eventId": "evt-2010-cupola",
+      "prompt": "What is the main purpose of the ISS Cupola?",
+      "choices": [
+        "To store rocket fuel",
+        "To provide a landing runway",
+        "To serve as the station's main engine",
+        "To give astronauts wide views of Earth and space and help them observe robotic operations"
+      ],
+      "correctIndex": 3,
+      "explanation": "The Cupola's seven windows provide views of Earth and space and help astronauts observe operations outside the station."
+    },
+    {
+      "id": "q-23",
+      "eventId": "evt-2021-green-run",
+      "prompt": "During the Green Run at Stennis, how long did the SLS core-stage engines fire?",
+      "choices": [
+        "About 15 seconds",
+        "Less than one second",
+        "More than eight minutes",
+        "An entire day"
+      ],
+      "correctIndex": 2,
+      "explanation": "On March 18, 2021, all four engines fired for more than eight minutes during the Green Run test at Stennis."
+    },
+    {
+      "id": "q-24",
+      "eventId": "evt-haise-2021",
+      "prompt": "Which Stennis test stand was renamed in honor of astronaut Fred Haise in 2021?",
+      "choices": [
+        "B-2 Test Stand",
+        "A-1 Test Stand",
+        "The ISS Cupola",
+        "The Saturn V launch tower"
+      ],
+      "correctIndex": 1,
+      "explanation": "NASA renamed Stennis's A-1 Test Stand the Fred Haise Test Stand on December 7, 2021."
+    },
+    {
+      "id": "q-25",
+      "eventId": "evt-2021-green-run",
+      "prompt": "What is the relationship between the SLS rocket's RS-25 engines and the Space Shuttle program?",
+      "choices": [
+        "The RS-25 engines are upgraded Space Shuttle Main Engines",
+        "They were designed for the first Sputnik satellite",
+        "They were used only on Apollo 11",
+        "They are the engines that power the ISS Cupola"
+      ],
+      "correctIndex": 0,
+      "explanation": "The SLS rocket uses upgraded RS-25 engines derived from the Space Shuttle Main Engines, which were also tested at Stennis."
+    },
+    {
+      "id": "q-26",
+      "eventId": "evt-future-placeholder",
+      "prompt": "Will NASA continue planning missions to return astronauts to the Moon through the Artemis program?",
+      "choices": [
+        "No, NASA has ended the Artemis program",
+        "Yes, NASA plans future Artemis missions to the Moon",
+        "No, NASA plans to explore only Mars",
+        "Yes, but only with robotic spacecraft"
+      ],
+      "correctIndex": 1,
+      "explanation": "NASA's Artemis program includes plans for future lunar missions. These plans and their schedules may change as the program develops."
     }
   ]
 }

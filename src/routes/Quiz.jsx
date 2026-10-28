@@ -12,6 +12,7 @@ import { useContent } from "../hooks/useContent.jsx";
 import { buttonClass } from "../lib/ui.js";
 import { COMPANION_URL } from "../lib/config.js";
 import QuizQuestion from "../components/QuizQuestion.jsx";
+import RocketLaunch from "../components/RocketLaunch.jsx";
 
 const HOLD_MS = 2 * 60 * 1000;
 
@@ -37,6 +38,7 @@ export function QuizHome() {
   const navigate = useNavigate();
   const [challengeQuestions, setChallengeQuestions] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [isLaunching, setIsLaunching] = useState(false);
 
   if (!content || !eras || !eventById) {
     return (
@@ -72,11 +74,19 @@ export function QuizHome() {
       return;
     }
 
-    navigate("/quiz/complete", {
-      state: { completed: true },
-    });
+    setIsLaunching(true);
   }
-
+  if (isLaunching) {
+    return (
+      <RocketLaunch
+        onComplete={() =>
+          navigate("/quiz/complete", {
+            state: { completed: true },
+          })
+        }
+      />
+    );
+  }
   if (challengeQuestions) {
     const question = challengeQuestions[questionIndex];
 
@@ -88,6 +98,7 @@ export function QuizHome() {
         totalQuestions={challengeQuestions.length}
         onNext={nextQuestion}
         isLastQuestion={questionIndex === challengeQuestions.length - 1}
+        isTimelineChallenge={true}
       />
     );
   }

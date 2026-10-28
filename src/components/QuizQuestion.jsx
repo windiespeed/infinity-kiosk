@@ -9,6 +9,7 @@ export default function QuizQuestion({
   totalQuestions,
   onNext,
   isLastQuestion = false,
+  isTimelineChallenge = false,
 }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const resultRef = useRef(null);
@@ -188,7 +189,8 @@ export default function QuizQuestion({
               className={buttonClass("primary", "mt-5 w-full text-xl")}
               onClick={continueQuiz}
             >
-              {isLastQuestion ? "Finish Quiz" : "Next Question"}
+              {isLastQuestion ? isTimelineChallenge ?
+              "Ready to Launch!" : "Finish Quiz" : "Next Question"}
             </button>
           ) : (
             <p className="mt-4 text-base">

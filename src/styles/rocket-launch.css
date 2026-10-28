@@ -1,0 +1,146 @@
+
+.rocket-launch {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+  color: #ffffff;
+  text-align: center;
+  animation: launch-fade-in 0.5s ease-out both;
+}
+
+.rocket-launch__glow {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  background: #6fd3ff;
+  filter: blur(90px);
+  opacity: 0.18;
+  transform: translateX(-50%);
+  animation: launch-glow 2.8s ease-in-out both;
+}
+
+.rocket-launch__image {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: min(65vw, 520px);
+  height: 90vh;
+  object-fit: contain;
+  left: 50%;
+  bottom: -15vh;
+  transform: translateX(-50%);
+  animation: rocket-liftoff 2.8s
+    cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    -webkit-mask-image: linear-gradient(
+  to bottom,
+  black 0%,
+  black 78%,
+  transparent 100%
+);
+mask-image: linear-gradient(
+  to bottom,
+  black 0%,
+  black 78%,
+  transparent 100%
+);
+}
+
+.rocket-launch__caption {
+  position: absolute;
+  z-index: 2;
+  top: 8%;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  text-align: center;
+  animation: caption-appear 0.7s ease-out 3.6s both;
+}
+
+html[data-motion="reduce"] .rocket-launch__caption {
+  animation-delay: 0s;
+}
+
+.rocket-launch__caption p {
+  margin: 0 0 0.5rem;
+  color: #f6d689;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.rocket-launch__caption h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 3vw, 2.5rem);
+  font-weight: 600;
+}
+
+@keyframes launch-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes rocket-liftoff {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 15vh) scale(0.96);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -28vh) scale(1);
+  }
+}
+
+
+@keyframes launch-glow {
+  0% {
+    opacity: 0.05;
+    transform: translateX(-50%) scale(0.7);
+  }
+  50% {
+    opacity: 0.28;
+    transform: translateX(-50%) scale(1.15);
+  }
+  100% {
+    opacity: 0.12;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes caption-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rocket-launch,
+  .rocket-launch__glow,
+  .rocket-launch__image,
+  .rocket-launch__caption {
+    animation: none;
+  }
+}
