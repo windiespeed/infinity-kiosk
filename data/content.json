@@ -13,7 +13,8 @@
       "overview": "The launch of Sputnik 1 in 1957 began the space age. The United States responded by creating NASA and developing early human spaceflight programs that led to missions carrying astronauts into orbit.",
       "startYear": 1901,
       "endYear": 1969,
-      "order": 1
+      "order": 1,
+      "coverMediaId": "img-cover-early"
     },
     {
       "id": "apollo",
@@ -52,7 +53,8 @@
       "overview": "Recent exploration efforts include the Artemis program, which is working toward sustained human exploration of the Moon. Artemis I tested an uncrewed flight around the Moon in 2022, while future mission plans continue to develop.",
       "startYear": 2021,
       "endYear": null,
-      "order": 5
+      "order": 5,
+      "coverMediaId": "img-cover-future"
     }
   ],
   "events": [
@@ -70,7 +72,9 @@
       "title": "The Soviet Union launches Sputnik 1",
       "summary": "Sputnik 1 became the first artificial satellite to orbit Earth, marking the beginning of the Space Age.",
       "body": "Launched by the Soviet Union on October 4, 1957, Sputnik 1 was a small satellite that transmitted radio signals from orbit. Its success drew worldwide attention and intensified the space race between the Soviet Union and the United States.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1957-sputnik"
+      ],
       "published": true
     },
     {
@@ -87,7 +91,9 @@
       "title": "Explorer 1 becomes the first U.S. satellite",
       "summary": "Its instruments made a surprising discovery about the space around Earth.",
       "body": "Launched on January 31, 1958, Explorer 1 carried scientific instruments designed to study cosmic rays and other conditions in orbit. Its data helped reveal the radiation belts around Earth later known as the Van Allen belts.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1958-explorer1"
+      ],
       "published": true
     },
     {
@@ -104,7 +110,9 @@
       "title": "NASA begins operations",
       "summary": "The United States established NASA as its civilian agency for aeronautics and space exploration.",
       "body": "President Dwight D. Eisenhower signed the National Aeronautics and Space Act in July 1958. NASA officially began operating on October 1, 1958, bringing together existing aeronautics and space research work under one civilian agency.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1958-nasa"
+      ],
       "published": true
     },
     {
@@ -138,7 +146,9 @@
       "title": "Alan Shepard becomes the first American in space",
       "summary": "His 15-minute flight put the United States in the race to send people into space.",
       "body": "On May 5, 1961, NASA astronaut Alan Shepard flew the Mercury spacecraft Freedom 7 on a suborbital trajectory. Unlike Yuri Gagarin's earlier flight, Shepard's mission did not complete an orbit of Earth, but it established an important American human-spaceflight milestone.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1961-shepard"
+      ],
       "published": true
     },
     {
@@ -155,7 +165,9 @@
       "title": "John Glenn becomes the first American to orbit Earth",
       "summary": "Glenn's flight lasted just under five hours.",
       "body": "Glenn launched aboard Friendship 7 on February 20, 1962, and completed three orbits of Earth before returning safely. The mission demonstrated that American astronauts could operate in orbit and return to Earth.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1962-glenn"
+      ],
       "published": true
     },
     {
@@ -172,7 +184,9 @@
       "title": "Surveyor 1 makes a soft landing on the Moon",
       "summary": "A robot lander showed that the Moon's surface could hold up a spacecraft.",
       "body": "Surveyor 1 launched on May 30, 1966, and landed on the Moon on June 2. Its photographs and engineering data helped scientists understand the lunar surface and supported preparations for later crewed lunar missions.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1966-surveyor1"
+      ],
       "published": true
     },
     {
@@ -189,7 +203,9 @@
       "title": "OAO-2 opens a new window on the universe",
       "summary": "NASA's OAO-2 observatory began studying stars in ultraviolet light from orbit.",
       "body": "Launched on December 7, 1968, the Orbiting Astronomical Observatory 2, nicknamed Stargazer, made ultraviolet observations of stars that could not be studied in the same way from the ground because Earth's atmosphere blocks much ultraviolet light. It showed that space missions could advance astronomy as well as human exploration.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1968-oao2"
+      ],
       "published": true
     },
     {
@@ -206,7 +222,9 @@
       "title": "President Kennedy sets the Moon-landing goal",
       "summary": "President John F. Kennedy challenged the United States to land astronauts on the Moon and return them safely before the decade ended.",
       "body": "In an address to Congress on May 25, 1961, Kennedy called for a crewed lunar landing before the end of the 1960s. Meeting the goal required years of spacecraft design, rocket development, mission planning, astronaut training, and scientific work.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1961-kennedy-moon-goal"
+      ],
       "published": true
     },
     {
@@ -223,7 +241,9 @@
       "title": "The Apollo 1 crew is lost in a test fire",
       "summary": "A cabin fire during a preflight test killed astronauts Gus Grissom, Ed White, and Roger B. Chaffee.",
       "body": "On January 27, 1967, a fire swept through the Apollo command module during a ground test. The tragedy led to extensive investigation and major changes to spacecraft design, procedures, and safety before crewed Apollo flights resumed. This is a solemn but important part of the program's history.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1967-apollo1"
+      ],
       "published": true
     },
     {
@@ -240,7 +260,9 @@
       "title": "Apollo 7 completes the first crewed Apollo flight",
       "summary": "Apollo 7 tested the Apollo command and service module in Earth orbit with astronauts aboard.",
       "body": "Launched on October 11, 1968, Apollo 7 was the first crewed mission of the Apollo program. The crew tested spacecraft systems and procedures needed for future missions, helping restore confidence in the program after the Apollo 1 tragedy.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1968-apollo7"
+      ],
       "published": true
     },
     {
@@ -257,7 +279,9 @@
       "title": "Apollo 8 becomes the first crewed mission to orbit the Moon",
       "summary": "Apollo 8 carried astronauts around the Moon for the first time and returned them safely to Earth.",
       "body": "Apollo 8 launched on December 21, 1968, and entered lunar orbit on December 24. Frank Borman, Jim Lovell, and Bill Anders saw Earth from lunar orbit and helped demonstrate that people could travel to the Moon and navigate safely around it.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1968-apollo8"
+      ],
       "published": true
     },
     {
@@ -274,7 +298,9 @@
       "title": "Apollo 10 rehearses the lunar landing",
       "summary": "The crew flew every step of a Moon landing except the landing itself.",
       "body": "Apollo 10 launched on May 18, 1969. During the mission, the lunar module descended to about nine miles above the Moon's surface before returning to the command module. This full dress rehearsal tested procedures and systems for the upcoming Apollo 11 landing.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1969-apollo10"
+      ],
       "published": true
     },
     {
@@ -291,7 +317,9 @@
       "title": "Apollo 11 lands astronauts on the Moon",
       "summary": "Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon while Michael Collins orbited above.",
       "body": "Apollo 11 achieved the national goal announced by President Kennedy. The lunar module landed on July 20, 1969, and Armstrong and Aldrin explored the surface while Collins remained in lunar orbit. The crew returned safely to Earth on July 24.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1969-apollo11"
+      ],
       "published": true
     },
     {
@@ -308,7 +336,9 @@
       "title": "Apollo 13 faces an emergency in space",
       "summary": "An oxygen tank failure forced Apollo 13 to abandon its planned Moon landing and focus on bringing the crew home.",
       "body": "On April 13, 1970, an explosion damaged Apollo 13's service module. The crew and mission-control teams worked together to conserve power and supplies, use the lunar module as a lifeboat, and return the astronauts safely to Earth on April 17.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1970-apollo13"
+      ],
       "published": true
     },
     {
@@ -325,7 +355,9 @@
       "title": "Apollo 17 makes the final Apollo lunar landing",
       "summary": "Apollo 17 became the last crewed mission to land on the Moon during the Apollo program.",
       "body": "Apollo 17 landed in the Taurus-Littrow region on December 11, 1972. The crew conducted extensive geology work and collected lunar samples. Harrison Schmitt, a geologist, became the first professional scientist to explore the Moon's surface, and Apollo 17 remains the most recent crewed lunar landing as of this draft.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1972-apollo17"
+      ],
       "published": true
     },
     {
@@ -342,7 +374,9 @@
       "title": "Columbia flies the first Space Shuttle mission",
       "summary": "The first Space Shuttle flight tested a reusable spacecraft in orbit and demonstrated its return as a runway landing.",
       "body": "Space Shuttle Columbia launched on April 12, 1981, with astronauts John Young and Robert Crippen aboard. STS-1 was the first orbital test flight of NASA's Space Shuttle system, beginning three decades of shuttle missions.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1981-sts1"
+      ],
       "published": true
     },
     {
@@ -359,7 +393,9 @@
       "title": "Sally Ride becomes the first American woman in space",
       "summary": "She flew aboard Challenger on STS-7.",
       "body": "Launched on June 18, 1983, STS-7 also deployed communications satellites and conducted experiments. Ride's flight marked a milestone in expanding who could take part in American human spaceflight.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1983-sally-ride"
+      ],
       "published": true
     },
     {
@@ -376,7 +412,9 @@
       "title": "The Space Shuttle Challenger is lost",
       "summary": "Challenger broke apart shortly after launch, killing all seven crew members and prompting a major safety investigation.",
       "body": "On January 28, 1986, Challenger was lost shortly after liftoff on mission STS-51L. The accident led to a lengthy pause in shuttle flights and changes to the program's hardware, management, and safety practices. This is a solemn but important part of the Shuttle era.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1986-challenger"
+      ],
       "published": true
     },
     {
@@ -393,7 +431,9 @@
       "title": "The Space Shuttle deploys the Hubble Space Telescope",
       "summary": "Discovery deployed Hubble into orbit, giving astronomers a powerful space-based observatory.",
       "body": "Space Shuttle Discovery launched on STS-31 on April 24, 1990, and released the Hubble Space Telescope into orbit on April 25. Hubble has helped scientists study stars, galaxies, planets, and the evolution of the universe.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1990-hubble"
+      ],
       "published": true
     },
     {
@@ -410,7 +450,9 @@
       "title": "Atlantis docks with Russia's Mir space station",
       "summary": "The first Space Shuttle–Mir docking demonstrated a new level of U.S.–Russian cooperation in human spaceflight.",
       "body": "During STS-71, Space Shuttle Atlantis docked with Mir on June 29, 1995. The joint mission included crew exchange and scientific work and helped build experience for later international operations aboard the International Space Station.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1995-sts71-mir"
+      ],
       "published": true
     },
     {
@@ -427,7 +469,9 @@
       "title": "The Space Shuttle Columbia is lost during reentry",
       "summary": "Columbia broke apart during reentry after a scientific research mission, killing all seven crew members.",
       "body": "On February 1, 2003, Columbia was lost during its return to Earth after STS-107. The accident led to a renewed investigation of shuttle safety and further changes before flights resumed. This is a solemn but important part of the Shuttle era.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-2003-columbia"
+      ],
       "published": true
     },
     {
@@ -444,7 +488,9 @@
       "title": "Atlantis launches the final Space Shuttle mission",
       "summary": "STS-135 closed out 30 years of Space Shuttle flights.",
       "body": "Space Shuttle Atlantis launched on July 8, 2011, carrying supplies and equipment to the International Space Station. After the mission returned to Earth, NASA's 30-year Space Shuttle Program came to an end. The station remained in operation, but the Shuttle timeline tells the story of the spacecraft and its missions.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-2011-sts135"
+      ],
       "published": true
     },
     {
@@ -461,7 +507,9 @@
       "title": "The first International Space Station module launches",
       "summary": "The Zarya control module reached orbit and began the assembly of the International Space Station.",
       "body": "Launched on November 20, 1998, Zarya provided early power, propulsion, and control functions for the growing station. Its launch marked the beginning of the on-orbit assembly of the International Space Station.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1998-zarya"
+      ],
       "published": true
     },
     {
@@ -478,7 +526,9 @@
       "title": "The first long-duration crew begins living on the ISS",
       "summary": "Expedition 1 arrived at the International Space Station and began continuous human occupancy of the station.",
       "body": "On November 2, 2000, NASA astronaut William Shepherd and cosmonauts Yuri Gidzenko and Sergei Krikalev began the first long-duration stay aboard the ISS. Crews have lived and worked on the station continuously since then.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-2000-expedition1"
+      ],
       "published": true
     },
     {
@@ -495,7 +545,9 @@
       "title": "The ISS gains a major laboratory and robotic arm",
       "summary": "The Destiny research laboratory and Canadarm2 gave crews more space for science and a powerful tool for station assembly.",
       "body": "Destiny, the U.S. laboratory module, was installed in February 2001. Canadarm2 was installed during the STS-100 mission in April 2001. Together, these additions strengthened the ISS as a research workplace and made it easier to assemble and maintain the growing station. The event is dated to the Canadarm2 installation, the later of these two 2001 milestones.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-2001-iss-lab-arm"
+      ],
       "published": true
     },
     {
@@ -512,7 +564,9 @@
       "title": "European and Japanese laboratories expand ISS research",
       "summary": "The European Columbus and Japanese Kibo laboratories added major research facilities to the International Space Station in 2008.",
       "body": "Columbus was attached to the station in February 2008, and Kibo's pressurized laboratory module was installed in June. These laboratories provided additional research space and represented the contributions of international partners.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-2008-international-labs"
+      ],
       "published": true
     },
     {
@@ -529,7 +583,9 @@
       "title": "The ISS gains the Cupola observation window",
       "summary": "The Cupola gave astronauts a wide view of Earth and a useful vantage point for observing station operations.",
       "body": "Delivered with the Tranquility module, the Cupola was installed on the ISS in February 2010. Its seven windows provide views of Earth and space and help crews observe robotic operations outside the station.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-2010-cupola"
+      ],
       "published": true
     },
     {
@@ -546,7 +602,9 @@
       "title": "The ISS continues to support research in orbit",
       "summary": "The International Space Station remains a platform for international research in microgravity, Earth observation, technology, and human health.",
       "body": "Since the first long-duration crew arrived in 2000, astronauts and partner organizations have used the station to conduct experiments that are difficult or impossible to perform on Earth. This is an ongoing story: its details should be reviewed as the station's research and operating plans change.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-iss-ongoing-research"
+      ],
       "published": true
     },
     {
@@ -563,7 +621,9 @@
       "title": "Artemis I tests the rocket and Orion spacecraft",
       "summary": "The uncrewed flight around the Moon paved the way for astronauts to follow.",
       "body": "Artemis I launched on November 16, 2022, traveled beyond the Moon, and returned to Earth on December 11, 2022. The flight tested systems intended to support future crewed Artemis missions.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-2022-artemis1"
+      ],
       "published": true
     },
     {
@@ -580,7 +640,9 @@
       "title": "Astronauts fly around the Moon on Artemis II",
       "summary": "Artemis II carried four astronauts on the first crewed Artemis lunar flyby, testing systems for future human missions.",
       "body": "Artemis II launched on April 1, 2026, and splashed down on April 10 after a crewed flight around the Moon. The mission marked an important step toward future lunar exploration.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-2026-artemis2"
+      ],
       "published": true
     },
     {
@@ -597,7 +659,9 @@
       "title": "Artemis prepares for future lunar missions",
       "summary": "Later Artemis missions aim to return astronauts to the surface of the Moon.",
       "body": "As of October 2026, NASA describes Artemis III as a planned 2027 mission to test rendezvous and docking with lunar-lander test articles in Earth orbit, with Artemis IV targeted for 2028 and intended to return astronauts to the lunar surface. These are plans, not completed events, and schedules can change.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-future-placeholder"
+      ],
       "published": true
     },
     {
@@ -784,7 +848,8 @@
         "img-ssme-install-a1-1979-ssc-79-116",
         "img-tugboat-apollo-1978-ssc-78-447",
         "img-ssme-firing-closeup-1981-ssc-81-201",
-        "img-ssme-b1-deer-1996-ssc-96-129"
+        "img-ssme-b1-deer-1996-ssc-96-129",
+        "img-test-stands-aerial-1992-ssc-92-039"
       ],
       "tags": [
         "mississippi"
@@ -806,7 +871,9 @@
       "title": "Two Mississippians fly the Space Shuttle Enterprise",
       "summary": "In 1977, Fred Haise of Biloxi and Richard Truly of Fayette were two of the four pilots who flew the shuttle Enterprise in its approach and landing tests.",
       "body": "Enterprise was a test shuttle that never went to space. It was carried on top of a Boeing 747 and released in the air so astronauts could prove the shuttle could glide and land on a runway. Haise commanded one crew and Truly was the pilot of the other.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-1977-enterprise"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -851,7 +918,8 @@
       "summary": "Donald Peterson, born in Winona, Mississippi, flew on STS-6 in April 1983, the first flight of Challenger.",
       "body": "During the mission, Peterson and Story Musgrave made the first spacewalk of the Space Shuttle program, testing the suits and tools that later astronauts used to build and repair things in space.",
       "mediaIds": [
-        "img-peterson-musgrave-sts6-1983"
+        "img-peterson-musgrave-sts6-1983",
+        "img-peterson-portrait"
       ],
       "tags": [
         "mississippi"
@@ -925,7 +993,9 @@
         "img-haise-roosa-moon-tree-2011-ssc-20110203-s00095",
         "img-infinity-ribbon-cutting-2012-ssc-20120411-s00553",
         "img-infinity-contract-signing-2010-ssc-20100406-s00593",
-        "img-infinity-opening-2012-ssc-20120411-s00489s"
+        "img-infinity-opening-2012-ssc-20120411-s00489s",
+        "img-stennisphere-aerial-2001-ssc-20010425-s046-143",
+        "img-xavier-students-sphere-2009-ssc-20090419-s00576"
       ],
       "tags": [
         "mississippi"
@@ -947,7 +1017,9 @@
       "title": "The Artemis Moon rocket's core stage fires at Stennis",
       "summary": "On March 18, 2021, all four engines fired for more than eight minutes on the B-2 test stand.",
       "body": "The Green Run test proved the core stage of the Space Launch System rocket was ready to fly. More than 50 years after Saturn V stages were tested on the same stand, Mississippi helped send the next rocket toward the Moon. Its four RS-25 engines are upgraded Space Shuttle Main Engines, also tested at Stennis.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-2021-green-run"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1128,7 +1200,8 @@
       "summary": "In America, his team would launch the country's first satellite.",
       "body": "At the end of the war, von Braun surrendered to American forces and came to the United States with his rocket team. In 1950 they moved to Huntsville, Alabama, to build rockets for the U.S. Army. He became a U.S. citizen in 1955, and in 1958 his team's Jupiter C rocket launched Explorer 1, America's first satellite.",
       "mediaIds": [
-        "img-vonbraun-1964"
+        "img-vonbraun-1964",
+        "img-vonbraun-1945"
       ],
       "tags": [
         "mississippi"
@@ -1174,7 +1247,9 @@
       "title": "\"Go through Mississippi\"",
       "summary": "To reach the Moon, the Saturn V's huge stages first had to be tested on the ground.",
       "body": "Von Braun famously said that whatever way America got to the Moon, \"we will have to go through Mississippi to get there.\" He personally chose Navy Capt. William Fortune to build the Mississippi test site, and Fortune became its first manager on October 1, 1962.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-vonbraun-1961"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1428,7 +1503,9 @@
       "title": "Donald Peterson born in Winona",
       "summary": "He would grow up to make the first spacewalk of the Space Shuttle program.",
       "body": "Donald Herod Peterson was born in Winona, Mississippi, on October 22, 1933. He graduated from West Point in 1955 and later earned a master's degree in nuclear engineering.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-peterson-portrait"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1839,6 +1916,293 @@
       "alt": "The five STS-8 astronauts smile during a phone call with President Reagan.",
       "caption": "The STS-8 crew talks with President Ronald Reagan after landing, September 5, 1983.",
       "credit": "NASA"
+    },
+    {
+      "id": "img-test-stands-aerial-1992-ssc-92-039",
+      "file": "img-test-stands-aerial-1992-ssc-92-039.jpg",
+      "alt": "Aerial view of four large test stands rising from a cleared site surrounded by forest.",
+      "caption": "The E-1, A-1, A-2 and B-1 test stands at Stennis Space Center, 1992.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-peterson-portrait",
+      "file": "img-peterson-portrait.jpg",
+      "alt": "Astronaut Donald Peterson smiles in an orange flight suit, holding his helmet beside an American flag.",
+      "caption": "Donald Peterson of Winona, Mississippi, in his official NASA portrait.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-vonbraun-1945",
+      "file": "img-vonbraun-1945.jpg",
+      "alt": "Wernher von Braun, his arm in a cast, stands with a group of men in coats.",
+      "caption": "Wernher von Braun, his arm in a cast after a car accident, surrenders to U.S. Army soldiers in May 1945.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-vonbraun-1961",
+      "file": "img-vonbraun-1961.jpg",
+      "alt": "A row of men, women and children stands on a lawn in front of a riverside building, with a boat behind them.",
+      "caption": "Von Braun and his family arrive by boat at the Mississippi Test Facility, October 26, 1964.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-stennisphere-aerial-2001-ssc-20010425-s046-143",
+      "file": "img-stennisphere-aerial-2001-ssc-20010425-s046-143.jpg",
+      "alt": "Aerial view of a visitor center with a tall tower, a rocket display and a lawn among trees.",
+      "caption": "StenniSphere, the visitor center at Stennis Space Center before INFINITY, 2001.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-xavier-students-sphere-2009-ssc-20090419-s00576",
+      "file": "img-xavier-students-sphere-2009-ssc-20090419-s00576.jpg",
+      "alt": "Students in uniforms stand around a large glowing globe of Earth inside an exhibit hall.",
+      "caption": "New Orleans students watch Earth's clouds move on Science on a Sphere at StenniSphere, 2009.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1957-sputnik",
+      "file": "img-1957-sputnik.jpg",
+      "alt": "Three astronauts in blue flight suits stand under a silver model of Sputnik 1 with long antennas.",
+      "caption": "Space station crew members pose under a model of Sputnik 1 at a museum in Baikonur, Kazakhstan, 2012.",
+      "credit": "NASA/Victor Zelentsov"
+    },
+    {
+      "id": "img-1958-explorer1",
+      "file": "img-1958-explorer1.jpg",
+      "alt": "Three men in suits hold a long model of the Explorer 1 satellite over their heads.",
+      "caption": "William Pickering, James Van Allen and Wernher von Braun celebrate Explorer 1, January 31, 1958.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1958-nasa",
+      "file": "img-1958-nasa.jpg",
+      "alt": "President Eisenhower smiles as two men hold rolled-up papers beside him.",
+      "caption": "President Eisenhower names T. Keith Glennan NASA's first administrator and Hugh Dryden his deputy, 1958.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1961-shepard",
+      "file": "img-1961-shepard.jpg",
+      "alt": "A slender white rocket lifts off beside a red launch tower.",
+      "caption": "Mercury-Redstone 3 launches Alan Shepard in Freedom 7, May 5, 1961.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1962-glenn",
+      "file": "img-1962-glenn.jpg",
+      "alt": "A rocket rises on a column of fire and smoke beside its launch tower.",
+      "caption": "An Atlas rocket launches John Glenn in Friendship 7, February 20, 1962.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1966-surveyor1",
+      "file": "img-1966-surveyor1.jpg",
+      "alt": "A grainy black and white view of the Moon's surface with the dark shadow of a spacecraft.",
+      "caption": "Surveyor 1's own shadow falls across the Moon's surface, 1966.",
+      "credit": "NASA/JPL"
+    },
+    {
+      "id": "img-1968-oao2",
+      "file": "img-1968-oao2.jpg",
+      "alt": "Inside a huge test chamber, a satellite's protective cover hangs open after being released.",
+      "caption": "Engineers test the protective launch cover for the OAO-2 observatory before its 1968 launch.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1961-kennedy-moon-goal",
+      "file": "img-1961-kennedy-moon-goal.jpg",
+      "alt": "President Kennedy speaks at a podium with microphones, with two men seated behind him.",
+      "caption": "President Kennedy asks Congress to send astronauts to the Moon, May 25, 1961.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1967-apollo1",
+      "file": "img-1967-apollo1.jpg",
+      "alt": "Three astronauts in light blue flight suits sit at a table with a model of their capsule.",
+      "caption": "The Apollo 1 crew: Ed White, Gus Grissom and Roger Chaffee.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1968-apollo7",
+      "file": "img-1968-apollo7.jpg",
+      "alt": "A rocket climbs into the sky behind palm trees as people watch from the ground.",
+      "caption": "Apollo 7 lifts off from Cape Kennedy, October 11, 1968.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1968-apollo8",
+      "file": "img-1968-apollo8.jpg",
+      "alt": "A small blue Earth rises above the gray horizon of the Moon against black space.",
+      "caption": "Earth rises over the Moon, photographed by the Apollo 8 crew, December 1968.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1969-apollo10",
+      "file": "img-1969-apollo10.jpg",
+      "alt": "A small spacecraft flies above the Moon's cratered surface, seen through a window.",
+      "caption": "The Apollo 10 lunar module, nicknamed Snoopy, returns to the command module above the Moon, May 1969.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1969-apollo11",
+      "file": "img-1969-apollo11.jpg",
+      "alt": "An astronaut in a white spacesuit walks on the gray lunar surface, his shadow stretching behind him.",
+      "caption": "Buzz Aldrin walks on the Moon near the lunar module Eagle, July 20, 1969. Neil Armstrong took the photo.",
+      "credit": "NASA/Neil A. Armstrong"
+    },
+    {
+      "id": "img-1970-apollo13",
+      "file": "img-1970-apollo13.jpg",
+      "alt": "Three men in suits pose around a globe of the Moon in front of a starry backdrop.",
+      "caption": "The Apollo 13 crew: Jim Lovell, Jack Swigert and Fred Haise of Biloxi.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1972-apollo17",
+      "file": "img-1972-apollo17.jpg",
+      "alt": "The whole Earth, blue with white clouds, floats in black space.",
+      "caption": "Earth from Africa to Antarctica, photographed by the Apollo 17 crew on the way to the Moon, December 1972.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1981-sts1",
+      "file": "img-1981-sts1.jpg",
+      "alt": "A space shuttle rises from its launch pad on a bright plume above green trees.",
+      "caption": "Columbia lifts off on the first Space Shuttle mission, April 12, 1981.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1983-sally-ride",
+      "file": "img-1983-sally-ride.jpg",
+      "alt": "Sally Ride smiles while talking on a headset in front of rows of switches on the shuttle flight deck.",
+      "caption": "Sally Ride on Challenger's flight deck during STS-7, June 1983.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1986-challenger",
+      "file": "img-1986-challenger.jpg",
+      "alt": "Seven astronauts in light blue flight suits hold their helmets and smile.",
+      "caption": "The STS-51L crew during launch training at Kennedy Space Center, January 1986.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1990-hubble",
+      "file": "img-1990-hubble.jpg",
+      "alt": "The Hubble Space Telescope is held by a robot arm high above Earth's clouds.",
+      "caption": "Discovery's robot arm holds Hubble above Earth before releasing it, April 1990.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1995-sts71-mir",
+      "file": "img-1995-sts71-mir.jpg",
+      "alt": "A space shuttle, docked and seen from above, with Earth's edge and a bright Sun beyond.",
+      "caption": "Atlantis docked to the Mir space station during STS-71, 1995.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-2003-columbia",
+      "file": "img-2003-columbia.jpg",
+      "alt": "Seven astronauts in orange launch suits pose with their mission patch between American and Israeli flags.",
+      "caption": "The seven STS-107 astronauts in their crew portrait.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-2011-sts135",
+      "file": "img-2011-sts135.jpg",
+      "alt": "A space shuttle lit by bright lights lands on a dark runway before dawn.",
+      "caption": "Atlantis lands for the last time, ending the Space Shuttle Program, July 21, 2011.",
+      "credit": "NASA/Kenny Allen"
+    },
+    {
+      "id": "img-1998-zarya",
+      "file": "img-1998-zarya.jpg",
+      "alt": "A white cylindrical module with solar panels floats above Earth.",
+      "caption": "The Zarya module before the Endeavour crew joined it to the Unity node, December 1998.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-2000-expedition1",
+      "file": "img-2000-expedition1.jpg",
+      "alt": "Nine crew members in red and blue shirts crowd together inside a space station module.",
+      "caption": "The Expedition 1 and STS-97 crews in the first crew photo taken aboard the station, December 2000.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-2001-iss-lab-arm",
+      "file": "img-2001-iss-lab-arm.jpg",
+      "alt": "A long silver module attached to the space station, with solar panels and blue ocean below.",
+      "caption": "The newly attached Destiny laboratory on the International Space Station, February 2001.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-2008-international-labs",
+      "file": "img-2008-international-labs.jpg",
+      "alt": "Silver laboratory modules of the space station shine against black space.",
+      "caption": "Japan's new Kibo laboratory on the International Space Station, June 2008.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-2010-cupola",
+      "file": "img-2010-cupola.jpg",
+      "alt": "An astronaut aims a camera out of a ring of windows looking down at Earth.",
+      "caption": "Canadian astronaut David Saint-Jacques photographs Earth from the Cupola, 2019.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-iss-ongoing-research",
+      "file": "img-iss-ongoing-research.jpg",
+      "alt": "An astronaut smiles as she works with her hands inside a sealed glovebox.",
+      "caption": "NASA astronaut Kate Rubins works on an experiment in a science glovebox aboard the station, 2016.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-2022-artemis1",
+      "file": "img-2022-artemis1.jpg",
+      "alt": "A rocket lifts off at night in a burst of orange light between tall launch towers.",
+      "caption": "The Space Launch System rocket launches Artemis I, November 16, 2022.",
+      "credit": "NASA/Joel Kowsky"
+    },
+    {
+      "id": "img-2026-artemis2",
+      "file": "img-2026-artemis2.jpg",
+      "alt": "A tall orange and white rocket rises from its pad between lightning towers in clouds of steam.",
+      "caption": "Artemis II lifts off with four astronauts aboard, April 1, 2026.",
+      "credit": "NASA/Brandon Hancock"
+    },
+    {
+      "id": "img-future-placeholder",
+      "file": "img-future-placeholder.jpg",
+      "alt": "A rocket engine fires inside a test stand, surrounded by steam and bright light.",
+      "caption": "An RS-25 engine is tested on the Fred Haise Test Stand at Stennis for future Artemis flights, 2024.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-1977-enterprise",
+      "file": "img-1977-enterprise.jpg",
+      "alt": "A space shuttle flies above a jumbo jet high over the clouds.",
+      "caption": "Enterprise flies free above its 747 carrier jet during the 1977 approach and landing tests.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-2021-green-run",
+      "file": "img-2021-green-run.jpg",
+      "alt": "A huge white cloud bursts from a test stand beyond a marsh.",
+      "caption": "The Artemis core stage fires on the B-2 Test Stand at Stennis, March 18, 2021.",
+      "credit": "NASA/Danny Nowlin"
+    },
+    {
+      "id": "img-cover-early",
+      "file": "img-cover-early.jpg",
+      "alt": "A giant white rocket stage is lifted by cranes into a tall test stand.",
+      "caption": "A Saturn V second stage is hoisted into a test stand at the Mississippi Test Facility.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-cover-future",
+      "file": "img-cover-future.jpg",
+      "alt": "The top of an orange and white rocket with the NASA logo stands beside its launch tower.",
+      "caption": "The Artemis II rocket and Orion spacecraft roll out to the launch pad, January 2026.",
+      "credit": "NASA/Brandon Hancock"
     }
   ],
   "questions": [
