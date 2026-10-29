@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { useContent } from "../hooks/useContent.jsx";
 import EventPanel from "../components/EventPanel.jsx";
@@ -15,7 +15,9 @@ export default function EraScreen() {
   const navigate = useNavigate();
   const { eras, eraById, eventsForEra, eventCover, mediaUrl } = useContent();
   const trackRef = useRef(null);
+  const scrollerRef = useRef(null);
   const lastOpened = useRef(null);
+  const [more, setMore] = useState({ left: false, right: false });
 
   const era = eraById(eraId);
   const events = era ? eventsForEra(era.id) : [];
@@ -34,6 +36,31 @@ export default function EraScreen() {
       lastOpened.current = null;
     }
   }, [eventId]);
+
+  // Which ends of the event row are hidden. Swiping scrolls it on the touch screen; these
+  // drive the "more" buttons for mouse users and as a hint that there is more to see.
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const update = () =>
+      setMore({
+        left: el.scrollLeft > 4,
+        right: el.scrollLeft + el.clientWidth < el.scrollWidth - 4,
+      });
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => {
+      el.removeEventListener("scroll", update);
+      observer.disconnect();
+    };
+  }, [eraId]);
+
+  const scrollEvents = (direction) => {
+    const el = scrollerRef.current;
+    el?.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: "smooth" });
+  };
 
   if (!era) return <Navigate to="/timeline" replace />;
   const eventPath = (ev) => `/era/${era.id}/event/${ev.id}`;
@@ -57,7 +84,8 @@ export default function EraScreen() {
           <Link to={`/era/${prevEra.id}`} aria-label={`Previous era: ${prevEra.title}`} className={buttonClass("secondary", "shrink-0")}>‹</Link>
         ) : <span className="w-14 shrink-0" />}
 
-        <div className="min-w-0 flex-1 overflow-x-auto">
+        <div className="relative min-w-0 flex-1">
+        <div ref={scrollerRef} className="overflow-x-auto">
           <ol ref={trackRef} className="relative flex flex-col gap-4 pt-2 pb-4 md:min-w-max md:flex-row md:justify-between">
             <span aria-hidden="true" className="absolute left-0 right-0 top-[1.5625rem] hidden h-0.5 bg-accent/70 md:block" />
             {events.map((ev) => (
@@ -82,6 +110,23 @@ export default function EraScreen() {
               </li>
             ))}
           </ol>
+        </div>
+        {more.left && (
+          <button
+            type="button"
+            onClick={() => scrollEvents(-1)}
+            aria-label="Show earlier events"
+            className={buttonClass("primary", "absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full px-0 text-2xl shadow-lg")}
+          >‹</button>
+        )}
+        {more.right && (
+          <button
+            type="button"
+            onClick={() => scrollEvents(1)}
+            aria-label="Show later events"
+            className={buttonClass("primary", "absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full px-0 text-2xl shadow-lg")}
+          >›</button>
+        )}
         </div>
 
         {nextEra ? (
