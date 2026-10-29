@@ -1,6 +1,7 @@
 import { useKiosk } from "../store/useKiosk.js";
 import { useDialog } from "../hooks/useDialog.js";
 import { buttonClass } from "../lib/ui.js";
+import { stop } from "../lib/speech.js";
 
 function Toggle({ label, pressed, onPress, disabled, note }) {
   return (
@@ -52,8 +53,18 @@ export default function A11yPanel() {
             pressed={s.reach}
             onPress={() => s.toggle("reach")}
           />
-          {/* TODO (audio issue): read screen content aloud with window.speechSynthesis */}
-          <Toggle label="Read aloud" note="Coming soon" pressed={false} disabled onPress={() => {}} />
+          <Toggle
+            label="Read aloud"
+            // note="Adds read-aloud buttons to events and quizzes"
+            pressed={s.readAloud}
+            onPress={() => {
+              if (s.readAloud) {
+                stop();
+              }
+
+              s.toggle("readAloud");
+            }}
+          />
         </div>
         <button onClick={close} className={buttonClass("primary", "mt-6 w-full")}>
           Done

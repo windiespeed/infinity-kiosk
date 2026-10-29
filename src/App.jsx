@@ -18,6 +18,7 @@ import About from "./routes/About.jsx";
 import { QuizHome, EventQuiz, QuizComplete } from "./routes/Quiz.jsx";
 import AdminLogin from "./routes/admin/AdminLogin.jsx";
 import Dashboard from "./routes/admin/Dashboard.jsx";
+import { isCompanion } from "./lib/store/index.js";
 import Certificate from "./routes/Certificate.jsx";
 
 export default function App() {
@@ -25,6 +26,8 @@ export default function App() {
   const location = useLocation();
   const startOver = useStartOver();
   const kiosk = useKiosk();
+
+
 
   // Accessibility settings are applied as attributes on <html>; theme.css reacts to them.
   useEffect(() => {
@@ -36,13 +39,26 @@ export default function App() {
 
   const onAttract = location.pathname === "/";
   const inAdmin = location.pathname.startsWith("/admin");
+  const onCertificate = location.pathname === "/certificate";
 
   const idle = useIdleTimer({
     idleSeconds: content?.settings?.idleSeconds ?? 75,
     warningSeconds: content?.settings?.warningSeconds ?? 15,
-    enabled: !onAttract,
+    enabled: !onAttract && !onCertificate,
     onReset: startOver,
   });
+
+  if (onCertificate) {
+    return (
+      <div className="min-h-dvh">
+        <Certificate />
+      </div>
+    );
+  }
+
+  { !isCompanion && <Route path="/admin" element={<AdminLogin />} /> }
+  { !isCompanion && <Route path="/admin/dashboard" element={<Dashboard />} /> }
+  <Route path="*" element={<Navigate to={isCompanion ? "/certificate" : "/"} replace />} />
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden">
