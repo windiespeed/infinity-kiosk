@@ -48,18 +48,6 @@ export default function App() {
     onReset: startOver,
   });
 
-  if (onCertificate) {
-    return (
-      <div className="min-h-dvh">
-        <Certificate />
-      </div>
-    );
-  }
-
-  { !isCompanion && <Route path="/admin" element={<AdminLogin />} /> }
-  { !isCompanion && <Route path="/admin/dashboard" element={<Dashboard />} /> }
-  <Route path="*" element={<Navigate to={isCompanion ? "/certificate" : "/"} replace />} />
-
   return (
     <div className="flex h-dvh flex-col overflow-hidden">
       <HiddenAdminTrigger />
@@ -81,6 +69,9 @@ export default function App() {
               <Route path="/admin" element={<AdminLogin />} />
               <Route path="/admin/dashboard" element={<Dashboard />} />
               <Route path="*" element={<Navigate to="/" replace />} />
+              {!isCompanion && <Route path="/admin" element={<AdminLogin />} />}
+              {!isCompanion && <Route path="/admin/dashboard" element={<Dashboard />} />}
+              <Route path="*" element={<Navigate to={isCompanion ? "/certificate" : "/"} replace />} />
             </Routes>
           </ErrorBoundary>
         )}
