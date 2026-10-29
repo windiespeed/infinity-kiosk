@@ -36,13 +36,23 @@ export default function App() {
 
   const onAttract = location.pathname === "/";
   const inAdmin = location.pathname.startsWith("/admin");
+  const onCertificate = location.pathname === "/certificate";
 
   const idle = useIdleTimer({
     idleSeconds: content?.settings?.idleSeconds ?? 75,
     warningSeconds: content?.settings?.warningSeconds ?? 15,
-    enabled: !onAttract,
+    enabled: !onAttract && !onCertificate,
     onReset: startOver,
   });
+
+   // Phone page: just the certificate, no kiosk screens, nav, or timers.
+  if (onCertificate) {
+    return (
+      <div className="min-h-dvh">
+        <Certificate />
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden">
@@ -65,6 +75,9 @@ export default function App() {
               <Route path="/admin" element={<AdminLogin />} />
               <Route path="/admin/dashboard" element={<Dashboard />} />
               <Route path="*" element={<Navigate to="/" replace />} />
+              {!isCompanion && <Route path="/admin" element={<AdminLogin />} />}
+              {!isCompanion && <Route path="/admin/dashboard" element={<Dashboard />} />}
+              <Route path="*" element={<Navigate to={isCompanion ? "/certificate" : "/"} replace />} />
             </Routes>
           </ErrorBoundary>
         )}
