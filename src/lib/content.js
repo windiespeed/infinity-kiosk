@@ -1,116 +1,163 @@
+// Rules for content.json, shared by the app, the dev server and the build check.
+// Plain JavaScript with no imports, so Node can use it too.
+//
+// Every save and every backup import is checked here first. Content the screens
+// can't display (a missing field, a list that isn't a list) would crash the app,
+// and on the kiosk that crash would come back after every restart.
+//
+// The *Problems functions check one item at a time and return { field: "message" },
+// so the admin forms can show each message next to its field. An empty object means
+// the item is fine. validateContent runs the same checks over the whole file.
 
- // Rules for content.json, shared by the app, the dev server and the build check.
- // Plain JavaScript with no imports, so Node can use it too.
- //
- // Every save and every backup import is checked here first. Content the screens
- // can't display (a missing field, a list that isn't a list) would crash the app,
- // and on the kiosk that crash would come back after every restart.
+// Media file names must be plain names: no folders, no "..".
+export const SAFE_NAME = /^[\w][\w.-]{0,199}$/;
 
- // Media file names must be plain names: no folders, no "..".
- export const SAFE_NAME = /^[\w][\w.-]{0,199}$/;
+// Allowed range for settings.idleSeconds (the admin dashboard uses the same limits).
+export const IDLE_MIN = 30;
+export const IDLE_MAX = 600;
 
- // Allowed range for settings.idleSeconds (the admin dashboard uses the same limits).
- export const IDLE_MIN = 30;
- export const IDLE_MAX = 600;
+// The timeline point label has room for about this many characters.
+export const SHORT_TITLE_MAX = 28;
 
- const isObject = (v) => Boolean(v) && typeof v === "object" && !Array.isArray(v);
- const isText = (v) => typeof v === "string" && v.trim() !== "";
- const isNumber = (v) => typeof v === "number" && Number.isFinite(v);
+export const EVENT_STATUSES = ["historical", "planned", "ongoing"];
 
- // Returns a sentence describing the first problem found, or null if the content is fine.
- export function validateContent(c) {
-   if (!isObject(c)) return "Content must be an object.";
-   for (const key of ["eras", "events", "media", "questions"]) {
-     if (!Array.isArray(c[key])) return `Content is missing the "${key}" list.`;
-   }
+const isObject = (v) => Boolean(v) && typeof v === "object" && !Array.isArray(v);
+const isText = (v) => typeof v === "string" && v.trim() !== "";
+const isNumber = (v) => typeof v === "number" && Number.isFinite(v);
 
-   const s = c.settings;
-   if (!isObject(s)) return 'Content is missing its "settings".';
-   if (!Number.isInteger(s.idleSeconds) || s.idleSeconds < IDLE_MIN || s.idleSeconds > IDLE_MAX) {
-     return `settings.idleSeconds must be a whole number from ${IDLE_MIN} to ${IDLE_MAX}.`;
-   }
-   if (!Number.isInteger(s.warningSeconds) || s.warningSeconds < 5) {
-     return "settings.warningSeconds must be a whole number of at least 5.";
-   }
+export function eraProblems(era) {
+  const p = {};
+  if (!isText(era.title)) p.title = "Enter a title.";
+  if (!isNumber(era.order)) p.order = "Order must be a number.";
+  if (!isNumber(era.startYear)) p.startYear = "Enter a start year.";
+  if (era.endYear != null) {
+    if (!isNumber(era.endYear)) p.endYear = "End year must be a number, or blank for Today.";
+    else if (isNumber(era.startYear) && era.endYear < era.startYear) p.endYear = "End year can't be before the start year.";
+  }
+  return p;
+}
 
-   const ids = (list, name) => {
-     const seen = new Set();
-     for (const [i, item] of list.entries()) {
-       if (!isObject(item) || !isText(item.id)) return `${name} #${i + 1} has no id.`;
-       if (seen.has(item.id)) return `Two ${name}s share the id "${item.id}".`;
-       seen.add(item.id);
-     }
-     return null;
-   };
+// `c` is the whole content, used to check that eras and media the event points to exist.
+export function eventProblems(ev, c) {
+  const p = {};
+  if (!Array.isArray(ev.eraIds) || !ev.eraIds.length || !ev.eraIds.every(isText)) {
+    p.eraIds = "Pick at least one era.";
+  } else if (c && ev.eraIds.some((id) => !c.eras.some((era) => era.id === id))) {
+    p.eraIds = `Unknown era: ${ev.eraIds.filter((id) => !c.eras.some((era) => era.id === id)).join(", ")}.`;
+  }
+  if (!isObject(ev.date)) {
+    p.date = 'Needs a date with "sort" and "display".';
+  } else {
+    if (!isText(ev.date.sort)) p.dateSort = "Enter a sort date.";
+    else if (!/^-?\d{4}-\d{2}-\d{2}$/.test(ev.date.sort)) p.dateSort = "Use YYYY-MM-DD, like 1969-07-20.";
+    if (!isText(ev.date.display)) p.dateDisplay = 'Enter the date to show, like "1969".';
+    if (ev.date.status != null && !EVENT_STATUSES.includes(ev.date.status)) {
+      p.status = `Status must be ${EVENT_STATUSES.join(", ")}.`;
+    }
+  }
+  if (!isText(ev.title)) p.title = "Enter a title.";
+  if (!isText(ev.shortTitle)) p.shortTitle = "Enter a short title.";
+  else if (ev.shortTitle.length > SHORT_TITLE_MAX) p.shortTitle = `Use ${SHORT_TITLE_MAX} characters or fewer.`;
+  if (typeof ev.summary !== "string") p.summary = "Summary is missing.";
+  if (typeof ev.body !== "string") p.body = "Body text is missing.";
+  if (!Array.isArray(ev.mediaIds)) {
+    p.mediaIds = 'Missing its "mediaIds" list.';
+  } else if (c) {
+    const missing = ev.mediaIds.filter((id) => !c.media.some((m) => m.id === id));
+    if (missing.length) p.mediaIds = `Not in the media library: ${missing.join(", ")}.`;
+  }
+  return p;
+}
 
-   const problem =
-     ids(c.eras, "era") || ids(c.events, "event") || ids(c.media, "media item") || ids(c.questions, "question");
-   if (problem) return problem;
+export function mediaProblems(m) {
+  const p = {};
+  if (typeof m.file !== "string" || !SAFE_NAME.test(m.file)) p.file = "Missing or unsafe file name.";
+  // Existing media entries without a type remain valid as images.
+  if (m.type != null && !["image", "video"].includes(m.type)) {
+    p.type = 'Unsupported type. Use "image" or "video".';
+  }
+  if (m.type === "video") {
+    if (!isText(m.captionsFile) || !SAFE_NAME.test(m.captionsFile)) p.captionsFile = "Add a captions file (.vtt).";
+    else if (!/\.vtt$/i.test(m.captionsFile)) p.captionsFile = "The captions file must be a .vtt file.";
+    if (!isText(m.poster) || !SAFE_NAME.test(m.poster)) p.poster = "Add a poster image.";
+  } else if (!isText(m.alt)) {
+    p.alt = "Describe what the image shows.";
+  }
+  return p;
+}
 
-   for (const era of c.eras) {
-     const where = `Era "${era.id}"`;
-     if (!isText(era.title)) return `${where} has no title.`;
-     if (!isNumber(era.order)) return `${where} needs a number for "order".`;
-     if (!isNumber(era.startYear)) return `${where} needs a number for "startYear".`;
-     if (era.endYear != null && !isNumber(era.endYear)) return `${where} has an "endYear" that isn't a number.`;
-   }
+export function questionProblems(q, c) {
+  const p = {};
+  if (!isText(q.eventId)) p.eventId = "Not linked to an event.";
+  else if (c && !c.events.some((ev) => ev.id === q.eventId)) p.eventId = `Event "${q.eventId}" doesn't exist.`;
+  if (!isText(q.prompt)) p.prompt = "Enter the question.";
+  if (!Array.isArray(q.choices) || q.choices.length < 2 || q.choices.length > 4) {
+    p.choices = "Give 2 to 4 choices.";
+  } else if (!q.choices.every(isText)) {
+    p.choices = "Fill in every choice, or remove the empty one.";
+  } else if (!Number.isInteger(q.correctIndex) || q.correctIndex < 0 || q.correctIndex >= q.choices.length) {
+    p.correctIndex = "Mark one choice as correct.";
+  }
+  if (!isText(q.explanation)) p.explanation = "Explain the answer.";
+  return p;
+}
 
-   for (const ev of c.events) {
-     const where = `Event "${ev.id}"`;
-     if (!Array.isArray(ev.eraIds) || !ev.eraIds.length || !ev.eraIds.every(isText)) {
-       return `${where} must belong to at least one era.`;
-     }
-     if (!isObject(ev.date) || !isText(ev.date.sort) || !isText(ev.date.display)) {
-       return `${where} needs a date with "sort" and "display".`;
-     }
-     for (const key of ["title", "shortTitle"]) {
-       if (!isText(ev[key])) return `${where} has no ${key}.`;
-     }
-     for (const key of ["summary", "body"]) {
-       if (typeof ev[key] !== "string") return `${where} has no ${key} text.`;
-     }
-     if (!Array.isArray(ev.mediaIds)) return `${where} is missing its "mediaIds" list.`;
-   }
+export function settingsProblems(s, c) {
+  const p = {};
+  if (!Number.isInteger(s.idleSeconds) || s.idleSeconds < IDLE_MIN || s.idleSeconds > IDLE_MAX) {
+    p.idleSeconds = `Enter a whole number from ${IDLE_MIN} to ${IDLE_MAX}.`;
+  }
+  if (!Number.isInteger(s.warningSeconds) || s.warningSeconds < 5) {
+    p.warningSeconds = "Enter a whole number of at least 5.";
+  }
+  if (s.credits != null && typeof s.credits !== "string") p.credits = "Credits must be text.";
+  // The attract video setting refers to a video media item's ID, not a filename.
+  if (s.attractVideo != null) {
+    const video = isText(s.attractVideo) && c?.media.find((m) => m.id === s.attractVideo);
+    if (!video || video.type !== "video") p.attractVideo = "Pick a video from the media library, or none.";
+  }
+  return p;
+}
 
-   for (const m of c.media) {
-     const where = `Media item "${m.id}"`;
+const first = (problems) => Object.values(problems)[0] ?? null;
 
-     if (typeof m.file !== "string" || !SAFE_NAME.test(m.file)) {
-       return `${where} has a missing or unsafe file name.`;
-     }
+// Returns a sentence describing the first problem found, or null if the content is fine.
+export function validateContent(c) {
+  if (!isObject(c)) return "Content must be an object.";
+  for (const key of ["eras", "events", "media", "questions"]) {
+    if (!Array.isArray(c[key])) return `Content is missing the "${key}" list.`;
+  }
 
-     // Existing media entries without a type remain valid as images.
-     if (m.type != null && !["image", "video"].includes(m.type)) {
-       return `${where} has an unsupported type. Use "image" or "video".`;
-     }
+  if (!isObject(c.settings)) return 'Content is missing its "settings".';
+  const settings = first(settingsProblems(c.settings, c));
+  if (settings) return `Settings: ${settings}`;
 
-     if (m.type === "video") {
-       if (!isText(m.captionsFile) || !SAFE_NAME.test(m.captionsFile)) {
-         return `${where} needs a safe "captionsFile" name.`;
-       }
-       if (!/\.vtt$/i.test(m.captionsFile)) {
-         return `${where} captionsFile must use the .vtt extension.`;
-       }
-       if (!isText(m.poster) || !SAFE_NAME.test(m.poster)) {
-         return `${where} needs a safe "poster" file name.`;
-       }
-     }
-   }
+  const ids = (list, name) => {
+    const seen = new Set();
+    for (const [i, item] of list.entries()) {
+      if (!isObject(item) || !isText(item.id)) return `${name} #${i + 1} has no id.`;
+      if (seen.has(item.id)) return `Two ${name}s share the id "${item.id}".`;
+      seen.add(item.id);
+    }
+    return null;
+  };
 
-   // The attract video setting refers to a video media item's ID, not a filename.
-   if (s.attractVideo != null) {
-     if (!isText(s.attractVideo)) {
-       return 'settings.attractVideo must be a video media ID or null.';
-     }
-     const attractVideo = c.media.find((m) => m.id === s.attractVideo);
-     if (!attractVideo || attractVideo.type !== "video") {
-       return `settings.attractVideo must reference an existing video media item.`;
-     }
-   }
+  const problem =
+    ids(c.eras, "era") || ids(c.events, "event") || ids(c.media, "media item") || ids(c.questions, "question");
+  if (problem) return problem;
 
-   for (const q of c.questions) {
-     if (!isText(q.eventId)) return `Question "${q.id}" isn't linked to an event.`;
-   }
+  const checks = [
+    [c.eras, "Era", (era) => eraProblems(era)],
+    [c.events, "Event", (ev) => eventProblems(ev, c)],
+    [c.media, "Media item", (m) => mediaProblems(m)],
+    [c.questions, "Question", (q) => questionProblems(q, c)],
+  ];
+  for (const [list, name, check] of checks) {
+    for (const item of list) {
+      const message = first(check(item));
+      if (message) return `${name} "${item.id}": ${message}`;
+    }
+  }
 
-   return null;
- }
+  return null;
+}

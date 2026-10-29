@@ -200,6 +200,14 @@ export function createDeviceStore() {
       return fileWriter(DATA, `media/${name}`, () => onDisk.add(name));
     },
 
+    // Files bundled into the app can't be removed; once no media item points to one, it simply isn't shown.
+    async deleteMedia(name) {
+      if (!SAFE_NAME.test(name)) throw new Error(`Unsafe file name: ${name}`);
+      if (!onDisk.has(name)) return;
+      await Filesystem.deleteFile({ directory: DATA, path: `media/${name}` });
+      onDisk.delete(name);
+    },
+
     async openBackupWriter(name) {
       return fileWriter(Directory.Documents, `InfinityKiosk/${name}`, null, `Saved to Documents/InfinityKiosk/${name}`);
     },

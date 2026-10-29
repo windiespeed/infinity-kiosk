@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { Navigate, useNavigate } from "react-router";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { exportBackup, importBackup } from "../../lib/backup.js";
@@ -7,23 +6,20 @@ import { IDLE_MAX, IDLE_MIN } from "../../lib/content.js";
 import { buttonClass } from "../../lib/ui.js";
 
 // Starter dashboard: settings (shows the full save path working) and backups.
+// AdminLayout checks the sign-in and provides the menu and Exit admin.
 // TODO (admin issues): event editor, question editor, era editor, media upload,
 // "planned events need review" flag, change PIN.
 export default function Dashboard() {
   const token = useKiosk((s) => s.adminToken);
-  const update = useKiosk((s) => s.update);
   const addBusy = useKiosk((s) => s.addBusy);
   const removeBusy = useKiosk((s) => s.removeBusy);
   const { content, reload, store } = useContent();
-  const navigate = useNavigate();
   const [idleSeconds, setIdleSeconds] = useState(content.settings.idleSeconds);
   const [status, setStatus] = useState("");
   const [backupStatus, setBackupStatus] = useState("");
   const [pendingImport, setPendingImport] = useState(null);
   const [busy, setBusy] = useState(false);
   const fileInput = useRef(null);
-
-  if (!token) return <Navigate to="/admin" replace />;
 
   const save = async () => {
     // An empty field reads as 0, which would show the idle prompt nonstop.
@@ -93,18 +89,9 @@ export default function Dashboard() {
     }
   };
 
-  const exit = async () => {
-    await store.signOut(token);
-    update({ adminToken: null });
-    navigate("/", { replace: true });
-  };
-
   return (
     <div className="mx-auto max-w-4xl p-10">
-      <div className="flex items-center justify-between gap-4">
-        <h1 className="text-5xl">Admin dashboard</h1>
-        <button onClick={exit} className={buttonClass("primary")}>Exit admin</button>
-      </div>
+      <h1 className="text-5xl">Admin dashboard</h1>
 
       <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {["eras", "events", "media", "questions"].map((key) => (

@@ -48,7 +48,7 @@
 // Every store has:
 //   init(), loadContent(), saveContent(content, session), mediaUrl(item),
 //   hasPin(), setPin(pin), signIn(pin) -> session or null, signOut(session),
-//   openMediaWriter(name, session), openBackupWriter(name)
+//   openMediaWriter(name, session), deleteMedia(name, session), openBackupWriter(name)
 //   (writers have write(Uint8Array) and close())
 import { Capacitor } from "@capacitor/core";
 
