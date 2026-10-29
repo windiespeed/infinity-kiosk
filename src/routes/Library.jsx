@@ -82,7 +82,7 @@ export default function Library() {
         {items.map(({ img, ev }, index) => (
           <li
             key={img.id}
-            className="panel rounded-2xl p-4"
+            className="panel flex flex-col rounded-2xl p-4"
           >
             <button
               type="button"
@@ -102,7 +102,7 @@ export default function Library() {
               />
             </button>
 
-            <p className="mt-3 text-base">
+            <p className="mb-3 mt-3 text-base">
               {img.caption}
             </p>
 
@@ -110,7 +110,7 @@ export default function Library() {
               to={`/era/${ev.eraIds[0]}/event/${ev.id}`}
               className={buttonClass(
                 "secondary",
-                "mt-3 w-full"
+                "mt-auto w-full"
               )}
             >
               See this event
