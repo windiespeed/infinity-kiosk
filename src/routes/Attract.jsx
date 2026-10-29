@@ -10,7 +10,7 @@ import engineFiring from "../assets/engine-test-firing.jpg";
 import earthAtNight from "../assets/earth-at-night-iss040e090540.jpg";
 import infinityLogo from "../assets/infinity-logo-white.png";
 import nasaMeatball from "../assets/nasa-meatball.png";
-import stennisVideo from "../assets/media/stennis-overview.mp4";
+import stennisVideo from "../assets/stennis-overview.mp4";
 
 // The screen the kiosk returns to when idle. Three ways in, so visitors choose
 // their own starting point.
