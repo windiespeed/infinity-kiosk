@@ -25,10 +25,11 @@ Open **http://localhost:5173**. Saving a file updates the browser automatically.
 | `npm run dev` | Development: app on :5173, server on :5050 |
 | `npm run dev:host` | Same, but reachable from other devices on your network (for testing on the kiosk's browser) |
 | `npm run build` | Checks color contrast, then builds the app into `dist/` |
+| `npm run build:pages` | Builds the read-only companion site for GitHub Pages into `dist/` |
 | `npm start` | Runs the server alone, serving the built app at http://localhost:5050 (this is what the kiosk runs) |
 | `npm run check:contrast` | Tests every color pairing in the theme against WCAG AA |
 | `npm run hash-pin -- 482913` | Makes a PIN hash to paste into `.env` (dev server only) |
-| `npm run media:pull` | Copies new photos and videos from the team's Drive Media folder into `data/media/` |
+| `npm run media:pull` | Copies photos and videos from the Drive Media folder into `data/media/` (for later, when media leaves Git) |
 | `npm run android:sync` | Builds the app and copies it into the Android project |
 | `npm run android:open` | Opens the Android project in Android Studio |
 | `npm run android:run` | Builds the app, installs it on a plugged-in device or open emulator, and opens it |
@@ -39,7 +40,7 @@ Open **http://localhost:5173**. Saving a file updates the browser automatically.
 ```
 data/
   content.json        All eras, events, images, and quiz questions (the "database")
-  media/              Images and videos. Only sample-* files are in Git.
+  media/              Timeline photos and videos (in Git for now; see "Where media lives")
   backups/            Automatic copies made before every admin save (not in Git)
 server/index.js       Development server: content, media, admin sign-in and saving (not used on the kiosk)
 android/              The Android app project (Capacitor). See docs/ANDROID.md
@@ -84,26 +85,43 @@ src/
 
 Keeping your branch up to date with `main`: see **docs/GIT-CHEATSHEET.md**.
 
+## Live web preview
+
+Every merge to `main` publishes a read-only copy of the app to
+**https://windiespeed.github.io/infinity-kiosk/** (the "companion site"), so anyone can click
+through the current content and photos in a browser. Nothing can be saved there and the admin
+screens don't work. It's public, like the repo. The workflow is
+`.github/workflows/pages.yml`.
+
 ## Where media lives
 
-Exhibit photos and videos stay out of Git. The team keeps them in one shared Google Drive
-folder, **Media** (ask Windie for access):
+**For now, all media lives in GitHub**, so everyone gets the same photos with a normal
+`git pull`. Keep the two kinds apart:
 
-- **Media/**: every approved photo and video. Name new files by their Media ID from the tracker.
-- **Media/Kiosk Media Tracker**: one row per image: its Drive link, source, credit, and where it goes in the kiosk.
-- **Media/Kiosk-Backups/**: backup zips exported from the admin dashboard, with the date in the file name.
+- **`src/assets/`**: images that are part of the app's design and that code imports directly
+  (the welcome screen photos, the starfield).
+- **`data/media/`**: photos and videos shown in the timeline, the image library and event
+  panels. `content.json` points to them by file name, so the name must match exactly.
 
-To keep your own `data/media/` up to date, install Google Drive for desktop, add the Media
-folder to My Drive, and run `npm run media:pull` after every `git pull`. It copies new and
-changed photos into `data/media/` and lists any file `content.json` uses that is still
-missing. File names in Drive must match the names in `content.json` exactly. If it can't find
-the folder, set `MEDIA_DRIVE_DIR` in `.env` (see `.env.example`).
+To add a timeline photo: put it in `data/media/`, add it to `content.json` (or through the
+admin screen), log it in the media tracker, then commit and open a pull request like any
+other change.
 
-The newest zip in Kiosk-Backups is what the kiosk shows. To see the same content, import it
-(admin dashboard: Import backup). To build a new one, pull `main`, copy the Media folder into
-`data/media/`, attach the photos in the admin screen, then Export backup and upload the zip.
-Your own `data/backups/` folder only holds automatic copies of your own saves; it appears
-after your first admin save.
+Keep files small: photos around 1–2 MB, short MP4 videos only. GitHub rejects any single
+file over 100 MB. The repo is public, so only add media that is cleared to show publicly
+(hold back anything still waiting on museum review).
+
+**Later (final version):** media comes back out of Git and is synced locally from the shared
+Google Drive **Media** folder, as first planned. Turning that back on means restoring the
+`data/media/*` and video lines in `.gitignore` and running `git rm -r --cached data/media`
+(the files stay on everyone's computers). `npm run media:pull` is already in place for that:
+it copies new and changed files from a Google Drive for desktop copy of the Media folder into
+`data/media/` (see `MEDIA_DRIVE_DIR` in `.env.example`).
+
+**Kiosk backups:** the kiosk gets its content as a backup zip (admin dashboard: Export backup
+/ Import backup). Keep exported zips in the Drive's **Media/Kiosk-Backups** folder with the
+date in the file name; the newest one is what the kiosk shows. Your own `data/backups/` folder
+only holds automatic copies of your own saves; it appears after your first admin save.
 
 ## How the kiosk runs
 

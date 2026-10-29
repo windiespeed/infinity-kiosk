@@ -2,15 +2,12 @@ node_modules/
 dist/
 .env
 data/backups/
-# Real museum media stays out of Git (share it via drive). Sample images are kept.
-data/media/*
-!data/media/sample-*
 # Android signing keys: NEVER commit these. Keep them in a password manager.
 *.jks
 *.keystore
 keystore.properties
 # Video and backup files never belong in Git (keep them on the shared drive)
-*.mp4
+# *.mp4
 *.mov
 *.m4v
 *.webm

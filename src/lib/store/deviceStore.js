@@ -15,8 +15,8 @@ const DATA = Directory.Data;
 const MAX_VERSIONS = 10;
 const WRITE_CHUNK = 2 * 1024 * 1024; // write to disk in ~2 MB pieces to keep memory low
 
-// Sample images ship inside the app so the first launch has something to show.
-const bundled = import.meta.glob("../../../data/media/sample-*", { eager: true, query: "?url", import: "default" });
+// Timeline media ships inside the app (media lives in Git for now), so the first launch shows real photos.
+const bundled = import.meta.glob("../../../data/media/*", { eager: true, query: "?url", import: "default" });
 const bundledByName = Object.fromEntries(Object.entries(bundled).map(([path, url]) => [path.split("/").pop(), url]));
 
 function bytesToBase64(bytes) {

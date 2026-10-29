@@ -18,6 +18,7 @@ import About from "./routes/About.jsx";
 import { QuizHome, EventQuiz, QuizComplete } from "./routes/Quiz.jsx";
 import AdminLogin from "./routes/admin/AdminLogin.jsx";
 import Dashboard from "./routes/admin/Dashboard.jsx";
+import { isCompanion } from "./lib/store/index.js";
 import Certificate from "./routes/Certificate.jsx";
 
 export default function App() {
@@ -25,6 +26,8 @@ export default function App() {
   const location = useLocation();
   const startOver = useStartOver();
   const kiosk = useKiosk();
+
+
 
   // Accessibility settings are applied as attributes on <html>; theme.css reacts to them.
   useEffect(() => {
@@ -44,15 +47,6 @@ export default function App() {
     enabled: !onAttract && !onCertificate,
     onReset: startOver,
   });
-
-   // Phone page: just the certificate, no kiosk screens, nav, or timers.
-  if (onCertificate) {
-    return (
-      <div className="min-h-dvh">
-        <Certificate />
-      </div>
-    );
-  }
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden">
