@@ -6,6 +6,7 @@ import { buttonClass } from "../lib/ui.js";
 import ImageViewer from "./ImageViewer.jsx";
 import { useKiosk } from "../store/useKiosk.js";
 import { speak, stop } from "../lib/speech.js";
+import VideoPlayer from "./VideoPlayer.jsx";
 
 // Slides up over the era screen so visitors keep their place on the timeline.
 // Everything needed to understand the event is here, so it makes sense to someone
@@ -26,7 +27,9 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
   const [viewerOpen, setViewerOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  const images = event.mediaIds.map(mediaById).filter(Boolean);
+  const mediaItems = event.mediaIds.map(mediaById).filter(Boolean);
+  const images = mediaItems.filter((item) => item.type !== "video");
+  const videos = mediaItems.filter((item) => item.type === "video");
   const hasQuiz = questionsForEvent(event.id).length > 0;
 
   const openViewer = (index) => {
@@ -238,6 +241,19 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
           onClose={closeViewer}
         />
       )}
+
+      {videos.map((video) => (
+        <div key={video.id} className="mt-6">
+          {video.caption && (
+            <p className="mb-2 text-lg text-text-muted">
+              {video.caption}
+              {video.credit && ` (${video.credit})`}
+            </p>
+          )}
+
+          <VideoPlayer item={video} mediaUrl={mediaUrl} />
+        </div>
+      ))}
     </div>
   );
 }
