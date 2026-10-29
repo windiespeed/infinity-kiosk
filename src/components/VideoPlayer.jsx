@@ -5,10 +5,12 @@ import { useKiosk } from "../store/useKiosk.js";
 
 // Plays a video from the media library with accessible controls and captions.
 // Background mode is muted and looping; it does not hold the idle timer busy.
+// Compact mode is a short, centered player for the event panel's media column.
 export default function VideoPlayer({
   item,
   mediaUrl,
   background = false,
+  compact = false,
 }) {
   const videoRef = useRef(null);
   const busyRef = useRef(false);
@@ -164,7 +166,7 @@ export default function VideoPlayer({
   return (
     <section
       aria-label={item.alt || item.caption || "Video player"}
-      className="mt-6 w-full"
+      className={compact ? "w-full" : "mt-6 w-full"}
     >
       <video
         ref={videoRef}
@@ -179,7 +181,7 @@ export default function VideoPlayer({
           setPlaying(false);
           releaseBusy();
         }}
-        className="w-full rounded-xl bg-black"
+        className={compact ? "h-[14vh] w-full object-contain" : "w-full rounded-xl bg-black"}
       >
         {captionsSrc && (
           <track
@@ -194,7 +196,7 @@ export default function VideoPlayer({
       </video>
 
       <div
-        className="mt-3 flex flex-wrap gap-3"
+        className={compact ? "mt-2 flex flex-wrap justify-center gap-3" : "mt-3 flex flex-wrap gap-3"}
         aria-label="Video controls"
       >
         <button

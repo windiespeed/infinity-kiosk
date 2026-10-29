@@ -30,6 +30,13 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
   const mediaItems = event.mediaIds.map(mediaById).filter(Boolean);
   const images = mediaItems.filter((item) => item.type !== "video");
   const videos = mediaItems.filter((item) => item.type === "video");
+  // The large item in the media column. Remembering which event it was picked on
+  // means Next/Previous event starts back on that event's first item.
+  const [picked, setPicked] = useState({ eventId: null, mediaId: null });
+  const shown =
+    (picked.eventId === event.id &&
+      mediaItems.find((item) => item.id === picked.mediaId)) ||
+    mediaItems[0];
   const hasQuiz = questionsForEvent(event.id).length > 0;
 
   const openViewer = (index) => {
@@ -149,50 +156,71 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
             {event.title}
           </h2>
 
+          {/* Text on the left, photos and video on the right so they show without scrolling. */}
+          <div className="mt-8 pb-8 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,42%)] md:items-start md:gap-10">
+            <div>
+              <p className="max-w-[60ch] text-xl">{event.summary}</p>
+              {event.body.split("\n\n").map((para, i) => (
+                <p key={i} className="mt-4 max-w-[60ch]">
+                  {para}
+                </p>
+              ))}
+            </div>
 
-
-          <p className="mt-4 max-w-[60ch] text-xl">
-            {event.summary}
-          </p>
-
-          {event.body.split("\n\n").map((para, i) => (
-            <p key={i} className="mt-4 max-w-[60ch]">
-              {para}
-            </p>
-          ))}
-
-          {/* DONE by Joshua Craven: event images open in a full-screen viewer with zoom. */}
-          {images.length > 0 && (
-            <ul className="mt-6 flex gap-4 overflow-x-auto pb-4">
-              {images.map((img, index) => (
-                <li
-                  key={img.id}
-                  className="w-[28rem] max-w-full shrink-0"
-                >
+            {mediaItems.length > 0 && (
+              <div className="mt-6 md:sticky md:top-0 md:mt-0">
+                {/* One large item, with thumbnails underneath to switch it. */}
+                {shown.type === "video" ? (
+                  <VideoPlayer key={shown.id} item={shown} mediaUrl={mediaUrl} compact />
+                ) : (
                   <button
                     type="button"
-                    onClick={() => openViewer(index)}
+                    onClick={() => openViewer(images.indexOf(shown))}
                     className="block w-full rounded-xl focus:outline-none focus:ring-4 focus:ring-accent"
-                    aria-label={`Open ${img.alt ||
-                      img.caption ||
-                      "image"
-                      } full-screen`}
+                    aria-label={`Open ${shown.alt || shown.caption || "image"} full-screen`}
                   >
                     <img
-                      src={mediaUrl(img)}
-                      alt={img.alt}
-                      className="aspect-video w-full object-contain"
+                      src={mediaUrl(shown)}
+                      alt={shown.alt}
+                      className={`${mediaItems.length > 1 ? "h-[26vh]" : "max-h-[36vh]"} w-full object-contain`}
                     />
                   </button>
+                )}
+                <p className="mt-2 line-clamp-2 text-center text-sm text-text-muted">
+                  {shown.caption} {shown.credit && `(${shown.credit})`}
+                </p>
 
-                  <p className="mt-2 text-sm text-text-muted">
-                    {img.caption}{" "}
-                    {img.credit && `(${img.credit})`}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          )}
+                {mediaItems.length > 1 && (
+                  <ul className="mt-3 flex flex-wrap justify-center gap-3">
+                    {mediaItems.map((item) => (
+                      <li key={item.id}>
+                        <button
+                          type="button"
+                          onClick={() => setPicked({ eventId: event.id, mediaId: item.id })}
+                          aria-label={`Show ${item.alt || item.caption || "item"}`}
+                          aria-pressed={item.id === shown.id}
+                          className={`relative block rounded-lg focus:outline-none focus:ring-4 focus:ring-accent ${item.id === shown.id ? "opacity-100" : "opacity-50"}`}
+                        >
+                          {item.type === "video" && !item.poster ? (
+                            <span className="block h-12 w-18 rounded-lg bg-bg" />
+                          ) : (
+                            <img
+                              src={mediaUrl(item.type === "video" ? { file: item.poster } : item)}
+                              alt=""
+                              className="h-12 w-18 object-cover"
+                            />
+                          )}
+                          {item.type === "video" && (
+                            <span aria-hidden="true" className="absolute inset-0 grid place-items-center text-3xl text-white drop-shadow">▶</span>
+                          )}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-t-2 border-bg px-8 py-4">
@@ -242,18 +270,6 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
         />
       )}
 
-      {videos.map((video) => (
-        <div key={video.id} className="mt-6">
-          {video.caption && (
-            <p className="mb-2 text-lg text-text-muted">
-              {video.caption}
-              {video.credit && ` (${video.credit})`}
-            </p>
-          )}
-
-          <VideoPlayer item={video} mediaUrl={mediaUrl} />
-        </div>
-      ))}
     </div>
   );
 }
