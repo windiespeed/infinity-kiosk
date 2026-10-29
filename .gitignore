@@ -7,7 +7,7 @@ data/backups/
 *.keystore
 keystore.properties
 # Video and backup files never belong in Git (keep them on the shared drive)
-*.mp4
+# *.mp4
 *.mov
 *.m4v
 *.webm
