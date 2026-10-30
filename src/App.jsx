@@ -18,6 +18,8 @@ import About from "./routes/About.jsx";
 import { QuizHome, EventQuiz, QuizComplete } from "./routes/Quiz.jsx";
 import AdminLogin from "./routes/admin/AdminLogin.jsx";
 import Dashboard from "./routes/admin/Dashboard.jsx";
+import Eras from "./routes/admin/Eras.jsx";
+import Settings from "./routes/admin/Settings.jsx";
 import AdminLayout from "./components/admin/AdminLayout.jsx";
 import { isCompanion } from "./lib/store/index.js";
 import Certificate from "./routes/Certificate.jsx";
@@ -71,6 +73,8 @@ export default function App() {
               {!isCompanion && (
                 <Route element={<AdminLayout />}>
                   <Route path="/admin/dashboard" element={<Dashboard />} />
+                  <Route path="/admin/eras" element={<Eras />} />
+                  <Route path="/admin/settings" element={<Settings />} />
                 </Route>
               )}
               <Route path="*" element={<Navigate to={isCompanion ? "/certificate" : "/"} replace />} />

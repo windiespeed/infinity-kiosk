@@ -2,41 +2,21 @@ import { useRef, useState } from "react";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { exportBackup, importBackup } from "../../lib/backup.js";
-import { IDLE_MAX, IDLE_MIN } from "../../lib/content.js";
 import { buttonClass } from "../../lib/ui.js";
 
-// Starter dashboard: settings (shows the full save path working) and backups.
+// Dashboard: what's in the kiosk, and backups.
 // AdminLayout checks the sign-in and provides the menu and Exit admin.
-// TODO (admin issues): event editor, question editor, era editor, media upload,
-// "planned events need review" flag, change PIN.
+// TODO (admin issues): event editor, question editor, media upload,
+// "planned events need review" flag.
 export default function Dashboard() {
   const token = useKiosk((s) => s.adminToken);
   const addBusy = useKiosk((s) => s.addBusy);
   const removeBusy = useKiosk((s) => s.removeBusy);
   const { content, reload, store } = useContent();
-  const [idleSeconds, setIdleSeconds] = useState(content.settings.idleSeconds);
-  const [status, setStatus] = useState("");
   const [backupStatus, setBackupStatus] = useState("");
   const [pendingImport, setPendingImport] = useState(null);
   const [busy, setBusy] = useState(false);
   const fileInput = useRef(null);
-
-  const save = async () => {
-    // An empty field reads as 0, which would show the idle prompt nonstop.
-    const seconds = Number(idleSeconds);
-    if (idleSeconds === "" || !Number.isInteger(seconds) || seconds < IDLE_MIN || seconds > IDLE_MAX) {
-      setStatus(`Enter a whole number from ${IDLE_MIN} to ${IDLE_MAX}.`);
-      return;
-    }
-    setStatus("Saving…");
-    try {
-      await store.saveContent({ ...content, settings: { ...content.settings, idleSeconds: seconds } }, token);
-      await reload();
-      setStatus("Saved.");
-    } catch (err) {
-      setStatus(err.message || "Save failed.");
-    }
-  };
 
   // While a backup runs, mark the kiosk busy so the idle timer can't reset to the
   // welcome screen (and sign staff out) partway through a long export or import.
@@ -101,25 +81,6 @@ export default function Dashboard() {
           </div>
         ))}
       </dl>
-
-      <section className="mt-10 panel rounded-xl p-6">
-        <h2 className="text-3xl">Settings</h2>
-        <label htmlFor="idle" className="mt-4 block">Seconds before the “Are you still exploring?” prompt</label>
-        <input
-          id="idle"
-          type="number"
-          min={IDLE_MIN}
-          max={IDLE_MAX}
-          step="1"
-          value={idleSeconds}
-          onChange={(e) => setIdleSeconds(e.target.value)}
-          className="mt-2 min-h-14 w-40 rounded-xl border-2 border-text-muted bg-bg px-4 text-text"
-        />
-        <div className="mt-4 flex items-center gap-4">
-          <button onClick={save} className={buttonClass("primary")}>Save settings</button>
-          <p aria-live="polite" className="text-text-muted">{status}</p>
-        </div>
-      </section>
 
       <section className="mt-10 panel rounded-xl p-6">
         <h2 className="text-3xl">Backups</h2>
