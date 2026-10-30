@@ -31,17 +31,19 @@ export function useAdminSave() {
 
 // Marks the admin as having unsaved changes while `dirty` is true. The admin menu
 // and Exit admin then ask before leaving, and closing the browser tab warns too.
+// Several forms on one screen (an event and its questions) can each use it.
 export function useUnsavedChanges(dirty) {
-  const update = useKiosk((s) => s.update);
+  const addDirty = useKiosk((s) => s.addDirty);
+  const removeDirty = useKiosk((s) => s.removeDirty);
 
   useEffect(() => {
-    update({ adminDirty: dirty });
     if (!dirty) return;
+    addDirty();
     const warn = (e) => e.preventDefault();
     window.addEventListener("beforeunload", warn);
     return () => {
       window.removeEventListener("beforeunload", warn);
-      update({ adminDirty: false });
+      removeDirty();
     };
-  }, [dirty, update]);
+  }, [dirty, addDirty, removeDirty]);
 }

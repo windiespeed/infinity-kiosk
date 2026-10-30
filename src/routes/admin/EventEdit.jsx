@@ -10,6 +10,7 @@ import MoveButtons, { moveItem } from "../../components/admin/MoveButtons.jsx";
 import ConfirmDialog from "../../components/admin/ConfirmDialog.jsx";
 import MediaPicker from "../../components/admin/MediaPicker.jsx";
 import { MediaThumb, mediaLabel } from "../../components/admin/MediaGrid.jsx";
+import QuestionsEditor from "../../components/admin/QuestionsEditor.jsx";
 import { EventTags } from "./Events.jsx";
 
 const STATUS_LABELS = { historical: "Historical", planned: "Planned", ongoing: "Ongoing" };
@@ -142,7 +143,7 @@ function EventEdit({ eventId }) {
       questions: content.questions.filter((q) => q.eventId !== existing.id),
     };
     if (await save(next, `Deleted ${existing.shortTitle}.`)) {
-      update({ adminDirty: false });
+      update({ adminDirty: 0 });
       navigate("/admin/events", { replace: true });
     }
   };
@@ -322,6 +323,12 @@ function EventEdit({ eventId }) {
           <p aria-live="polite" className="text-text-muted">{status}</p>
         </div>
       </form>
+
+      {existing ? (
+        <QuestionsEditor event={existing} />
+      ) : (
+        <p className="mt-6 text-text-muted">Save the event first, then add its quiz questions here.</p>
+      )}
 
       {picking && (
         <MediaPicker

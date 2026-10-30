@@ -6,9 +6,18 @@ import { exportBackup, importBackup } from "../../lib/backup.js";
 import { buttonClass } from "../../lib/ui.js";
 import { needsReview } from "../../lib/content.js";
 
+// Eras where no published event has a quiz question (the timeline challenge skips them).
+const erasWithoutQuestions = (content) =>
+  content.eras.filter(
+    (era) =>
+      !content.questions.some((q) => {
+        const ev = content.events.find((e) => e.id === q.eventId);
+        return ev?.published !== false && ev?.eraIds.includes(era.id);
+      })
+  );
+
 // Dashboard: what's in the kiosk, and backups.
 // AdminLayout checks the sign-in and provides the menu and Exit admin.
-// TODO (admin issues): question editor.
 export default function Dashboard() {
   const token = useKiosk((s) => s.adminToken);
   const addBusy = useKiosk((s) => s.addBusy);
@@ -82,6 +91,14 @@ export default function Dashboard() {
           </div>
         ))}
       </dl>
+
+      {erasWithoutQuestions(content).length > 0 && (
+        <p className="mt-6 rounded-xl border border-highlight p-4">
+          These eras have no quiz questions, so the timeline challenge skips them:{" "}
+          {erasWithoutQuestions(content).map((era) => era.title).join(", ")}. Add questions to their events in{" "}
+          <Link to="/admin/events" className="text-highlight underline">Events</Link>.
+        </p>
+      )}
 
       {content.events.some((ev) => needsReview(ev)) && (
         <p className="mt-6 rounded-xl border border-highlight p-4">
