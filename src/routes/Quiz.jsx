@@ -138,7 +138,7 @@ export function QuizHome() {
         </p>
       )}
 
-      {import.meta.env.DEV && (
+      {/* {import.meta.env.DEV && (
         <button
           type="button"
           className={buttonClass("secondary", "mt-6 text-lg")}
@@ -150,7 +150,7 @@ export function QuizHome() {
         >
           DEV: skip to certificate screen
         </button>
-      )}
+      )} */}
     </main>
   );
 }
