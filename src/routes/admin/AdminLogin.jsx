@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, Link } from "react-router";
+import { useNavigate, Link, Navigate } from "react-router";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { isValidPin } from "../../lib/pin.js";
@@ -12,6 +12,7 @@ const KEYS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "Clear", "0", "Enter"
 // to create one (entered twice). After that it's a normal sign-in.
 export default function AdminLogin() {
   const { store } = useContent();
+  const token = useKiosk((s) => s.adminToken);
   const update = useKiosk((s) => s.update);
   const navigate = useNavigate();
   const [mode, setMode] = useState("loading"); // loading | setup | confirm | signin
@@ -29,6 +30,9 @@ export default function AdminLogin() {
   useEffect(() => {
     if (mode !== "loading") inputRef.current?.focus();
   }, [mode]);
+
+  // Already signed in: go straight to the dashboard.
+  if (token) return <Navigate to="/admin/dashboard" replace />;
 
   const signIn = async (value) => {
     const session = await store.signIn(value);
