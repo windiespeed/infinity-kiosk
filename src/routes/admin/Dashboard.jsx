@@ -6,7 +6,7 @@ import { buttonClass } from "../../lib/ui.js";
 
 // Dashboard: what's in the kiosk, and backups.
 // AdminLayout checks the sign-in and provides the menu and Exit admin.
-// TODO (admin issues): event editor, question editor, media upload,
+// TODO (admin issues): event editor, question editor,
 // "planned events need review" flag.
 export default function Dashboard() {
   const token = useKiosk((s) => s.adminToken);

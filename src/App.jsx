@@ -20,6 +20,8 @@ import AdminLogin from "./routes/admin/AdminLogin.jsx";
 import Dashboard from "./routes/admin/Dashboard.jsx";
 import Eras from "./routes/admin/Eras.jsx";
 import Settings from "./routes/admin/Settings.jsx";
+import Media from "./routes/admin/Media.jsx";
+import MediaEdit from "./routes/admin/MediaEdit.jsx";
 import AdminLayout from "./components/admin/AdminLayout.jsx";
 import { isCompanion } from "./lib/store/index.js";
 import Certificate from "./routes/Certificate.jsx";
@@ -73,6 +75,8 @@ export default function App() {
               {!isCompanion && (
                 <Route element={<AdminLayout />}>
                   <Route path="/admin/dashboard" element={<Dashboard />} />
+                  <Route path="/admin/media" element={<Media />} />
+                  <Route path="/admin/media/:mediaId" element={<MediaEdit />} />
                   <Route path="/admin/eras" element={<Eras />} />
                   <Route path="/admin/settings" element={<Settings />} />
                 </Route>

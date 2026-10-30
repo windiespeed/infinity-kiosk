@@ -6,6 +6,8 @@ import { buttonClass } from "../../lib/ui.js";
 import Field, { inputClass } from "../../components/admin/Field.jsx";
 import MoveButtons, { moveItem } from "../../components/admin/MoveButtons.jsx";
 import ConfirmDialog from "../../components/admin/ConfirmDialog.jsx";
+import MediaPicker from "../../components/admin/MediaPicker.jsx";
+import { MediaThumb, mediaLabel } from "../../components/admin/MediaGrid.jsx";
 
 const blankEra = { id: "", title: "", subtitle: "", overview: "", startYear: "", endYear: "", coverMediaId: "" };
 
@@ -36,11 +38,12 @@ export default function Eras() {
   const [saved, setSaved] = useState(null); // the same era as last loaded, to spot changes
   const [problems, setProblems] = useState({});
   const [deleting, setDeleting] = useState(null);
+  const [picking, setPicking] = useState(false);
 
   const dirty = form !== null && JSON.stringify(form) !== JSON.stringify(saved);
   useUnsavedChanges(dirty);
 
-  const images = content.media.filter((m) => m.type !== "video");
+  const cover = form?.coverMediaId && content.media.find((m) => m.id === form.coverMediaId);
   const eventsIn = (eraId) => content.events.filter((ev) => ev.eraIds.includes(eraId));
 
   const open = (era) => {
@@ -173,20 +176,29 @@ export default function Eras() {
             </div>
           </div>
 
-          <Field
-            id="era-coverMediaId"
-            label="Cover photo"
-            hint="Shown on the era's card. If none is picked, the first photo of its earliest event is used."
-          >
-            {(props) => (
-              <select {...props} value={form.coverMediaId} onChange={set("coverMediaId")} className={inputClass}>
-                <option value="">No cover photo (use the first event photo)</option>
-                {images.map((m) => (
-                  <option key={m.id} value={m.id}>{m.caption || m.alt || m.id}</option>
-                ))}
-              </select>
-            )}
-          </Field>
+          <div className="mt-6">
+            <p id="era-cover-label" className="font-bold">Cover photo</p>
+            <p className="mt-1 text-text-muted">
+              Shown on the era's card. With none, the first photo of its earliest event is used.
+            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-4">
+              {cover && <MediaThumb item={cover} className="w-64" />}
+              {cover && <p className="max-w-xs">{mediaLabel(cover)}</p>}
+              <button
+                type="button"
+                onClick={() => setPicking(true)}
+                aria-describedby="era-cover-label"
+                className={buttonClass("secondary")}
+              >
+                {cover ? "Change photo" : "Choose a photo"}
+              </button>
+              {cover && (
+                <button type="button" onClick={() => setForm({ ...form, coverMediaId: "" })} className={buttonClass("secondary")}>
+                  Remove photo
+                </button>
+              )}
+            </div>
+          </div>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <button type="submit" disabled={saving} className={buttonClass("primary")}>Save era</button>
@@ -195,6 +207,17 @@ export default function Eras() {
             </button>
           </div>
         </form>
+      )}
+
+      {picking && (
+        <MediaPicker
+          title="Choose a cover photo"
+          onPick={(item) => {
+            setForm({ ...form, coverMediaId: item.id });
+            setPicking(false);
+          }}
+          onClose={() => setPicking(false)}
+        />
       )}
 
       {deleting &&
