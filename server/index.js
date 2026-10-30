@@ -119,6 +119,21 @@ app.post(
   }
 );
 
+// Media delete (admin media library). Content is saved separately, after the file is gone.
+app.delete("/api/media/:name", requireAdmin, async (req, res) => {
+  const name = req.params.name;
+  if (!SAFE_NAME.test(name)) return res.status(400).json({ error: "Unsafe file name." });
+  try {
+    await unlink(path.join(DATA_DIR, "media", name));
+    res.json({ ok: true });
+  } catch (err) {
+    // Already gone is fine: the goal is that the file isn't there.
+    if (err.code === "ENOENT") return res.json({ ok: true });
+    console.error(err);
+    res.status(500).json({ error: `Could not delete ${name}.` });
+  }
+});
+
 // ---------- Static files ----------
 app.use("/media", express.static(path.join(DATA_DIR, "media"), { maxAge: "1h" }));
 app.use(express.static(DIST_DIR));

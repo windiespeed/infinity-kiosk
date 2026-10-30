@@ -68,6 +68,15 @@ export function createServerStore() {
       };
     },
 
+    async deleteMedia(name, session) {
+      if (!SAFE_NAME.test(name)) throw new Error(`Unsafe file name: ${name}`);
+      const res = await fetch(`/api/media/${encodeURIComponent(name)}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${session}` },
+      });
+      if (!res.ok) throw await errorFrom(res, `Could not delete ${name}.`);
+    },
+
     // In a browser, a backup downloads like any other file.
     async openBackupWriter(name) {
       const parts = [];

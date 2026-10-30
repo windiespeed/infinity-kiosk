@@ -18,6 +18,7 @@ import About from "./routes/About.jsx";
 import { QuizHome, EventQuiz, QuizComplete } from "./routes/Quiz.jsx";
 import AdminLogin from "./routes/admin/AdminLogin.jsx";
 import Dashboard from "./routes/admin/Dashboard.jsx";
+import AdminLayout from "./components/admin/AdminLayout.jsx";
 import { isCompanion } from "./lib/store/index.js";
 import Certificate from "./routes/Certificate.jsx";
 
@@ -26,8 +27,6 @@ export default function App() {
   const location = useLocation();
   const startOver = useStartOver();
   const kiosk = useKiosk();
-
-
 
   // Accessibility settings are applied as attributes on <html>; theme.css reacts to them.
   useEffect(() => {
@@ -44,13 +43,14 @@ export default function App() {
   const idle = useIdleTimer({
     idleSeconds: content?.settings?.idleSeconds ?? 75,
     warningSeconds: content?.settings?.warningSeconds ?? 15,
-    enabled: !onAttract && !onCertificate,
+    // Admin screens have their own, longer sign-out timer (AdminLayout).
+    enabled: !onAttract && !onCertificate && !inAdmin,
     onReset: startOver,
   });
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden">
-      <HiddenAdminTrigger />
+      {!inAdmin && !isCompanion && <HiddenAdminTrigger />}
       <main className={`relative min-h-0 flex-1 overflow-y-auto ${kiosk.reach ? "pt-[30vh]" : ""}`}>
         {!content ? (
           <PageStatus />
@@ -66,11 +66,13 @@ export default function App() {
               <Route path="/quiz/event/:eventId" element={<EventQuiz />} />
               <Route path="/quiz/complete" element={<QuizComplete />} />
               <Route path="/about" element={<About />} />
-              <Route path="/admin" element={<AdminLogin />} />
-              <Route path="/admin/dashboard" element={<Dashboard />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
+              {/* No admin at all on the public companion site. */}
               {!isCompanion && <Route path="/admin" element={<AdminLogin />} />}
-              {!isCompanion && <Route path="/admin/dashboard" element={<Dashboard />} />}
+              {!isCompanion && (
+                <Route element={<AdminLayout />}>
+                  <Route path="/admin/dashboard" element={<Dashboard />} />
+                </Route>
+              )}
               <Route path="*" element={<Navigate to={isCompanion ? "/certificate" : "/"} replace />} />
             </Routes>
           </ErrorBoundary>
