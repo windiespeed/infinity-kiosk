@@ -8,7 +8,11 @@ import IdleModal from "../IdleModal.jsx";
 import ConfirmDialog from "./ConfirmDialog.jsx";
 
 // Admin screens. Each editor adds its link here when it's built.
-const LINKS = [{ to: "/admin/dashboard", label: "Dashboard" }];
+const LINKS = [
+  { to: "/admin/dashboard", label: "Dashboard" },
+  { to: "/admin/eras", label: "Eras" },
+  { to: "/admin/settings", label: "Settings" },
+];
 
 // Staff are signed out after 10 minutes without a touch, with a 1-minute warning.
 // (The visitor idle timer is off on admin screens, so a pause never loses an edit.)

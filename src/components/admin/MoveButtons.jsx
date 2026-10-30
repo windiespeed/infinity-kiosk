@@ -10,7 +10,7 @@ export default function MoveButtons({ index, count, label, onMove }) {
         onClick={() => onMove(index, index - 1)}
         disabled={index === 0}
         aria-label={`Move ${label} up`}
-        className={buttonClass("secondary", "px-4")}
+        className={buttonClass("secondary", "px-4 text-2xl")}
       >
         ↑
       </button>
@@ -19,7 +19,7 @@ export default function MoveButtons({ index, count, label, onMove }) {
         onClick={() => onMove(index, index + 1)}
         disabled={index === count - 1}
         aria-label={`Move ${label} down`}
-        className={buttonClass("secondary", "px-4")}
+        className={buttonClass("secondary", "px-4 text-2xl")}
       >
         ↓
       </button>
