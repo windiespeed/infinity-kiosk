@@ -38,6 +38,7 @@ export function createStaticStore() {
     async signOut() {},
 
     openMediaWriter: readOnly("Uploading media"),
+    deleteMedia: readOnly("Deleting media"),
     openBackupWriter: readOnly("Backups"),
   };
 }
