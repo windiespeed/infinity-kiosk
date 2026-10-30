@@ -22,7 +22,10 @@ import Eras from "./routes/admin/Eras.jsx";
 import Settings from "./routes/admin/Settings.jsx";
 import Media from "./routes/admin/Media.jsx";
 import MediaEdit from "./routes/admin/MediaEdit.jsx";
+import Events from "./routes/admin/Events.jsx";
+import EventEdit from "./routes/admin/EventEdit.jsx";
 import AdminLayout from "./components/admin/AdminLayout.jsx";
+import PreviewBar from "./components/admin/PreviewBar.jsx";
 import { isCompanion } from "./lib/store/index.js";
 import Certificate from "./routes/Certificate.jsx";
 
@@ -55,6 +58,7 @@ export default function App() {
   return (
     <div className="flex h-dvh flex-col overflow-hidden">
       {!inAdmin && !isCompanion && <HiddenAdminTrigger />}
+      {!inAdmin && kiosk.adminToken && <PreviewBar />}
       <main className={`relative min-h-0 flex-1 overflow-y-auto ${kiosk.reach ? "pt-[30vh]" : ""}`}>
         {!content ? (
           <PageStatus />
@@ -75,6 +79,8 @@ export default function App() {
               {!isCompanion && (
                 <Route element={<AdminLayout />}>
                   <Route path="/admin/dashboard" element={<Dashboard />} />
+                  <Route path="/admin/events" element={<Events />} />
+                  <Route path="/admin/events/:eventId" element={<EventEdit />} />
                   <Route path="/admin/media" element={<Media />} />
                   <Route path="/admin/media/:mediaId" element={<MediaEdit />} />
                   <Route path="/admin/eras" element={<Eras />} />
