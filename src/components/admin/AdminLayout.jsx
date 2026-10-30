@@ -3,6 +3,7 @@ import { Navigate, NavLink, Outlet, useNavigate } from "react-router";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { useIdleTimer } from "../../hooks/useIdleTimer.js";
+import { ADMIN_IDLE_DEFAULT } from "../../lib/content.js";
 import { buttonClass } from "../../lib/ui.js";
 import IdleModal from "../IdleModal.jsx";
 import ConfirmDialog from "./ConfirmDialog.jsx";
@@ -16,9 +17,9 @@ const LINKS = [
   { to: "/admin/settings", label: "Settings" },
 ];
 
-// Staff are signed out after 10 minutes without a touch, with a 1-minute warning.
-// (The visitor idle timer is off on admin screens, so a pause never loses an edit.)
-const ADMIN_IDLE_SECONDS = 9 * 60;
+// Staff are signed out after settings.adminIdleMinutes without a touch (10 by default),
+// with a 1-minute warning. (The visitor idle timer is off on admin screens, so a pause
+// never loses an edit.)
 const ADMIN_WARNING_SECONDS = 60;
 
 // Wraps every signed-in admin screen: the sign-in check, the menu, Exit admin,
@@ -27,7 +28,7 @@ export default function AdminLayout() {
   const token = useKiosk((s) => s.adminToken);
   const dirty = useKiosk((s) => s.adminDirty > 0);
   const update = useKiosk((s) => s.update);
-  const { store } = useContent();
+  const { content, store } = useContent();
   const navigate = useNavigate();
   const [leaveTo, setLeaveTo] = useState(null); // where to go once unsaved changes are dropped
   const signingOut = useRef(false);
@@ -42,7 +43,7 @@ export default function AdminLayout() {
   };
 
   const idle = useIdleTimer({
-    idleSeconds: ADMIN_IDLE_SECONDS,
+    idleSeconds: (content.settings.adminIdleMinutes ?? ADMIN_IDLE_DEFAULT) * 60 - ADMIN_WARNING_SECONDS,
     warningSeconds: ADMIN_WARNING_SECONDS,
     enabled: Boolean(token),
     onReset: signOut,

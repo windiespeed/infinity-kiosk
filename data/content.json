@@ -2,8 +2,7 @@
   "settings": {
     "idleSeconds": 75,
     "warningSeconds": 15,
-    "attractVideo": null,
-    "credits": "Built by Mississippi Coding Academies technologists for the Infinity Science Center."
+    "attractVideo": "vid-stennis-overview"
   },
   "eras": [
     {
@@ -13,8 +12,7 @@
       "overview": "The launch of Sputnik 1 in 1957 began the space age. The United States responded by creating NASA and developing early human spaceflight programs that led to missions carrying astronauts into orbit.",
       "startYear": 1901,
       "endYear": 1969,
-      "order": 1,
-      "coverMediaId": "img-cover-early"
+      "order": 1
     },
     {
       "id": "apollo",
@@ -23,8 +21,7 @@
       "overview": "During the Apollo era, NASA developed the systems needed to send astronauts to the Moon. Apollo 11 achieved the first crewed lunar landing in July 1969, and Apollo 17 was the program's final crewed Moon landing in 1972.",
       "startYear": 1961,
       "endYear": 1972,
-      "order": 2,
-      "coverMediaId": "img-s-ii-hoisted-a2-1967-ssc-67-701"
+      "order": 2
     },
     {
       "id": "shuttle",
@@ -33,8 +30,7 @@
       "overview": "The Space Shuttle was designed as a reusable spacecraft for trips to orbit. Across three decades, shuttle missions carried crews and satellites, supported scientific research, and helped assemble the International Space Station.",
       "startYear": 1981,
       "endYear": 2011,
-      "order": 3,
-      "coverMediaId": "img-external-tank-b2-1978-ssc-78-016"
+      "order": 3
     },
     {
       "id": "iss",
@@ -43,8 +39,7 @@
       "overview": "The International Space Station grew through international cooperation, beginning with the launch of its first module in 1998. Since the first long-duration crew arrived in 2000, the station has supported research in microgravity.",
       "startYear": 1998,
       "endYear": null,
-      "order": 4,
-      "coverMediaId": "img-earth-at-night-iss040e090540"
+      "order": 4
     },
     {
       "id": "future",
@@ -53,8 +48,7 @@
       "overview": "Recent exploration efforts include the Artemis program, which is working toward sustained human exploration of the Moon. Artemis I tested an uncrewed flight around the Moon in 2022, while future mission plans continue to develop.",
       "startYear": 2021,
       "endYear": null,
-      "order": 5,
-      "coverMediaId": "img-cover-future"
+      "order": 5
     }
   ],
   "events": [
@@ -2203,6 +2197,16 @@
       "alt": "The top of an orange and white rocket with the NASA logo stands beside its launch tower.",
       "caption": "The Artemis II rocket and Orion spacecraft roll out to the launch pad, January 2026.",
       "credit": "NASA/Brandon Hancock"
+    },
+    {
+      "id": "vid-stennis-overview",
+      "type": "video",
+      "file": "vid-stennis-overview.mp4",
+      "poster": "vid-stennis-overview-poster.png",
+      "background": true,
+      "alt": "A short film about NASA Stennis Space Center: building the center in the 1960s, rocket engine tests, the space station, the Artemis rocket and students at a NASA event.",
+      "caption": "Stennis Space Center overview",
+      "credit": ""
     }
   ],
   "questions": [

@@ -30,3 +30,19 @@ export async function verifyPin(pin, stored) {
 }
 
 export const isValidPin = (pin) => /^\d{4,8}$/.test(pin);
+
+// Recovery code: 12 random digits, shown once so staff can set a new PIN if the PIN
+// is forgotten. Stored hashed like the PIN.
+export const RECOVERY_CODE_LENGTH = 12;
+
+export function makeRecoveryCode() {
+  const digits = [];
+  while (digits.length < RECOVERY_CODE_LENGTH) {
+    const [n] = crypto.getRandomValues(new Uint32Array(1));
+    if (n < 4294967290) digits.push(n % 10); // skip the top few values so every digit is equally likely
+  }
+  return digits.join("");
+}
+
+// "123456789012" -> "1234 5678 9012", easier to copy down.
+export const formatRecoveryCode = (code) => code.replace(/(\d{4})(?=\d)/g, "$1 ");
