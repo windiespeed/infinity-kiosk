@@ -47,7 +47,13 @@ export default function App() {
     enabled: !onAttract && !onCertificate,
     onReset: startOver,
   });
-
+  if (onCertificate) {
+    return (
+      <div className="min-h-dvh">
+        <Certificate />
+      </div>
+    );
+  }
   return (
     <div className="flex h-dvh flex-col overflow-hidden">
       <HiddenAdminTrigger />
@@ -66,9 +72,6 @@ export default function App() {
               <Route path="/quiz/event/:eventId" element={<EventQuiz />} />
               <Route path="/quiz/complete" element={<QuizComplete />} />
               <Route path="/about" element={<About />} />
-              <Route path="/admin" element={<AdminLogin />} />
-              <Route path="/admin/dashboard" element={<Dashboard />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
               {!isCompanion && <Route path="/admin" element={<AdminLogin />} />}
               {!isCompanion && <Route path="/admin/dashboard" element={<Dashboard />} />}
               <Route path="*" element={<Navigate to={isCompanion ? "/certificate" : "/"} replace />} />
