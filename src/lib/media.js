@@ -71,17 +71,16 @@ export async function saveMediaFile(store, blob, name, session, onProgress) {
   onProgress?.(1);
 }
 
-// Where a media item is used: events showing it, eras using it as their cover,
+// Where a media item is used: events showing it (an era's card shows its first event's photo),
 // and whether it's the welcome screen video.
 export function mediaUsage(content, id) {
   return {
     events: content.events.filter((ev) => ev.mediaIds.includes(id)),
-    eras: content.eras.filter((era) => era.coverMediaId === id),
     attract: content.settings.attractVideo === id,
   };
 }
 
-export const isUsed = (usage) => usage.events.length > 0 || usage.eras.length > 0 || usage.attract;
+export const isUsed = (usage) => usage.events.length > 0 || usage.attract;
 
 export const formatBytes = (bytes) =>
   bytes >= 1024 * 1024 * 1024

@@ -48,7 +48,8 @@
 // Every store has:
 //   init(), loadContent(), saveContent(content, session), mediaUrl(item),
 //   hasPin(), setPin(pin), signIn(pin) -> session or null, signOut(session),
-//   openMediaWriter(name, session), deleteMedia(name, session), openBackupWriter(name)
+//   hasRecoveryCode(), newRecoveryCode() -> code, checkRecoveryCode(code), resetPin(code, pin) -> bool
+//   (recovery codes work only on the kiosk), openMediaWriter(name, session), deleteMedia(name, session), openBackupWriter(name)
 //   (writers have write(Uint8Array) and close())
 import { Capacitor } from "@capacitor/core";
 

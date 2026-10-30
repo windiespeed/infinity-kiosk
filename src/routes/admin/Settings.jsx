@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContent } from "../../hooks/useContent.jsx";
 import { useAdminSave, useUnsavedChanges } from "../../hooks/useAdmin.js";
-import { IDLE_MAX, IDLE_MIN, settingsProblems } from "../../lib/content.js";
-import { isValidPin } from "../../lib/pin.js";
+import {
+  ADMIN_IDLE_DEFAULT,
+  ADMIN_IDLE_MAX,
+  ADMIN_IDLE_MIN,
+  IDLE_MAX,
+  IDLE_MIN,
+  settingsProblems,
+} from "../../lib/content.js";
+import { formatRecoveryCode, isValidPin } from "../../lib/pin.js";
 import { buttonClass } from "../../lib/ui.js";
 import Field, { inputClass } from "../../components/admin/Field.jsx";
+import ConfirmDialog from "../../components/admin/ConfirmDialog.jsx";
 
 const toForm = (s) => ({
   idleSeconds: String(s.idleSeconds),
   warningSeconds: String(s.warningSeconds),
-  credits: s.credits ?? "",
+  adminIdleMinutes: String(s.adminIdleMinutes ?? ADMIN_IDLE_DEFAULT),
   attractVideo: s.attractVideo ?? "",
 });
 
@@ -35,7 +43,7 @@ export default function Settings() {
       ...content.settings,
       idleSeconds: wholeNumber(form.idleSeconds),
       warningSeconds: wholeNumber(form.warningSeconds),
-      credits: form.credits.trim(),
+      adminIdleMinutes: wholeNumber(form.adminIdleMinutes),
       attractVideo: form.attractVideo || null,
     };
     const found = settingsProblems(settings, content);
@@ -86,9 +94,24 @@ export default function Settings() {
           </div>
         </div>
 
-        <Field id="set-credits" label="Credits" hint="Shown on the About screen." error={problems.credits}>
-          {(props) => <textarea {...props} rows={3} value={form.credits} onChange={set("credits")} className={inputClass} />}
-        </Field>
+        <div className="w-80">
+          <Field
+            id="set-adminIdleMinutes"
+            label="Minutes before staff are signed out"
+            hint={`${ADMIN_IDLE_MIN} to ${ADMIN_IDLE_MAX}. Counts from the last touch in admin; a warning shows for the last minute.`}
+            error={problems.adminIdleMinutes}
+          >
+            {(props) => (
+              <input
+                {...props}
+                inputMode="numeric"
+                value={form.adminIdleMinutes}
+                onChange={set("adminIdleMinutes")}
+                className={inputClass}
+              />
+            )}
+          </Field>
+        </div>
 
         <Field
           id="set-attractVideo"
@@ -117,6 +140,7 @@ export default function Settings() {
       </form>
 
       <ChangePin />
+      <RecoveryCode />
     </div>
   );
 }
@@ -194,7 +218,7 @@ function ChangePin() {
   return (
     <form onSubmit={submit} noValidate className="panel mt-10 rounded-xl p-6">
       <h2 className="text-3xl">Change the staff PIN</h2>
-      <p className="mt-3 text-text-muted">4 to 8 digits. It can't be recovered, so keep it somewhere safe.</p>
+      <p className="mt-3 text-text-muted">4 to 8 digits. Keep it somewhere safe.</p>
       <div className="flex flex-wrap gap-6">
         {pinField("current", "Current PIN", problems.current)}
         {pinField("next", "New PIN", problems.next)}
@@ -205,5 +229,78 @@ function ChangePin() {
         <p aria-live="polite" className="text-text-muted">{status}</p>
       </div>
     </form>
+  );
+}
+
+// The recovery code lets staff choose a new PIN on the sign-in screen if the PIN is
+// forgotten. Kiosks set up before recovery codes existed have none until one is made here.
+function RecoveryCode() {
+  const { store } = useContent();
+  const [has, setHas] = useState(null);
+  const [asking, setAsking] = useState(false);
+  const [code, setCode] = useState("");
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    if (store.kind === "device") store.hasRecoveryCode().then(setHas);
+  }, [store]);
+
+  if (store.kind !== "device") return null;
+
+  const make = async () => {
+    setAsking(false);
+    try {
+      setCode(await store.newRecoveryCode());
+      setHas(true);
+      setStatus("");
+    } catch (err) {
+      setStatus(err.message || "No new code was made.");
+    }
+  };
+
+  // The dialog sits outside the panel: its backdrop blur would trap the dialog's fixed position.
+  return (
+    <>
+      <section className="panel mt-10 rounded-xl p-6" aria-labelledby="recovery-title">
+        <h2 id="recovery-title" className="text-3xl">Recovery code</h2>
+        <p className="mt-3 text-text-muted">
+          If the PIN is forgotten, staff tap “Forgot the PIN?” on the sign-in screen and enter this code to choose a new
+          PIN. No content is lost. Each code works once.
+        </p>
+        {code ? (
+          <>
+            <p className="mt-4">Write this down and keep it away from the kiosk. It won't be shown again.</p>
+            <p className="mt-3 inline-block rounded-xl border-2 border-accent px-6 py-4 font-display text-4xl tracking-widest">
+              {formatRecoveryCode(code)}
+            </p>
+            <div>
+              <button onClick={() => setCode("")} className={buttonClass("primary", "mt-4")}>
+                I've written it down
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="mt-4 font-bold">
+              {has === null ? "" : has ? "This kiosk has a recovery code." : "This kiosk has no recovery code yet."}
+            </p>
+            <button onClick={() => (has ? setAsking(true) : make())} className={buttonClass("secondary", "mt-4")}>
+              {has ? "Make a new recovery code" : "Make a recovery code"}
+            </button>
+          </>
+        )}
+        <p aria-live="polite" className="mt-2 text-text-muted">{status}</p>
+      </section>
+
+      {asking && (
+        <ConfirmDialog
+          title="Make a new recovery code?"
+          message="The old code will stop working."
+          confirmLabel="Make a new code"
+          onConfirm={make}
+          onCancel={() => setAsking(false)}
+        />
+      )}
+    </>
   );
 }

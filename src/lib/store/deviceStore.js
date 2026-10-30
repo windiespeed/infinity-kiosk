@@ -8,7 +8,7 @@ import { Capacitor } from "@capacitor/core";
 import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
 import { Preferences } from "@capacitor/preferences";
 import seed from "../../../data/content.json";
-import { hashPin, verifyPin, isValidPin } from "../pin.js";
+import { hashPin, verifyPin, isValidPin, makeRecoveryCode } from "../pin.js";
 import { SAFE_NAME, validateContent } from "../content.js";
 
 const DATA = Directory.Data;
@@ -126,6 +126,11 @@ async function keepVersion() {
   }
 }
 
+async function checkRecoveryCode(code) {
+  const { value } = await Preferences.get({ key: "recoveryHash" });
+  return Boolean(value) && /^\d+$/.test(code) && verifyPin(code, value);
+}
+
 export function createDeviceStore() {
   let base = "";
   const onDisk = new Set();
@@ -194,6 +199,31 @@ export function createDeviceStore() {
     },
 
     async signOut() {},
+
+    // A forgotten PIN can be replaced with the recovery code, without losing content.
+    // Only the code's hash is kept, and each code works once.
+    async hasRecoveryCode() {
+      const { value } = await Preferences.get({ key: "recoveryHash" });
+      return Boolean(value);
+    },
+
+    // Makes a new code (the old one stops working) and returns it to show staff once.
+    async newRecoveryCode() {
+      const code = makeRecoveryCode();
+      await Preferences.set({ key: "recoveryHash", value: await hashPin(code) });
+      return code;
+    },
+
+    checkRecoveryCode,
+
+    // Returns false if the code is wrong. Afterwards the code is used up.
+    async resetPin(code, pin) {
+      if (!isValidPin(pin)) throw new Error("The PIN must be 4 to 8 digits.");
+      if (!(await checkRecoveryCode(code))) return false;
+      await Preferences.set({ key: "pinHash", value: await hashPin(pin) });
+      await Preferences.remove({ key: "recoveryHash" });
+      return true;
+    },
 
     async openMediaWriter(name) {
       if (!SAFE_NAME.test(name)) throw new Error(`Unsafe file name: ${name}`);

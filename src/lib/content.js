@@ -16,6 +16,11 @@ export const SAFE_NAME = /^[\w][\w.-]{0,199}$/;
 export const IDLE_MIN = 30;
 export const IDLE_MAX = 600;
 
+// Allowed range for settings.adminIdleMinutes, the admin sign-out time.
+export const ADMIN_IDLE_MIN = 5;
+export const ADMIN_IDLE_MAX = 30;
+export const ADMIN_IDLE_DEFAULT = 10;
+
 // The timeline point label has room for about this many characters.
 export const SHORT_TITLE_MAX = 28;
 
@@ -74,6 +79,10 @@ export function eventProblems(ev, c) {
   } else if (c) {
     const missing = ev.mediaIds.filter((id) => !c.media.some((m) => m.id === id));
     if (missing.length) p.mediaIds = `Not in the media library: ${missing.join(", ")}.`;
+    const background = ev.mediaIds.filter((id) => c.media.some((m) => m.id === id && m.background));
+    if (!missing.length && background.length) {
+      p.mediaIds = `Background videos have no captions, so they can only be the welcome video: ${background.join(", ")}.`;
+    }
   }
   return p;
 }
@@ -85,9 +94,15 @@ export function mediaProblems(m) {
   if (m.type != null && !["image", "video"].includes(m.type)) {
     p.type = 'Unsupported type. Use "image" or "video".';
   }
+  if (m.background != null && (typeof m.background !== "boolean" || m.type !== "video")) {
+    p.background = "Only a video can be a background video.";
+  }
   if (m.type === "video") {
-    if (!isText(m.captionsFile) || !SAFE_NAME.test(m.captionsFile)) p.captionsFile = "Add a captions file (.vtt).";
-    else if (!/\.vtt$/i.test(m.captionsFile)) p.captionsFile = "The captions file must be a .vtt file.";
+    // A background video plays muted behind the welcome screen, so it needs no captions.
+    if (!(m.background && m.captionsFile == null)) {
+      if (!isText(m.captionsFile) || !SAFE_NAME.test(m.captionsFile)) p.captionsFile = "Add a captions file (.vtt).";
+      else if (!/\.vtt$/i.test(m.captionsFile)) p.captionsFile = "The captions file must be a .vtt file.";
+    }
     if (!isText(m.poster) || !SAFE_NAME.test(m.poster)) p.poster = "Add a poster image.";
   } else if (!isText(m.alt)) {
     p.alt = "Describe what the image shows.";
@@ -119,7 +134,12 @@ export function settingsProblems(s, c) {
   if (!Number.isInteger(s.warningSeconds) || s.warningSeconds < 5) {
     p.warningSeconds = "Enter a whole number of at least 5.";
   }
-  if (s.credits != null && typeof s.credits !== "string") p.credits = "Credits must be text.";
+  if (s.adminIdleMinutes != null) {
+    const n = s.adminIdleMinutes;
+    if (!Number.isInteger(n) || n < ADMIN_IDLE_MIN || n > ADMIN_IDLE_MAX) {
+      p.adminIdleMinutes = `Enter a whole number from ${ADMIN_IDLE_MIN} to ${ADMIN_IDLE_MAX}.`;
+    }
+  }
   // The attract video setting refers to a video media item's ID, not a filename.
   if (s.attractVideo != null) {
     const video = isText(s.attractVideo) && c?.media.find((m) => m.id === s.attractVideo);

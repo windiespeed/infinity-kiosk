@@ -6,10 +6,9 @@ import { buttonClass } from "../../lib/ui.js";
 import Field, { inputClass } from "../../components/admin/Field.jsx";
 import MoveButtons, { moveItem } from "../../components/admin/MoveButtons.jsx";
 import ConfirmDialog from "../../components/admin/ConfirmDialog.jsx";
-import MediaPicker from "../../components/admin/MediaPicker.jsx";
-import { MediaThumb, mediaLabel } from "../../components/admin/MediaGrid.jsx";
+import { MediaThumb } from "../../components/admin/MediaGrid.jsx";
 
-const blankEra = { id: "", title: "", subtitle: "", overview: "", startYear: "", endYear: "", coverMediaId: "" };
+const blankEra = { id: "", title: "", subtitle: "", overview: "", startYear: "", endYear: "" };
 
 // Form values are strings; content stores years as numbers and "no end year" as null.
 const toForm = (era) => ({
@@ -17,7 +16,6 @@ const toForm = (era) => ({
   ...era,
   startYear: era.startYear == null ? "" : String(era.startYear),
   endYear: era.endYear == null ? "" : String(era.endYear),
-  coverMediaId: era.coverMediaId ?? "",
 });
 
 const yearOrNull = (text) => (text.trim() === "" ? null : Number(text));
@@ -32,18 +30,18 @@ function newEraId(title, eras) {
 
 // Era editor: reorder, add, edit and delete the timeline's eras.
 export default function Eras() {
-  const { content, eras } = useContent();
+  const { content, eras, eraCoverEvent, eraCover } = useContent();
   const { save, status, setStatus, saving } = useAdminSave();
   const [form, setForm] = useState(null); // the era being edited (strings), or null
   const [saved, setSaved] = useState(null); // the same era as last loaded, to spot changes
   const [problems, setProblems] = useState({});
   const [deleting, setDeleting] = useState(null);
-  const [picking, setPicking] = useState(false);
 
   const dirty = form !== null && JSON.stringify(form) !== JSON.stringify(saved);
   useUnsavedChanges(dirty);
 
-  const cover = form?.coverMediaId && content.media.find((m) => m.id === form.coverMediaId);
+  const cover = form?.id && eraCover(form.id);
+  const coverEvent = form?.id && eraCoverEvent(form.id);
   const eventsIn = (eraId) => content.events.filter((ev) => ev.eraIds.includes(eraId));
 
   const open = (era) => {
@@ -79,8 +77,7 @@ export default function Eras() {
       endYear: yearOrNull(form.endYear),
       order: isNew ? Math.max(0, ...content.eras.map((x) => x.order)) + 1 : content.eras.find((x) => x.id === form.id).order,
     };
-    if (form.coverMediaId) era.coverMediaId = form.coverMediaId;
-    else delete era.coverMediaId;
+    delete era.coverMediaId; // older content picked covers by hand; now they come from the events
 
     const found = eraProblems(era);
     setProblems(found);
@@ -177,27 +174,21 @@ export default function Eras() {
           </div>
 
           <div className="mt-6">
-            <p id="era-cover-label" className="font-bold">Cover photo</p>
+            <p className="font-bold">Card photo</p>
             <p className="mt-1 text-text-muted">
-              Shown on the era's card. With none, the first photo of its earliest event is used.
+              The era's card shows the first photo of its earliest event that has a photo. To change it, change that
+              event's photos.
             </p>
-            <div className="mt-3 flex flex-wrap items-center gap-4">
-              {cover && <MediaThumb item={cover} className="w-64" />}
-              {cover && <p className="max-w-xs">{mediaLabel(cover)}</p>}
-              <button
-                type="button"
-                onClick={() => setPicking(true)}
-                aria-describedby="era-cover-label"
-                className={buttonClass("secondary")}
-              >
-                {cover ? "Change photo" : "Choose a photo"}
-              </button>
-              {cover && (
-                <button type="button" onClick={() => setForm({ ...form, coverMediaId: "" })} className={buttonClass("secondary")}>
-                  Remove photo
-                </button>
-              )}
-            </div>
+            {cover ? (
+              <div className="mt-3 flex flex-wrap items-center gap-4">
+                <MediaThumb item={cover} className="w-64" />
+                <p className="max-w-xs">
+                  From {coverEvent.date.display}: {coverEvent.title}
+                </p>
+              </div>
+            ) : (
+              <p className="mt-3">{form.id ? "None of this era's events has a photo yet." : "Add events with photos to this era."}</p>
+            )}
           </div>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -207,17 +198,6 @@ export default function Eras() {
             </button>
           </div>
         </form>
-      )}
-
-      {picking && (
-        <MediaPicker
-          title="Choose a cover photo"
-          onPick={(item) => {
-            setForm({ ...form, coverMediaId: item.id });
-            setPicking(false);
-          }}
-          onClose={() => setPicking(false)}
-        />
       )}
 
       {deleting &&
