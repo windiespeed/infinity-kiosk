@@ -25,7 +25,7 @@ const ADMIN_WARNING_SECONDS = 60;
 // the admin sign-out timer, and the "leave without saving?" question.
 export default function AdminLayout() {
   const token = useKiosk((s) => s.adminToken);
-  const dirty = useKiosk((s) => s.adminDirty);
+  const dirty = useKiosk((s) => s.adminDirty > 0);
   const update = useKiosk((s) => s.update);
   const { store } = useContent();
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ export default function AdminLayout() {
     // instead of the welcome screen (the route change lands after the token change).
     signingOut.current = true;
     await store.signOut(token).catch(() => {});
-    update({ adminToken: null, adminDirty: false });
+    update({ adminToken: null, adminDirty: 0 });
     navigate("/", { replace: true });
   };
 
@@ -59,7 +59,7 @@ export default function AdminLayout() {
   const leave = () => {
     const to = leaveTo;
     setLeaveTo(null);
-    update({ adminDirty: false });
+    update({ adminDirty: 0 });
     if (to === "exit") signOut();
     else navigate(to);
   };
