@@ -138,19 +138,7 @@ export function QuizHome() {
         </p>
       )}
 
-      {import.meta.env.DEV && (
-        <button
-          type="button"
-          className={buttonClass("secondary", "mt-6 text-lg")}
-          onClick={() =>
-            navigate("/quiz/complete", {
-              state: { completed: true },
-            })
-          }
-        >
-          DEV: skip to certificate screen
-        </button>
-      )}
+      
     </main>
   );
 }
