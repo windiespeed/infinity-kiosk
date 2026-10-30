@@ -21,6 +21,14 @@ export const SHORT_TITLE_MAX = 28;
 
 export const EVENT_STATUSES = ["historical", "planned", "ongoing"];
 
+// Planned and ongoing events go out of date, so staff check them every 90 days.
+export const REVIEW_DAYS = 90;
+export function needsReview(ev, now = new Date()) {
+  if (!["planned", "ongoing"].includes(ev.date?.status)) return false;
+  if (!ev.reviewedAt) return true;
+  return now - new Date(`${ev.reviewedAt}T00:00:00`) > REVIEW_DAYS * 24 * 60 * 60 * 1000;
+}
+
 const isObject = (v) => Boolean(v) && typeof v === "object" && !Array.isArray(v);
 const isText = (v) => typeof v === "string" && v.trim() !== "";
 const isNumber = (v) => typeof v === "number" && Number.isFinite(v);
@@ -55,6 +63,7 @@ export function eventProblems(ev, c) {
       p.status = `Status must be ${EVENT_STATUSES.join(", ")}.`;
     }
   }
+  if (ev.reviewedAt != null && !/^\d{4}-\d{2}-\d{2}$/.test(ev.reviewedAt)) p.reviewedAt = "Review date must be YYYY-MM-DD.";
   if (!isText(ev.title)) p.title = "Enter a title.";
   if (!isText(ev.shortTitle)) p.shortTitle = "Enter a short title.";
   else if (ev.shortTitle.length > SHORT_TITLE_MAX) p.shortTitle = `Use ${SHORT_TITLE_MAX} characters or fewer.`;

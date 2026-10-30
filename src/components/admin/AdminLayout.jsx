@@ -10,6 +10,7 @@ import ConfirmDialog from "./ConfirmDialog.jsx";
 // Admin screens. Each editor adds its link here when it's built.
 const LINKS = [
   { to: "/admin/dashboard", label: "Dashboard" },
+  { to: "/admin/events", label: "Events" },
   { to: "/admin/media", label: "Media" },
   { to: "/admin/eras", label: "Eras" },
   { to: "/admin/settings", label: "Settings" },

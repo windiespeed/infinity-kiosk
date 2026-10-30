@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { exportBackup, importBackup } from "../../lib/backup.js";
 import { buttonClass } from "../../lib/ui.js";
+import { needsReview } from "../../lib/content.js";
 
 // Dashboard: what's in the kiosk, and backups.
 // AdminLayout checks the sign-in and provides the menu and Exit admin.
-// TODO (admin issues): event editor, question editor,
-// "planned events need review" flag.
+// TODO (admin issues): question editor.
 export default function Dashboard() {
   const token = useKiosk((s) => s.adminToken);
   const addBusy = useKiosk((s) => s.addBusy);
@@ -81,6 +82,14 @@ export default function Dashboard() {
           </div>
         ))}
       </dl>
+
+      {content.events.some((ev) => needsReview(ev)) && (
+        <p className="mt-6 rounded-xl border border-highlight p-4">
+          {content.events.filter((ev) => needsReview(ev)).length} planned or ongoing events haven't been checked in 90
+          days.{" "}
+          <Link to="/admin/events" className="text-highlight underline">Review them in Events</Link>
+        </p>
+      )}
 
       <section className="mt-10 panel rounded-xl p-6">
         <h2 className="text-3xl">Backups</h2>
