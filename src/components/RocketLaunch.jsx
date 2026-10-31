@@ -1,11 +1,16 @@
 
 import { useEffect } from "react";
-import rocketImage from "../assets/artemis-ii-rocket.png";import "../styles/rocket-launch.css";
+import rocketImage from "../assets/artemis-ii-rocket.png";
+import { useKiosk } from "../store/useKiosk.js";
+import "../styles/rocket-launch.css";
 
 export default function RocketLaunch({ onComplete }) {
+    const kioskReduceMotion = useKiosk((s) => s.reduceMotion);
+
     useEffect(() => {
-        // Skip the animation if reduced motion is enabled.
-        const prefersReducedMotion = window.matchMedia(
+        // Shorten the sequence if Reduce motion is on, in the kiosk's
+        // Accessibility panel or in the device settings.
+        const prefersReducedMotion = kioskReduceMotion || window.matchMedia(
             "(prefers-reduced-motion: reduce)"
         ).matches;
 
@@ -15,10 +20,10 @@ export default function RocketLaunch({ onComplete }) {
         );
 
         return () => window.clearTimeout(timer);
-    }, [onComplete]);
+    }, [onComplete, kioskReduceMotion]);
 
     return (
-        <main className="rocket-launch" aria-label="Rocket launch sequence">
+        <section className="rocket-launch" aria-label="Rocket launch sequence">
             <div className="rocket-launch__glow" />
 
             <img
@@ -31,6 +36,6 @@ export default function RocketLaunch({ onComplete }) {
                 <p>MISSION COMPLETE</p>
                 <h1>Ready for the Next Giant Leap?</h1>
             </div>
-        </main>
+        </section>
     );
 }
