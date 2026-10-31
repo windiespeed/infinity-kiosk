@@ -167,7 +167,20 @@ export function createDeviceStore() {
         console.warn(`Showing the kept version ${good.name} instead.`);
         return good.content;
       }
-      throw new Error(`The kiosk's content can't be shown: ${problem}`);
+      const err = new Error(`The kiosk's content can't be shown: ${problem}`);
+      // PageStatus shows staff how to finish the update instead of a plain error.
+      err.code = "content-rejected";
+      throw err;
+    },
+
+    // After an update whose content rules the kiosk's saved content no longer meets:
+    // keep that content as a saved version, then start over from the content built into
+    // this version of the app. The PIN, recovery code and uploaded photos stay.
+    async useBundledContent() {
+      const problem = validateContent(seed);
+      if (problem) throw new Error(`The content built into this version can't be shown either: ${problem}`);
+      await keepVersion();
+      await writeContent(seed);
     },
 
     async saveContent(content) {

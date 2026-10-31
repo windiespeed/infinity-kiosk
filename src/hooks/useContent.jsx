@@ -29,6 +29,7 @@ export function ContentProvider({ children }) {
   const reload = useCallback(async () => {
     const s = await getStore();
     setContent(await loadChecked(s));
+    setError(null);
   }, []);
 
   const value = useMemo(
@@ -42,7 +43,11 @@ export function ContentProvider({ children }) {
 async function loadChecked(store) {
   const content = await store.loadContent();
   const problem = validateContent(content);
-  if (problem) throw new Error(`The content can't be shown: ${problem}`);
+  if (problem) {
+    const err = new Error(`The content can't be shown: ${problem}`);
+    err.code = "content-rejected";
+    throw err;
+  }
   return content;
 }
 
