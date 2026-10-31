@@ -67,6 +67,7 @@
       "summary": "Sputnik 1 became the first artificial satellite to orbit Earth, marking the beginning of the Space Age.",
       "body": "Launched by the Soviet Union on October 4, 1957, Sputnik 1 was a small satellite that transmitted radio signals from orbit. Its success drew worldwide attention and intensified the space race between the Soviet Union and the United States.",
       "mediaIds": [
+        "img-sputnik-1-1957",
         "img-1957-sputnik"
       ],
       "published": true
@@ -86,7 +87,8 @@
       "summary": "Its instruments made a surprising discovery about the space around Earth.",
       "body": "Launched on January 31, 1958, Explorer 1 carried scientific instruments designed to study cosmic rays and other conditions in orbit. Its data helped reveal the radiation belts around Earth later known as the Van Allen belts.",
       "mediaIds": [
-        "img-1958-explorer1"
+        "img-1958-explorer1",
+        "img-explorer1-launch-1958"
       ],
       "published": true
     },
@@ -105,7 +107,8 @@
       "summary": "The United States established NASA as its civilian agency for aeronautics and space exploration.",
       "body": "President Dwight D. Eisenhower signed the National Aeronautics and Space Act in July 1958. NASA officially began operating on October 1, 1958, bringing together existing aeronautics and space research work under one civilian agency.",
       "mediaIds": [
-        "img-1958-nasa"
+        "img-1958-nasa",
+        "img-eisenhower-1958"
       ],
       "published": true
     },
@@ -123,7 +126,10 @@
       "title": "Yuri Gagarin becomes the first human in space",
       "summary": "His flight around Earth lasted about 108 minutes.",
       "body": "On April 12, 1961, Gagarin flew aboard Vostok 1 and completed one orbit of Earth. His flight marked a major milestone in human spaceflight and came before the first American astronaut flew into space.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-gagarin-1961",
+        "img-gagarin-huntsville-times-1961"
+      ],
       "published": true
     },
     {
@@ -141,7 +147,8 @@
       "summary": "His 15-minute flight put the United States in the race to send people into space.",
       "body": "On May 5, 1961, NASA astronaut Alan Shepard flew the Mercury spacecraft Freedom 7 on a suborbital trajectory. Unlike Yuri Gagarin's earlier flight, Shepard's mission did not complete an orbit of Earth, but it established an important American human-spaceflight milestone.",
       "mediaIds": [
-        "img-1961-shepard"
+        "img-1961-shepard",
+        "img-shepard-freedom7-1961"
       ],
       "published": true
     },
@@ -160,7 +167,8 @@
       "summary": "Glenn's flight lasted just under five hours.",
       "body": "Glenn launched aboard Friendship 7 on February 20, 1962, and completed three orbits of Earth before returning safely. The mission demonstrated that American astronauts could operate in orbit and return to Earth.",
       "mediaIds": [
-        "img-1962-glenn"
+        "img-1962-glenn",
+        "img-glenn-friendship7-1962"
       ],
       "published": true
     },
@@ -179,7 +187,8 @@
       "summary": "A robot lander showed that the Moon's surface could hold up a spacecraft.",
       "body": "Surveyor 1 launched on May 30, 1966, and landed on the Moon on June 2. Its photographs and engineering data helped scientists understand the lunar surface and supported preparations for later crewed lunar missions.",
       "mediaIds": [
-        "img-1966-surveyor1"
+        "img-1966-surveyor1",
+        "img-surveyor1-lro"
       ],
       "published": true
     },
@@ -198,7 +207,8 @@
       "summary": "NASA's OAO-2 observatory began studying stars in ultraviolet light from orbit.",
       "body": "Launched on December 7, 1968, the Orbiting Astronomical Observatory 2, nicknamed Stargazer, made ultraviolet observations of stars that could not be studied in the same way from the ground because Earth's atmosphere blocks much ultraviolet light. It showed that space missions could advance astronomy as well as human exploration.",
       "mediaIds": [
-        "img-1968-oao2"
+        "img-1968-oao2",
+        "img-oao2-cleanroom-1968"
       ],
       "published": true
     },
@@ -215,11 +225,15 @@
       "shortTitle": "Moon Landing Goal",
       "title": "President Kennedy sets the Moon-landing goal",
       "summary": "President John F. Kennedy challenged the United States to land astronauts on the Moon and return them safely before the decade ended.",
-      "body": "In an address to Congress on May 25, 1961, Kennedy called for a crewed lunar landing before the end of the 1960s. Meeting the goal required years of spacecraft design, rocket development, mission planning, astronaut training, and scientific work.",
+      "body": "In an address to Congress on May 25, 1961, Kennedy called for a crewed lunar landing before the end of the 1960s. Meeting the goal required years of spacecraft design, rocket development, mission planning, astronaut training, and scientific work. Five months later, NASA chose Hancock County, Mississippi, as the place to test the Moon rocket.",
       "mediaIds": [
         "img-1961-kennedy-moon-goal"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1967-apollo1",
@@ -255,7 +269,8 @@
       "summary": "Apollo 7 tested the Apollo command and service module in Earth orbit with astronauts aboard.",
       "body": "Launched on October 11, 1968, Apollo 7 was the first crewed mission of the Apollo program. The crew tested spacecraft systems and procedures needed for future missions, helping restore confidence in the program after the Apollo 1 tragedy.",
       "mediaIds": [
-        "img-1968-apollo7"
+        "img-1968-apollo7",
+        "img-apollo7-crew-1968"
       ],
       "published": true
     },
@@ -272,11 +287,15 @@
       "shortTitle": "Apollo 8",
       "title": "Apollo 8 becomes the first crewed mission to orbit the Moon",
       "summary": "Apollo 8 carried astronauts around the Moon for the first time and returned them safely to Earth.",
-      "body": "Apollo 8 launched on December 21, 1968, and entered lunar orbit on December 24. Frank Borman, Jim Lovell, and Bill Anders saw Earth from lunar orbit and helped demonstrate that people could travel to the Moon and navigate safely around it.",
+      "body": "Apollo 8 launched on December 21, 1968, and entered lunar orbit on December 24. Frank Borman, Jim Lovell, and Bill Anders saw Earth from lunar orbit and helped demonstrate that people could travel to the Moon and navigate safely around it. Its Saturn V rocket stages were tested in Hancock County, Mississippi.",
       "mediaIds": [
         "img-1968-apollo8"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1969-apollo10",
@@ -310,30 +329,15 @@
       "shortTitle": "Apollo 11",
       "title": "Apollo 11 lands astronauts on the Moon",
       "summary": "Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon while Michael Collins orbited above.",
-      "body": "Apollo 11 achieved the national goal announced by President Kennedy. The lunar module landed on July 20, 1969, and Armstrong and Aldrin explored the surface while Collins remained in lunar orbit. The crew returned safely to Earth on July 24.",
+      "body": "Apollo 11 achieved the national goal announced by President Kennedy. The lunar module landed on July 20, 1969, and Armstrong and Aldrin explored the surface while Collins remained in lunar orbit. The crew returned safely to Earth on July 24. Its Saturn V rocket stages were tested in Hancock County, Mississippi.",
       "mediaIds": [
         "img-1969-apollo11"
       ],
-      "published": true
-    },
-    {
-      "id": "evt-1970-apollo13",
-      "eraIds": [
-        "apollo"
+      "published": true,
+      "tags": [
+        "mississippi"
       ],
-      "date": {
-        "sort": "1970-04-13",
-        "display": "1970",
-        "status": "historical"
-      },
-      "shortTitle": "Apollo 13",
-      "title": "Apollo 13 faces an emergency in space",
-      "summary": "An oxygen tank failure forced Apollo 13 to abandon its planned Moon landing and focus on bringing the crew home.",
-      "body": "On April 13, 1970, an explosion damaged Apollo 13's service module. The crew and mission-control teams worked together to conserve power and supplies, use the lunar module as a lifeboat, and return the astronauts safely to Earth on April 17.",
-      "mediaIds": [
-        "img-1970-apollo13"
-      ],
-      "published": true
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1972-apollo17",
@@ -348,11 +352,15 @@
       "shortTitle": "Apollo 17",
       "title": "Apollo 17 makes the final Apollo lunar landing",
       "summary": "Apollo 17 became the last crewed mission to land on the Moon during the Apollo program.",
-      "body": "Apollo 17 landed in the Taurus-Littrow region on December 11, 1972. The crew conducted extensive geology work and collected lunar samples. Harrison Schmitt, a geologist, became the first professional scientist to explore the Moon's surface, and Apollo 17 remains the most recent crewed lunar landing as of this draft.",
+      "body": "Apollo 17 landed in the Taurus-Littrow region on December 11, 1972. The crew conducted extensive geology work and collected lunar samples. Harrison Schmitt, a geologist, became the first professional scientist to explore the Moon's surface, and Apollo 17 remains the most recent time astronauts landed on the Moon. Its Saturn V rocket stages were tested in Hancock County, Mississippi.",
       "mediaIds": [
         "img-1972-apollo17"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1981-sts1",
@@ -367,11 +375,15 @@
       "shortTitle": "First Shuttle Flight",
       "title": "Columbia flies the first Space Shuttle mission",
       "summary": "The first Space Shuttle flight tested a reusable spacecraft in orbit and demonstrated its return as a runway landing.",
-      "body": "Space Shuttle Columbia launched on April 12, 1981, with astronauts John Young and Robert Crippen aboard. STS-1 was the first orbital test flight of NASA's Space Shuttle system, beginning three decades of shuttle missions.",
+      "body": "Space Shuttle Columbia launched on April 12, 1981, with astronauts John Young and Robert Crippen aboard. STS-1 was the first orbital test flight of NASA's Space Shuttle system, beginning three decades of shuttle missions. Like every Space Shuttle main engine, its engines were test-fired in Mississippi first.",
       "mediaIds": [
         "img-1981-sts1"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1983-sally-ride",
@@ -386,11 +398,15 @@
       "shortTitle": "Sally Ride",
       "title": "Sally Ride becomes the first American woman in space",
       "summary": "She flew aboard Challenger on STS-7.",
-      "body": "Launched on June 18, 1983, STS-7 also deployed communications satellites and conducted experiments. Ride's flight marked a milestone in expanding who could take part in American human spaceflight.",
+      "body": "Launched on June 18, 1983, STS-7 also deployed communications satellites and conducted experiments. Ride's flight marked a milestone in expanding who could take part in American human spaceflight. Like every Space Shuttle main engine, its engines were test-fired in Mississippi first.",
       "mediaIds": [
         "img-1983-sally-ride"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1986-challenger",
@@ -405,11 +421,15 @@
       "shortTitle": "Challenger Accident",
       "title": "The Space Shuttle Challenger is lost",
       "summary": "Challenger broke apart shortly after launch, killing all seven crew members and prompting a major safety investigation.",
-      "body": "On January 28, 1986, Challenger was lost shortly after liftoff on mission STS-51L. The accident led to a lengthy pause in shuttle flights and changes to the program's hardware, management, and safety practices. This is a solemn but important part of the Shuttle era.",
+      "body": "On January 28, 1986, Challenger was lost shortly after liftoff on mission STS-51L. The accident led to a lengthy pause in shuttle flights and changes to the program's hardware, management, and safety practices. This is a solemn but important part of the Shuttle era. Its main engines, like every Shuttle main engine, had been tested in Mississippi.",
       "mediaIds": [
         "img-1986-challenger"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1990-hubble",
@@ -424,11 +444,15 @@
       "shortTitle": "Hubble Telescope",
       "title": "The Space Shuttle deploys the Hubble Space Telescope",
       "summary": "Discovery deployed Hubble into orbit, giving astronomers a powerful space-based observatory.",
-      "body": "Space Shuttle Discovery launched on STS-31 on April 24, 1990, and released the Hubble Space Telescope into orbit on April 25. Hubble has helped scientists study stars, galaxies, planets, and the evolution of the universe.",
+      "body": "Space Shuttle Discovery launched on STS-31 on April 24, 1990, and released the Hubble Space Telescope into orbit on April 25. Hubble has helped scientists study stars, galaxies, planets, and the evolution of the universe. Like every Space Shuttle main engine, its engines were test-fired in Mississippi first.",
       "mediaIds": [
         "img-1990-hubble"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1995-sts71-mir",
@@ -443,11 +467,15 @@
       "shortTitle": "Shuttle–Mir Docking",
       "title": "Atlantis docks with Russia's Mir space station",
       "summary": "The first Space Shuttle–Mir docking demonstrated a new level of U.S.–Russian cooperation in human spaceflight.",
-      "body": "During STS-71, Space Shuttle Atlantis docked with Mir on June 29, 1995. The joint mission included crew exchange and scientific work and helped build experience for later international operations aboard the International Space Station.",
+      "body": "During STS-71, Space Shuttle Atlantis docked with Mir on June 29, 1995. The joint mission included crew exchange and scientific work and helped build experience for later international operations aboard the International Space Station. Like every Space Shuttle main engine, its engines were test-fired in Mississippi first.",
       "mediaIds": [
         "img-1995-sts71-mir"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-2003-columbia",
@@ -462,11 +490,15 @@
       "shortTitle": "Columbia Accident",
       "title": "The Space Shuttle Columbia is lost during reentry",
       "summary": "Columbia broke apart during reentry after a scientific research mission, killing all seven crew members.",
-      "body": "On February 1, 2003, Columbia was lost during its return to Earth after STS-107. The accident led to a renewed investigation of shuttle safety and further changes before flights resumed. This is a solemn but important part of the Shuttle era.",
+      "body": "On February 1, 2003, Columbia was lost during its return to Earth after STS-107. The accident led to a renewed investigation of shuttle safety and further changes before flights resumed. This is a solemn but important part of the Shuttle era. Its main engines, like every Shuttle main engine, had been tested in Mississippi.",
       "mediaIds": [
         "img-2003-columbia"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-2011-sts135",
@@ -481,11 +513,15 @@
       "shortTitle": "Final Shuttle Flight",
       "title": "Atlantis launches the final Space Shuttle mission",
       "summary": "STS-135 closed out 30 years of Space Shuttle flights.",
-      "body": "Space Shuttle Atlantis launched on July 8, 2011, carrying supplies and equipment to the International Space Station. After the mission returned to Earth, NASA's 30-year Space Shuttle Program came to an end. The station remained in operation, but the Shuttle timeline tells the story of the spacecraft and its missions.",
+      "body": "Space Shuttle Atlantis launched on July 8, 2011, carrying supplies and equipment to the International Space Station. After the mission returned to Earth, NASA's 30-year Space Shuttle Program came to an end. Like every Space Shuttle main engine, its engines were test-fired in Mississippi first.",
       "mediaIds": [
         "img-2011-sts135"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1998-zarya",
@@ -538,7 +574,7 @@
       "shortTitle": "Lab and Robotic Arm",
       "title": "The ISS gains a major laboratory and robotic arm",
       "summary": "The Destiny research laboratory and Canadarm2 gave crews more space for science and a powerful tool for station assembly.",
-      "body": "Destiny, the U.S. laboratory module, was installed in February 2001. Canadarm2 was installed during the STS-100 mission in April 2001. Together, these additions strengthened the ISS as a research workplace and made it easier to assemble and maintain the growing station. The event is dated to the Canadarm2 installation, the later of these two 2001 milestones.",
+      "body": "Destiny, the U.S. laboratory module, was installed in February 2001. Canadarm2 was installed during the STS-100 mission in April 2001. Together, these additions strengthened the ISS as a research workplace and made it easier to assemble and maintain the growing station.",
       "mediaIds": [
         "img-2001-iss-lab-arm"
       ],
@@ -595,7 +631,7 @@
       "shortTitle": "ISS Science Today",
       "title": "The ISS continues to support research in orbit",
       "summary": "The International Space Station remains a platform for international research in microgravity, Earth observation, technology, and human health.",
-      "body": "Since the first long-duration crew arrived in 2000, astronauts and partner organizations have used the station to conduct experiments that are difficult or impossible to perform on Earth. This is an ongoing story: its details should be reviewed as the station's research and operating plans change.",
+      "body": "Since the first long-duration crew arrived in 2000, astronauts and partner organizations have used the station to conduct experiments that are difficult or impossible to perform on Earth.",
       "mediaIds": [
         "img-iss-ongoing-research"
       ],
@@ -614,11 +650,15 @@
       "shortTitle": "Artemis I",
       "title": "Artemis I tests the rocket and Orion spacecraft",
       "summary": "The uncrewed flight around the Moon paved the way for astronauts to follow.",
-      "body": "Artemis I launched on November 16, 2022, traveled beyond the Moon, and returned to Earth on December 11, 2022. The flight tested systems intended to support future crewed Artemis missions.",
+      "body": "Artemis I launched on November 16, 2022, traveled beyond the Moon, and returned to Earth on December 11, 2022. The flight tested systems intended to support future crewed Artemis missions. Its core stage was test-fired at Stennis Space Center in Mississippi during the 2021 Green Run.",
       "mediaIds": [
         "img-2022-artemis1"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-2026-artemis2",
@@ -633,11 +673,15 @@
       "shortTitle": "Artemis II",
       "title": "Astronauts fly around the Moon on Artemis II",
       "summary": "Artemis II carried four astronauts on the first crewed Artemis lunar flyby, testing systems for future human missions.",
-      "body": "Artemis II launched on April 1, 2026, and splashed down on April 10 after a crewed flight around the Moon. The mission marked an important step toward future lunar exploration.",
+      "body": "Artemis II launched on April 1, 2026, and splashed down on April 10 after a crewed flight around the Moon. The mission marked an important step toward future lunar exploration. Its four RS-25 engines were tested at Stennis Space Center in Mississippi.",
       "mediaIds": [
         "img-2026-artemis2"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-future-placeholder",
@@ -652,11 +696,15 @@
       "shortTitle": "Artemis Next Steps",
       "title": "Artemis prepares for future lunar missions",
       "summary": "Later Artemis missions aim to return astronauts to the surface of the Moon.",
-      "body": "As of October 2026, NASA describes Artemis III as a planned 2027 mission to test rendezvous and docking with lunar-lander test articles in Earth orbit, with Artemis IV targeted for 2028 and intended to return astronauts to the lunar surface. These are plans, not completed events, and schedules can change.",
+      "body": "As of October 2026, NASA describes Artemis III as a planned 2027 mission to test rendezvous and docking with lunar-lander test articles in Earth orbit, with Artemis IV targeted for 2028 and intended to return astronauts to the lunar surface. These are plans, not completed events, and schedules can change. The RS-25 engines for these missions are tested at Stennis Space Center in Mississippi.",
       "mediaIds": [
         "img-future-placeholder"
       ],
-      "published": true
+      "published": true,
+      "tags": [
+        "mississippi"
+      ],
+      "source": "Mississippi link: INFINITY wall panel (2026) and NASA Stennis Space Center history"
     },
     {
       "id": "evt-1961-pearl-river-site",
@@ -672,7 +720,9 @@
       "title": "NASA picks Hancock County to test the Moon rockets",
       "summary": "On October 25, 1961, NASA announced it would build a rocket test site along the Pearl River in Hancock County, Mississippi.",
       "body": "NASA needed a remote place to test-fire the huge Saturn V rocket stages that would carry astronauts to the Moon. The Pearl River site had water routes for moving rocket stages by barge and room for a large buffer zone to protect nearby towns from the noise. The announcement surprised almost everyone. The site became the Mississippi Test Operations, known today as NASA's John C. Stennis Space Center.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-pearl-river-site-1964"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -692,7 +742,7 @@
       "shortTitle": "Senator Stennis",
       "title": "Senator John C. Stennis helps the community through the move",
       "summary": "U.S. Senator John C. Stennis of Mississippi championed the test site and helped the families who had to sell their land to make room for it.",
-      "body": "Building the site meant buying about 13,500 acres and creating a buffer zone of more than 125,000 acres, which moved whole communities such as Gainesville, Logtown and Napoleon. Senator Stennis spoke to landowners, warned them about land speculators, and promised the government would try to lighten their burden. Over the next few years, local families turned to him many times as land deals and relocation went on. The center was later named in his honor. Stennis urged displaced residents to see their hardship as part of a greater national achievement: \"There is always the thorn before the rose; you have got to make some sacrifices, but you will be taking part in greatness.\"",
+      "body": "Building the site meant moving whole communities such as Gainesville, Logtown and Napoleon. Senator Stennis spoke to landowners, warned them about land speculators, and promised the government would try to lighten their burden. Over the next few years, local families turned to him many times as land deals and relocation went on. The center was later named in his honor. Stennis urged displaced residents to see their hardship as part of a greater national achievement: \"There is always the thorn before the rose; you have got to make some sacrifices, but you will be taking part in greatness.\"",
       "mediaIds": [
         "img-stennis-mtf-1966-ssc-66-4691",
         "img-stennis-test-control-center"
@@ -719,9 +769,8 @@
       "body": "The tree was cut near the spot where a construction dock was built on the turning basin of a new man-made canal system. Crews dug foundations about 50 feet deep for the giant test stands and drove steel beams nearly 100 feet deeper to hold them up. Thousands of workers came to Hancock County to build the facility.",
       "mediaIds": [
         "img-first-tree-cut-1963-ssc-63-021",
-        "img-construction-schedules-1963-ssc-63-108",
-        "img-webb-visit-1964-ssc-64-600",
-        "img-a2-excavation-1964-ssc-64-134"
+        "img-a2-excavation-1964-ssc-64-134",
+        "img-webb-visit-1964-ssc-64-600"
       ],
       "tags": [
         "mississippi"
@@ -790,7 +839,7 @@
       "shortTitle": "First stage tested",
       "title": "The Saturn V first stage fires at the B-2 test stand",
       "summary": "On March 3, 1967, a test version of the Moon rocket's first stage fired for the first time in Mississippi.",
-      "body": "The first stage was powered by five F-1 engines that together produced more than 7.5 million pounds of thrust. Before the test, sound experts set up equipment in nearby communities to measure the noise. Every Saturn V first and second stage that flew Apollo astronauts to the Moon was tested in Mississippi.",
+      "body": "The first stage was powered by five F-1 engines that together produced more than 7.5 million pounds of thrust. Before the test, sound experts set up equipment in nearby communities to measure the noise. Mississippi's test stands flight-certified the Saturn V rocket stages that powered the Apollo missions.",
       "mediaIds": [
         "img-saturn-v-first-stage-b2-1967-ssc-67-2537"
       ],
@@ -806,16 +855,17 @@
         "apollo"
       ],
       "date": {
-        "sort": "1970-04-11",
+        "sort": "1970-04-13",
         "display": "1970",
         "status": "historical"
       },
-      "shortTitle": "Fred Haise, Apollo 13",
+      "shortTitle": "Apollo 13",
       "title": "Biloxi native Fred Haise flies on Apollo 13",
-      "summary": "Haise was the lunar module pilot in April 1970, when the mission became a fight to get home.",
-      "body": "An oxygen tank exploded on the way to the Moon, and the crew of Jim Lovell, Jack Swigert and Fred Haise used the lunar module as a lifeboat to get home safely. Later in 1970, Haise returned to the Mississippi Test Facility with Wernher von Braun for the ceremony marking the end of Saturn V testing.",
+      "summary": "An oxygen tank failure forced Apollo 13 to abandon its Moon landing, and Haise, the lunar module pilot, helped bring the crew home.",
+      "body": "On April 13, 1970, an oxygen tank exploded and damaged Apollo 13's service module on the way to the Moon. Jim Lovell, Jack Swigert and Fred Haise worked with Mission Control to save power and supplies, used the lunar module as a lifeboat, and returned safely to Earth on April 17.",
       "mediaIds": [
-        "img-haise-portrait-ecn-1203"
+        "img-1970-apollo13",
+        "img-haise-1970"
       ],
       "tags": [
         "mississippi"
@@ -838,12 +888,9 @@
       "summary": "It happened on May 19, 1975, at the site then called the National Space Technology Laboratories.",
       "body": "The Space Shuttle Main Engine was designed to be reused flight after flight. Every main engine that flew on the Space Shuttle was tested in Mississippi first, on the A-1, A-2 and B-1 test stands.",
       "mediaIds": [
-        "img-ssme-test-firing",
-        "img-ssme-install-a1-1979-ssc-79-116",
-        "img-tugboat-apollo-1978-ssc-78-447",
         "img-ssme-firing-closeup-1981-ssc-81-201",
-        "img-ssme-b1-deer-1996-ssc-96-129",
-        "img-test-stands-aerial-1992-ssc-92-039"
+        "img-ssme-install-a1-1979-ssc-79-116",
+        "img-ssme-b1-deer-1996-ssc-96-129"
       ],
       "tags": [
         "mississippi"
@@ -887,9 +934,9 @@
       "shortTitle": "Richard Truly, STS-2",
       "title": "Richard Truly pilots the second Space Shuttle flight",
       "summary": "Richard Truly, born in Fayette, Mississippi, was the pilot of STS-2 aboard Columbia in November 1981.",
-      "body": "STS-2 was the first time a spacecraft flew to orbit a second time. Truly later commanded STS-8 in 1983, the first Space Shuttle mission to launch and land at night.",
+      "body": "STS-2 was the first time a spacecraft flew to orbit a second time.",
       "mediaIds": [
-        "img-truly-portrait-1979"
+        "img-truly-1981"
       ],
       "tags": [
         "mississippi"
@@ -912,8 +959,7 @@
       "summary": "Donald Peterson, born in Winona, Mississippi, flew on STS-6 in April 1983, the first flight of Challenger.",
       "body": "During the mission, Peterson and Story Musgrave made the first spacewalk of the Space Shuttle program, testing the suits and tools that later astronauts used to build and repair things in space.",
       "mediaIds": [
-        "img-peterson-musgrave-sts6-1983",
-        "img-peterson-portrait"
+        "img-peterson-musgrave-sts6-1983"
       ],
       "tags": [
         "mississippi"
@@ -959,8 +1005,6 @@
       "summary": "In 1989, Mississippi astronaut Richard Truly became the head of NASA, the first astronaut to lead the agency.",
       "body": "Truly led NASA as the Space Shuttle returned to flight after the Challenger accident, and during the launch of the Hubble Space Telescope.",
       "mediaIds": [
-        "img-renaming-ceremony-1988-ssc-88-471",
-        "img-a1-steam-1988-ssc-88-072",
         "img-truly-hlass-mttc-1987"
       ],
       "tags": [
@@ -975,7 +1019,7 @@
         "iss"
       ],
       "date": {
-        "sort": "2012-04-13",
+        "sort": "2012-04-12",
         "display": "2012",
         "status": "historical"
       },
@@ -984,12 +1028,9 @@
       "summary": "In April 2012, INFINITY Science Center opened in Hancock County, Mississippi, as the official visitor center for NASA's Stennis Space Center.",
       "body": "INFINITY was founded in 2001 to share the wonders of science, space and ocean exploration with visitors of all ages, and it opened in 2012. Its mission is to Inspire, Amaze, and Engage. INFINITY tells the story of Stennis Space Center and Mississippi's role in space exploration. During its construction, Fred Haise and the daughter of Apollo 14 astronaut Stuart Roosa planted a tree on the grounds.",
       "mediaIds": [
-        "img-haise-roosa-moon-tree-2011-ssc-20110203-s00095",
         "img-infinity-ribbon-cutting-2012-ssc-20120411-s00553",
-        "img-infinity-contract-signing-2010-ssc-20100406-s00593",
         "img-infinity-opening-2012-ssc-20120411-s00489s",
-        "img-stennisphere-aerial-2001-ssc-20010425-s046-143",
-        "img-xavier-students-sphere-2009-ssc-20090419-s00576"
+        "img-infinity-contract-signing-2010-ssc-20100406-s00593"
       ],
       "tags": [
         "mississippi"
@@ -1034,7 +1075,9 @@
       "title": "A Mississippi farm boy",
       "summary": "Long before the space center carried his name, he was a farm boy from Kemper County.",
       "body": "John Cornelius Stennis was born on August 3, 1901, on a farm near De Kalb in Kemper County, Mississippi. He studied at Mississippi A&M (now Mississippi State University) and earned a law degree from the University of Virginia.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-stennis-childhood"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1103,7 +1146,6 @@
       "body": "As the Apollo testing work wound down, the center's future was uncertain. Site manager Jackson Balch Sr. met with Senator Stennis and Wernher von Braun in 1967 about what came next, and in November 1970 Stennis joined NASA leaders at the Mississippi Test Facility for a day of meetings about the site's future. His support helped the center survive and grow into the multi-agency \"federal city\" it is today.",
       "mediaIds": [
         "img-stennis-balch-low-1970",
-        "img-stennis-flag-raising-1976-ssc-76-111",
         "img-stennis-hlass-griggs-bush-1978-ssc-78-459"
       ],
       "tags": [
@@ -1218,7 +1260,6 @@
       "summary": "His team's biggest job was building a rocket powerful enough to reach the Moon.",
       "body": "In 1960 von Braun's team joined NASA, and he became director of the Marshall Space Flight Center. He was the chief architect of the Saturn V, the giant rocket that would carry astronauts to the Moon.",
       "mediaIds": [
-        "img-vonbraun-portrait",
         "img-vonbraun-1940"
       ],
       "tags": [
@@ -1242,7 +1283,7 @@
       "summary": "To reach the Moon, the Saturn V's huge stages first had to be tested on the ground.",
       "body": "Von Braun famously said that whatever way America got to the Moon, \"we will have to go through Mississippi to get there.\" He personally chose Navy Capt. William Fortune to build the Mississippi test site, and Fortune became its first manager on October 1, 1962.",
       "mediaIds": [
-        "img-vonbraun-1961"
+        "img-vonbraun-portrait"
       ],
       "tags": [
         "mississippi"
@@ -1262,7 +1303,7 @@
       },
       "shortTitle": "Von Braun's later years",
       "title": "Later years",
-      "summary": "Every Saturn V first and second stage for Apollo was tested in Mississippi, and none failed in flight.",
+      "summary": "Saturn V stages tested in Mississippi helped carry Apollo astronauts to the Moon.",
       "body": "Von Braun believed in thorough testing, saying, \"One good test is worth a thousand expert opinions.\" In 1970 von Braun moved to Washington, D.C., to lead NASA's planning, then retired from NASA in 1972. He died on June 16, 1977.",
       "mediaIds": [
         "img-vonbraun-1967"
@@ -1287,9 +1328,7 @@
       "title": "Fred Haise born in Biloxi",
       "summary": "He would one day fly on Apollo 13 and pilot the shuttle Enterprise.",
       "body": "Fred Wallace Haise Jr. was born in Biloxi on November 14, 1933. He graduated from Biloxi High School, attended Perkinston Junior College, and earned an aeronautical engineering degree with honors from the University of Oklahoma in 1959.",
-      "mediaIds": [
-        "img-haise-portrait-ecn-1203"
-      ],
+      "mediaIds": [],
       "tags": [
         "mississippi"
       ],
@@ -1311,7 +1350,7 @@
       "summary": "He trained as a backup crew member for two of Apollo's most famous flights.",
       "body": "After years as a military and NASA research pilot, Haise was one of 19 astronauts NASA selected in April 1966. He trained as the backup lunar module pilot for Apollo 8 and Apollo 11.",
       "mediaIds": [
-        "img-haise-1970"
+        "img-haise-portrait-ecn-1203"
       ],
       "tags": [
         "mississippi"
@@ -1378,9 +1417,10 @@
       "shortTitle": "Fred Haise Test Stand",
       "title": "The Fred Haise Test Stand",
       "summary": "A Stennis test stand now carries the name of a Mississippi astronaut.",
-      "body": "On December 7, 2021, NASA renamed Stennis's A-1 Test Stand the Fred Haise Test Stand. During Apollo, that stand tested the J-2 engines that helped send Haise toward the Moon.",
+      "body": "On December 7, 2021, NASA renamed Stennis's A-1 Test Stand the Fred Haise Test Stand. During Apollo, that stand tested Saturn V second stages, whose J-2 engines helped send Haise toward the Moon.",
       "mediaIds": [
-        "img-haise-test-stand-2021-ssc-20211207-s00284"
+        "img-haise-test-stand-2021-ssc-20211207-s00284",
+        "img-test-stands-aerial-1992-ssc-92-039"
       ],
       "tags": [
         "mississippi"
@@ -1402,9 +1442,7 @@
       "title": "Richard Truly born in Fayette",
       "summary": "He would become a shuttle pilot, a shuttle commander, and later the head of NASA.",
       "body": "Richard Harrison Truly was born in Fayette, Mississippi, on November 12, 1937. He attended schools in Fayette and Meridian and earned an aeronautical engineering degree from Georgia Tech in 1959.",
-      "mediaIds": [
-        "img-truly-portrait-1979"
-      ],
+      "mediaIds": [],
       "tags": [
         "mississippi"
       ],
@@ -1426,8 +1464,7 @@
       "summary": "His road to space took an unexpected turn.",
       "body": "A Navy fighter pilot who made more than 300 aircraft carrier landings, Truly first trained for an Air Force space station program. When it was canceled in 1969, he joined NASA as an astronaut.",
       "mediaIds": [
-        "img-truly-1981",
-        "img-truly-1983-a"
+        "img-truly-portrait-1979"
       ],
       "tags": [
         "mississippi"
@@ -1450,7 +1487,7 @@
       "summary": "STS-8 was the Shuttle program's first night launch and landing.",
       "body": "The mission flew aboard Challenger, and its crew included Guion Bluford, the first African American to fly in space.",
       "mediaIds": [
-        "img-truly-1983-b",
+        "img-truly-1983-a",
         "img-truly-1983-c",
         "img-sts8-crew-reagan-call-1983-s83-39696"
       ],
@@ -1497,9 +1534,7 @@
       "title": "Donald Peterson born in Winona",
       "summary": "He would grow up to make the first spacewalk of the Space Shuttle program.",
       "body": "Donald Herod Peterson was born in Winona, Mississippi, on October 22, 1933. He graduated from West Point in 1955 and later earned a master's degree in nuclear engineering.",
-      "mediaIds": [
-        "img-peterson-portrait"
-      ],
+      "mediaIds": [],
       "tags": [
         "mississippi"
       ],
@@ -1521,7 +1556,8 @@
       "summary": "Donald Peterson became a NASA astronaut in 1969 and served on the Apollo 16 support crew.",
       "body": "Like Truly, Peterson first trained for the Air Force's space station program, then became a NASA astronaut in 1969. He served on the support crew for Apollo 16.",
       "mediaIds": [
-        "img-peterson-1969"
+        "img-peterson-1969",
+        "img-peterson-portrait"
       ],
       "tags": [
         "mississippi"
@@ -1551,16 +1587,211 @@
       ],
       "source": "Kiosk content approved by INFINITY Science Center (sources: NASA astronaut biographies)",
       "published": true
+    },
+    {
+      "id": "evt-1965-canals",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1965-01-01",
+        "display": "1960s",
+        "status": "historical"
+      },
+      "shortTitle": "Rockets by water",
+      "title": "Canals carry rocket stages to the test stands",
+      "summary": "Saturn V stages were too big to travel by road, so the Mississippi test site was built around canals.",
+      "body": "Barges carried the giant rocket stages from the Pearl River through a system of canals right to the test stands, and back out again after testing. Boats like the tugboat Apollo also brought in the liquid fuel the engines burned.",
+      "mediaIds": [
+        "img-tugboat-apollo-1978-ssc-78-447"
+      ],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Stennis Space Center history (Way Station to Space, NASA SP-4310, and Stennis chronology)",
+      "published": true
+    },
+    {
+      "id": "evt-1970-saturn-testing-ends",
+      "eraIds": [
+        "apollo"
+      ],
+      "date": {
+        "sort": "1970-10-01",
+        "display": "1970",
+        "status": "historical"
+      },
+      "shortTitle": "Saturn V testing ends",
+      "title": "The last Saturn V stage is tested in Mississippi",
+      "summary": "In 1970 the Mississippi Test Facility finished testing rocket stages for Apollo.",
+      "body": "Fred Haise, just back from Apollo 13, returned to the Mississippi Test Facility with Wernher von Braun for the ceremony marking the end of Saturn V testing. With its Apollo work done, the center had to find a new future.",
+      "mediaIds": [
+        "img-s-ii-hoisted-a2-1967-ssc-67-701"
+      ],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Stennis Space Center history (Way Station to Space, NASA SP-4310, and Stennis chronology)",
+      "published": true
+    },
+    {
+      "id": "evt-1974-nstl",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1974-06-14",
+        "display": "1974",
+        "status": "historical"
+      },
+      "shortTitle": "A new name: NSTL",
+      "title": "The test site becomes the National Space Technology Laboratories",
+      "summary": "In 1974 the Mississippi Test Facility was renamed the National Space Technology Laboratories.",
+      "body": "The new name reflected a bigger mission. Other federal agencies, including the U.S. Navy, moved in to work beside NASA, and the site began to grow into the \"federal city\" it is today. Soon it would test the engines for the Space Shuttle.",
+      "mediaIds": [
+        "img-stennis-flag-raising-1976-ssc-76-111"
+      ],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Stennis Space Center history (Way Station to Space, NASA SP-4310, and Stennis chronology)",
+      "published": true
+    },
+    {
+      "id": "evt-1978-mpta",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1978-04-21",
+        "display": "1978–1981",
+        "status": "historical"
+      },
+      "shortTitle": "Shuttle system test",
+      "title": "The Shuttle's whole propulsion system fires on the B-2 stand",
+      "summary": "Before the Shuttle flew, engineers fired its three main engines together with a real external fuel tank in Mississippi.",
+      "body": "The Main Propulsion Test Article was a Shuttle tail section with three main engines, attached to an external tank. It was fired on the B-2 test stand from 1978 to 1981 to prove the engines, tank and fuel lines worked together.",
+      "mediaIds": [
+        "img-external-tank-b2-1978-ssc-78-016"
+      ],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Stennis Space Center history (Way Station to Space, NASA SP-4310, and Stennis chronology)",
+      "published": true
+    },
+    {
+      "id": "evt-1988-return-to-flight",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "1988-01-01",
+        "display": "1988",
+        "status": "historical"
+      },
+      "shortTitle": "Return to flight",
+      "title": "Mississippi tests engines for the Shuttle's return to flight",
+      "summary": "After the Challenger accident, Shuttle main engines were tested again in Mississippi before flights resumed.",
+      "body": "Engineers at Stennis put the main engines through test after test while NASA made the Shuttle safer. The Shuttle returned to flight on September 29, 1988, with the launch of Discovery on STS-26.",
+      "mediaIds": [
+        "img-a1-steam-1988-ssc-88-072"
+      ],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Stennis Space Center history (Way Station to Space, NASA SP-4310, and Stennis chronology)",
+      "published": true
+    },
+    {
+      "id": "evt-stennisphere",
+      "eraIds": [
+        "iss"
+      ],
+      "date": {
+        "sort": "1998-01-01",
+        "display": "1990s–2012",
+        "status": "historical"
+      },
+      "shortTitle": "StenniSphere",
+      "title": "StenniSphere welcomes visitors to Stennis",
+      "summary": "Before INFINITY, Stennis Space Center's visitor center was StenniSphere.",
+      "body": "Visitors and school groups came to StenniSphere to learn about rocket testing and Earth science. Students could watch Earth's clouds move across Science on a Sphere, a giant globe. In 2012 INFINITY Science Center became the official visitor center for Stennis.",
+      "mediaIds": [
+        "img-stennisphere-aerial-2001-ssc-20010425-s046-143",
+        "img-xavier-students-sphere-2009-ssc-20090419-s00576"
+      ],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Stennis Space Center history (Way Station to Space, NASA SP-4310, and Stennis chronology)",
+      "published": true
+    },
+    {
+      "id": "evt-2005-katrina",
+      "eraIds": [
+        "iss"
+      ],
+      "date": {
+        "sort": "2005-08-29",
+        "display": "2005",
+        "status": "historical"
+      },
+      "shortTitle": "Hurricane Katrina",
+      "title": "Hurricane Katrina strikes the Mississippi Gulf Coast",
+      "summary": "On August 29, 2005, Hurricane Katrina devastated Hancock County, including Waveland, where INFINITY stands today.",
+      "body": "Stennis Space Center became a shelter for employees, their families and relief workers, and a base for the recovery. Many people who worked at Stennis lost their homes, yet the center kept its mission going.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Stennis Space Center history (Way Station to Space, NASA SP-4310, and Stennis chronology)",
+      "published": true
+    },
+    {
+      "id": "evt-2009-last-ssme-test",
+      "eraIds": [
+        "shuttle"
+      ],
+      "date": {
+        "sort": "2009-07-29",
+        "display": "2009",
+        "status": "historical"
+      },
+      "shortTitle": "Last Shuttle engine test",
+      "title": "The last Space Shuttle Main Engine test at Stennis",
+      "summary": "On July 29, 2009, Stennis fired a Space Shuttle Main Engine for the last time.",
+      "body": "For 34 years, every main engine that flew on the Space Shuttle was tested in Mississippi. The final test closed out that work as the Shuttle program neared its end.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Stennis Space Center history (Way Station to Space, NASA SP-4310, and Stennis chronology)",
+      "published": true
+    },
+    {
+      "id": "evt-2015-rs25-sls",
+      "eraIds": [
+        "future"
+      ],
+      "date": {
+        "sort": "2015-01-09",
+        "display": "2015",
+        "status": "historical"
+      },
+      "shortTitle": "RS-25 tests for Artemis",
+      "title": "Stennis begins testing engines for the Artemis Moon rocket",
+      "summary": "In January 2015, Stennis began test-firing RS-25 engines for NASA's Space Launch System.",
+      "body": "The RS-25 is an upgraded Space Shuttle Main Engine. Four of them power the core stage of the Space Launch System, the rocket that carries Artemis astronauts toward the Moon.",
+      "mediaIds": [],
+      "tags": [
+        "mississippi"
+      ],
+      "source": "NASA Stennis Space Center history (Way Station to Space, NASA SP-4310, and Stennis chronology)",
+      "published": true
     }
   ],
   "media": [
-    {
-      "id": "img-ssme-test-firing",
-      "file": "img-ssme-test-firing.jpg",
-      "alt": "A Space Shuttle Main Engine fires inside a test stand, with white steam billowing around its bell-shaped nozzle.",
-      "caption": "A Space Shuttle Main Engine test firing. (Stand and date to confirm.)",
-      "credit": "NASA"
-    },
     {
       "id": "img-earth-at-night-iss040e090540",
       "file": "img-earth-at-night-iss040e090540.jpg",
@@ -1933,13 +2164,6 @@
       "credit": "NASA"
     },
     {
-      "id": "img-vonbraun-1961",
-      "file": "img-vonbraun-1961.jpg",
-      "alt": "A row of men, women and children stands on a lawn in front of a riverside building, with a boat behind them.",
-      "caption": "Von Braun and his family arrive by boat at the Mississippi Test Facility, October 26, 1964.",
-      "credit": "NASA"
-    },
-    {
       "id": "img-stennisphere-aerial-2001-ssc-20010425-s046-143",
       "file": "img-stennisphere-aerial-2001-ssc-20010425-s046-143.jpg",
       "alt": "Aerial view of a visitor center with a tall tower, a rocket display and a lawn among trees.",
@@ -2207,6 +2431,90 @@
       "alt": "A short film about NASA Stennis Space Center: building the center in the 1960s, rocket engine tests, the space station, the Artemis rocket and students at a NASA event.",
       "caption": "Stennis Space Center overview",
       "credit": ""
+    },
+    {
+      "id": "img-sputnik-1-1957",
+      "file": "img-sputnik-1-1957.webp",
+      "alt": "A technician works on the shiny, round Sputnik 1 satellite with its long antennas.",
+      "caption": "A technician prepares Sputnik 1 before its launch in 1957.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-gagarin-1961",
+      "file": "img-gagarin-1961.webp",
+      "alt": "Yuri Gagarin in his spacesuit and helmet sits inside a bus on the way to the launch pad.",
+      "caption": "Yuri Gagarin on his way to the launch pad, April 12, 1961.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-gagarin-huntsville-times-1961",
+      "file": "img-gagarin-huntsville-times-1961-9248173.jpg",
+      "alt": "The front page of The Huntsville Times with the headline \"Man Enters Space\" and a photo of Yuri Gagarin.",
+      "caption": "The Huntsville Times, home paper of von Braun's rocket team, reports Gagarin's flight, April 12, 1961.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-pearl-river-site-1964",
+      "file": "img-pearl-river-site-1964-ssc-1964-00218.webp",
+      "alt": "An aerial view of the Pearl River winding through forest, with new canals and cleared land for the test site.",
+      "caption": "The Pearl River and the new test site under construction, 1964.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-shepard-freedom7-1961",
+      "file": "img-shepard-freedom7-1961.webp",
+      "alt": "Alan Shepard in his silver spacesuit sits inside the Freedom 7 capsule.",
+      "caption": "Alan Shepard inside Freedom 7 before launch, May 5, 1961.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-apollo7-crew-1968",
+      "file": "img-apollo7-crew-1968.webp",
+      "alt": "The three Apollo 7 astronauts in white spacesuits stand together.",
+      "caption": "The Apollo 7 crew: Walter Schirra, Donn Eisele and Walter Cunningham, 1968.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-explorer1-launch-1958",
+      "file": "img-explorer1-launch-1958.webp",
+      "alt": "A Jupiter-C rocket lifts off at night in a bright burst of flame.",
+      "caption": "A Jupiter-C rocket launches Explorer 1, January 31, 1958.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-glenn-friendship7-1962",
+      "file": "img-glenn-friendship7-1962.webp",
+      "alt": "John Glenn in his silver spacesuit climbs into the Friendship 7 capsule.",
+      "caption": "John Glenn enters Friendship 7, February 20, 1962.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-eisenhower-1958",
+      "file": "img-eisenhower-1958.webp",
+      "alt": "President Dwight D. Eisenhower signs a document at his desk.",
+      "caption": "President Dwight D. Eisenhower, who signed the law creating NASA in 1958.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-oao2-cleanroom-1968",
+      "file": "img-oao2-cleanroom-1968.webp",
+      "alt": "The boxy OAO-2 observatory with its solar panels open sits in a clean room.",
+      "caption": "The OAO-2 Stargazer observatory before launch, 1968.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-surveyor1-lro",
+      "file": "img-surveyor1-lro.webp",
+      "alt": "A gray, cratered patch of the Moon seen from above, with an arrow pointing to Surveyor 1.",
+      "caption": "Surveyor 1 on the Moon, photographed from orbit decades later by NASA's Lunar Reconnaissance Orbiter.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-stennis-childhood",
+      "file": "img-stennis-childhood.webp",
+      "alt": "A smiling young boy sits on the ground in a farm field beside a large pig.",
+      "caption": "John C. Stennis as a boy on his family's farm in Kemper County.",
+      "credit": "A Gentleman From Mississippi (play website)"
     }
   ],
   "questions": [

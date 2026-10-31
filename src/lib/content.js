@@ -24,6 +24,9 @@ export const ADMIN_IDLE_DEFAULT = 10;
 // The timeline point label has room for about this many characters.
 export const SHORT_TITLE_MAX = 28;
 
+// The event panel's photo carousel holds at most this many photos and videos.
+export const EVENT_MEDIA_MAX = 3;
+
 export const EVENT_STATUSES = ["historical", "planned", "ongoing"];
 
 // Planned and ongoing events go out of date, so staff check them every 90 days.
@@ -76,6 +79,10 @@ export function eventProblems(ev, c) {
   if (typeof ev.body !== "string") p.body = "Body text is missing.";
   if (!Array.isArray(ev.mediaIds)) {
     p.mediaIds = 'Missing its "mediaIds" list.';
+  } else if (ev.mediaIds.length > EVENT_MEDIA_MAX) {
+    p.mediaIds = `Use ${EVENT_MEDIA_MAX} photos or videos at most.`;
+  } else if (new Set(ev.mediaIds).size !== ev.mediaIds.length) {
+    p.mediaIds = "The same photo is listed twice.";
   } else if (c) {
     const missing = ev.mediaIds.filter((id) => !c.media.some((m) => m.id === id));
     if (missing.length) p.mediaIds = `Not in the media library: ${missing.join(", ")}.`;

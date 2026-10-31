@@ -37,6 +37,13 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
     (picked.eventId === event.id &&
       mediaItems.find((item) => item.id === picked.mediaId)) ||
     mediaItems[0];
+  const shownIndex = mediaItems.indexOf(shown);
+  const slideTo = (i) => {
+    const item = mediaItems[Math.max(0, Math.min(mediaItems.length - 1, i))];
+    setPicked({ eventId: event.id, mediaId: item.id });
+  };
+  const [swipeStart, setSwipeStart] = useState(null);
+  const reduceMotion = useKiosk((s) => s.reduceMotion);
   const hasQuiz = questionsForEvent(event.id).length > 0;
 
   const openViewer = (index) => {
@@ -169,50 +176,90 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
 
             {mediaItems.length > 0 && (
               <div className="mt-6 md:sticky md:top-0 md:mt-0">
-                {/* One large item, with thumbnails underneath to switch it. */}
-                {shown.type === "video" ? (
-                  <VideoPlayer key={shown.id} item={shown} mediaUrl={mediaUrl} compact />
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => openViewer(images.indexOf(shown))}
-                    className="block w-full rounded-xl focus:outline-none focus:ring-4 focus:ring-accent"
-                    aria-label={`Open ${shown.alt || shown.caption || "image"} full-screen`}
+                {/* A sliding carousel: swipe, or tap the gold arrows or dots. */}
+                <div
+                  className="relative overflow-hidden rounded-xl touch-pan-y"
+                  onPointerDown={(e) => setSwipeStart(e.clientX)}
+                  onPointerUp={(e) => {
+                    if (swipeStart === null) return;
+                    const dx = e.clientX - swipeStart;
+                    setSwipeStart(null);
+                    if (dx < -50) slideTo(shownIndex + 1);
+                    if (dx > 50) slideTo(shownIndex - 1);
+                  }}
+                >
+                  <div
+                    className={`flex ${reduceMotion ? "" : "transition-transform duration-500 ease-out"}`}
+                    style={{ transform: `translateX(-${shownIndex * 100}%)` }}
                   >
-                    <img
-                      src={mediaUrl(shown)}
-                      alt={shown.alt}
-                      className={`${mediaItems.length > 1 ? "h-[26vh]" : "max-h-[36vh]"} w-full object-contain`}
-                    />
-                  </button>
-                )}
-                <p className="mt-2 line-clamp-2 text-center text-sm text-text-muted">
+                    {mediaItems.map((item, i) => (
+                      <div
+                        key={item.id}
+                        className="w-full shrink-0"
+                        aria-hidden={i !== shownIndex}
+                        inert={i !== shownIndex ? "" : undefined}
+                      >
+                        {item.type === "video" ? (
+                          <VideoPlayer item={item} mediaUrl={mediaUrl} compact />
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => openViewer(images.indexOf(item))}
+                            className="block w-full focus:outline-none focus:ring-4 focus:ring-accent"
+                            aria-label={`Open ${item.alt || item.caption || "image"} full-screen`}
+                          >
+                            <img
+                              src={mediaUrl(item)}
+                              alt={item.alt}
+                              draggable={false}
+                              className="h-[34vh] w-full object-contain"
+                            />
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {mediaItems.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => slideTo(shownIndex - 1)}
+                        disabled={shownIndex === 0}
+                        aria-label="Previous photo"
+                        className="absolute left-2 top-1/2 grid size-12 -translate-y-1/2 place-items-center rounded-full bg-bg/70 text-3xl font-bold text-accent disabled:opacity-0 focus:outline-none focus:ring-4 focus:ring-accent"
+                      >
+                        ‹
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => slideTo(shownIndex + 1)}
+                        disabled={shownIndex === mediaItems.length - 1}
+                        aria-label="Next photo"
+                        className="absolute right-2 top-1/2 grid size-12 -translate-y-1/2 place-items-center rounded-full bg-bg/70 text-3xl font-bold text-accent disabled:opacity-0 focus:outline-none focus:ring-4 focus:ring-accent"
+                      >
+                        ›
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                <p className="mt-2 line-clamp-2 min-h-[2.5em] text-center text-sm text-text-muted" aria-live="polite">
                   {shown.caption} {shown.credit && `(${shown.credit})`}
                 </p>
 
                 {mediaItems.length > 1 && (
-                  <ul className="mt-3 flex flex-wrap justify-center gap-3">
-                    {mediaItems.map((item) => (
+                  <ul className="mt-3 flex justify-center gap-3">
+                    {mediaItems.map((item, i) => (
                       <li key={item.id}>
                         <button
                           type="button"
-                          onClick={() => setPicked({ eventId: event.id, mediaId: item.id })}
-                          aria-label={`Show ${item.alt || item.caption || "item"}`}
-                          aria-pressed={item.id === shown.id}
-                          className={`relative block rounded-lg focus:outline-none focus:ring-4 focus:ring-accent ${item.id === shown.id ? "opacity-100" : "opacity-50"}`}
+                          onClick={() => slideTo(i)}
+                          aria-label={`Show photo ${i + 1} of ${mediaItems.length}`}
+                          aria-pressed={i === shownIndex}
+                          className="grid size-10 place-items-center rounded-full focus:outline-none focus:ring-4 focus:ring-accent"
                         >
-                          {item.type === "video" && !item.poster ? (
-                            <span className="block h-12 w-18 rounded-lg bg-bg" />
-                          ) : (
-                            <img
-                              src={mediaUrl(item.type === "video" ? { file: item.poster } : item)}
-                              alt=""
-                              className="h-12 w-18 object-cover"
-                            />
-                          )}
-                          {item.type === "video" && (
-                            <span aria-hidden="true" className="absolute inset-0 grid place-items-center text-3xl text-white drop-shadow">▶</span>
-                          )}
+                          <span className={`block rounded-full transition-all ${i === shownIndex ? "h-3 w-8 bg-accent" : "size-3 bg-text-muted/60"}`} />
                         </button>
                       </li>
                     ))}
