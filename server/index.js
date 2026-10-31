@@ -4,7 +4,7 @@ import "dotenv/config";
 import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { readFile, writeFile, rename, mkdir, readdir, unlink } from "node:fs/promises";
+import { readFile, writeFile, appendFile, rename, mkdir, readdir, unlink, stat } from "node:fs/promises";
 import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
 import { SAFE_NAME, validateContent } from "../src/lib/content.js";
 
@@ -97,20 +97,31 @@ app.put("/api/content", requireAdmin, async (req, res) => {
   }
 });
 
-// Media upload (used by backup import in the browser). One raw file per request.
-// TODO (media issue): generate thumb / display / zoom sizes with `sharp`.
+// Media upload (media library and backup import), sent in pieces so a large video
+// never has to fit in memory: POST each piece to /part?offset=N in order, then POST
+// /done. The file only appears under its real name once it's complete.
+// TODO: generate thumb / display / zoom sizes with `sharp`.
+const partPath = (name) => path.join(DATA_DIR, "media", `${name}.part`);
+
 app.post(
-  "/api/media/:name",
+  "/api/media/:name/part",
   requireAdmin,
-  express.raw({ type: () => true, limit: "2gb" }),
+  express.raw({ type: () => true, limit: "64mb" }),
   async (req, res) => {
     const name = req.params.name;
+    const offset = Number(req.query.offset);
     if (!SAFE_NAME.test(name)) return res.status(400).json({ error: "Unsafe file name." });
+    if (!Number.isInteger(offset) || offset < 0) return res.status(400).json({ error: "Bad offset." });
     try {
       await mkdir(path.join(DATA_DIR, "media"), { recursive: true });
-      const tmp = path.join(DATA_DIR, "media", `${name}.tmp`);
-      await writeFile(tmp, req.body);
-      await rename(tmp, path.join(DATA_DIR, "media", name));
+      if (offset === 0) {
+        await writeFile(partPath(name), req.body);
+      } else {
+        // A piece that doesn't start where the file ends means one went missing.
+        const { size } = await stat(partPath(name));
+        if (size !== offset) return res.status(409).json({ error: `Upload of ${name} lost a piece. Try again.` });
+        await appendFile(partPath(name), req.body);
+      }
       res.json({ ok: true });
     } catch (err) {
       console.error(err);
@@ -118,6 +129,33 @@ app.post(
     }
   }
 );
+
+app.post("/api/media/:name/done", requireAdmin, async (req, res) => {
+  const name = req.params.name;
+  if (!SAFE_NAME.test(name)) return res.status(400).json({ error: "Unsafe file name." });
+  try {
+    await rename(partPath(name), path.join(DATA_DIR, "media", name));
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: `Could not save ${name}.` });
+  }
+});
+
+// Media delete (admin media library). Content is saved separately, after the file is gone.
+app.delete("/api/media/:name", requireAdmin, async (req, res) => {
+  const name = req.params.name;
+  if (!SAFE_NAME.test(name)) return res.status(400).json({ error: "Unsafe file name." });
+  try {
+    await unlink(path.join(DATA_DIR, "media", name));
+    res.json({ ok: true });
+  } catch (err) {
+    // Already gone is fine: the goal is that the file isn't there.
+    if (err.code === "ENOENT") return res.json({ ok: true });
+    console.error(err);
+    res.status(500).json({ error: `Could not delete ${name}.` });
+  }
+});
 
 // ---------- Static files ----------
 app.use("/media", express.static(path.join(DATA_DIR, "media"), { maxAge: "1h" }));

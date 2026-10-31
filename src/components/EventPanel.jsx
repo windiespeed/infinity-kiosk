@@ -30,6 +30,20 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
   const mediaItems = event.mediaIds.map(mediaById).filter(Boolean);
   const images = mediaItems.filter((item) => item.type !== "video");
   const videos = mediaItems.filter((item) => item.type === "video");
+  // The large item in the media column. Remembering which event it was picked on
+  // means Next/Previous event starts back on that event's first item.
+  const [picked, setPicked] = useState({ eventId: null, mediaId: null });
+  const shown =
+    (picked.eventId === event.id &&
+      mediaItems.find((item) => item.id === picked.mediaId)) ||
+    mediaItems[0];
+  const shownIndex = mediaItems.indexOf(shown);
+  const slideTo = (i) => {
+    const item = mediaItems[Math.max(0, Math.min(mediaItems.length - 1, i))];
+    setPicked({ eventId: event.id, mediaId: item.id });
+  };
+  const [swipeStart, setSwipeStart] = useState(null);
+  const reduceMotion = useKiosk((s) => s.reduceMotion);
   const hasQuiz = questionsForEvent(event.id).length > 0;
 
   const openViewer = (index) => {
@@ -149,50 +163,111 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
             {event.title}
           </h2>
 
-
-
-          <p className="mt-4 max-w-[60ch] text-xl">
-            {event.summary}
-          </p>
-
-          {event.body.split("\n\n").map((para, i) => (
-            <p key={i} className="mt-4 max-w-[60ch]">
-              {para}
-            </p>
-          ))}
-
-          {/* DONE by Joshua Craven: event images open in a full-screen viewer with zoom. */}
-          {images.length > 0 && (
-            <ul className="mt-6 flex gap-4 overflow-x-auto pb-4">
-              {images.map((img, index) => (
-                <li
-                  key={img.id}
-                  className="w-[28rem] max-w-full shrink-0"
-                >
-                  <button
-                    type="button"
-                    onClick={() => openViewer(index)}
-                    className="block w-full rounded-xl focus:outline-none focus:ring-4 focus:ring-accent"
-                    aria-label={`Open ${img.alt ||
-                      img.caption ||
-                      "image"
-                      } full-screen`}
-                  >
-                    <img
-                      src={mediaUrl(img)}
-                      alt={img.alt}
-                      className="aspect-video w-full object-contain"
-                    />
-                  </button>
-
-                  <p className="mt-2 text-sm text-text-muted">
-                    {img.caption}{" "}
-                    {img.credit && `(${img.credit})`}
-                  </p>
-                </li>
+          {/* Text on the left, photos and video on the right so they show without scrolling. */}
+          <div className="mt-8 pb-8 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,42%)] md:items-start md:gap-10">
+            <div>
+              <p className="max-w-[60ch] text-xl">{event.summary}</p>
+              {event.body.split("\n\n").map((para, i) => (
+                <p key={i} className="mt-4 max-w-[60ch]">
+                  {para}
+                </p>
               ))}
-            </ul>
-          )}
+            </div>
+
+            {mediaItems.length > 0 && (
+              <div className="mt-6 md:sticky md:top-0 md:mt-0">
+                {/* A sliding carousel: swipe, or tap the gold arrows or dots. */}
+                <div
+                  className="relative overflow-hidden rounded-xl touch-pan-y"
+                  onPointerDown={(e) => setSwipeStart(e.clientX)}
+                  onPointerUp={(e) => {
+                    if (swipeStart === null) return;
+                    const dx = e.clientX - swipeStart;
+                    setSwipeStart(null);
+                    if (dx < -50) slideTo(shownIndex + 1);
+                    if (dx > 50) slideTo(shownIndex - 1);
+                  }}
+                >
+                  <div
+                    className={`flex ${reduceMotion ? "" : "transition-transform duration-500 ease-out"}`}
+                    style={{ transform: `translateX(-${shownIndex * 100}%)` }}
+                  >
+                    {mediaItems.map((item, i) => (
+                      <div
+                        key={item.id}
+                        className="w-full shrink-0"
+                        aria-hidden={i !== shownIndex}
+                        inert={i !== shownIndex ? "" : undefined}
+                      >
+                        {item.type === "video" ? (
+                          <VideoPlayer item={item} mediaUrl={mediaUrl} compact />
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => openViewer(images.indexOf(item))}
+                            className="block w-full focus:outline-none focus:ring-4 focus:ring-accent"
+                            aria-label={`Open ${item.alt || item.caption || "image"} full-screen`}
+                          >
+                            <img
+                              src={mediaUrl(item)}
+                              alt={item.alt}
+                              draggable={false}
+                              className="h-[34vh] w-full object-contain"
+                            />
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {mediaItems.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => slideTo(shownIndex - 1)}
+                        disabled={shownIndex === 0}
+                        aria-label="Previous photo"
+                        className="absolute left-2 top-1/2 grid size-12 -translate-y-1/2 place-items-center rounded-full bg-bg/70 text-3xl font-bold text-accent disabled:opacity-0 focus:outline-none focus:ring-4 focus:ring-accent"
+                      >
+                        ‹
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => slideTo(shownIndex + 1)}
+                        disabled={shownIndex === mediaItems.length - 1}
+                        aria-label="Next photo"
+                        className="absolute right-2 top-1/2 grid size-12 -translate-y-1/2 place-items-center rounded-full bg-bg/70 text-3xl font-bold text-accent disabled:opacity-0 focus:outline-none focus:ring-4 focus:ring-accent"
+                      >
+                        ›
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                <p className="mt-2 line-clamp-2 min-h-[2.5em] text-center text-sm text-text-muted" aria-live="polite">
+                  {shown.caption} {shown.credit && `(${shown.credit})`}
+                </p>
+
+                {mediaItems.length > 1 && (
+                  <ul className="mt-3 flex justify-center gap-3">
+                    {mediaItems.map((item, i) => (
+                      <li key={item.id}>
+                        <button
+                          type="button"
+                          onClick={() => slideTo(i)}
+                          aria-label={`Show photo ${i + 1} of ${mediaItems.length}`}
+                          aria-pressed={i === shownIndex}
+                          className="grid size-10 place-items-center rounded-full focus:outline-none focus:ring-4 focus:ring-accent"
+                        >
+                          <span className={`block rounded-full transition-all ${i === shownIndex ? "h-3 w-8 bg-accent" : "size-3 bg-text-muted/60"}`} />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-t-2 border-bg px-8 py-4">
@@ -242,18 +317,6 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
         />
       )}
 
-      {videos.map((video) => (
-        <div key={video.id} className="mt-6">
-          {video.caption && (
-            <p className="mb-2 text-lg text-text-muted">
-              {video.caption}
-              {video.credit && ` (${video.credit})`}
-            </p>
-          )}
-
-          <VideoPlayer item={video} mediaUrl={mediaUrl} />
-        </div>
-      ))}
     </div>
   );
 }

@@ -1,46 +1,32 @@
 import { useRef, useState } from "react";
-import { Navigate, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { exportBackup, importBackup } from "../../lib/backup.js";
-import { IDLE_MAX, IDLE_MIN } from "../../lib/content.js";
 import { buttonClass } from "../../lib/ui.js";
+import { needsReview } from "../../lib/content.js";
 
-// Starter dashboard: settings (shows the full save path working) and backups.
-// TODO (admin issues): event editor, question editor, era editor, media upload,
-// "planned events need review" flag, change PIN.
+// Eras where no published event has a quiz question (the timeline challenge skips them).
+const erasWithoutQuestions = (content) =>
+  content.eras.filter(
+    (era) =>
+      !content.questions.some((q) => {
+        const ev = content.events.find((e) => e.id === q.eventId);
+        return ev?.published !== false && ev?.eraIds.includes(era.id);
+      })
+  );
+
+// Dashboard: what's in the kiosk, and backups.
+// AdminLayout checks the sign-in and provides the menu and Exit admin.
 export default function Dashboard() {
   const token = useKiosk((s) => s.adminToken);
-  const update = useKiosk((s) => s.update);
   const addBusy = useKiosk((s) => s.addBusy);
   const removeBusy = useKiosk((s) => s.removeBusy);
   const { content, reload, store } = useContent();
-  const navigate = useNavigate();
-  const [idleSeconds, setIdleSeconds] = useState(content.settings.idleSeconds);
-  const [status, setStatus] = useState("");
   const [backupStatus, setBackupStatus] = useState("");
   const [pendingImport, setPendingImport] = useState(null);
   const [busy, setBusy] = useState(false);
   const fileInput = useRef(null);
-
-  if (!token) return <Navigate to="/admin" replace />;
-
-  const save = async () => {
-    // An empty field reads as 0, which would show the idle prompt nonstop.
-    const seconds = Number(idleSeconds);
-    if (idleSeconds === "" || !Number.isInteger(seconds) || seconds < IDLE_MIN || seconds > IDLE_MAX) {
-      setStatus(`Enter a whole number from ${IDLE_MIN} to ${IDLE_MAX}.`);
-      return;
-    }
-    setStatus("Saving…");
-    try {
-      await store.saveContent({ ...content, settings: { ...content.settings, idleSeconds: seconds } }, token);
-      await reload();
-      setStatus("Saved.");
-    } catch (err) {
-      setStatus(err.message || "Save failed.");
-    }
-  };
 
   // While a backup runs, mark the kiosk busy so the idle timer can't reset to the
   // welcome screen (and sign staff out) partway through a long export or import.
@@ -93,18 +79,9 @@ export default function Dashboard() {
     }
   };
 
-  const exit = async () => {
-    await store.signOut(token);
-    update({ adminToken: null });
-    navigate("/", { replace: true });
-  };
-
   return (
     <div className="mx-auto max-w-4xl p-10">
-      <div className="flex items-center justify-between gap-4">
-        <h1 className="text-5xl">Admin dashboard</h1>
-        <button onClick={exit} className={buttonClass("primary")}>Exit admin</button>
-      </div>
+      <h1 className="text-5xl">Admin dashboard</h1>
 
       <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {["eras", "events", "media", "questions"].map((key) => (
@@ -115,24 +92,21 @@ export default function Dashboard() {
         ))}
       </dl>
 
-      <section className="mt-10 panel rounded-xl p-6">
-        <h2 className="text-3xl">Settings</h2>
-        <label htmlFor="idle" className="mt-4 block">Seconds before the “Are you still exploring?” prompt</label>
-        <input
-          id="idle"
-          type="number"
-          min={IDLE_MIN}
-          max={IDLE_MAX}
-          step="1"
-          value={idleSeconds}
-          onChange={(e) => setIdleSeconds(e.target.value)}
-          className="mt-2 min-h-14 w-40 rounded-xl border-2 border-text-muted bg-bg px-4 text-text"
-        />
-        <div className="mt-4 flex items-center gap-4">
-          <button onClick={save} className={buttonClass("primary")}>Save settings</button>
-          <p aria-live="polite" className="text-text-muted">{status}</p>
-        </div>
-      </section>
+      {erasWithoutQuestions(content).length > 0 && (
+        <p className="mt-6 rounded-xl border border-highlight p-4">
+          These eras have no quiz questions, so the timeline challenge skips them:{" "}
+          {erasWithoutQuestions(content).map((era) => era.title).join(", ")}. Add questions to their events in{" "}
+          <Link to="/admin/events" className="text-highlight underline">Events</Link>.
+        </p>
+      )}
+
+      {content.events.some((ev) => needsReview(ev)) && (
+        <p className="mt-6 rounded-xl border border-highlight p-4">
+          {content.events.filter((ev) => needsReview(ev)).length} planned or ongoing events haven't been checked in 90
+          days.{" "}
+          <Link to="/admin/events" className="text-highlight underline">Review them in Events</Link>
+        </p>
+      )}
 
       <section className="mt-10 panel rounded-xl p-6">
         <h2 className="text-3xl">Backups</h2>

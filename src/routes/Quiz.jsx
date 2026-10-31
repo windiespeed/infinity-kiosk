@@ -268,6 +268,9 @@ export function EventQuiz() {
 // TODO (certificate issue): show a large QR code (qrcode.react) linking to the
 // companion site's certificate page, e.g. https://COMPANION/certificate?d=2026-10-30&c=timeline
 // Pause the idle timer here or give it extra time.
+
+
+
 export function QuizComplete() {
   const location = useLocation();
   const completed = Boolean(location.state?.completed);
