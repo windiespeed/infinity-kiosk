@@ -114,6 +114,5 @@ computer to see the kiosk app's console and inspect its screens.
 
 ## Not done yet
 
-- Read-aloud mode (needs a native text-to-speech plugin)
 - Android lock task mode (strongest lockdown; needs a one-time device-owner setup)
 - Remote updates (only if the kiosk gets internet access)

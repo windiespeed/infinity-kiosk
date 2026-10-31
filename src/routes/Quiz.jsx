@@ -16,6 +16,10 @@ import RocketLaunch from "../components/RocketLaunch.jsx";
 
 const HOLD_MS = 2 * 60 * 1000;
 
+// "Back to the event" goes up to the event, like the bottom bar's Back button,
+// not back in browser history (which may belong to the previous visitor).
+const eventPath = (event) => `/era/${event.eraIds[0]}/event/${event.id}`;
+
 function randomItem(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
@@ -104,7 +108,7 @@ export function QuizHome() {
   }
 
   return (
-    <main className="p-6 sm:p-10">
+    <div className="p-6 sm:p-10">
       <h1 className="text-4xl font-bold sm:text-6xl">
         Test your knowledge
       </h1>
@@ -151,7 +155,7 @@ export function QuizHome() {
           DEV: skip to certificate screen
         </button>
       )}
-    </main>
+    </div>
   );
 }
 
@@ -159,15 +163,14 @@ export function QuizHome() {
 export function EventQuiz() {
   const { eventId } = useParams();
   const { content, eventById, questionsForEvent } = useContent();
-  const navigate = useNavigate();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [finished, setFinished] = useState(false);
 
   if (!content || !eventById || !questionsForEvent) {
     return (
-      <main className="p-6 sm:p-10" role="status">
+      <div className="p-6 sm:p-10" role="status">
         Loading quiz questions…
-      </main>
+      </div>
     );
   }
 
@@ -176,7 +179,7 @@ export function EventQuiz() {
 
   if (!event) {
     return (
-      <main className="p-6 sm:p-10">
+      <div className="p-6 sm:p-10">
         <h1 className="text-3xl font-bold">Event not found</h1>
         <Link
           to="/quiz"
@@ -184,33 +187,29 @@ export function EventQuiz() {
         >
           Back to the timeline challenge
         </Link>
-      </main>
+      </div>
     );
   }
 
   if (questions.length === 0) {
     return (
-      <main className="p-6 sm:p-10">
+      <div className="p-6 sm:p-10">
         <h1 className="text-3xl font-bold">
           Test yourself: {event.shortTitle}
         </h1>
         <p className="mt-4 text-xl text-text-muted">
           There are no questions for this event yet.
         </p>
-        <button
-          type="button"
-          className={buttonClass("primary", "mt-6 text-xl")}
-          onClick={() => navigate(-1)}
-        >
+        <Link to={eventPath(event)} className={buttonClass("primary", "mt-6 text-xl")}>
           Back to the event
-        </button>
-      </main>
+        </Link>
+      </div>
     );
   }
 
   if (finished) {
     return (
-      <main className="p-6 sm:p-10">
+      <div className="p-6 sm:p-10">
         <h1 className="text-4xl font-bold sm:text-6xl">You finished!</h1>
 
         <p className="mt-4 text-xl text-text-muted">
@@ -218,13 +217,9 @@ export function EventQuiz() {
         </p>
 
         <div className="mt-8 flex flex-col items-start gap-4">
-          <button
-            type="button"
-            className={buttonClass("primary", "text-xl")}
-            onClick={() => navigate(-1)}
-          >
+          <Link to={eventPath(event)} className={buttonClass("primary", "text-xl")}>
             Back to the event
-          </button>
+          </Link>
 
           <Link
             to="/quiz"
@@ -233,14 +228,14 @@ export function EventQuiz() {
             Go to the timeline challenge
           </Link>
         </div>
-      </main>
+      </div>
     );
   }
 
   const question = questions[questionIndex];
 
   return (
-    <main>
+    <div>
       <div className="px-6 pt-6 sm:px-10">
         <p className="text-lg text-text-muted">
           Test yourself: {event.shortTitle}
@@ -261,16 +256,12 @@ export function EventQuiz() {
         }}
         isLastQuestion={questionIndex === questions.length - 1}
       />
-    </main>
+    </div>
   );
 }
 
-// TODO (certificate issue): show a large QR code (qrcode.react) linking to the
-// companion site's certificate page, e.g. https://COMPANION/certificate?d=2026-10-30&c=timeline
-// Pause the idle timer here or give it extra time.
-
-
-
+// After the timeline challenge: a QR code to the companion site's certificate page.
+// The idle timer is held for HOLD_MS so visitors have time to scan it.
 export function QuizComplete() {
   const location = useLocation();
   const completed = Boolean(location.state?.completed);
@@ -317,7 +308,7 @@ export function QuizComplete() {
   const shortAddress = companionUrl.replace(/^https?:\/\//, "");
 
   return (
-    <main className="flex flex-col items-center p-6 text-center sm:p-10">
+    <div className="flex flex-col items-center p-6 text-center sm:p-10">
       <h1 className="text-4xl font-bold sm:text-6xl">
         You finished the challenge!
       </h1>
@@ -349,6 +340,6 @@ export function QuizComplete() {
       <p className="mt-6 break-all text-xl sm:text-2xl">
         {shortAddress}
       </p>
-    </main>
+    </div>
   );
 }
