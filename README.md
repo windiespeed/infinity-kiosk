@@ -16,6 +16,7 @@ npm run dev      # starts the app and the local server
 Open **http://localhost:5173**. Saving a file updates the browser automatically.
 
 - Admin screen: tap the **top-left corner 5 times quickly**. Development PIN: `1234`.
+  Kiosk PIN, recovery code and admin sign-out time: **docs/ADMIN-PIN.md**.
 - On a desktop, drag the browser narrow to see the phone layout.
 
 ## Commands
