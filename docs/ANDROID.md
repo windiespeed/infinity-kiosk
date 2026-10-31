@@ -120,7 +120,10 @@ PIN, and import the latest backup. This is why regular backups matter.
 With a debug build and USB debugging on, open `chrome://inspect` in Chrome on your
 computer to see the kiosk app's console and inspect its screens.
 
+## Kiosk lock
+
+To keep visitors from leaving the app, set up the kiosk lock once: **docs/KIOSK-LOCK.md**.
+
 ## Not done yet
 
-- Android lock task mode (strongest lockdown; needs a one-time device-owner setup)
 - Remote updates (only if the kiosk gets internet access)

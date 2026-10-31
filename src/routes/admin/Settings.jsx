@@ -13,6 +13,7 @@ import { formatRecoveryCode, isValidPin } from "../../lib/pin.js";
 import { buttonClass } from "../../lib/ui.js";
 import Field, { inputClass } from "../../components/admin/Field.jsx";
 import ConfirmDialog from "../../components/admin/ConfirmDialog.jsx";
+import { kioskLockStatus, lockKiosk, removeKioskLock, unlockKiosk } from "../../lib/kioskLock.js";
 
 const toForm = (s) => ({
   idleSeconds: String(s.idleSeconds),
@@ -141,6 +142,7 @@ export default function Settings() {
 
       <ChangePin />
       <RecoveryCode />
+      <KioskLockPanel />
     </div>
   );
 }
@@ -298,6 +300,78 @@ function RecoveryCode() {
           message="The old code will stop working."
           confirmLabel="Make a new code"
           onConfirm={make}
+          onCancel={() => setAsking(false)}
+        />
+      )}
+    </>
+  );
+}
+
+// The kiosk lock keeps visitors in the app (docs/KIOSK-LOCK.md). Staff unlock it here
+// to install an update or change Android settings; it locks again on "Lock again" or
+// the next restart.
+function KioskLockPanel() {
+  const [lock, setLock] = useState(null);
+  const [asking, setAsking] = useState(false);
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    kioskLockStatus().then(setLock);
+  }, []);
+
+  if (!lock) return null;
+
+  const run = async (action, done) => {
+    setAsking(false);
+    try {
+      await action();
+      // Android takes a moment to switch lock task mode on or off.
+      setTimeout(() => kioskLockStatus().then(setLock), 500);
+      setStatus(done);
+    } catch (err) {
+      setStatus(err.message || "That didn't work.");
+    }
+  };
+
+  const state = !lock.deviceOwner
+    ? "The kiosk lock isn't set up on this kiosk. Visitors can still swipe in Android's bars. Setting it up needs a computer: see docs/KIOSK-LOCK.md."
+    : lock.maintenance
+      ? "Unlocked for maintenance. Android works normally until you lock it again or the kiosk restarts."
+      : "Locked. Visitors can't leave the app.";
+
+  return (
+    <>
+      <section className="panel mt-10 rounded-xl p-6" aria-labelledby="lock-title">
+        <h2 id="lock-title" className="text-3xl">Kiosk lock</h2>
+        <p className="mt-3 font-bold">{state}</p>
+        {lock.deviceOwner && (
+          <div className="mt-4 flex flex-wrap gap-4">
+            {lock.maintenance ? (
+              <button onClick={() => run(lockKiosk, "Locked again.")} className={buttonClass("primary")}>
+                Lock again
+              </button>
+            ) : (
+              <button
+                onClick={() => run(unlockKiosk, "Unlocked. Press Home to reach Android's apps and settings.")}
+                className={buttonClass("secondary")}
+              >
+                Unlock for maintenance
+              </button>
+            )}
+            <button onClick={() => setAsking(true)} className={buttonClass("secondary")}>
+              Remove the kiosk lock
+            </button>
+          </div>
+        )}
+        <p aria-live="polite" className="mt-2 text-text-muted">{status}</p>
+      </section>
+
+      {asking && (
+        <ConfirmDialog
+          title="Remove the kiosk lock?"
+          message="Visitors will be able to leave the app. Turning the lock back on needs a computer and the setup in docs/KIOSK-LOCK.md. To install an update, use Unlock for maintenance instead."
+          confirmLabel="Remove the lock"
+          onConfirm={() => run(removeKioskLock, "The kiosk lock is removed.")}
           onCancel={() => setAsking(false)}
         />
       )}

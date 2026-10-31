@@ -86,7 +86,7 @@ function UpdateNeeded({ error }) {
         </p>
         <p className="mt-3 text-sm text-text-muted">
           PIN forgotten? Android Settings → Apps → Infinity Kiosk → Storage → Clear storage also finishes the update,
-          but it erases everything saved on the kiosk, including the PIN.
+          but it erases everything saved on the kiosk, including the PIN. (It's not available while the kiosk lock is on.)
         </p>
       </div>
 
