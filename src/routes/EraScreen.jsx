@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { useContent } from "../hooks/useContent.jsx";
 import EventPanel from "../components/EventPanel.jsx";
@@ -15,7 +15,9 @@ export default function EraScreen() {
   const navigate = useNavigate();
   const { eras, eraById, eventsForEra, eventCover, mediaUrl } = useContent();
   const trackRef = useRef(null);
+  const scrollerRef = useRef(null);
   const lastOpened = useRef(null);
+  const [more, setMore] = useState({ left: false, right: false });
 
   const era = eraById(eraId);
   const events = era ? eventsForEra(era.id) : [];
@@ -35,30 +37,59 @@ export default function EraScreen() {
     }
   }, [eventId]);
 
+  // Which ends of the event row are hidden. Swiping scrolls it on the touch screen; the
+  // ‹ › buttons beside it slide it while cards are hidden that way, then go to the
+  // previous/next era once the row is at its end.
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollLeft = 0;
+    const update = () =>
+      setMore({
+        left: el.scrollLeft > 4,
+        right: el.scrollLeft + el.clientWidth < el.scrollWidth - 4,
+      });
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => {
+      el.removeEventListener("scroll", update);
+      observer.disconnect();
+    };
+  }, [eraId]);
+
+  const scrollEvents = (direction) => {
+    const el = scrollerRef.current;
+    el?.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: "smooth" });
+  };
+
   if (!era) return <Navigate to="/timeline" replace />;
   const eventPath = (ev) => `/era/${era.id}/event/${ev.id}`;
 
   return (
-    <div className="flex min-h-full flex-col justify-between gap-10 p-10">
+    <div className="flex min-h-full flex-col justify-between gap-6 px-10 py-6">
       <header>
         <p className="font-display text-2xl font-bold text-accent">{eraYears(era)}</p>
-        <h1 className="mt-1 text-7xl">{era.title}</h1>
+        <h1 className="mt-1 text-5xl">{era.title}</h1>
         <GoldRule className="mt-5" />
-        <p className="mt-5 max-w-[50ch] font-display text-3xl text-accent">{era.subtitle}</p>
+        <p className="mt-4 max-w-[50ch] font-display text-2xl text-accent">{era.subtitle}</p>
         {era.overview && (
-          <p className="mt-3 max-w-[65ch] text-lg text-text-muted">
+          <p className="mt-2 max-w-[90ch] text-base text-text-muted">
             {era.overview}
           </p>
         )}
       </header>
 
       <div className="flex items-center gap-4">
-        {prevEra ? (
-          <Link to={`/era/${prevEra.id}`} aria-label={`Previous era: ${prevEra.title}`} className={buttonClass("secondary", "shrink-0")}>‹</Link>
+        {more.left ? (
+          <button type="button" onClick={() => scrollEvents(-1)} aria-label="Show earlier events" className={buttonClass("primary", "shrink-0")}>‹</button>
+        ) : prevEra ? (
+          <Link to={`/era/${prevEra.id}`} aria-label={`Previous era: ${prevEra.title}`} className={buttonClass("primary", "shrink-0")}>‹</Link>
         ) : <span className="w-14 shrink-0" />}
 
-        <div className="min-w-0 flex-1 overflow-x-auto">
-          <ol ref={trackRef} className="relative flex flex-col gap-4 pt-2 pb-8 md:min-w-max md:flex-row md:justify-between">
+        <div ref={scrollerRef} className="min-w-0 flex-1 overflow-x-auto">
+          <ol ref={trackRef} className="relative flex flex-col gap-4 pt-2 pb-4 md:min-w-max md:flex-row md:justify-between">
             <span aria-hidden="true" className="absolute left-0 right-0 top-[1.5625rem] hidden h-0.5 bg-accent/70 md:block" />
             {events.map((ev) => (
               <li key={ev.id} className="relative md:pt-10">
@@ -84,8 +115,10 @@ export default function EraScreen() {
           </ol>
         </div>
 
-        {nextEra ? (
-          <Link to={`/era/${nextEra.id}`} aria-label={`Next era: ${nextEra.title}`} className={buttonClass("secondary", "shrink-0")}>›</Link>
+        {more.right ? (
+          <button type="button" onClick={() => scrollEvents(1)} aria-label="Show later events" className={buttonClass("primary", "shrink-0")}>›</button>
+        ) : nextEra ? (
+          <Link to={`/era/${nextEra.id}`} aria-label={`Next era: ${nextEra.title}`} className={buttonClass("primary", "shrink-0")}>›</Link>
         ) : <span className="w-14 shrink-0" />}
       </div>
 

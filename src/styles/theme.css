@@ -75,7 +75,9 @@
 /* ---------- Base styles ---------- */
 @layer base {
   /* Everything is sized in rem, so this one number scales the whole UI.
-     Phones/laptops get 16px; the 1920px kiosk gets 28px. */
+     Phones/laptops get 16px; the 1920x1080 kiosk gets 28px. Wide but short windows
+     (a laptop browser with tabs and bookmarks) scale down with the height, since the
+     kiosk layout was sized for 1080px tall: 2.5926vh is 28px at 1080. */
   html {
     font-size: 16px;
     background: var(--color-bg);
@@ -83,12 +85,12 @@
     font-family: var(--font-sans);
   }
   @media (min-width: 1600px) {
-    html { font-size: 28px; }
+    html { font-size: clamp(16px, 2.5926vh, 28px); }
   }
   /* "Larger text" in the accessibility panel */
   html[data-text-size="large"] { font-size: 20px; }
   @media (min-width: 1600px) {
-    html[data-text-size="large"] { font-size: 35px; }
+    html[data-text-size="large"] { font-size: clamp(20px, 3.2407vh, 35px); }
   }
 
   /* Space backdrop to match the exhibit wall: a faint moon glow in the upper right,

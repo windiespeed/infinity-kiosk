@@ -30,7 +30,7 @@ export default function BottomNav() {
     <nav aria-label="Main" className="flex flex-wrap items-center justify-between gap-3 border-t border-accent/40 bg-bg-glow/95 px-4 py-3">
       <div className="min-w-[11rem]">
         {parent && (
-          <Link to={parent.to} className={buttonClass("secondary")}>
+          <Link to={parent.to} className={buttonClass("primary")}>
             <span aria-hidden="true">‹</span> {parent.label}
           </Link>
         )}
