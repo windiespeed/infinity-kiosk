@@ -1191,7 +1191,9 @@
       "title": "A boy who dreamed of space",
       "summary": "The man who would design the Moon rocket started out as a curious teenager.",
       "body": "Wernher von Braun was born on March 23, 1912, in Wirsitz, Germany. As a teenager he read about rockets and space travel and taught himself advanced math so he could understand how they worked.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-vonbraun-v2-model-9401908"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1260,7 +1262,8 @@
       "summary": "His team's biggest job was building a rocket powerful enough to reach the Moon.",
       "body": "In 1960 von Braun's team joined NASA, and he became director of the Marshall Space Flight Center. He was the chief architect of the Saturn V, the giant rocket that would carry astronauts to the Moon.",
       "mediaIds": [
-        "img-vonbraun-1940"
+        "img-vonbraun-1940",
+        "img-vonbraun-saturnv-1969-6901046"
       ],
       "tags": [
         "mississippi"
@@ -1328,7 +1331,9 @@
       "title": "Fred Haise born in Biloxi",
       "summary": "He would one day fly on Apollo 13 and pilot the shuttle Enterprise.",
       "body": "Fred Wallace Haise Jr. was born in Biloxi on November 14, 1933. He graduated from Biloxi High School, attended Perkinston Junior College, and earned an aeronautical engineering degree with honors from the University of Oklahoma in 1959.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-haise-portrait-1969-s69-62238"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1442,7 +1447,9 @@
       "title": "Richard Truly born in Fayette",
       "summary": "He would become a shuttle pilot, a shuttle commander, and later the head of NASA.",
       "body": "Richard Harrison Truly was born in Fayette, Mississippi, on November 12, 1937. He attended schools in Fayette and Meridian and earned an aeronautical engineering degree from Georgia Tech in 1959.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-truly-birthday-card-1981-s81-39418"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1534,7 +1541,9 @@
       "title": "Donald Peterson born in Winona",
       "summary": "He would grow up to make the first spacewalk of the Space Shuttle program.",
       "body": "Donald Herod Peterson was born in Winona, Mississippi, on October 22, 1933. He graduated from West Point in 1955 and later earned a master's degree in nuclear engineering.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-peterson-training-1982-s82-41606"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1741,7 +1750,10 @@
       "title": "Hurricane Katrina strikes the Mississippi Gulf Coast",
       "summary": "On August 29, 2005, Hurricane Katrina devastated Hancock County, including Waveland, where INFINITY stands today.",
       "body": "Stennis Space Center became a shelter for employees, their families and relief workers, and a base for the recovery. Many people who worked at Stennis lost their homes, yet the center kept its mission going.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-katrina-playground-2005-ssc-20051217-s03581",
+        "img-stennisphere-reopens-2006-ssc-20060118-s00087"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1762,7 +1774,9 @@
       "title": "The last Space Shuttle Main Engine test at Stennis",
       "summary": "On July 29, 2009, Stennis fired a Space Shuttle Main Engine for the last time.",
       "body": "For 34 years, every main engine that flew on the Space Shuttle was tested in Mississippi. The final test closed out that work as the Shuttle program neared its end.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-last-ssme-test-2009-ssc-2009-01165"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -1783,7 +1797,9 @@
       "title": "Stennis begins testing engines for the Artemis Moon rocket",
       "summary": "In January 2015, Stennis began test-firing RS-25 engines for NASA's Space Launch System.",
       "body": "The RS-25 is an upgraded Space Shuttle Main Engine. Four of them power the core stage of the Space Launch System, the rocket that carries Artemis astronauts toward the Moon.",
-      "mediaIds": [],
+      "mediaIds": [
+        "img-rs25-first-test-2015-ssc-2015-00064"
+      ],
       "tags": [
         "mississippi"
       ],
@@ -2515,6 +2531,69 @@
       "alt": "A smiling young boy sits on the ground in a farm field beside a large pig.",
       "caption": "John C. Stennis as a boy on his family's farm in Kemper County.",
       "credit": "A Gentleman From Mississippi (play website)"
+    },
+    {
+      "id": "img-katrina-playground-2005-ssc-20051217-s03581",
+      "file": "img-katrina-playground-2005-ssc-20051217-s03581.jpg",
+      "alt": "Volunteers in jackets build a colorful playground in a park, with bare, storm-damaged trees behind them.",
+      "caption": "More than 650 volunteers, many from Stennis, build Bay St. Louis a new playground after Hurricane Katrina, December 17, 2005.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-stennisphere-reopens-2006-ssc-20060118-s00087",
+      "file": "img-stennisphere-reopens-2006-ssc-20060118-s00087.jpg",
+      "alt": "Visitors look at a white spacesuit on display inside the StenniSphere visitor center.",
+      "caption": "StenniSphere reopens on January 18, 2006, almost five months after Katrina flooded its basement. No exhibits were harmed.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-last-ssme-test-2009-ssc-2009-01165",
+      "file": "img-last-ssme-test-2009-ssc-2009-01165.jpg",
+      "alt": "Clouds of white steam pour from the A-2 test stand during an engine test.",
+      "caption": "The final Space Shuttle Main Engine test on the A-2 test stand at Stennis, July 29, 2009.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-rs25-first-test-2015-ssc-2015-00064",
+      "file": "img-rs25-first-test-2015-ssc-2015-00064.jpg",
+      "alt": "A bright rocket engine fires inside a lit-up test stand at night, with steam rising.",
+      "caption": "The first RS-25 engine test for the Space Launch System, on the A-1 test stand at Stennis, January 9, 2015.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-haise-portrait-1969-s69-62238",
+      "file": "img-haise-portrait-1969-s69-62238.jpg",
+      "alt": "Portrait of astronaut Fred Haise smiling, in a flight suit.",
+      "caption": "Fred Haise, born in Biloxi, in a 1969 NASA portrait.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-truly-birthday-card-1981-s81-39418",
+      "file": "img-truly-birthday-card-1981-s81-39418.jpg",
+      "alt": "Richard Truly holds up a giant handmade birthday card addressed to him.",
+      "caption": "Richard Truly with a giant birthday card from Texas schoolchildren, November 1981. His birthday, November 12, was also his launch day on STS-2.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-peterson-training-1982-s82-41606",
+      "file": "img-peterson-training-1982-s82-41606.jpg",
+      "alt": "Astronaut Karol Bobko helps Donald Peterson into his spacesuit before training.",
+      "caption": "Karol Bobko helps Donald Peterson suit up for underwater spacewalk training, December 1982.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-vonbraun-v2-model-9401908",
+      "file": "img-vonbraun-v2-model-9401908.jpg",
+      "alt": "Wernher von Braun holds a small model rocket in front of a chalkboard.",
+      "caption": "Wernher von Braun with a model of a V-2 rocket.",
+      "credit": "NASA"
+    },
+    {
+      "id": "img-vonbraun-saturnv-1969-6901046",
+      "file": "img-vonbraun-saturnv-1969-6901046.jpg",
+      "alt": "Von Braun stands on a road with a Saturn V rocket on its launch pad far behind him.",
+      "caption": "Von Braun in front of the Saturn V being readied for Apollo 11 at Kennedy Space Center, July 1969.",
+      "credit": "NASA"
     }
   ],
   "questions": [
