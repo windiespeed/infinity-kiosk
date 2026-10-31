@@ -72,7 +72,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
         aria-modal="true"
         aria-labelledby="event-title"
         onClick={(e) => e.stopPropagation()}
-        className="flex max-h-[88vh] w-full flex-col rounded-t-3xl border-t-2 border-accent bg-surface [animation:panel-up_250ms_ease-out]"
+        className="flex max-h-[94vh] w-full flex-col rounded-t-3xl border-t-2 border-accent bg-surface [animation:panel-up_250ms_ease-out]"
       >
         {/* tabIndex lets keyboard users scroll long event text with the arrow keys. */}
         <div
@@ -81,46 +81,47 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
           role="region"
           aria-label="Event details"
         >
-          <div className="flex items-center justify-between gap-4">
-            <div className="min-w-0 flex-1">
-              <p className="font-display text-xl font-bold text-accent">
-                {event.date.display} · {era.title}
-                {event.date.status !== "historical" && (
-                  <span className="ml-3 rounded-lg border-2 border-highlight px-2 text-highlight">
-                    {event.date.status === "planned"
-                      ? "Planned"
-                      : "Ongoing"}
-                  </span>
-                )}
-                {event.tags?.includes("mississippi") && (
-                  <span className="ml-3 rounded-lg border-2 border-accent px-2">Mississippi</span>
-                )}
-              </p>
-            </div>
-
-            {readAloud && (
-              <ReadAloudButton
-                key={event.id}
-                text={`${event.title}. ${event.summary}. ${event.body}`}
-                label="Read event aloud"
-                stopLabel="Stop reading event"
-              />
-            )}
-          </div>
-
-          <h2
-            id="event-title"
-            tabIndex={-1}
-            data-autofocus
-            className="mt-2 text-4xl font-bold uppercase text-accent"
-          >
-            {event.title}
-          </h2>
-
-          {/* Text on the left, photos and video on the right so they show without scrolling. */}
-          <div className="mt-8 pb-8 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,42%)] md:items-start md:gap-10">
+          {/* Text on the left, photos and video on the right, starting level with the
+              title so they can be big and still show without scrolling. */}
+          <div className="pb-8 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,50%)] md:items-start md:gap-10">
             <div>
-              <p className="max-w-[60ch] text-xl">{event.summary}</p>
+              <div className="flex items-center justify-between gap-4">
+                <div className="min-w-0 flex-1">
+                  <p className="font-display text-xl font-bold text-accent">
+                    {event.date.display} · {era.title}
+                    {event.date.status !== "historical" && (
+                      <span className="ml-3 rounded-lg border-2 border-highlight px-2 text-highlight">
+                        {event.date.status === "planned"
+                          ? "Planned"
+                          : "Ongoing"}
+                      </span>
+                    )}
+                    {event.tags?.includes("mississippi") && (
+                      <span className="ml-3 rounded-lg border-2 border-accent px-2">Mississippi</span>
+                    )}
+                  </p>
+                </div>
+
+                {readAloud && (
+                  <ReadAloudButton
+                    key={event.id}
+                    text={`${event.title}. ${event.summary}. ${event.body}`}
+                    label="Read event aloud"
+                    stopLabel="Stop reading event"
+                  />
+                )}
+              </div>
+
+              <h2
+                id="event-title"
+                tabIndex={-1}
+                data-autofocus
+                className="mt-2 text-4xl font-bold uppercase text-accent"
+              >
+                {event.title}
+              </h2>
+
+              <p className="mt-8 max-w-[60ch] text-xl">{event.summary}</p>
               {event.body.split("\n\n").map((para, i) => (
                 <p key={i} className="mt-4 max-w-[60ch]">
                   {para}
@@ -166,7 +167,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
                               src={mediaUrl(item)}
                               alt={item.alt}
                               draggable={false}
-                              className="h-[34vh] w-full object-contain"
+                              className="h-[52vh] w-full object-contain"
                             />
                           </button>
                         )}
