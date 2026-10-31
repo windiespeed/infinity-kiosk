@@ -59,15 +59,11 @@ src/
 
 ## Rules of the road
 
-1. **Colors only come from theme tokens** (`bg-surface`, `text-on-accent`, …). Tailwind's
-   default colors are switched off on purpose. New color? Add a token in `theme.css` and a
-   pairing in `scripts/check-contrast.mjs`.
-2. **Size things in rem** (Tailwind's normal classes do this). The whole UI scales from one
-   number in `theme.css`: 28px on the kiosk, 16px on phones.
+1. **Colors only come from theme tokens** (`bg-surface`, `text-on-accent`, …). Tailwind's default colors are switched off on purpose. New color? Add a token in `theme.css` and a pairing in `scripts/check-contrast.mjs`.
+2. **Size things in rem** (Tailwind's normal classes do this). The whole UI scales from one number in `theme.css`: 28px on the kiosk, 16px on phones.
 3. **Everything interactive goes in the lower part of the screen** (ADA reach range).
    Touch targets use `buttonClass()` from `src/lib/ui.js`, which keeps them big enough.
-4. **Every gesture needs a button too** (swipe, pinch, etc.), and every screen must work with
-   a keyboard. Test with Tab, Enter, and Escape.
+4. **Every gesture needs a button too** (swipe, pinch, etc.), and every screen must work with a keyboard. Test with Tab, Enter, and Escape.
 5. **Every screen must make sense on its own.** Visitors walk up mid-session.
 6. **Never color alone** for meaning: pair it with an icon or text.
 7. Work on a branch, open a pull request, get a review. Don't push to `main`.
@@ -89,48 +85,26 @@ Keeping your branch up to date with `main`: see **docs/GIT-CHEATSHEET.md**.
 ## Live web preview
 
 Every merge to `main` publishes a read-only copy of the app to
-**https://windiespeed.github.io/infinity-kiosk/** (the "companion site"), so anyone can click
-through the current content and photos in a browser. Nothing can be saved there and the admin
-screens don't work. It's public, like the repo. The workflow is
-`.github/workflows/pages.yml`.
+**https://windiespeed.github.io/infinity-kiosk/** (the "companion site"), so anyone can click through the current content and photos in a browser. Nothing can be saved there and the admin screens don't work. It's public, like the repo. The workflow is `.github/workflows/pages.yml`.
 
 ## Where media lives
 
-**For now, all media lives in GitHub**, so everyone gets the same photos with a normal
-`git pull`. Keep the two kinds apart:
+**For now, all media lives in GitHub**, so everyone gets the same photos with a normal `git pull`. Keep the two kinds apart:
 
-- **`src/assets/`**: images that are part of the app's design and that code imports directly
-  (the welcome screen photos, the starfield).
-- **`data/media/`**: photos and videos shown in the timeline, the image library and event
-  panels. `content.json` points to them by file name, so the name must match exactly.
+- **`src/assets/`**: images that are part of the app's design and that code imports directly (the welcome screen photos, the starfield).
+- **`data/media/`**: photos and videos shown in the timeline, the image library and event panels. `content.json` points to them by file name, so the name must match exactly.
 
-To add a timeline photo: put it in `data/media/`, add it to `content.json` (or through the
-admin screen), log it in the media tracker, then commit and open a pull request like any
-other change.
+To add a timeline photo: put it in `data/media/`, add it to `content.json` (or through the admin screen), log it in the media tracker, then commit and open a pull request like any other change.
 
-Keep files small: photos around 1–2 MB, short MP4 videos only. GitHub rejects any single
-file over 100 MB. The repo is public, so only add media that is cleared to show publicly
-(hold back anything still waiting on museum review).
+Keep files small: photos around 1–2 MB, short MP4 videos only. GitHub rejects any single file over 100 MB. The repo is public, so only add media that is cleared to show publicly (hold back anything still waiting on museum review).
 
-**Later (final version):** media comes back out of Git and is synced locally from the shared
-Google Drive **Media** folder, as first planned. Turning that back on means restoring the
-`data/media/*` and video lines in `.gitignore` and running `git rm -r --cached data/media`
-(the files stay on everyone's computers). `npm run media:pull` is already in place for that:
-it copies new and changed files from a Google Drive for desktop copy of the Media folder into
-`data/media/` (see `MEDIA_DRIVE_DIR` in `.env.example`).
+**Later (final version):** media comes back out of Git and is synced locally from the shared Google Drive **Media** folder, as first planned. Turning that back on means restoring the `data/media/*` and video lines in `.gitignore` and running `git rm -r --cached data/media` (the files stay on everyone's computers). `npm run media:pull` is already in place for that: it copies new and changed files from a Google Drive for desktop copy of the Media folder into `data/media/` (see `MEDIA_DRIVE_DIR` in `.env.example`).
 
-**Kiosk backups:** the kiosk gets its content as a backup zip (admin dashboard: Export backup
-/ Import backup). Keep exported zips in the Drive's **Media/Kiosk-Backups** folder with the
-date in the file name; the newest one is what the kiosk shows. Your own `data/backups/` folder
-only holds automatic copies of your own saves; it appears after your first admin save.
+**Kiosk backups:** the kiosk gets its content as a backup zip (admin dashboard: Export backup / Import backup). Keep exported zips in the Drive's **Media/Kiosk-Backups** folder with the date in the file name; the newest one is what the kiosk shows. Your own `data/backups/` folder only holds automatic copies of your own saves; it appears after your first admin save.
 
 ## How the kiosk runs
 
-The kiosk is a 43" Android 13 touchscreen running this project as an Android app (APK),
-fully offline. Content, media and the admin PIN live on the kiosk. Content moves between
-a laptop and the kiosk as a backup zip (admin dashboard: Export backup / Import backup).
-Build and setup steps: **docs/ANDROID.md**.
+The kiosk is a 43" Android 13 touchscreen running this project as an Android app (APK), fully offline. Content, media and the admin PIN live on the kiosk. Content moves between a laptop and the kiosk as a backup zip (admin dashboard: Export backup / Import backup).
 
-In a browser, the app talks to the development server instead, so everything can be built
-and tested without the kiosk. Screens never need to know which one is running; they use
-the content store (`src/lib/store/`).
+Build and setup steps: **docs/ANDROID.md**
+In a browser, the app talks to the development server instead, so everything can be built and tested without the kiosk. Screens never need to know which one is running; they use the content store (`src/lib/store/`).
