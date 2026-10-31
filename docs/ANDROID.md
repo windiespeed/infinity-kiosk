@@ -78,7 +78,8 @@ switching between debug and release on the kiosk fails.
    (wording varies by device). It then opens automatically at startup, and the
    Home button returns to it.
 3. Tap the top-left corner 5 times quickly. The kiosk asks you to **create a staff PIN**
-   (4–8 digits). Save it in a password manager: it can't be recovered.
+   (4–8 digits), then shows a one-time **recovery code**. Save both in a password manager.
+   See **docs/ADMIN-PIN.md**.
 4. In the admin dashboard, **Import backup…** and pick the content backup zip.
 5. Tap through every screen, then **Export backup** and copy the file off the kiosk.
 
@@ -95,13 +96,16 @@ switching between debug and release on the kiosk fails.
 |---|---|
 | Content, media, previous content versions | The app's private storage (erased only if the app is uninstalled or its data is cleared) |
 | Exported backups | `Documents/InfinityKiosk/` (copy these off the kiosk by USB) |
-| Admin PIN | Stored as a salted hash in the app's settings |
+| Admin PIN and recovery code | Stored as salted hashes in the app's settings |
 
 ## If the PIN is forgotten
 
-The only fix is **Settings → Apps → Infinity Kiosk → Storage → Clear data**, which
-also erases all content. Then open the app, create a new PIN, and import the latest
-backup. This is why regular backups matter.
+Use the recovery code: on the sign-in keypad tap **Forgot the PIN?**, enter the code and
+choose a new PIN. No content is lost. Full steps: **docs/ADMIN-PIN.md**.
+
+If the recovery code is lost too, the only fix is **Settings → Apps → Infinity Kiosk →
+Storage → Clear data**, which also erases all content. Then open the app, create a new
+PIN, and import the latest backup. This is why regular backups matter.
 
 ## Debugging on the kiosk
 
