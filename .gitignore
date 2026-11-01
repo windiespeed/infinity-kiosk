@@ -14,3 +14,6 @@ keystore.properties
 *.avi
 *.mkv
 *.zip
+
+# Printable QR codes from npm run qr (made fresh each time)
+qr-codes/

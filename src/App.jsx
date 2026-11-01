@@ -15,7 +15,8 @@ import EraOverview from "./routes/EraOverview.jsx";
 import EraScreen from "./routes/EraScreen.jsx";
 import Library from "./routes/Library.jsx";
 import About from "./routes/About.jsx";
-import { QuizHome, EventQuiz, QuizComplete } from "./routes/Quiz.jsx";
+import { QuizHome, EventQuiz } from "./routes/Quiz.jsx";
+import QuizComplete from "./routes/QuizComplete.jsx";
 import AdminLogin from "./routes/admin/AdminLogin.jsx";
 import Dashboard from "./routes/admin/Dashboard.jsx";
 import Eras from "./routes/admin/Eras.jsx";
@@ -74,6 +75,8 @@ export default function App() {
               <Route path="/quiz/event/:eventId" element={<EventQuiz />} />
               <Route path="/quiz/complete" element={<QuizComplete />} />
               <Route path="/about" element={<About />} />
+              {/* The phone page the QR code opens (on the companion site). */}
+              <Route path="/certificate" element={<Certificate />} />
               {/* No admin at all on the public companion site. */}
               {!isCompanion && <Route path="/admin" element={<AdminLogin />} />}
               {!isCompanion && (
@@ -92,7 +95,7 @@ export default function App() {
           </ErrorBoundary>
         )}
       </main>
-      {!onAttract && !inAdmin && <BottomNav />}
+      {!onAttract && !inAdmin && !onCertificate && <BottomNav />}
       {kiosk.a11yOpen && <A11yPanel />}
       {idle.warning && <IdleModal remaining={idle.remaining} onStay={idle.stayHere} />}
     </div>

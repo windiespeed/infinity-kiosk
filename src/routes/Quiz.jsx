@@ -1,20 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Link,
-  Navigate,
-  useLocation,
   useNavigate,
   useParams,
 } from "react-router";
-import { QRCodeSVG } from "qrcode.react";
-import { useKiosk } from "../store/useKiosk.js";
 import { useContent } from "../hooks/useContent.jsx";
 import { buttonClass } from "../lib/ui.js";
-import { COMPANION_URL } from "../lib/config.js";
 import QuizQuestion from "../components/QuizQuestion.jsx";
 import RocketLaunch from "../components/RocketLaunch.jsx";
-
-const HOLD_MS = 2 * 60 * 1000;
 
 // "Back to the event" goes up to the event, like the bottom bar's Back button,
 // not back in browser history (which may belong to the previous visitor).
@@ -256,90 +249,6 @@ export function EventQuiz() {
         }}
         isLastQuestion={questionIndex === questions.length - 1}
       />
-    </div>
-  );
-}
-
-// After the timeline challenge: a QR code to the companion site's certificate page.
-// The idle timer is held for HOLD_MS so visitors have time to scan it.
-export function QuizComplete() {
-  const location = useLocation();
-  const completed = Boolean(location.state?.completed);
-  const addBusy = useKiosk((state) => state.addBusy);
-  const removeBusy = useKiosk((state) => state.removeBusy);
-
-  // Local date as YYYY-MM-DD, fixed when the screen first shows.
-  const [date] = useState(() => {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  });
-
-  useEffect(() => {
-    if (!completed) return undefined;
-
-    let released = false;
-
-    const release = () => {
-      if (!released) {
-        released = true;
-        removeBusy();
-      }
-    };
-
-    addBusy();
-
-    const timer = setTimeout(release, HOLD_MS);
-
-    return () => {
-      clearTimeout(timer);
-      release();
-    };
-  }, [completed, addBusy, removeBusy]);
-
-  if (!completed) {
-    return <Navigate to="/quiz" replace />;
-  }
-
-  const companionUrl = COMPANION_URL.replace(/\/+$/, "");
-  const url = `${companionUrl}/certificate?d=${date}&c=timeline`;
-  const shortAddress = companionUrl.replace(/^https?:\/\//, "");
-
-  return (
-    <div className="flex flex-col items-center p-6 text-center sm:p-10">
-      <h1 className="text-4xl font-bold sm:text-6xl">
-        You finished the challenge!
-      </h1>
-
-      <p className="mt-6 max-w-3xl text-2xl sm:text-3xl">
-        Scan with your phone&apos;s camera.
-      </p>
-
-      <p className="mt-2 max-w-3xl text-lg text-text-muted sm:text-xl">
-        The code opens a page on your phone where you can type your name and
-        save your certificate as a picture. Your name is never typed on this
-        screen or stored.
-      </p>
-
-      <div className="mt-8 max-w-full bg-white p-4 sm:p-6">
-        <QRCodeSVG
-          value={url}
-          size={420}
-          level="M"
-          bgColor="#ffffff"
-          fgColor="#000000"
-          marginSize={4}
-          role="img"
-          aria-label={`QR code. Scan it with your phone camera to open the certificate page at ${shortAddress}`}
-          style={{ display: "block", maxWidth: "100%", height: "auto" }}
-        />
-      </div>
-
-      <p className="mt-6 break-all text-xl sm:text-2xl">
-        {shortAddress}
-      </p>
     </div>
   );
 }

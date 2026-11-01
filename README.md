@@ -27,6 +27,7 @@ Open **http://localhost:5173**. Saving a file updates the browser automatically.
 | `npm run dev:host` | Same, but reachable from other devices on your network (for testing on the kiosk's browser) |
 | `npm run build` | Checks color contrast, then builds the app into `dist/` |
 | `npm run build:pages` | Builds the read-only companion site for GitHub Pages into `dist/` |
+| `npm run qr` | Makes printable certificate QR codes (one per era, plus the whole timeline) in `qr-codes/`; open `qr-codes/print.html` to print. Add `-- --site https://...` to use another address |
 | `npm start` | Runs the server alone, serving the built app at http://localhost:5050 (this is what the kiosk runs) |
 | `npm run check:contrast` | Tests every color pairing in the theme against WCAG AA |
 | `npm run hash-pin -- 482913` | Makes a PIN hash to paste into `.env` (dev server only) |
@@ -71,7 +72,7 @@ src/
 ## Suggested first issues
 
 - **Quiz** (`routes/Quiz.jsx`): event quiz, timeline challenge (one question per era), retry with explanations
-- **QR certificate**: completion screen with `qrcode.react`, plus the companion-site certificate page
+- **QR certificate**: after a quiz, the kiosk shows a QR code to `<site>/certificate?d=<date>&era=<eraId>` (no `era` = the whole-timeline challenge). The phone page reads the era's title from the content, so new eras need no code. The site address is in Admin > Settings (default in `src/lib/certificate.js`)
 - **Image viewer**: full-screen viewer with zoom (`react-zoom-pan-pinch`), used by library and event panel
 - **Media upload** (admin): pick images and videos and save them through the content store (`openMediaWriter`); shrink very large photos in the browser before saving
 - **Admin editors**: events, questions, eras, media; backup/restore; "planned events need review" flag
