@@ -56,6 +56,9 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
   };
 
   const readAloud = useKiosk((s) => s.readAloud);
+  // "Move content lower" leaves the top 30% of the screen empty on every page, so
+  // the panel starts lower too and its read-aloud button stays within reach.
+  const reach = useKiosk((s) => s.reach);
 
   return (
     <div
@@ -72,7 +75,7 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
         aria-modal="true"
         aria-labelledby="event-title"
         onClick={(e) => e.stopPropagation()}
-        className="flex max-h-[94vh] w-full flex-col rounded-t-3xl border-t-2 border-accent bg-surface [animation:panel-up_250ms_ease-out]"
+        className={`flex ${reach ? "max-h-[70vh]" : "max-h-[94vh]"} w-full flex-col rounded-t-3xl border-t-2 border-accent bg-surface [animation:panel-up_250ms_ease-out]`}
       >
         {/* tabIndex lets keyboard users scroll long event text with the arrow keys. */}
         <div

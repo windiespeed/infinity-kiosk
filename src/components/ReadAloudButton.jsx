@@ -1,13 +1,24 @@
 import { useEffect, useState } from "react";
 import { speak, stop } from "../lib/speech.js";
+import { useKiosk } from "../store/useKiosk.js";
 
 // Round play/stop button that reads `text` aloud. Used by the event panel and the quiz.
 // Speech stops when the button goes away (the panel closes, the visitor moves on, or
 // the kiosk starts over), so the next visitor never hears the last one's event.
 export default function ReadAloudButton({ text, label, stopLabel }) {
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const addBusy = useKiosk((s) => s.addBusy);
+  const removeBusy = useKiosk((s) => s.removeBusy);
 
   useEffect(() => () => void stop(), []);
+
+  // While it's reading, the visitor is listening, not touching the screen. Hold off
+  // the idle timer so it doesn't start over (and clear their settings) mid-sentence.
+  useEffect(() => {
+    if (!isSpeaking) return;
+    addBusy();
+    return () => removeBusy();
+  }, [isSpeaking, addBusy, removeBusy]);
 
   async function toggle() {
     if (isSpeaking) {
