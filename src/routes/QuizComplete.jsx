@@ -11,6 +11,9 @@ const HOLD_MS = 2 * 60 * 1000;
 // Arrives with state { completed: true, eraId } (no eraId = the whole-timeline challenge).
 // The idle timer is held for HOLD_MS so visitors have time to scan it.
 // Sized to the space above the bottom bar so nothing needs scrolling on the kiosk.
+// Text follows the screen height, times 1.25 with Larger text (the QR matches its height).
+// In a very short space (Larger text plus Move content lower) it shrinks to fit (cqh) and
+// the explanation paragraph is left out.
 function useMediaQuery(query) {
   const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
   useEffect(() => {
@@ -28,18 +31,28 @@ export default function QuizComplete() {
   const { content, eraById } = useContent();
   const addBusy = useKiosk((state) => state.addBusy);
   const removeBusy = useKiosk((state) => state.removeBusy);
+  const largeText = useKiosk((state) => state.textSize === "large");
 
   // Fixed when the screen first shows.
   const [date] = useState(() => todayIso());
 
-  // In landscape the QR code is a square as tall as the text beside it.
+  // In landscape the QR code is a square as tall as the text beside it,
+  // but never taller than the space above the bottom bar.
+  const rootRef = useRef(null);
   const textRef = useRef(null);
-  const [textHeight, setTextHeight] = useState(0);
+  const [qrSize, setQrSize] = useState(0);
   useEffect(() => {
-    const el = textRef.current;
-    if (!el) return undefined;
-    const observer = new ResizeObserver(() => setTextHeight(el.offsetHeight));
-    observer.observe(el);
+    const root = rootRef.current;
+    const text = textRef.current;
+    if (!root || !text) return undefined;
+    const measure = () => {
+      const style = getComputedStyle(root);
+      const space = root.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+      setQrSize(Math.min(text.offsetHeight, space));
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(root);
+    observer.observe(text);
     return () => observer.disconnect();
   }, [completed]);
   const landscape = useMediaQuery("(orientation: landscape)");
@@ -75,29 +88,33 @@ export default function QuizComplete() {
   const shortAddress = url.replace(/^https?:\/\//, "").replace(/\/certificate.*$/, "");
 
   return (
-    <div className="flex h-full min-h-0 items-center justify-center p-6">
+    <div
+      ref={rootRef}
+      className="flex h-full min-h-0 items-center justify-center p-6 [container-type:size]"
+      style={{ "--text-scale": largeText ? 1.25 : 1 }}
+    >
       <div className="flex flex-col items-center gap-6 text-center landscape:flex-row landscape:gap-10 landscape:text-left">
-        <div ref={textRef} className="max-w-2xl landscape:max-w-[48vw]">
-          <h1 className="text-[clamp(1.75rem,5.5vh,3.75rem)] font-bold">
+        <div ref={textRef} className={`max-w-2xl ${largeText ? "landscape:max-w-[60vw]" : "landscape:max-w-[48vw]"}`}>
+          <h1 className="text-[min(clamp(1.75rem,calc(5.5vh*var(--text-scale)),4.5rem),12cqh)] font-bold">
             {`You finished ${quizName(era)}!`}
           </h1>
 
-          <p className="mt-[2.5vh] text-[clamp(1.25rem,4vh,2.25rem)]">
+          <p className="mt-[2.5vh] text-[min(clamp(1.25rem,calc(4vh*var(--text-scale)),2.75rem),8cqh)]">
             Scan with your phone&apos;s camera to get your certificate.
           </p>
 
-          <p className="mt-[1.5vh] text-[clamp(1rem,2.8vh,1.5rem)] text-text-muted">
+          <p className="mt-[1.5vh] text-[clamp(1rem,calc(2.8vh*var(--text-scale)),1.85rem)] text-text-muted [@container(max-height:520px)]:hidden">
             The code opens a page on your phone where you can type your name and
             save your certificate as a picture. Your name is never typed on this
             screen or stored.
           </p>
 
-          <p className="mt-[2.5vh] break-all text-[clamp(1rem,3vh,1.75rem)]">{shortAddress}</p>
+          <p className="mt-[2.5vh] break-all text-[min(clamp(1rem,calc(3vh*var(--text-scale)),2.1rem),6cqh)]">{shortAddress}</p>
         </div>
 
         <div
           className="aspect-square w-[min(80vw,24rem)] shrink-0 bg-white p-3"
-          style={landscape && textHeight ? { width: textHeight, height: textHeight } : undefined}
+          style={landscape && qrSize ? { width: qrSize, height: qrSize } : undefined}
         >
           <QRCodeSVG
             value={url}
