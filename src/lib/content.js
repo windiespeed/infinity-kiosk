@@ -152,6 +152,10 @@ export function settingsProblems(s, c) {
     const video = isText(s.attractVideo) && c?.media.find((m) => m.id === s.attractVideo);
     if (!video || video.type !== "video") p.attractVideo = "Pick a video from the media library, or none.";
   }
+  // Where the quiz QR code sends phones; blank (null) uses the built-in address.
+  if (s.certificateSite != null && !(isText(s.certificateSite) && /^https?:\/\/[^\s/]+\.[^\s]+$/.test(s.certificateSite))) {
+    p.certificateSite = "Enter a full web address starting with https://, or leave it blank.";
+  }
   return p;
 }
 

@@ -11,6 +11,7 @@ import {
 } from "../../lib/content.js";
 import { formatRecoveryCode, isValidPin } from "../../lib/pin.js";
 import { buttonClass } from "../../lib/ui.js";
+import { DEFAULT_CERTIFICATE_SITE } from "../../lib/certificate.js";
 import Field, { inputClass } from "../../components/admin/Field.jsx";
 import ConfirmDialog from "../../components/admin/ConfirmDialog.jsx";
 import { kioskLockStatus, lockKiosk, removeKioskLock, unlockKiosk } from "../../lib/kioskLock.js";
@@ -20,6 +21,7 @@ const toForm = (s) => ({
   warningSeconds: String(s.warningSeconds),
   adminIdleMinutes: String(s.adminIdleMinutes ?? ADMIN_IDLE_DEFAULT),
   attractVideo: s.attractVideo ?? "",
+  certificateSite: s.certificateSite ?? "",
 });
 
 // An empty field must not read as 0 (that would show the idle prompt nonstop).
@@ -46,6 +48,7 @@ export default function Settings() {
       warningSeconds: wholeNumber(form.warningSeconds),
       adminIdleMinutes: wholeNumber(form.adminIdleMinutes),
       attractVideo: form.attractVideo || null,
+      certificateSite: form.certificateSite.trim() || null,
     };
     const found = settingsProblems(settings, content);
     setProblems(found);
@@ -131,6 +134,25 @@ export default function Settings() {
                 <option key={m.id} value={m.id}>{m.caption || m.id}</option>
               ))}
             </select>
+          )}
+        </Field>
+
+        <Field
+          id="set-certificateSite"
+          label="Certificate website"
+          hint={`The quiz QR code opens this address followed by /certificate. Leave blank to use ${DEFAULT_CERTIFICATE_SITE}.`}
+          error={problems.certificateSite}
+        >
+          {(props) => (
+            <input
+              {...props}
+              type="url"
+              inputMode="url"
+              value={form.certificateSite}
+              onChange={set("certificateSite")}
+              placeholder={DEFAULT_CERTIFICATE_SITE}
+              className={inputClass}
+            />
           )}
         </Field>
 
