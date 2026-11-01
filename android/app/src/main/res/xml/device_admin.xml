@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The app asks for no device admin policies of its own. Being the device owner
+     (set once with adb, see docs/KIOSK-LOCK.md) is what allows lock task mode. -->
+<device-admin>
+    <uses-policies />
+</device-admin>

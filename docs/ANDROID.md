@@ -88,7 +88,15 @@ switching between debug and release on the kiosk fails.
 - **Content:** prepare it on a laptop (browser admin), **Export backup**, copy the zip
   to the kiosk, **Import backup**. Or edit directly on the kiosk.
 - **App:** build a new signed release APK with the same key and install it over the
-  old one. Content and the PIN are kept.
+  old one. Content and the PIN are kept. Bump `versionCode` and `versionName` in
+  `android/app/build.gradle` for each kiosk build.
+- **New app, old content:** the kiosk keeps its own content when the app is updated, not
+  the content in `data/content.json`. If a new version has stricter content rules (for
+  example, at most 3 photos per event) and the kiosk's saved content breaks one, the app
+  shows **This update isn't finished** instead of the timeline. Staff enter the PIN there
+  to switch to the content built into the new version; the old content is kept as a saved
+  version, and the PIN, recovery code and uploaded photos stay. To keep changes made on
+  the kiosk, import a backup made with the new version afterwards.
 
 ## Where things live on the kiosk
 
@@ -112,7 +120,10 @@ PIN, and import the latest backup. This is why regular backups matter.
 With a debug build and USB debugging on, open `chrome://inspect` in Chrome on your
 computer to see the kiosk app's console and inspect its screens.
 
+## Kiosk lock
+
+To keep visitors from leaving the app, set up the kiosk lock once: **docs/KIOSK-LOCK.md**.
+
 ## Not done yet
 
-- Android lock task mode (strongest lockdown; needs a one-time device-owner setup)
 - Remote updates (only if the kiosk gets internet access)
