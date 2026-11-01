@@ -4,13 +4,16 @@ import { useKiosk } from "../store/useKiosk.js";
 import { stop } from "../lib/speech.js";
 import ReadAloudButton from "./ReadAloudButton.jsx";
 
+// Laid out to fit the screen above the bottom bar with no scrolling: the
+// question on top, the four answers in a 2 x 2 grid, and the result in a strip
+// along the bottom that is always there, so nothing moves when it fills in.
 export default function QuizQuestion({
+  title,
   question,
   questionNumber,
   totalQuestions,
   onNext,
   isLastQuestion = false,
-  isTimelineChallenge = false,
 }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const resultRef = useRef(null);
@@ -40,10 +43,10 @@ export default function QuizQuestion({
   }
 
   return (
-    <section className="mx-auto flex w-full max-w-4xl flex-col gap-6 p-6 sm:p-10">
+    <section className="mx-auto flex h-full min-h-0 w-full max-w-7xl flex-col gap-[2.5vh] px-6 py-[2.5vh] sm:px-10">
       <div className="flex items-center justify-between gap-4">
         <p className="text-lg font-semibold text-text-muted">
-          Question {questionNumber} of {totalQuestions}
+          {title && <>{title} · </>}Question {questionNumber} of {totalQuestions}
         </p>
 
         {readAloud && (
@@ -56,14 +59,13 @@ export default function QuizQuestion({
       </div>
 
       <div
-        className="h-3 overflow-hidden rounded-full bg-surface/80"
+        className="h-3 shrink-0 overflow-hidden rounded-full bg-surface/80"
         role="progressbar"
         aria-label="Quiz progress"
         aria-valuemin={0}
         aria-valuemax={totalQuestions}
         aria-valuenow={questionNumber}
       >
-
         <div
           className="h-full rounded-full bg-highlight"
           style={{
@@ -72,11 +74,12 @@ export default function QuizQuestion({
         />
       </div>
 
-      <h1 className="text-3xl font-bold sm:text-5xl">
+      {/* Long questions step down a size so they stay on two lines. */}
+      <h1 className={`text-3xl font-bold ${question.prompt.length > 60 ? "" : "sm:text-4xl"}`}>
         {question.prompt}
       </h1>
 
-      <div className="mt-2 flex flex-col gap-4">
+      <div className="grid flex-1 auto-rows-fr gap-[2vh] md:grid-cols-2">
         {question.choices.map((choice, index) => {
           const isSelected = selectedIndex === index;
           const isWrong = isSelected && !isCorrect;
@@ -88,7 +91,7 @@ export default function QuizQuestion({
               type="button"
               className={buttonClass(
                 "secondary",
-                `w-full min-h-16 justify-between text-left text-xl whitespace-normal ${isSelected ? "ring-2 ring-highlight" : ""
+                `h-full min-h-14 w-full justify-between text-left text-xl whitespace-normal ${isSelected ? "ring-2 ring-highlight" : ""
                 }`
               )}
               onClick={() => answerQuestion(index)}
@@ -103,44 +106,50 @@ export default function QuizQuestion({
         })}
       </div>
 
-      {answered && (
-        <div
-          ref={resultRef}
-          tabIndex={-1}
-          aria-live="polite"
-          aria-atomic="true"
-          className="rounded-xl border-2 border-text-muted/50 p-5 focus:outline-none focus:ring-2 focus:ring-highlight"
-        >
-          {isCorrect ? (
-            <h2 className="text-2xl font-bold text-success">
-              <span aria-hidden="true">✓ </span>
-              Correct
-            </h2>
-          ) : (
-            <h2 className="text-2xl font-bold text-danger">
-              <span aria-hidden="true">✕ </span>
-              Not quite
-            </h2>
-          )}
+      <div
+        ref={resultRef}
+        tabIndex={-1}
+        aria-live="polite"
+        aria-atomic="true"
+        className="flex min-h-[20vh] shrink-0 items-center gap-6 rounded-xl border-2 border-text-muted/50 px-6 py-4 focus:outline-none focus:ring-2 focus:ring-highlight"
+      >
+        {!answered ? (
+          <p className="w-full text-center text-xl text-text-muted">
+            Choose an answer.
+          </p>
+        ) : (
+          <>
+            <div className="min-w-0 flex-1">
+              {isCorrect ? (
+                <h2 className="text-2xl font-bold text-success">
+                  <span aria-hidden="true">✓ </span>
+                  Correct
+                </h2>
+              ) : (
+                <h2 className="text-2xl font-bold text-danger">
+                  <span aria-hidden="true">✕ </span>
+                  Not quite
+                </h2>
+              )}
 
-          <p className="mt-3 text-lg">{question.explanation}</p>
+              <p className="mt-2 text-lg">
+                {question.explanation}
+                {!isCorrect && " Choose another answer to try again."}
+              </p>
+            </div>
 
-          {isCorrect ? (
-            <button
-              type="button"
-              className={buttonClass("primary", "mt-5 w-full text-xl")}
-              onClick={continueQuiz}
-            >
-              {isLastQuestion ? isTimelineChallenge ?
-              "Ready to Launch!" : "Finish Quiz" : "Next Question"}
-            </button>
-          ) : (
-            <p className="mt-4 text-base">
-              Choose another answer to try again.
-            </p>
-          )}
-        </div>
-      )}
+            {isCorrect && (
+              <button
+                type="button"
+                className={buttonClass("primary", "shrink-0 text-xl")}
+                onClick={continueQuiz}
+              >
+                {isLastQuestion ? "Ready to launch!" : "Next question"}
+              </button>
+            )}
+          </>
+        )}
+      </div>
     </section>
   );
 }
