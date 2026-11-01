@@ -15,7 +15,7 @@ import EraOverview from "./routes/EraOverview.jsx";
 import EraScreen from "./routes/EraScreen.jsx";
 import Library from "./routes/Library.jsx";
 import About from "./routes/About.jsx";
-import { QuizHome, EventQuiz } from "./routes/Quiz.jsx";
+import { QuizHome, EraQuiz } from "./routes/Quiz.jsx";
 import QuizComplete from "./routes/QuizComplete.jsx";
 import AdminLogin from "./routes/admin/AdminLogin.jsx";
 import Dashboard from "./routes/admin/Dashboard.jsx";
@@ -72,7 +72,7 @@ export default function App() {
               <Route path="/era/:eraId/event/:eventId" element={<EraScreen />} />
               <Route path="/library" element={<Library />} />
               <Route path="/quiz" element={<QuizHome />} />
-              <Route path="/quiz/event/:eventId" element={<EventQuiz />} />
+              <Route path="/quiz/era/:eraId" element={<EraQuiz />} />
               <Route path="/quiz/complete" element={<QuizComplete />} />
               <Route path="/about" element={<About />} />
               {/* The phone page the QR code opens (on the companion site). */}

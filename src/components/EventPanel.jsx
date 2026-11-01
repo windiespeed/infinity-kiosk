@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { useState } from "react";
 import { useContent } from "../hooks/useContent.jsx";
 import { useDialog } from "../hooks/useDialog.js";
@@ -13,7 +12,7 @@ import ReadAloudButton from "./ReadAloudButton.jsx";
 // Everything needed to understand the event is here, so it makes sense to someone
 // who walks up and sees only this panel.
 export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
-  const { mediaById, mediaUrl, questionsForEvent } = useContent();
+  const { mediaById, mediaUrl } = useContent();
   const ref = useDialog(onClose);
   const closeEvent = () => {
     stop();
@@ -44,7 +43,6 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
   };
   const [swipeStart, setSwipeStart] = useState(null);
   const reduceMotion = useKiosk((s) => s.reduceMotion);
-  const hasQuiz = questionsForEvent(event.id).length > 0;
 
   const openViewer = (index) => {
     setSelectedImageIndex(index);
@@ -238,16 +236,6 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
           </button>
 
           <div className="flex flex-wrap gap-3">
-            {hasQuiz && (
-              <Link
-                to={`/quiz/event/${event.id}`}
-                onClick={stop}
-                className={buttonClass("era")}
-              >
-                Test yourself
-              </Link>
-            )}
-
             <button
               onClick={closeEvent}
               className={buttonClass("primary")}
