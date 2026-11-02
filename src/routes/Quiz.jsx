@@ -10,7 +10,7 @@ import { buttonClass } from "../lib/ui.js";
 import QuizQuestion from "../components/QuizQuestion.jsx";
 import RocketLaunch from "../components/RocketLaunch.jsx";
 
-// An era quiz asks this many of that era's questions (or all of them, if fewer).
+// An era quiz asks this many of that era's questions, each about a different event.
 const ERA_QUIZ_LENGTH = 5;
 
 function randomItem(items) {
@@ -26,11 +26,25 @@ function shuffled(items) {
   return copy;
 }
 
-// A question belongs to the era of the event it is linked to.
+// A question belongs to the era of the event it is linked to. Questions on
+// hidden (unpublished) events are left out.
 function questionsForEra(questions, eraId, eventById) {
-  return questions.filter((question) =>
-    eventById(question.eventId)?.eraIds?.includes(eraId)
-  );
+  return questions.filter((question) => {
+    const event = eventById(question.eventId);
+    return event?.published !== false && event?.eraIds?.includes(eraId);
+  });
+}
+
+// Up to `count` questions, each about a different event, picked at random.
+function questionsFromDifferentEvents(questions, count) {
+  const seen = new Set();
+  return shuffled(questions)
+    .filter((question) => {
+      if (seen.has(question.eventId)) return false;
+      seen.add(question.eventId);
+      return true;
+    })
+    .slice(0, count);
 }
 
 // Select one random question from each era that has available questions.
@@ -190,9 +204,10 @@ export function EraQuiz() {
       startLabel="Start the quiz"
       eraId={era.id}
       pickQuestions={() =>
-        shuffled(
-          questionsForEra(content.questions ?? [], era.id, eventById)
-        ).slice(0, ERA_QUIZ_LENGTH)
+        questionsFromDifferentEvents(
+          questionsForEra(content.questions ?? [], era.id, eventById),
+          ERA_QUIZ_LENGTH
+        )
       }
     >
       <Link to="/quiz" className={buttonClass("secondary", "mt-6")}>
