@@ -70,14 +70,51 @@ update the app, and uninstalling it erases all content. So:
 Use only release APKs on the kiosk. A debug APK is signed with a different key, so
 switching between debug and release on the kiosk fails.
 
-## Install on the kiosk
+## Install on the kiosk, step by step
 
-- **Remote:** with RustDesk on the kiosk, send the APK with RustDesk's file transfer to
-  the kiosk's **Download** folder, then open it in **Files** and tap **Update**.
-- **USB drive:** copy the APK to a USB drive, open it in the kiosk's Files app, tap it,
-  allow installing from that source when asked, then tap **Install** (or **Update**).
-- **From a computer:** with USB debugging on, `adb install -r app-release.apk`
-  (`-r` keeps the app's data).
+This is the whole path from the code on GitHub to a new version on the museum kiosk. The
+kiosk's USB and Wi-Fi debugging connections don't work, and RustDesk's file transfer can
+only reach RustDesk's own folder, so the APK goes through Google Drive and the kiosk's
+web browser.
+
+**On the computer: build the APK**
+
+1. Open PowerShell in the project folder and run these one at a time:
+   `git checkout main`, `git pull`, `npm install`, `npm run android:sync`.
+2. Open the project in Android Studio (`npm run android:open`) and click
+   **File → Sync Project with Gradle Files**. If it offers a Gradle or Android Gradle
+   Plugin upgrade, close it and **don't accept** (see the Gradle warning above).
+3. Click **Build → Generate Signed App Bundle or APK → APK → Next**. Choose the same
+   keystore file as always (key alias `kiosk`), type both passwords, click **Next**, pick
+   **release** and click **Create**.
+4. When Android Studio says it's done, the file is `android\app\release\app-release.apk`.
+
+**On the computer: share it**
+
+5. Upload `app-release.apk` to Google Drive. Right-click it, choose **Share**, set
+   **General access** to **Anyone with the link**, and click **Copy link**. A short link
+   (for example from tinyurl.com) is easier to type on the kiosk.
+
+**On the kiosk (through RustDesk or in person)**
+
+6. Get to a web browser. Normally: **Admin → Settings → Kiosk lock → Open Android
+   settings** (version 1.4 and later; if the kiosk lock is on, tap **Unlock for
+   maintenance** first). If Infinity Kiosk is the Home app, switch it back to the original
+   launcher under **Apps → Default apps → Home app**, so that Home shows Android's apps.
+   Press Home and open the browser. Switch the Home app back to Infinity Kiosk when the
+   update is done. On version 1.3 or older, which has no such button, a USB keyboard
+   plugged into the kiosk can open the browser with **Windows key + B**.
+7. In the browser, open the Drive link and tap **Download** (and **Download anyway** if it
+   warns that it can't scan the file).
+8. Open the downloaded file. If Android asks, allow installing apps from this browser,
+   then go back.
+9. Tap **Update**, never Uninstall (uninstalling erases all content). Then open
+   Infinity Kiosk. If it shows **This update isn't finished**, enter the staff PIN there.
+10. In admin, check the version you expect is running, then tap through the screens.
+
+Other ways, where they work: copy the APK to a USB drive and open it in the kiosk's
+Files app, or with USB debugging, `adb install -r app-release.apk` (`-r` keeps the app's
+data).
 
 ## First-time kiosk setup
 
@@ -85,6 +122,13 @@ switching between debug and release on the kiosk fails.
 2. Set up the kiosk lock (**docs/KIOSK-LOCK.md**). It makes the app the Home app, opens it
    at startup and keeps visitors in it. Without the lock, at least make it the Home app:
    **Settings → Apps → Default apps → Home app → Infinity Kiosk** (wording varies by device).
+
+   > **Before making it the Home app, check you can get back out.** The museum kiosk hides
+   > Android's bars, so once the app is the Home app the only way back to Android is
+   > **Admin → Settings → Kiosk lock → Open Android settings**, which needs version 1.4 or
+   > later. Tap it once to check it works before you change the Home app. To undo, open
+   > Android settings that way and pick the original launcher under **Apps → Default apps
+   > → Home app**.
 3. Tap the top-left corner 5 times quickly. The kiosk asks you to **create a staff PIN**
    (4–8 digits), then shows a one-time **recovery code**. Save both in a password manager.
    See **docs/ADMIN-PIN.md**.
@@ -96,7 +140,8 @@ switching between debug and release on the kiosk fails.
 - **Content:** prepare it on a laptop (browser admin), **Export backup**, copy the zip
   to the kiosk, **Import backup**. Or edit directly on the kiosk.
 - **App:** build a new signed release APK with the same key and install it over the
-  old one (**Update**, never Uninstall). Content and the PIN are kept. If the kiosk lock
+  old one (**Update**, never Uninstall), as in **Install on the kiosk, step by step**
+  above. Content and the PIN are kept. If the kiosk lock
   is on, first tap **Admin → Settings → Kiosk lock → Unlock for maintenance**. Bump
   `versionCode` and `versionName` in `android/app/build.gradle` for each kiosk build
   (now `versionCode 5`, `versionName "1.4"`).
