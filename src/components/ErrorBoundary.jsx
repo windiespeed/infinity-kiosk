@@ -26,8 +26,9 @@ export default class ErrorBoundary extends Component {
       <div role="alert" className="flex h-full flex-col items-center justify-center gap-6 p-8 text-center">
         <h1 className="text-4xl">This screen couldn't open</h1>
         <p className="max-w-[50ch] text-text-muted">Something in its content is missing. Start over to keep exploring.</p>
-        {/* A full reload, so this works even when the router itself is what failed. */}
-        <button onClick={() => window.location.replace("/")} className={buttonClass("primary")}>
+        {/* A full reload, so this works even when the router itself is what failed.
+            BASE_URL keeps it inside the companion site's /infinity-kiosk/ folder. */}
+        <button onClick={() => window.location.replace(import.meta.env.BASE_URL)} className={buttonClass("primary")}>
           Start over
         </button>
       </div>

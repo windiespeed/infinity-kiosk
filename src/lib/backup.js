@@ -61,23 +61,19 @@ export async function exportBackup(store, content) {
   return { where, skipped };
 }
 
+// Reads a backup in two passes. The first finds content.json and checks it, so a
+// damaged or wrong zip is refused before any of the kiosk's media is replaced.
+// The second writes the media files.
 export async function importBackup(store, file, session, onProgress) {
-  let contentText = null;
+  const content = await readBackupContent(file);
+  const problem = validateContent(content);
+  if (problem) throw new Error(problem);
+
   const written = [];
   let pending = Promise.resolve();
   let failure = null;
 
   const unzip = new Unzip((entry) => {
-    if (entry.name === "content.json") {
-      const parts = [];
-      entry.ondata = (err, data, final) => {
-        if (err) return void (failure = err);
-        parts.push(data);
-        if (final) contentText = new TextDecoder().decode(concat(parts));
-      };
-      entry.start();
-      return;
-    }
     const match = entry.name.match(/^media\/([^/]+)$/);
     if (!match || !SAFE_NAME.test(match[1])) return; // ignore anything else in the zip
     const name = match[1];
@@ -106,18 +102,40 @@ export async function importBackup(store, file, session, onProgress) {
   }
   await pending;
 
+  const missing = content.media.map((m) => m.file).filter((f) => !written.includes(f));
+  return { content, mediaCount: written.length, missing };
+}
+
+// First pass: returns the parsed content.json. Exports put it first in the zip,
+// so this usually stops after the first piece of the file.
+async function readBackupContent(file) {
+  let contentText = null;
+  let failure = null;
+
+  const unzip = new Unzip((entry) => {
+    if (entry.name !== "content.json") return;
+    const parts = [];
+    entry.ondata = (err, data, final) => {
+      if (err) return void (failure = err);
+      parts.push(data);
+      if (final) contentText = new TextDecoder().decode(concat(parts));
+    };
+    entry.start();
+  });
+  unzip.register(UnzipInflate);
+
+  for (let offset = 0; offset < file.size && contentText === null; offset += READ_CHUNK) {
+    const bytes = new Uint8Array(await file.slice(offset, offset + READ_CHUNK).arrayBuffer());
+    unzip.push(bytes, offset + READ_CHUNK >= file.size);
+    if (failure) throw failure;
+  }
+
   if (!contentText) throw new Error("This file has no content.json, so it isn't a kiosk backup.");
-  let content;
   try {
-    content = JSON.parse(contentText);
+    return JSON.parse(contentText);
   } catch {
     throw new Error("The backup's content.json is damaged.");
   }
-  const problem = validateContent(content);
-  if (problem) throw new Error(problem);
-
-  const missing = content.media.map((m) => m.file).filter((f) => !written.includes(f));
-  return { content, mediaCount: written.length, missing };
 }
 
 function concat(parts) {
