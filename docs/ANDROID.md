@@ -98,11 +98,11 @@ web browser.
 **On the kiosk (through RustDesk or in person)**
 
 6. Get to a web browser. Normally: **Admin → Settings → Kiosk lock → Open Android
-   settings** (version 1.4 and later; if the kiosk lock is on, tap **Unlock for
+   settings** (version 1.5 and later; if the kiosk lock is on, tap **Unlock for
    maintenance** first). If Infinity Kiosk is the Home app, switch it back to the original
    launcher under **Apps → Default apps → Home app**, so that Home shows Android's apps.
    Press Home and open the browser. Switch the Home app back to Infinity Kiosk when the
-   update is done. On version 1.3 or older, which has no such button, a USB keyboard
+   update is done. On version 1.4 or older (1.4 has the button but its Settings screen fails to open), a USB keyboard
    plugged into the kiosk can open the browser with **Windows key + B**.
 7. In the browser, open the Drive link and tap **Download** (and **Download anyway** if it
    warns that it can't scan the file).
@@ -125,7 +125,7 @@ data).
 
    > **Before making it the Home app, check you can get back out.** The museum kiosk hides
    > Android's bars, so once the app is the Home app the only way back to Android is
-   > **Admin → Settings → Kiosk lock → Open Android settings**, which needs version 1.4 or
+   > **Admin → Settings → Kiosk lock → Open Android settings**, which needs version 1.5 or
    > later. Tap it once to check it works before you change the Home app. To undo, open
    > Android settings that way and pick the original launcher under **Apps → Default apps
    > → Home app**.
@@ -144,7 +144,7 @@ data).
   above. Content and the PIN are kept. If the kiosk lock
   is on, first tap **Admin → Settings → Kiosk lock → Unlock for maintenance**. Bump
   `versionCode` and `versionName` in `android/app/build.gradle` for each kiosk build
-  (now `versionCode 5`, `versionName "1.4"`).
+  (now `versionCode 6`, `versionName "1.5"`).
 - **New app, old content:** the kiosk keeps its own content when the app is updated, not
   the content in `data/content.json`. If a new version has stricter content rules (for
   example, at most 3 photos per event) and the kiosk's saved content breaks one, the app
