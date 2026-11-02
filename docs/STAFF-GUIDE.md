@@ -6,7 +6,7 @@ Changes you save in Admin show to visitors right away. Export a backup when you 
 
 1. Tap the **top-left corner** of the screen **5 times quickly** (within 3 seconds). A keypad opens.
 2. Enter the staff PIN and tap **Enter**.
-3. Use the menu on the left: **Dashboard, Events, Media, Eras, Settings**.
+3. Use the menu on the left: **Dashboard, Eras, Events, Media, Settings**.
 4. When you're done, tap **Exit admin** (bottom of the menu).
 
 - **Forgot the PIN?** Tap **Forgot the PIN?** on the keypad and enter the 12-digit recovery code. Then pick a new PIN and write down the new recovery code it shows.
