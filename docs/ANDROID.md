@@ -120,6 +120,15 @@ PIN, and import the latest backup. This is why regular backups matter.
 With a debug build and USB debugging on, open `chrome://inspect` in Chrome on your
 computer to see the kiosk app's console and inspect its screens.
 
+## App icon
+
+The launcher icon is the gold infinity mark on slate navy (wall colors). The files are
+`android/app/src/main/res/mipmap-*/ic_launcher*.png` (one folder per screen density),
+and the navy background color is in `android/app/src/main/res/values/ic_launcher_background.xml`.
+Android 8+ builds the icon from `ic_launcher_foreground.png` on that color and crops it to
+the device's shape, so keep the artwork inside the middle 66 of 108 units. The icon only
+changes on the kiosk after a new APK is built and installed.
+
 ## Kiosk lock
 
 To keep visitors from leaving the app, set up the kiosk lock once: **docs/KIOSK-LOCK.md**.
