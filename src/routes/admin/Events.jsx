@@ -1,16 +1,26 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useContent } from "../../hooks/useContent.jsx";
-import { needsReview } from "../../lib/content.js";
+import { MIN_QUESTIONS_PER_EVENT, needsReview } from "../../lib/content.js";
 import { buttonClass } from "../../lib/ui.js";
 import { inputClass } from "../../components/admin/Field.jsx";
 
 const byDate = (a, b) => a.date.sort.localeCompare(b.date.sort);
 
 // Small text tags beside an event's title. Words, not just color, carry the meaning.
-export function EventTags({ ev }) {
+// questionCount is optional: pass it to also show how many quiz questions the event has.
+export function EventTags({ ev, questionCount }) {
+  const fewQuestions = questionCount !== undefined && ev.published !== false && questionCount < MIN_QUESTIONS_PER_EVENT;
   return (
     <>
+      {questionCount !== undefined && (
+        <span
+          className={`rounded border px-2 text-sm font-bold ${fewQuestions ? "border-highlight text-highlight" : "border-text-muted"}`}
+        >
+          {questionCount} quiz question{questionCount === 1 ? "" : "s"}
+          {fewQuestions && `, needs ${MIN_QUESTIONS_PER_EVENT - questionCount} more`}
+        </span>
+      )}
       {ev.published === false && <span className="rounded border border-text-muted px-2 text-sm font-bold">Hidden</span>}
       {needsReview(ev) && (
         <span className="rounded border border-highlight px-2 text-sm font-bold text-highlight">Needs review</span>
@@ -29,6 +39,7 @@ export default function Events() {
     words.every((w) => [ev.id, ev.title, ev.shortTitle, ev.date.display, ev.summary].join(" ").toLowerCase().includes(w));
   const shown = content.events.filter(matches);
   const reviewCount = content.events.filter((ev) => needsReview(ev)).length;
+  const questionCount = (ev) => content.questions.filter((q) => q.eventId === ev.id).length;
 
   return (
     <div className="mx-auto max-w-5xl p-10">
@@ -67,7 +78,7 @@ export default function Events() {
                   <span className="min-w-0 flex-1">
                     <span className="block">{ev.title}</span>
                     <span className="mt-1 flex flex-wrap gap-2">
-                      <EventTags ev={ev} />
+                      <EventTags ev={ev} questionCount={questionCount(ev)} />
                     </span>
                   </span>
                   <Link to={`/admin/events/${encodeURIComponent(ev.id)}`} className={buttonClass("secondary")}>
