@@ -21,6 +21,11 @@ export function certificateLink(site, { date, eraId } = {}) {
   return `${certificateSite(site)}/certificate${query ? `?${query}` : ""}`;
 }
 
+// <site>/team: the Meet the team page the About screen's QR code opens.
+export function teamLink(site) {
+  return `${certificateSite(site)}/team`;
+}
+
 // Today's local date as YYYY-MM-DD.
 export function todayIso(now = new Date()) {
   const month = String(now.getMonth() + 1).padStart(2, "0");

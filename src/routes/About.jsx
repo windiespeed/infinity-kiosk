@@ -3,15 +3,21 @@ import { QRCodeSVG } from "qrcode.react";
 import GoldRule from "../components/GoldRule.jsx";
 import { useDialog } from "../hooks/useDialog.js";
 import { buttonClass } from "../lib/ui.js";
-import { TEAM, TEAM_PAGE_URL, initials, teamPhoto } from "../lib/team.js";
+import { useContent } from "../hooks/useContent.jsx";
+import { teamLink } from "../lib/certificate.js";
+import { TEAM } from "../lib/team.js";
+import Portrait from "../components/Portrait.jsx";
 
 // The About screen's text lives here, not in the content file, so only developers
 // can change it (staff can't edit it from admin). The team list is in lib/team.js.
 // The team grid and NASA Stennis text sit on the left, the team page QR code on the
 // right. Tapping a team member opens a card with their bio.
 export default function About() {
+  const { content } = useContent();
   const [open, setOpen] = useState(null);
-  const shortAddress = TEAM_PAGE_URL.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  // Same website as the quiz certificate (Admin > Settings), followed by /team.
+  const url = teamLink(content.settings.certificateSite);
+  const shortAddress = url.replace(/^https?:\/\//, "");
 
   return (
     <div className="flex min-h-full flex-col gap-4 px-10 py-4">
@@ -59,7 +65,7 @@ export default function About() {
           <div className="flex flex-col items-center gap-2 rounded-2xl panel p-4 text-center">
             <div className="size-32 bg-white p-1.5">
               <QRCodeSVG
-                value={TEAM_PAGE_URL}
+                value={url}
                 size={320}
                 level="M"
                 bgColor="#ffffff"
@@ -71,7 +77,7 @@ export default function About() {
               />
             </div>
             <p className="text-base font-bold">Scan to meet the team online</p>
-            <p className="text-sm text-text-muted">{shortAddress}</p>
+            <p className="text-sm break-all text-text-muted">{shortAddress}</p>
           </div>
 
           <p className="text-center text-sm text-text-muted">Photos courtesy of NASA unless otherwise noted.</p>
@@ -80,22 +86,6 @@ export default function About() {
 
       {open != null && <MemberDialog member={TEAM[open]} onClose={() => setOpen(null)} />}
     </div>
-  );
-}
-
-// Round photo with no frame, or gold initials when there's no photo yet.
-function Portrait({ member, className = "" }) {
-  const src = teamPhoto(member);
-  if (src) {
-    return <img src={src} alt="" draggable="false" className={`shrink-0 rounded-full object-cover ${className}`} />;
-  }
-  return (
-    <span
-      aria-hidden="true"
-      className={`flex shrink-0 items-center justify-center rounded-full bg-accent font-display font-bold text-on-accent ${className}`}
-    >
-      {initials(member.name)}
-    </span>
   );
 }
 

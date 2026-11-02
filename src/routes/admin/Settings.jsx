@@ -139,8 +139,8 @@ export default function Settings() {
 
         <Field
           id="set-certificateSite"
-          label="Certificate website"
-          hint={`The quiz QR code opens this address followed by /certificate. Leave blank to use ${DEFAULT_CERTIFICATE_SITE}.`}
+          label="Companion website"
+          hint={`The quiz QR code opens this address followed by /certificate, and the About screen's QR code opens it followed by /team. Leave blank to use ${DEFAULT_CERTIFICATE_SITE}.`}
           error={problems.certificateSite}
         >
           {(props) => (

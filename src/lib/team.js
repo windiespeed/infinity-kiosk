@@ -1,20 +1,23 @@
 // The team shown on the About screen. Like the rest of the About text, it lives in
 // code, not in content.json, so only developers change it.
 //
+// The kiosk shows name, role, photo and bio. The About screen's QR code opens the
+// Meet the team phone page (<website in Admin > Settings>/team), which also shows
+// longBio and link. The kiosk itself never opens a website.
+//
 // photo: a file name in src/assets/team/, or null to show the person's initials.
 // bio: about 40 words, written for museum visitors (kids included).
-
-// One QR code on the About screen opens this page on the visitor's phone.
-// The kiosk itself never opens a website.
-export const TEAM_PAGE_URL = "https://mscoding.org";
+// longBio: optional, for the phone page only. Leave it out to show bio there.
+// link: optional LinkedIn or portfolio address, for the phone page only.
+// linkLabel: the link's button text, like "LinkedIn" or "Portfolio".
 
 export const TEAM = [
-  { name: "Team Member One", role: "Role", photo: null, bio: "A short bio for museum visitors goes here." },
-  { name: "Team Member Two", role: "Role", photo: null, bio: "A short bio for museum visitors goes here." },
-  { name: "Team Member Three", role: "Role", photo: null, bio: "A short bio for museum visitors goes here." },
-  { name: "Team Member Four", role: "Role", photo: null, bio: "A short bio for museum visitors goes here." },
-  { name: "Team Member Five", role: "Role", photo: null, bio: "A short bio for museum visitors goes here." },
-  { name: "Team Member Six", role: "Role", photo: null, bio: "A short bio for museum visitors goes here." },
+  { name: "Team Member One", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
+  { name: "Team Member Two", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
+  { name: "Team Member Three", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
+  { name: "Team Member Four", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
+  { name: "Team Member Five", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
+  { name: "Team Member Six", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
 ];
 
 // Every photo in src/assets/team/, keyed by file name.
