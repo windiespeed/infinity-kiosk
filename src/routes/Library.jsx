@@ -14,8 +14,10 @@ export default function Library() {
 
   const eraFilter = params.get("era");
 
-  // Pair each image with the first event that uses it.
-  const events = eraFilter ? eventsForEra(eraFilter) : content.events;
+  // Pair each image with the first event that uses it. Only events visitors can see
+  // count (hidden events stay hidden here too), and videos are left out: they play
+  // in the event panel, not in this photo grid.
+  const events = eraFilter ? eventsForEra(eraFilter) : eras.flatMap((era) => eventsForEra(era.id));
   const items = [];
   const seen = new Set();
 
@@ -23,7 +25,7 @@ export default function Library() {
     for (const id of ev.mediaIds) {
       const img = content.media.find((m) => m.id === id);
 
-      if (img && !seen.has(id)) {
+      if (img && img.type !== "video" && !seen.has(id)) {
         seen.add(id);
         items.push({ img, ev });
       }
@@ -82,7 +84,7 @@ export default function Library() {
         {items.map(({ img, ev }, index) => (
           <li
             key={img.id}
-            className="panel rounded-2xl p-4"
+            className="panel flex flex-col rounded-2xl p-4"
           >
             <button
               type="button"
@@ -102,7 +104,7 @@ export default function Library() {
               />
             </button>
 
-            <p className="mt-3 text-base">
+            <p className="mb-3 mt-3 text-base">
               {img.caption}
             </p>
 
@@ -110,7 +112,7 @@ export default function Library() {
               to={`/era/${ev.eraIds[0]}/event/${ev.id}`}
               className={buttonClass(
                 "secondary",
-                "mt-3 w-full"
+                "mt-auto w-full"
               )}
             >
               See this event

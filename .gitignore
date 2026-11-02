@@ -7,10 +7,13 @@ data/backups/
 *.keystore
 keystore.properties
 # Video and backup files never belong in Git (keep them on the shared drive)
-*.mp4
+# *.mp4
 *.mov
 *.m4v
 *.webm
 *.avi
 *.mkv
 *.zip
+
+# Printable QR codes from npm run qr (made fresh each time)
+qr-codes/

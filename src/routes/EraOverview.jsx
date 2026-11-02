@@ -11,7 +11,7 @@ export default function EraOverview() {
   const { eras, eventsForEra, eraCover, mediaUrl } = useContent();
 
   return (
-    <div className="flex min-h-full flex-col justify-between gap-10 p-10">
+    <div className="flex min-h-full flex-col justify-between gap-6 px-10 py-6">
       <header>
         <h1 className="text-7xl">The history of spaceflight</h1>
         <GoldRule className="mt-5" />

@@ -1,5 +1,7 @@
 # Infinity Science Center Kiosk — DRAFT Media Log
 
+> **Archived (November 2026):** this draft was replaced by the team's media tracker spreadsheet in the shared Drive **Media** folder. Its rule about keeping media out of Git is out of date: photos now live in `data/media/` in this repo (see the README, "Where media lives").
+
 **Status: TEMPLATE FOR PROJECT-LEADER REVIEW — NOT THE OFFICIAL APPROVAL LOG**
 
 This working log was prepared because the task references a Media Log but none was provided/found. Please confirm with the project leader where the official log should live and whether these columns meet the team's process before treating anything as approved.

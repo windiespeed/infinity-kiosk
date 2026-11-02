@@ -4,18 +4,31 @@ import { buttonClass } from "../lib/ui.js";
 import { useKiosk } from "../store/useKiosk.js";
 
 // Plays a video from the media library with accessible controls and captions.
+<<<<<<< HEAD
 // Background mode is muted and looping; it does not hold the idle timer busy.
 export default function VideoPlayer({
   item,
   mediaUrl,
   background = false,
+=======
+// While it plays, the idle timer is held so the kiosk doesn't start over mid-video.
+// (The welcome screen's muted background video is drawn by Attract.jsx instead.)
+// Compact mode is a short, centered player for the event panel's media column.
+export default function VideoPlayer({
+  item,
+  mediaUrl,
+  compact = false,
+>>>>>>> origin/main
 }) {
   const videoRef = useRef(null);
   const busyRef = useRef(false);
 
   const addBusy = useKiosk((s) => s.addBusy);
   const removeBusy = useKiosk((s) => s.removeBusy);
+<<<<<<< HEAD
   const reduceMotion = useKiosk((s) => s.reduceMotion);
+=======
+>>>>>>> origin/main
 
   const [playing, setPlaying] = useState(false);
   const [captionsOn, setCaptionsOn] = useState(true);
@@ -38,8 +51,12 @@ export default function VideoPlayer({
   function handlePlay() {
     setPlaying(true);
 
+<<<<<<< HEAD
     // A looping attract background must not block the idle timer.
     if (!background && !busyRef.current) {
+=======
+    if (!busyRef.current) {
+>>>>>>> origin/main
       busyRef.current = true;
       addBusy();
     }
@@ -120,6 +137,7 @@ export default function VideoPlayer({
     };
   }, [removeBusy]);
 
+<<<<<<< HEAD
   // Respect the kiosk's Reduce Motion setting on the attract screen.
   if (background && reduceMotion) {
     return posterSrc ? (
@@ -165,6 +183,12 @@ export default function VideoPlayer({
     <section
       aria-label={item.alt || item.caption || "Video player"}
       className="mt-6 w-full"
+=======
+  return (
+    <section
+      aria-label={item.alt || item.caption || "Video player"}
+      className={compact ? "w-full" : "mt-6 w-full"}
+>>>>>>> origin/main
     >
       <video
         ref={videoRef}
@@ -179,7 +203,11 @@ export default function VideoPlayer({
           setPlaying(false);
           releaseBusy();
         }}
+<<<<<<< HEAD
         className="w-full rounded-xl bg-black"
+=======
+        className={compact ? "h-[14vh] w-full object-contain" : "w-full rounded-xl bg-black"}
+>>>>>>> origin/main
       >
         {captionsSrc && (
           <track
@@ -194,7 +222,11 @@ export default function VideoPlayer({
       </video>
 
       <div
+<<<<<<< HEAD
         className="mt-3 flex flex-wrap gap-3"
+=======
+        className={compact ? "mt-2 flex flex-wrap justify-center gap-3" : "mt-3 flex flex-wrap gap-3"}
+>>>>>>> origin/main
         aria-label="Video controls"
       >
         <button

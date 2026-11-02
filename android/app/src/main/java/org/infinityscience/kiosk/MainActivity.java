@@ -17,10 +17,13 @@ import com.getcapacitor.BridgeActivity;
  *   (the app has its own Back button)
  * The app is also registered as a Home app in AndroidManifest.xml, so once it's set
  * as the default Home app it opens automatically when the kiosk starts.
+ * With the kiosk lock set up (KioskLock, docs/KIOSK-LOCK.md) it also pins itself
+ * every time it comes to the front.
  */
 public class MainActivity extends BridgeActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        registerPlugin(KioskLockPlugin.class);
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         hideSystemBars();
@@ -31,6 +34,12 @@ public class MainActivity extends BridgeActivity {
                 // Intentionally ignored on the kiosk.
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        KioskLock.apply(this);
     }
 
     @Override

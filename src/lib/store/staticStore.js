@@ -32,12 +32,23 @@ export function createStaticStore() {
       return true;
     },
     setPin: readOnly("Setting a PIN"),
+    async hasRecoveryCode() {
+      return false;
+    },
+    newRecoveryCode: readOnly("Recovery codes"),
+    async checkRecoveryCode() {
+      return false;
+    },
+    async resetPin() {
+      return false;
+    },
     async signIn() {
       return null;
     },
     async signOut() {},
 
     openMediaWriter: readOnly("Uploading media"),
+    deleteMedia: readOnly("Deleting media"),
     openBackupWriter: readOnly("Backups"),
   };
 }

@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { getStore, validateContent } from "../lib/store/index.js";
+import { useKiosk } from "../store/useKiosk.js";
 
 const ContentContext = createContext(null);
 
@@ -9,6 +10,8 @@ export function ContentProvider({ children }) {
   const [store, setStore] = useState(null);
   const [content, setContent] = useState(null);
   const [error, setError] = useState(null);
+  // Signed-in staff also see hidden events, so they can preview them before publishing.
+  const showHidden = useKiosk((s) => Boolean(s.adminToken));
 
   useEffect(() => {
     (async () => {
@@ -26,11 +29,12 @@ export function ContentProvider({ children }) {
   const reload = useCallback(async () => {
     const s = await getStore();
     setContent(await loadChecked(s));
+    setError(null);
   }, []);
 
   const value = useMemo(
-    () => ({ content, error, reload, store, ...helpers(content, store) }),
-    [content, error, reload, store]
+    () => ({ content, error, reload, store, ...helpers(content, store, showHidden) }),
+    [content, error, reload, store, showHidden]
   );
   return <ContentContext.Provider value={value}>{children}</ContentContext.Provider>;
 }
@@ -39,7 +43,11 @@ export function ContentProvider({ children }) {
 async function loadChecked(store) {
   const content = await store.loadContent();
   const problem = validateContent(content);
-  if (problem) throw new Error(`The content can't be shown: ${problem}`);
+  if (problem) {
+    const err = new Error(`The content can't be shown: ${problem}`);
+    err.code = "content-rejected";
+    throw err;
+  }
   return content;
 }
 
@@ -47,10 +55,22 @@ export function useContent() {
   return useContext(ContentContext);
 }
 
-function helpers(content, store) {
+function helpers(content, store, showHidden) {
   if (!content || !store) return {};
-  const published = content.events.filter((e) => e.published !== false);
+  const published = showHidden ? content.events : content.events.filter((e) => e.published !== false);
   const byDate = (a, b) => a.date.sort.localeCompare(b.date.sort);
+
+  // Photo for an event card: the event's first photo (videos are skipped).
+  const eventCover = (ev) =>
+    (ev.mediaIds ?? []).map((id) => content.media.find((m) => m.id === id)).find((m) => m && m.type !== "video");
+
+  // An era card shows the first photo of the era's earliest event that has one.
+  // Only events visitors can see count, so the card looks the same in admin preview.
+  const eraCoverEvent = (eraId) =>
+    content.events
+      .filter((e) => e.published !== false && e.eraIds.includes(eraId))
+      .sort(byDate)
+      .find((e) => eventCover(e));
 
   return {
     eras: [...content.eras].sort((a, b) => a.order - b.order),
@@ -58,15 +78,11 @@ function helpers(content, store) {
     eventsForEra: (eraId) => published.filter((e) => e.eraIds.includes(eraId)).sort(byDate),
     eventById: (id) => published.find((e) => e.id === id),
     mediaById: (id) => content.media.find((m) => m.id === id),
-    // Photo for an event card: the event's first image.
-    eventCover: (ev) => content.media.find((m) => m.id === ev.mediaIds?.[0]),
-    // Photo for an era card: the era's coverMediaId if set, otherwise the first
-    // image of its earliest event that has one.
+    eventCover,
+    eraCoverEvent,
     eraCover: (eraId) => {
-      const era = content.eras.find((e) => e.id === eraId);
-      const id = era?.coverMediaId
-        ?? published.filter((e) => e.eraIds.includes(eraId)).sort(byDate).find((e) => e.mediaIds?.length)?.mediaIds[0];
-      return content.media.find((m) => m.id === id);
+      const ev = eraCoverEvent(eraId);
+      return ev && eventCover(ev);
     },
     mediaUrl: (item) => store.mediaUrl(item),
     questionsForEvent: (id) => content.questions.filter((q) => q.eventId === id),

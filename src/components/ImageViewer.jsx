@@ -269,7 +269,7 @@ export default function ImageViewer({
             aria-modal="true"
             aria-label="Image viewer"
         >
-            <div className="flex items-center justify-between px-4 py-3">
+            <div className="px-4 py-3 text-center">
                 <span
                     className="text-sm"
                     aria-live="polite"
@@ -278,16 +278,6 @@ export default function ImageViewer({
                         ? `${currentIndex + 1} of ${images.length}`
                         : "Image"}
                 </span>
-
-                <button
-                    type="button"
-                    onClick={onClose}
-                    data-autofocus
-                    className="rounded-xl border border-accent bg-accent px-5 py-3 text-lg font-semibold text-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
-                    aria-label="Close image viewer"
-                >
-                    Close
-                </button>
             </div>
 
             <div className="min-h-0 flex-1 overflow-hidden">
@@ -373,7 +363,7 @@ export default function ImageViewer({
                 )}
 
                 {credit && (
-                    <p className="mt-1 text-sm text-white/70">
+                    <p className="mt-1 text-sm text-text-muted">
                         Credit: {credit}
                     </p>
                 )}
@@ -432,10 +422,22 @@ export default function ImageViewer({
                 <button
                     type="button"
                     onClick={resetZoom}
-                    className="rounded-xl border border-accent bg-accent px-5 py-4 text-lg font-semibold text-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="rounded-xl border border-accent bg-accent px-5 py-4 text-lg font-semibold text-on-accent hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
                     aria-label="Reset zoom"
                 >
                     Reset
+                </button>
+
+                {/* Close sits in this bottom row, not the top corner, so it stays
+                    within reach from a wheelchair on the 43" kiosk. */}
+                <button
+                    type="button"
+                    onClick={onClose}
+                    data-autofocus
+                    className="rounded-xl border border-accent bg-accent px-5 py-4 text-lg font-semibold text-on-accent hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
+                    aria-label="Close image viewer"
+                >
+                    Close
                 </button>
             </div>
         </div>
