@@ -1,5 +1,7 @@
 # Infinity Kiosk: GitHub Issues
 
+> **Archived (November 2026):** every issue below is built and merged. Kept for reference; don't create these again.
+
 Ten issues, ready to paste. For each one: on GitHub go to **Issues → New issue**, copy the
 **title**, then copy everything inside the gray box into the description. Add the labels,
 assign it, and add it to the Project board.

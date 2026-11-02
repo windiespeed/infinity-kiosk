@@ -5,7 +5,7 @@ and the settings that go with it.
 
 ## Signing in
 
-Tap the **top-left corner of the screen 5 times quickly**. The staff sign-in keypad opens.
+Tap the **top-left corner of the screen 5 times quickly** (within 3 seconds). The staff sign-in keypad opens.
 Enter the PIN and tap **Enter**. **Cancel** goes back to the welcome screen.
 
 ## The first PIN (new kiosk)
@@ -42,6 +42,8 @@ If both the PIN and the recovery code are lost, the only way back in is
 **Android Settings → Apps → Infinity Kiosk → Storage → Clear data**. This **erases all
 content** on the kiosk. Open the app, create a new PIN, then import the latest backup zip
 (see docs/ANDROID.md). Keep backups current for this reason.
+While the kiosk lock is on (docs/KIOSK-LOCK.md), Android doesn't allow Clear data, so the
+only way back in is a factory reset.
 
 ## Admin → Settings
 

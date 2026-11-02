@@ -1,5 +1,7 @@
 # Infinity Kiosk: Launch Task Issues
 
+> **Archived (November 2026):** these launch tasks are done. Kept for reference; don't create these again.
+
 Six more issues for the tasks that weren't in the first set. Same steps as before: on GitHub go to
 **Issues → New issue**, copy the **title**, then copy everything inside the gray box into the
 description. Add the labels, put them in the **Feature freeze** milestone (except where noted),
