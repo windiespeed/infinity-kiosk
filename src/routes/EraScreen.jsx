@@ -7,6 +7,7 @@ import { buttonClass } from "../lib/ui.js";
 import { eraYears } from "../lib/format.js";
 import GoldRule from "../components/GoldRule.jsx";
 import StarMarker from "../components/StarMarker.jsx";
+import { useKiosk } from "../store/useKiosk.js";
 
 // One era: title on top, its events as a timeline in the lower part of the screen,
 // previous/next era buttons at the sides. /era/:eraId/event/:eventId opens the panel.
@@ -18,6 +19,7 @@ export default function EraScreen() {
   const scrollerRef = useRef(null);
   const lastOpened = useRef(null);
   const [more, setMore] = useState({ left: false, right: false });
+  const reduceMotion = useKiosk((s) => s.reduceMotion);
 
   const era = eraById(eraId);
   const events = era ? eventsForEra(era.id) : [];
@@ -61,7 +63,8 @@ export default function EraScreen() {
 
   const scrollEvents = (direction) => {
     const el = scrollerRef.current;
-    el?.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: "smooth" });
+    // Jump instead of sliding when Reduce motion is on (CSS can't slow a scripted scroll).
+    el?.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: reduceMotion ? "auto" : "smooth" });
   };
 
   if (!era) return <Navigate to="/timeline" replace />;

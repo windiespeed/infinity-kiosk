@@ -15,7 +15,8 @@ import EraOverview from "./routes/EraOverview.jsx";
 import EraScreen from "./routes/EraScreen.jsx";
 import Library from "./routes/Library.jsx";
 import About from "./routes/About.jsx";
-import { QuizHome, EventQuiz, QuizComplete } from "./routes/Quiz.jsx";
+import { QuizHome, EraQuiz } from "./routes/Quiz.jsx";
+import QuizComplete from "./routes/QuizComplete.jsx";
 import AdminLogin from "./routes/admin/AdminLogin.jsx";
 import Dashboard from "./routes/admin/Dashboard.jsx";
 import Eras from "./routes/admin/Eras.jsx";
@@ -28,6 +29,7 @@ import AdminLayout from "./components/admin/AdminLayout.jsx";
 import PreviewBar from "./components/admin/PreviewBar.jsx";
 import { isCompanion } from "./lib/store/index.js";
 import Certificate from "./routes/Certificate.jsx";
+import Team from "./routes/Team.jsx";
 
 export default function App() {
   const { content } = useContent();
@@ -45,13 +47,14 @@ export default function App() {
 
   const onAttract = location.pathname === "/";
   const inAdmin = location.pathname.startsWith("/admin");
-  const onCertificate = location.pathname === "/certificate";
+  // Phone pages the QR codes open: no bottom bar and no idle reset.
+  const onPhonePage = ["/certificate", "/team"].includes(location.pathname);
 
   const idle = useIdleTimer({
     idleSeconds: content?.settings?.idleSeconds ?? 75,
     warningSeconds: content?.settings?.warningSeconds ?? 15,
     // Admin screens have their own, longer sign-out timer (AdminLayout).
-    enabled: !onAttract && !onCertificate && !inAdmin,
+    enabled: !onAttract && !onPhonePage && !inAdmin,
     onReset: startOver,
   });
 
@@ -71,9 +74,12 @@ export default function App() {
               <Route path="/era/:eraId/event/:eventId" element={<EraScreen />} />
               <Route path="/library" element={<Library />} />
               <Route path="/quiz" element={<QuizHome />} />
-              <Route path="/quiz/event/:eventId" element={<EventQuiz />} />
+              <Route path="/quiz/era/:eraId" element={<EraQuiz />} />
               <Route path="/quiz/complete" element={<QuizComplete />} />
               <Route path="/about" element={<About />} />
+              {/* The phone pages the QR codes open (on the companion site). */}
+              <Route path="/certificate" element={<Certificate />} />
+              <Route path="/team" element={<Team />} />
               {/* No admin at all on the public companion site. */}
               {!isCompanion && <Route path="/admin" element={<AdminLogin />} />}
               {!isCompanion && (
@@ -92,7 +98,7 @@ export default function App() {
           </ErrorBoundary>
         )}
       </main>
-      {!onAttract && !inAdmin && <BottomNav />}
+      {!onAttract && !inAdmin && !onPhonePage && <BottomNav />}
       {kiosk.a11yOpen && <A11yPanel />}
       {idle.warning && <IdleModal remaining={idle.remaining} onStay={idle.stayHere} />}
     </div>

@@ -3,13 +3,14 @@ import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { useAdminSave, useUnsavedChanges } from "../../hooks/useAdmin.js";
-import { EVENT_STATUSES, SHORT_TITLE_MAX, eventProblems, needsReview } from "../../lib/content.js";
+import { EVENT_MEDIA_MAX, EVENT_STATUSES, SHORT_TITLE_MAX, eventProblems, needsReview } from "../../lib/content.js";
 import { buttonClass } from "../../lib/ui.js";
 import Field, { inputClass } from "../../components/admin/Field.jsx";
 import MoveButtons, { moveItem } from "../../components/admin/MoveButtons.jsx";
 import ConfirmDialog from "../../components/admin/ConfirmDialog.jsx";
 import MediaPicker from "../../components/admin/MediaPicker.jsx";
 import { MediaThumb, mediaLabel } from "../../components/admin/MediaGrid.jsx";
+import QuestionsEditor from "../../components/admin/QuestionsEditor.jsx";
 import { EventTags } from "./Events.jsx";
 
 const STATUS_LABELS = { historical: "Historical", planned: "Planned", ongoing: "Ongoing" };
@@ -142,7 +143,7 @@ function EventEdit({ eventId }) {
       questions: content.questions.filter((q) => q.eventId !== existing.id),
     };
     if (await save(next, `Deleted ${existing.shortTitle}.`)) {
-      update({ adminDirty: false });
+      update({ adminDirty: 0 });
       navigate("/admin/events", { replace: true });
     }
   };
@@ -256,7 +257,9 @@ function EventEdit({ eventId }) {
 
         <div className="mt-6">
           <p className="font-bold">Photos and videos</p>
-          <p className="mt-1 text-text-muted">The first one is the event's main picture.</p>
+          <p className="mt-1 text-text-muted">
+            The first one is the event's main picture. Up to {EVENT_MEDIA_MAX}.
+          </p>
           <ol className="mt-3 flex flex-col gap-3">
             {form.mediaIds.map((id, i) => {
               const item = content.media.find((m) => m.id === id);
@@ -286,6 +289,7 @@ function EventEdit({ eventId }) {
             id="ev-photos-add"
             type="button"
             onClick={() => setPicking(true)}
+            disabled={form.mediaIds.length >= EVENT_MEDIA_MAX}
             aria-describedby={problems.mediaIds ? "ev-photos-error" : undefined}
             className={buttonClass("secondary", "mt-3")}
           >
@@ -322,6 +326,12 @@ function EventEdit({ eventId }) {
           <p aria-live="polite" className="text-text-muted">{status}</p>
         </div>
       </form>
+
+      {existing ? (
+        <QuestionsEditor event={existing} />
+      ) : (
+        <p className="mt-6 text-text-muted">Save the event first, then add its quiz questions here.</p>
+      )}
 
       {picking && (
         <MediaPicker

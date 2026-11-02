@@ -2,7 +2,8 @@ import { useDialog } from "../../hooks/useDialog.js";
 import { buttonClass } from "../../lib/ui.js";
 import MediaGrid, { mediaLabel } from "./MediaGrid.jsx";
 
-// Full-screen dialog for choosing a media item (an era cover, an event photo).
+// Full-screen dialog for choosing a media item for an event. Background videos
+// (welcome screen only, no captions) aren't offered.
 // Calls onPick(item), or onClose() to cancel.
 export default function MediaPicker({ title = "Choose a photo", only = "image", onPick, onClose }) {
   const ref = useDialog(onClose);
@@ -20,7 +21,7 @@ export default function MediaPicker({ title = "Choose a photo", only = "image", 
           <button data-autofocus onClick={onClose} className={buttonClass("secondary")}>Cancel</button>
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto px-6 pb-6">
-          <MediaGrid only={only} searchId="picker-search">
+          <MediaGrid only={only} noBackground searchId="picker-search">
             {(item) => (
               <button onClick={() => onPick(item)} className={buttonClass("primary", "w-full")}>
                 Choose<span className="sr-only"> {mediaLabel(item)}</span>

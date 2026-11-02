@@ -13,7 +13,6 @@ const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
 export function usageText(usage) {
   const parts = [];
   if (usage.events.length) parts.push(plural(usage.events.length, "event"));
-  if (usage.eras.length) parts.push(`cover of ${plural(usage.eras.length, "era")}`);
   if (usage.attract) parts.push("welcome video");
   return parts.length ? `Used by ${parts.join(", ")}` : "Not used yet";
 }
@@ -77,7 +76,6 @@ export default function Media() {
             title="This is still in use"
             message={[
               ...deletingUsage.events.map((ev) => `Event: ${ev.shortTitle}`),
-              ...deletingUsage.eras.map((era) => `Era cover: ${era.title}`),
               ...(deletingUsage.attract ? ["Welcome screen video (Settings)"] : []),
             ].join(". ") + ". Remove it from these first."}
             cancelLabel="OK"

@@ -1,16 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContent } from "../../hooks/useContent.jsx";
 import { useAdminSave, useUnsavedChanges } from "../../hooks/useAdmin.js";
-import { IDLE_MAX, IDLE_MIN, settingsProblems } from "../../lib/content.js";
-import { isValidPin } from "../../lib/pin.js";
+import {
+  ADMIN_IDLE_DEFAULT,
+  ADMIN_IDLE_MAX,
+  ADMIN_IDLE_MIN,
+  IDLE_MAX,
+  IDLE_MIN,
+  settingsProblems,
+} from "../../lib/content.js";
+import { formatRecoveryCode, isValidPin } from "../../lib/pin.js";
 import { buttonClass } from "../../lib/ui.js";
+import { DEFAULT_CERTIFICATE_SITE } from "../../lib/certificate.js";
 import Field, { inputClass } from "../../components/admin/Field.jsx";
+import ConfirmDialog from "../../components/admin/ConfirmDialog.jsx";
+import { kioskLockStatus, lockKiosk, openAndroidSettings, removeKioskLock, unlockKiosk } from "../../lib/kioskLock.js";
 
 const toForm = (s) => ({
   idleSeconds: String(s.idleSeconds),
   warningSeconds: String(s.warningSeconds),
-  credits: s.credits ?? "",
+  adminIdleMinutes: String(s.adminIdleMinutes ?? ADMIN_IDLE_DEFAULT),
   attractVideo: s.attractVideo ?? "",
+  certificateSite: s.certificateSite ?? "",
 });
 
 // An empty field must not read as 0 (that would show the idle prompt nonstop).
@@ -35,8 +46,9 @@ export default function Settings() {
       ...content.settings,
       idleSeconds: wholeNumber(form.idleSeconds),
       warningSeconds: wholeNumber(form.warningSeconds),
-      credits: form.credits.trim(),
+      adminIdleMinutes: wholeNumber(form.adminIdleMinutes),
       attractVideo: form.attractVideo || null,
+      certificateSite: form.certificateSite.trim() || null,
     };
     const found = settingsProblems(settings, content);
     setProblems(found);
@@ -86,9 +98,24 @@ export default function Settings() {
           </div>
         </div>
 
-        <Field id="set-credits" label="Credits" hint="Shown on the About screen." error={problems.credits}>
-          {(props) => <textarea {...props} rows={3} value={form.credits} onChange={set("credits")} className={inputClass} />}
-        </Field>
+        <div className="w-80">
+          <Field
+            id="set-adminIdleMinutes"
+            label="Minutes before staff are signed out"
+            hint={`${ADMIN_IDLE_MIN} to ${ADMIN_IDLE_MAX}. Counts from the last touch in admin; a warning shows for the last minute.`}
+            error={problems.adminIdleMinutes}
+          >
+            {(props) => (
+              <input
+                {...props}
+                inputMode="numeric"
+                value={form.adminIdleMinutes}
+                onChange={set("adminIdleMinutes")}
+                className={inputClass}
+              />
+            )}
+          </Field>
+        </div>
 
         <Field
           id="set-attractVideo"
@@ -110,6 +137,25 @@ export default function Settings() {
           )}
         </Field>
 
+        <Field
+          id="set-certificateSite"
+          label="Companion website"
+          hint={`The quiz QR code opens this address followed by /certificate, and the About screen's QR code opens it followed by /team. Leave blank to use ${DEFAULT_CERTIFICATE_SITE}.`}
+          error={problems.certificateSite}
+        >
+          {(props) => (
+            <input
+              {...props}
+              type="url"
+              inputMode="url"
+              value={form.certificateSite}
+              onChange={set("certificateSite")}
+              placeholder={DEFAULT_CERTIFICATE_SITE}
+              className={inputClass}
+            />
+          )}
+        </Field>
+
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <button type="submit" disabled={saving} className={buttonClass("primary")}>Save settings</button>
           <p aria-live="polite" className="text-text-muted">{status}</p>
@@ -117,6 +163,8 @@ export default function Settings() {
       </form>
 
       <ChangePin />
+      <RecoveryCode />
+      <KioskLockPanel />
     </div>
   );
 }
@@ -194,7 +242,7 @@ function ChangePin() {
   return (
     <form onSubmit={submit} noValidate className="panel mt-10 rounded-xl p-6">
       <h2 className="text-3xl">Change the staff PIN</h2>
-      <p className="mt-3 text-text-muted">4 to 8 digits. It can't be recovered, so keep it somewhere safe.</p>
+      <p className="mt-3 text-text-muted">4 to 8 digits. Keep it somewhere safe.</p>
       <div className="flex flex-wrap gap-6">
         {pinField("current", "Current PIN", problems.current)}
         {pinField("next", "New PIN", problems.next)}
@@ -205,5 +253,180 @@ function ChangePin() {
         <p aria-live="polite" className="text-text-muted">{status}</p>
       </div>
     </form>
+  );
+}
+
+// The recovery code lets staff choose a new PIN on the sign-in screen if the PIN is
+// forgotten. Kiosks set up before recovery codes existed have none until one is made here.
+function RecoveryCode() {
+  const { store } = useContent();
+  const [has, setHas] = useState(null);
+  const [asking, setAsking] = useState(false);
+  const [code, setCode] = useState("");
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    if (store.kind === "device") store.hasRecoveryCode().then(setHas);
+  }, [store]);
+
+  if (store.kind !== "device") return null;
+
+  const make = async () => {
+    setAsking(false);
+    try {
+      setCode(await store.newRecoveryCode());
+      setHas(true);
+      setStatus("");
+    } catch (err) {
+      setStatus(err.message || "No new code was made.");
+    }
+  };
+
+  // The dialog sits outside the panel: its backdrop blur would trap the dialog's fixed position.
+  return (
+    <>
+      <section className="panel mt-10 rounded-xl p-6" aria-labelledby="recovery-title">
+        <h2 id="recovery-title" className="text-3xl">Recovery code</h2>
+        <p className="mt-3 text-text-muted">
+          If the PIN is forgotten, staff tap “Forgot the PIN?” on the sign-in screen and enter this code to choose a new
+          PIN. No content is lost. Each code works once.
+        </p>
+        {code ? (
+          <>
+            <p className="mt-4">Write this down and keep it away from the kiosk. It won't be shown again.</p>
+            <p className="mt-3 inline-block rounded-xl border-2 border-accent px-6 py-4 font-display text-4xl tracking-widest">
+              {formatRecoveryCode(code)}
+            </p>
+            <div>
+              <button onClick={() => setCode("")} className={buttonClass("primary", "mt-4")}>
+                I've written it down
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="mt-4 font-bold">
+              {has === null ? "" : has ? "This kiosk has a recovery code." : "This kiosk has no recovery code yet."}
+            </p>
+            <button onClick={() => (has ? setAsking(true) : make())} className={buttonClass("secondary", "mt-4")}>
+              {has ? "Make a new recovery code" : "Make a recovery code"}
+            </button>
+          </>
+        )}
+        {(!lock.deviceOwner || lock.maintenance) && (
+          <>
+            <h3 className="mt-6 text-2xl">Leave the app</h3>
+            <p className="mt-2 text-text-muted">
+              Opens Android's Settings. To get Android's own home screen back, go to Apps → Default apps → Home app and
+              pick the kiosk's original launcher. Pressing Home otherwise brings you back here.
+            </p>
+            <button
+              onClick={() => run(openAndroidSettings, "")}
+              className={buttonClass("secondary", "mt-4")}
+            >
+              Open Android settings
+            </button>
+          </>
+        )}
+        <p aria-live="polite" className="mt-2 text-text-muted">{status}</p>
+      </section>
+
+      {asking && (
+        <ConfirmDialog
+          title="Make a new recovery code?"
+          message="The old code will stop working."
+          confirmLabel="Make a new code"
+          onConfirm={make}
+          onCancel={() => setAsking(false)}
+        />
+      )}
+    </>
+  );
+}
+
+// The kiosk lock keeps visitors in the app (docs/KIOSK-LOCK.md). Staff unlock it here
+// to install an update or change Android settings; it locks again on "Lock again" or
+// the next restart.
+function KioskLockPanel() {
+  const [lock, setLock] = useState(null);
+  const [asking, setAsking] = useState(false);
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    kioskLockStatus().then(setLock);
+  }, []);
+
+  if (!lock) return null;
+
+  const run = async (action, done) => {
+    setAsking(false);
+    try {
+      await action();
+      // Android takes a moment to switch lock task mode on or off.
+      setTimeout(() => kioskLockStatus().then(setLock), 500);
+      setStatus(done);
+    } catch (err) {
+      setStatus(err.message || "That didn't work.");
+    }
+  };
+
+  const state = !lock.deviceOwner
+    ? "The kiosk lock isn't set up on this kiosk. Visitors can still swipe in Android's bars. Setting it up needs a computer: see docs/KIOSK-LOCK.md."
+    : lock.maintenance
+      ? "Unlocked for maintenance. Android works normally until you lock it again or the kiosk restarts."
+      : "Locked. Visitors can't leave the app.";
+
+  return (
+    <>
+      <section className="panel mt-10 rounded-xl p-6" aria-labelledby="lock-title">
+        <h2 id="lock-title" className="text-3xl">Kiosk lock</h2>
+        <p className="mt-3 font-bold">{state}</p>
+        {lock.deviceOwner && (
+          <div className="mt-4 flex flex-wrap gap-4">
+            {lock.maintenance ? (
+              <button onClick={() => run(lockKiosk, "Locked again.")} className={buttonClass("primary")}>
+                Lock again
+              </button>
+            ) : (
+              <button
+                onClick={() => run(unlockKiosk, "Unlocked. Press Home to reach Android's apps and settings.")}
+                className={buttonClass("secondary")}
+              >
+                Unlock for maintenance
+              </button>
+            )}
+            <button onClick={() => setAsking(true)} className={buttonClass("secondary")}>
+              Remove the kiosk lock
+            </button>
+          </div>
+        )}
+        {(!lock.deviceOwner || lock.maintenance) && (
+          <>
+            <h3 className="mt-6 text-2xl">Leave the app</h3>
+            <p className="mt-2 text-text-muted">
+              Opens Android's Settings. To get Android's own home screen back, go to Apps → Default apps → Home app and
+              pick the kiosk's original launcher. Pressing Home otherwise brings you back here.
+            </p>
+            <button
+              onClick={() => run(openAndroidSettings, "")}
+              className={buttonClass("secondary", "mt-4")}
+            >
+              Open Android settings
+            </button>
+          </>
+        )}
+        <p aria-live="polite" className="mt-2 text-text-muted">{status}</p>
+      </section>
+
+      {asking && (
+        <ConfirmDialog
+          title="Remove the kiosk lock?"
+          message="Visitors will be able to leave the app. Turning the lock back on needs a computer and the setup in docs/KIOSK-LOCK.md. To install an update, use Unlock for maintenance instead."
+          confirmLabel="Remove the lock"
+          onConfirm={() => run(removeKioskLock, "The kiosk lock is removed.")}
+          onCancel={() => setAsking(false)}
+        />
+      )}
+    </>
   );
 }

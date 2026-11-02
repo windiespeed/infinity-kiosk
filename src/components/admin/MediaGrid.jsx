@@ -19,14 +19,15 @@ export function MediaThumb({ item, className = "" }) {
 export const mediaLabel = (item) => item.caption || item.alt || item.file;
 
 // Searchable grid of media. `children(item)` draws each card's buttons.
-// `only` limits it to "image" or "video" items.
-export default function MediaGrid({ only, children, searchId = "media-search" }) {
+// `only` limits it to "image" or "video" items; `noBackground` leaves out background videos.
+export default function MediaGrid({ only, noBackground = false, children, searchId = "media-search" }) {
   const { content } = useContent();
   const [query, setQuery] = useState("");
 
   const words = query.toLowerCase().split(/\s+/).filter(Boolean);
   const items = content.media.filter((m) => {
     if (only && (m.type ?? "image") !== only) return false;
+    if (noBackground && m.background) return false;
     const text = [m.id, m.file, m.caption, m.alt, m.credit].join(" ").toLowerCase();
     return words.every((w) => text.includes(w));
   });

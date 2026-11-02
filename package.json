@@ -8,6 +8,7 @@
     "dev:host": "concurrently -n server,app -c blue,magenta \"node --watch server/index.js\" \"vite --host\"",
     "build": "vite build",
     "build:pages": "node scripts/build-pages.mjs",
+    "qr": "node scripts/make-qr.mjs",
     "prebuild": "npm run check:contrast && npm run check:content",
     "start": "node server/index.js",
     "check:contrast": "node scripts/check-contrast.mjs",

@@ -40,6 +40,19 @@ export function createServerStore() {
       throw new Error("On the dev server, set the PIN with `npm run hash-pin` and .env.");
     },
 
+    async hasRecoveryCode() {
+      return false;
+    },
+    async newRecoveryCode() {
+      throw new Error("On the dev server the PIN comes from .env, so there is no recovery code.");
+    },
+    async checkRecoveryCode() {
+      return false;
+    },
+    async resetPin() {
+      return false;
+    },
+
     async signIn(pin) {
       const res = await fetch("/api/auth", {
         method: "POST",

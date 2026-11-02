@@ -12,6 +12,12 @@ You only build the APK to test on the kiosk or to install a new version.
    the Android SDK. It's a large download.
 2. Open Android Studio once and let it finish downloading its components.
 
+> **Gradle must stay at 8.14.3.** Android Studio sometimes offers to upgrade Gradle or the
+> Android Gradle Plugin (a popup or a "Project update recommended" banner). **Always say
+> no.** Gradle 9 breaks the APK build (an error mentioning `InternalProblems`). This has
+> happened twice already. Before every kiosk build, check that
+> `android/gradle/wrapper/gradle-wrapper.properties` ends in `gradle-8.14.3-all.zip`.
+
 ## Build a test version
 
 ```bash
@@ -66,6 +72,8 @@ switching between debug and release on the kiosk fails.
 
 ## Install on the kiosk
 
+- **Remote:** with RustDesk on the kiosk, send the APK with RustDesk's file transfer to
+  the kiosk's **Download** folder, then open it in **Files** and tap **Update**.
 - **USB drive:** copy the APK to a USB drive, open it in the kiosk's Files app, tap it,
   allow installing from that source when asked, then tap **Install** (or **Update**).
 - **From a computer:** with USB debugging on, `adb install -r app-release.apk`
@@ -74,11 +82,12 @@ switching between debug and release on the kiosk fails.
 ## First-time kiosk setup
 
 1. Open **Infinity Kiosk**.
-2. Make it the Home app: **Settings → Apps → Default apps → Home app → Infinity Kiosk**
-   (wording varies by device). It then opens automatically at startup, and the
-   Home button returns to it.
+2. Set up the kiosk lock (**docs/KIOSK-LOCK.md**). It makes the app the Home app, opens it
+   at startup and keeps visitors in it. Without the lock, at least make it the Home app:
+   **Settings → Apps → Default apps → Home app → Infinity Kiosk** (wording varies by device).
 3. Tap the top-left corner 5 times quickly. The kiosk asks you to **create a staff PIN**
-   (4–8 digits). Save it in a password manager: it can't be recovered.
+   (4–8 digits), then shows a one-time **recovery code**. Save both in a password manager.
+   See **docs/ADMIN-PIN.md**.
 4. In the admin dashboard, **Import backup…** and pick the content backup zip.
 5. Tap through every screen, then **Export backup** and copy the file off the kiosk.
 
@@ -87,7 +96,17 @@ switching between debug and release on the kiosk fails.
 - **Content:** prepare it on a laptop (browser admin), **Export backup**, copy the zip
   to the kiosk, **Import backup**. Or edit directly on the kiosk.
 - **App:** build a new signed release APK with the same key and install it over the
-  old one. Content and the PIN are kept.
+  old one (**Update**, never Uninstall). Content and the PIN are kept. If the kiosk lock
+  is on, first tap **Admin → Settings → Kiosk lock → Unlock for maintenance**. Bump
+  `versionCode` and `versionName` in `android/app/build.gradle` for each kiosk build
+  (now `versionCode 5`, `versionName "1.4"`).
+- **New app, old content:** the kiosk keeps its own content when the app is updated, not
+  the content in `data/content.json`. If a new version has stricter content rules (for
+  example, at most 3 photos per event) and the kiosk's saved content breaks one, the app
+  shows **This update isn't finished** instead of the timeline. Staff enter the PIN there
+  to switch to the content built into the new version; the old content is kept as a saved
+  version, and the PIN, recovery code and uploaded photos stay. To keep changes made on
+  the kiosk, import a backup made with the new version afterwards.
 
 ## Where things live on the kiosk
 
@@ -95,21 +114,37 @@ switching between debug and release on the kiosk fails.
 |---|---|
 | Content, media, previous content versions | The app's private storage (erased only if the app is uninstalled or its data is cleared) |
 | Exported backups | `Documents/InfinityKiosk/` (copy these off the kiosk by USB) |
-| Admin PIN | Stored as a salted hash in the app's settings |
+| Admin PIN and recovery code | Stored as salted hashes in the app's settings |
 
 ## If the PIN is forgotten
 
-The only fix is **Settings → Apps → Infinity Kiosk → Storage → Clear data**, which
-also erases all content. Then open the app, create a new PIN, and import the latest
-backup. This is why regular backups matter.
+Use the recovery code: on the sign-in keypad tap **Forgot the PIN?**, enter the code and
+choose a new PIN. No content is lost. Full steps: **docs/ADMIN-PIN.md**.
+
+If the recovery code is lost too, the only fix is **Settings → Apps → Infinity Kiosk →
+Storage → Clear data**, which also erases all content. Then open the app, create a new
+PIN, and import the latest backup. This is why regular backups matter. With the kiosk
+lock on, Android blocks Clear data, so the only way back in is a factory reset
+(docs/KIOSK-LOCK.md).
 
 ## Debugging on the kiosk
 
 With a debug build and USB debugging on, open `chrome://inspect` in Chrome on your
 computer to see the kiosk app's console and inspect its screens.
 
+## App icon
+
+The launcher icon is the gold infinity mark on slate navy (wall colors). The files are
+`android/app/src/main/res/mipmap-*/ic_launcher*.png` (one folder per screen density),
+and the navy background color is in `android/app/src/main/res/values/ic_launcher_background.xml`.
+Android 8+ builds the icon from `ic_launcher_foreground.png` on that color and crops it to
+the device's shape, so keep the artwork inside the middle 66 of 108 units. The icon only
+changes on the kiosk after a new APK is built and installed.
+
+## Kiosk lock
+
+To keep visitors from leaving the app, set up the kiosk lock once: **docs/KIOSK-LOCK.md**.
+
 ## Not done yet
 
-- Read-aloud mode (needs a native text-to-speech plugin)
-- Android lock task mode (strongest lockdown; needs a one-time device-owner setup)
 - Remote updates (only if the kiosk gets internet access)

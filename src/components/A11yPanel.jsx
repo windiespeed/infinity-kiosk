@@ -55,7 +55,6 @@ export default function A11yPanel() {
           />
           <Toggle
             label="Read aloud"
-            // note="Adds read-aloud buttons to events and quizzes"
             pressed={s.readAloud}
             onPress={() => {
               if (s.readAloud) {

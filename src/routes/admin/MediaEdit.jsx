@@ -37,7 +37,12 @@ export default function MediaEdit() {
   const navigate = useNavigate();
 
   const existing = isNew ? null : content.media.find((m) => m.id === mediaId);
-  const initial = { alt: existing?.alt ?? "", caption: existing?.caption ?? "", credit: existing?.credit ?? "" };
+  const initial = {
+    alt: existing?.alt ?? "",
+    caption: existing?.caption ?? "",
+    credit: existing?.credit ?? "",
+    background: existing?.background ?? false,
+  };
   const [text, setText] = useState(initial);
   const [files, setFiles] = useState({ main: null, captions: null, poster: null });
   const [problems, setProblems] = useState({});
@@ -71,7 +76,9 @@ export default function MediaEdit() {
     if (type === "image" && !text.alt.trim()) found.alt = ALT_HINT;
     if (type === "video") {
       if (files.captions && !/\.vtt$/i.test(files.captions.name)) found.captions = "Captions must be a .vtt file.";
-      else if (!files.captions && !existing?.captionsFile) found.captions = "Add the captions file (.vtt).";
+      else if (!files.captions && !existing?.captionsFile && !text.background) {
+        found.captions = "Add the captions file (.vtt), or mark it as a background video.";
+      }
       if (files.poster && !typeOf(files.poster)) found.poster = "The poster must be a JPEG, PNG or WebP photo.";
       else if (!files.poster && !existing?.poster) found.poster = "Add a poster image.";
     }
@@ -118,6 +125,8 @@ export default function MediaEdit() {
         item.captionsFile = await upload(files.captions, cleanFileName(item.file, taken, "vtt"), "the captions");
       }
       Object.assign(item, { alt: text.alt.trim(), caption: text.caption.trim(), credit: text.credit.trim() });
+      if (type === "video" && text.background) item.background = true;
+      else delete item.background;
 
       const problem = Object.values(mediaProblems(item))[0];
       if (problem) throw new Error(problem);
@@ -192,11 +201,29 @@ export default function MediaEdit() {
 
         {type === "video" && (
           <>
+            <label className="mt-6 flex min-h-14 items-center gap-3">
+              <input
+                type="checkbox"
+                checked={text.background}
+                onChange={(e) => setText({ ...text, background: e.target.checked })}
+                aria-describedby="media-background-hint"
+                className="size-7"
+              />
+              <span className="font-bold">Background video</span>
+            </label>
+            <p id="media-background-hint" className="text-text-muted">
+              Plays silently behind the welcome screen, so it needs no captions. A background video can't be added to an
+              event.
+            </p>
             {fileField(
               "captions",
               existing ? "Replace captions file (.vtt)" : "Captions file (.vtt)",
               ".vtt,text/vtt",
-              existing ? `Now: ${existing.captionsFile}` : "Required. Captions let visitors follow the video without sound."
+              existing?.captionsFile
+                ? `Now: ${existing.captionsFile}`
+                : text.background
+                  ? "Optional for a background video."
+                  : "Required. Captions let visitors follow the video without sound."
             )}
             {fileField(
               "poster",

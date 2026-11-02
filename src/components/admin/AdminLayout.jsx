@@ -3,6 +3,7 @@ import { Navigate, NavLink, Outlet, useNavigate } from "react-router";
 import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { useIdleTimer } from "../../hooks/useIdleTimer.js";
+import { ADMIN_IDLE_DEFAULT } from "../../lib/content.js";
 import { buttonClass } from "../../lib/ui.js";
 import IdleModal from "../IdleModal.jsx";
 import ConfirmDialog from "./ConfirmDialog.jsx";
@@ -10,24 +11,24 @@ import ConfirmDialog from "./ConfirmDialog.jsx";
 // Admin screens. Each editor adds its link here when it's built.
 const LINKS = [
   { to: "/admin/dashboard", label: "Dashboard" },
+  { to: "/admin/eras", label: "Eras" },
   { to: "/admin/events", label: "Events" },
   { to: "/admin/media", label: "Media" },
-  { to: "/admin/eras", label: "Eras" },
   { to: "/admin/settings", label: "Settings" },
 ];
 
-// Staff are signed out after 10 minutes without a touch, with a 1-minute warning.
-// (The visitor idle timer is off on admin screens, so a pause never loses an edit.)
-const ADMIN_IDLE_SECONDS = 9 * 60;
+// Staff are signed out after settings.adminIdleMinutes without a touch (10 by default),
+// with a 1-minute warning. (The visitor idle timer is off on admin screens, so a pause
+// never loses an edit.)
 const ADMIN_WARNING_SECONDS = 60;
 
 // Wraps every signed-in admin screen: the sign-in check, the menu, Exit admin,
 // the admin sign-out timer, and the "leave without saving?" question.
 export default function AdminLayout() {
   const token = useKiosk((s) => s.adminToken);
-  const dirty = useKiosk((s) => s.adminDirty);
+  const dirty = useKiosk((s) => s.adminDirty > 0);
   const update = useKiosk((s) => s.update);
-  const { store } = useContent();
+  const { content, store } = useContent();
   const navigate = useNavigate();
   const [leaveTo, setLeaveTo] = useState(null); // where to go once unsaved changes are dropped
   const signingOut = useRef(false);
@@ -37,12 +38,12 @@ export default function AdminLayout() {
     // instead of the welcome screen (the route change lands after the token change).
     signingOut.current = true;
     await store.signOut(token).catch(() => {});
-    update({ adminToken: null, adminDirty: false });
+    update({ adminToken: null, adminDirty: 0 });
     navigate("/", { replace: true });
   };
 
   const idle = useIdleTimer({
-    idleSeconds: ADMIN_IDLE_SECONDS,
+    idleSeconds: (content.settings.adminIdleMinutes ?? ADMIN_IDLE_DEFAULT) * 60 - ADMIN_WARNING_SECONDS,
     warningSeconds: ADMIN_WARNING_SECONDS,
     enabled: Boolean(token),
     onReset: signOut,
@@ -59,7 +60,7 @@ export default function AdminLayout() {
   const leave = () => {
     const to = leaveTo;
     setLeaveTo(null);
-    update({ adminDirty: false });
+    update({ adminDirty: 0 });
     if (to === "exit") signOut();
     else navigate(to);
   };

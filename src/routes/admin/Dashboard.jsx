@@ -4,11 +4,28 @@ import { useKiosk } from "../../store/useKiosk.js";
 import { useContent } from "../../hooks/useContent.jsx";
 import { exportBackup, importBackup } from "../../lib/backup.js";
 import { buttonClass } from "../../lib/ui.js";
-import { needsReview } from "../../lib/content.js";
+import { MIN_QUESTIONS_PER_EVENT, needsReview } from "../../lib/content.js";
+
+// Eras where no published event has a quiz question (the timeline challenge skips them).
+const erasWithoutQuestions = (content) =>
+  content.eras.filter(
+    (era) =>
+      !content.questions.some((q) => {
+        const ev = content.events.find((e) => e.id === q.eventId);
+        return ev?.published !== false && ev?.eraIds.includes(era.id);
+      })
+  );
+
+// Published events with fewer quiz questions than MIN_QUESTIONS_PER_EVENT.
+const eventsShortOfQuestions = (content) =>
+  content.events.filter(
+    (ev) =>
+      ev.published !== false &&
+      content.questions.filter((q) => q.eventId === ev.id).length < MIN_QUESTIONS_PER_EVENT
+  );
 
 // Dashboard: what's in the kiosk, and backups.
 // AdminLayout checks the sign-in and provides the menu and Exit admin.
-// TODO (admin issues): question editor.
 export default function Dashboard() {
   const token = useKiosk((s) => s.adminToken);
   const addBusy = useKiosk((s) => s.addBusy);
@@ -82,6 +99,22 @@ export default function Dashboard() {
           </div>
         ))}
       </dl>
+
+      {erasWithoutQuestions(content).length > 0 && (
+        <p className="mt-6 rounded-xl border border-highlight p-4">
+          These eras have no quiz questions, so the timeline challenge skips them:{" "}
+          {erasWithoutQuestions(content).map((era) => era.title).join(", ")}. Add questions to their events in{" "}
+          <Link to="/admin/events" className="text-highlight underline">Events</Link>.
+        </p>
+      )}
+
+      {eventsShortOfQuestions(content).length > 0 && (
+        <p className="mt-6 rounded-xl border border-highlight p-4">
+          {eventsShortOfQuestions(content).length} published events have fewer than {MIN_QUESTIONS_PER_EVENT} quiz
+          questions.{" "}
+          <Link to="/admin/events" className="text-highlight underline">See which in Events</Link>
+        </p>
+      )}
 
       {content.events.some((ev) => needsReview(ev)) && (
         <p className="mt-6 rounded-xl border border-highlight p-4">

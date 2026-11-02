@@ -4,12 +4,12 @@ import { buttonClass } from "../lib/ui.js";
 import { useKiosk } from "../store/useKiosk.js";
 
 // Plays a video from the media library with accessible controls and captions.
-// Background mode is muted and looping; it does not hold the idle timer busy.
+// While it plays, the idle timer is held so the kiosk doesn't start over mid-video.
+// (The welcome screen's muted background video is drawn by Attract.jsx instead.)
 // Compact mode is a short, centered player for the event panel's media column.
 export default function VideoPlayer({
   item,
   mediaUrl,
-  background = false,
   compact = false,
 }) {
   const videoRef = useRef(null);
@@ -17,7 +17,6 @@ export default function VideoPlayer({
 
   const addBusy = useKiosk((s) => s.addBusy);
   const removeBusy = useKiosk((s) => s.removeBusy);
-  const reduceMotion = useKiosk((s) => s.reduceMotion);
 
   const [playing, setPlaying] = useState(false);
   const [captionsOn, setCaptionsOn] = useState(true);
@@ -40,8 +39,7 @@ export default function VideoPlayer({
   function handlePlay() {
     setPlaying(true);
 
-    // A looping attract background must not block the idle timer.
-    if (!background && !busyRef.current) {
+    if (!busyRef.current) {
       busyRef.current = true;
       addBusy();
     }
@@ -121,47 +119,6 @@ export default function VideoPlayer({
       }
     };
   }, [removeBusy]);
-
-  // Respect the kiosk's Reduce Motion setting on the attract screen.
-  if (background && reduceMotion) {
-    return posterSrc ? (
-      <img
-        src={posterSrc}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-      />
-    ) : null;
-  }
-
-  if (background) {
-    return (
-      <video
-        ref={videoRef}
-        src={videoSrc}
-        poster={posterSrc}
-        muted
-        autoPlay
-        loop
-        playsInline
-        aria-hidden="true"
-        tabIndex={-1}
-        onPlay={handlePlay}
-        onPause={handlePause}
-        onEnded={handleEnded}
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-      >
-        {captionsSrc && (
-          <track
-            kind="captions"
-            src={captionsSrc}
-            srcLang="en"
-            label="English"
-          />
-        )}
-      </video>
-    );
-  }
 
   return (
     <section
