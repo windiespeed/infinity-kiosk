@@ -14,7 +14,7 @@ import { buttonClass } from "../../lib/ui.js";
 import { DEFAULT_CERTIFICATE_SITE } from "../../lib/certificate.js";
 import Field, { inputClass } from "../../components/admin/Field.jsx";
 import ConfirmDialog from "../../components/admin/ConfirmDialog.jsx";
-import { kioskLockStatus, lockKiosk, removeKioskLock, unlockKiosk } from "../../lib/kioskLock.js";
+import { kioskLockStatus, lockKiosk, openAndroidSettings, removeKioskLock, unlockKiosk } from "../../lib/kioskLock.js";
 
 const toForm = (s) => ({
   idleSeconds: String(s.idleSeconds),
@@ -313,6 +313,21 @@ function RecoveryCode() {
             </button>
           </>
         )}
+        {(!lock.deviceOwner || lock.maintenance) && (
+          <>
+            <h3 className="mt-6 text-2xl">Leave the app</h3>
+            <p className="mt-2 text-text-muted">
+              Opens Android's Settings. To get Android's own home screen back, go to Apps → Default apps → Home app and
+              pick the kiosk's original launcher. Pressing Home otherwise brings you back here.
+            </p>
+            <button
+              onClick={() => run(openAndroidSettings, "")}
+              className={buttonClass("secondary", "mt-4")}
+            >
+              Open Android settings
+            </button>
+          </>
+        )}
         <p aria-live="polite" className="mt-2 text-text-muted">{status}</p>
       </section>
 
@@ -384,6 +399,21 @@ function KioskLockPanel() {
               Remove the kiosk lock
             </button>
           </div>
+        )}
+        {(!lock.deviceOwner || lock.maintenance) && (
+          <>
+            <h3 className="mt-6 text-2xl">Leave the app</h3>
+            <p className="mt-2 text-text-muted">
+              Opens Android's Settings. To get Android's own home screen back, go to Apps → Default apps → Home app and
+              pick the kiosk's original launcher. Pressing Home otherwise brings you back here.
+            </p>
+            <button
+              onClick={() => run(openAndroidSettings, "")}
+              className={buttonClass("secondary", "mt-4")}
+            >
+              Open Android settings
+            </button>
+          </>
         )}
         <p aria-live="polite" className="mt-2 text-text-muted">{status}</p>
       </section>

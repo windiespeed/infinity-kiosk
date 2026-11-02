@@ -99,7 +99,7 @@ switching between debug and release on the kiosk fails.
   old one (**Update**, never Uninstall). Content and the PIN are kept. If the kiosk lock
   is on, first tap **Admin → Settings → Kiosk lock → Unlock for maintenance**. Bump
   `versionCode` and `versionName` in `android/app/build.gradle` for each kiosk build
-  (now `versionCode 4`, `versionName "1.3"`).
+  (now `versionCode 5`, `versionName "1.4"`).
 - **New app, old content:** the kiosk keeps its own content when the app is updated, not
   the content in `data/content.json`. If a new version has stricter content rules (for
   example, at most 3 photos per event) and the kiosk's saved content breaks one, the app
