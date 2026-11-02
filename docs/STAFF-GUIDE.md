@@ -45,6 +45,6 @@ A picture goes into the **Media** library first, then onto an event.
 
 **Backups (do this after every round of changes):** **Dashboard → Export backup**. It saves one .zip file to the kiosk's **Documents/InfinityKiosk** folder. Copy it to a USB drive or the shared Drive's **Kiosk-Backups** folder, with the date in the name. **Import backup** replaces all content with a backup (the current version is kept first).
 
-**Settings** holds the visitor timeout, the welcome screen video, the certificate website, **Change the staff PIN**, the **Recovery code**, and **Kiosk lock**. To install an app update, tap **Unlock for maintenance** first; restarting the kiosk locks it again. **Open Android settings** (under Kiosk lock) leaves the app for Android's Settings; it's there when the kiosk lock isn't set up, or after Unlock for maintenance.
+**Settings** holds the visitor timeout, the welcome screen video, the companion website (where the certificate and team QR codes point), **Change the staff PIN**, the **Recovery code**, and **Kiosk lock**. To install an app update, tap **Unlock for maintenance** first; restarting the kiosk locks it again.
 
 **Keep the PIN and recovery code** somewhere safe, away from the kiosk. If both are lost, getting back in means erasing the kiosk.

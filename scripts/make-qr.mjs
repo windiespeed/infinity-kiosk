@@ -1,6 +1,6 @@
 // Makes printable QR codes for the certificate page: one per era, plus one for the
 // whole-timeline challenge. Printed codes carry no date, so the certificate shows
-// the day it's scanned.
+// the day it's scanned. Also makes one for the Meet the team page.
 //
 // Run: npm run qr                                  (uses the address in Admin > Settings, or the default)
 //      npm run qr -- --site https://mscoding.org/kiosk
@@ -10,7 +10,7 @@ import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { QRCodeSVG } from "qrcode.react";
-import { certificateLink, certificateSite } from "../src/lib/certificate.js";
+import { certificateLink, certificateSite, teamLink } from "../src/lib/certificate.js";
 
 const content = JSON.parse(readFileSync("data/content.json", "utf8"));
 const flag = process.argv.indexOf("--site");
@@ -21,15 +21,16 @@ const codes = [
   ...[...content.eras]
     .sort((a, b) => a.order - b.order)
     .map((era) => ({ id: era.id, title: era.title, url: certificateLink(site, { eraId: era.id }) })),
+  { id: "team", title: "Meet the team", url: teamLink(site), label: "Team" },
 ];
 
 const escape = (text) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 rmSync("qr-codes", { recursive: true, force: true });
 mkdirSync("qr-codes");
-const cards = codes.map(({ id, title, url }) => {
+const cards = codes.map(({ id, title, url, label = "Certificate" }) => {
   const svg = renderToStaticMarkup(
-    createElement(QRCodeSVG, { value: url, size: 600, level: "M", marginSize: 4, title: `Certificate: ${title}` }),
+    createElement(QRCodeSVG, { value: url, size: 600, level: "M", marginSize: 4, title: `${label}: ${title}` }),
   );
   writeFileSync(`qr-codes/${id}.svg`, `<?xml version="1.0" encoding="UTF-8"?>\n${svg.replace("<svg", '<svg xmlns="http://www.w3.org/2000/svg"')}\n`);
   console.log(`qr-codes/${id}.svg  ${url}`);
@@ -40,7 +41,7 @@ writeFileSync(
   "qr-codes/print.html",
   `<!doctype html>
 <meta charset="utf-8">
-<title>Certificate QR codes</title>
+<title>Exhibit QR codes</title>
 <style>
   body { font-family: system-ui, sans-serif; margin: 1cm; }
   main { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1cm; }
@@ -48,7 +49,7 @@ writeFileSync(
   img { width: 7cm; height: 7cm; }
   figcaption { font-size: 11pt; word-break: break-all; }
 </style>
-<h1>Certificate QR codes</h1>
+<h1>Exhibit QR codes</h1>
 <main>
 ${cards.join("\n")}
 </main>
