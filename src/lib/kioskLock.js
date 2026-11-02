@@ -20,3 +20,4 @@ export async function kioskLockStatus() {
 export const unlockKiosk = () => KioskLock.unlock();
 export const lockKiosk = () => KioskLock.lock();
 export const removeKioskLock = () => KioskLock.remove();
+export const openAndroidSettings = () => KioskLock.openAndroidSettings();
