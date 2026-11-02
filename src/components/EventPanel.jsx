@@ -4,14 +4,9 @@ import { useDialog } from "../hooks/useDialog.js";
 import { buttonClass } from "../lib/ui.js";
 import ImageViewer from "./ImageViewer.jsx";
 import { useKiosk } from "../store/useKiosk.js";
-<<<<<<< HEAD
-import { speak, stop } from "../lib/speech.js";
-import VideoPlayer from "./VideoPlayer.jsx";
-=======
 import { stop } from "../lib/speech.js";
 import VideoPlayer from "./VideoPlayer.jsx";
 import ReadAloudButton from "./ReadAloudButton.jsx";
->>>>>>> origin/main
 
 // Slides up over the era screen so visitors keep their place on the timeline.
 // Everything needed to understand the event is here, so it makes sense to someone
@@ -34,10 +29,6 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
 
   const mediaItems = event.mediaIds.map(mediaById).filter(Boolean);
   const images = mediaItems.filter((item) => item.type !== "video");
-<<<<<<< HEAD
-  const videos = mediaItems.filter((item) => item.type === "video");
-  const hasQuiz = questionsForEvent(event.id).length > 0;
-=======
   // The large item in the media column. Remembering which event it was picked on
   // means Next/Previous event starts back on that event's first item.
   const [picked, setPicked] = useState({ eventId: null, mediaId: null });
@@ -52,7 +43,6 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
   };
   const [swipeStart, setSwipeStart] = useState(null);
   const reduceMotion = useKiosk((s) => s.reduceMotion);
->>>>>>> origin/main
 
   const openViewer = (index) => {
     setSelectedImageIndex(index);
@@ -273,21 +263,6 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
         />
       )}
 
-<<<<<<< HEAD
-      {videos.map((video) => (
-        <div key={video.id} className="mt-6">
-          {video.caption && (
-            <p className="mb-2 text-lg text-text-muted">
-              {video.caption}
-              {video.credit && ` (${video.credit})`}
-            </p>
-          )}
-
-          <VideoPlayer item={video} mediaUrl={mediaUrl} />
-        </div>
-      ))}
-=======
->>>>>>> origin/main
     </div>
   );
 }

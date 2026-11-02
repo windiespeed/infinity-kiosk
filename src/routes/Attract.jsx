@@ -44,62 +44,6 @@ export default function Attract() {
   }, []);
   return (
     <div className="relative flex h-full flex-col justify-between overflow-hidden p-10">
-<<<<<<< HEAD
-      {attractVideo && (
-        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-          <VideoPlayer
-            item={attractVideo}
-            mediaUrl={mediaUrl}
-            background
-          />
-        </div>
-      )}
-
-      {!attractVideo && (
-        <>
-          {/* Engine test photo in the lower left. The mask fades it into the stars along
-              a slightly tilted line that reaches about the middle of the screen.
-              Tune it with opacity-55 (brightness), the angle (72deg) and the two
-              percentages (where the fade starts and ends). */}
-          <img
-            src={engineFiring}
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-            className="pointer-events-none absolute bottom-0 left-0 h-full w-[60%] object-cover object-[center_35%] opacity-55 [mask-image:linear-gradient(72deg,black_20%,transparent_70%)] [[data-contrast=high]_&]:hidden"
-          />
-
-          {/* Earth at night from the ISS (NASA photo ISS040-E-090540), barely visible in the
-              lower right to balance the engine. opacity-30 is the brightness; the mask
-              fades it out from the corner. */}
-          <img
-            src={earthAtNight}
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-            className="pointer-events-none absolute right-0 bottom-0 h-[70%] w-[55%] object-cover object-[center_40%] opacity-30 [mask-image:radial-gradient(ellipse_at_100%_100%,black_20%,transparent_70%)] [[data-contrast=high]_&]:hidden"
-          />
-        </>
-      )}
-
-    <div className="relative flex h-full flex-col justify-between p-10">
-      <video
-        ref={videoRef}
-        src={stennisVideo}
-        autoPlay={!reduceMotion}
-        muted
-        loop
-        preload="auto"
-        draggable="false"
-        playsInline
-        aria-hidden="true"
-        className={`pointer-events-none absolute right-0 top-0 z-0
-    h-[55vh] w-[65vw] object-cover
-    transition-opacity duration-100
-    [mask-image:radial-gradient(ellipse_at_70%_30%,black_10%,transparent_75%)]
-    ${showVideo ? "opacity-30" : "opacity-0"}`}
-      />
-=======
       {/* Welcome video (chosen in Admin > Settings), faded into the upper right. With
           Reduce motion on, or if the video can't play, its poster image shows instead. */}
       {attractVideo && (reduceMotion || videoFailed) && posterSrc && (
@@ -133,7 +77,6 @@ export default function Attract() {
         />
       )}
 
->>>>>>> origin/main
       {/* Engine test photo in the lower left. The mask fades it into the stars along
           a slightly tilted line that reaches about the middle of the screen.
           Tune it with opacity-55 (brightness), the angle (72deg) and the two
