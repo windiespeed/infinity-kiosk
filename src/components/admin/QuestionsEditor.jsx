@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useContent } from "../../hooks/useContent.jsx";
 import { useAdminSave, useUnsavedChanges } from "../../hooks/useAdmin.js";
 import { useDialog } from "../../hooks/useDialog.js";
-import { questionProblems } from "../../lib/content.js";
+import { MIN_QUESTIONS_PER_EVENT, questionProblems } from "../../lib/content.js";
 import { buttonClass } from "../../lib/ui.js";
 import Field, { inputClass } from "./Field.jsx";
 import MoveButtons from "./MoveButtons.jsx";
@@ -114,11 +114,16 @@ export default function QuestionsEditor({ event }) {
           Quiz questions
         </h2>
         <p className="mt-2 text-text-muted">
-          Visitors answer these after reading the event, and the timeline challenge picks from them too. Each question
-          must make sense on its own, without reading other events.
+          These questions go into this event's era quiz, and the timeline challenge picks from them too. Give every
+          event at least 3. Each question must make sense on its own, without reading other events.
         </p>
 
         {questions.length === 0 && <p className="mt-4">No questions yet.</p>}
+        {event.published !== false && questions.length > 0 && questions.length < MIN_QUESTIONS_PER_EVENT && (
+          <p className="mt-4 font-bold text-highlight">
+            Add {MIN_QUESTIONS_PER_EVENT - questions.length} more to reach {MIN_QUESTIONS_PER_EVENT}.
+          </p>
+        )}
         <ol className="mt-4 flex flex-col gap-3">
           {questions.map((q, i) => (
             <li key={q.id} className="flex flex-wrap items-center gap-4 rounded-xl border border-text-muted/25 p-3">
