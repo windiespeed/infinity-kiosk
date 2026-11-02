@@ -117,6 +117,10 @@ export function mediaProblems(m) {
   return p;
 }
 
+// Every published event should have at least this many quiz questions, so the
+// era quizzes have plenty to choose from. The admin screens flag events below it.
+export const MIN_QUESTIONS_PER_EVENT = 3;
+
 export function questionProblems(q, c) {
   const p = {};
   if (!isText(q.eventId)) p.eventId = "Not linked to an event.";
