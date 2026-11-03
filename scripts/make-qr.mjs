@@ -14,14 +14,15 @@ import { certificateLink, certificateSite, teamLink } from "../src/lib/certifica
 
 const content = JSON.parse(readFileSync("data/content.json", "utf8"));
 const flag = process.argv.indexOf("--site");
-const site = certificateSite(flag > -1 ? process.argv[flag + 1] : content.settings?.certificateSite);
+const siteSetting = flag > -1 ? process.argv[flag + 1] : content.settings?.certificateSite;
+const site = certificateSite(siteSetting);
 
 const codes = [
   { id: "timeline", title: "Timeline Challenge (all eras)", url: certificateLink(site) },
   ...[...content.eras]
     .sort((a, b) => a.order - b.order)
     .map((era) => ({ id: era.id, title: era.title, url: certificateLink(site, { eraId: era.id }) })),
-  { id: "team", title: "Meet the team", url: teamLink(site), label: "Team" },
+  { id: "team", title: "Meet the team", url: teamLink(siteSetting, content.settings?.teamPage), label: "Team" },
 ];
 
 const escape = (text) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

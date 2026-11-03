@@ -21,8 +21,8 @@ export default function About() {
   // Larger text / Move content lower: the two short paragraphs about INFINITY and
   // NASA Stennis are left out so the team and the QR code fit above the bottom bar.
   const { compact, tight } = useCompact();
-  // Same website as the quiz certificate (Admin > Settings), followed by /team.
-  const url = teamLink(content.settings.certificateSite);
+  // Admin > Settings > Team page address (or the companion website followed by /team).
+  const url = teamLink(content.settings.certificateSite, content.settings.teamPage);
   const shortAddress = url.replace(/^https?:\/\//, "");
 
   return (
