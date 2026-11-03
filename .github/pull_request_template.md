@@ -2,7 +2,7 @@
 <!-- One or two sentences. Link the issue: "Closes #12" closes it automatically on merge. -->
 
 ## How to test it
-<!-- Steps a reviewer can follow, e.g. "Go to the Apollo era, tap 1969, tap Test yourself." -->
+<!-- Steps a reviewer can follow, e.g. "Go to the Apollo era, tap 1969, tap Quiz." -->
 
 ## Checklist
 - [ ] Works with touch AND keyboard (Tab, Enter, Escape)

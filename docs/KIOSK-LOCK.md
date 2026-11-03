@@ -77,6 +77,13 @@ start again at step 4.
 Restarting the kiosk also ends maintenance, so a kiosk left unlocked by accident locks
 itself at the next restart.
 
+### Getting to Android's settings
+
+**Admin → Settings → Kiosk lock → Open Android settings** opens Android's Settings app. While
+the lock is on, tap **Unlock for maintenance** first. The same button works on a kiosk
+without the lock, where it's the way out on kiosks that hide Android's bars. From Settings,
+**Apps → Default apps → Home app** switches back to Android's own home screen.
+
 ### Removing the lock
 
 **Admin → Settings → Kiosk lock → Remove the kiosk lock** turns it off for good, and the

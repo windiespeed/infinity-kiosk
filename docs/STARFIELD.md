@@ -13,12 +13,12 @@ The stars behind every screen come from one image, `src/assets/starfield.svg`. D
 
 | What it controls | Setting in the script | Now | Try |
 |---|---|---|---|
-| Number of stars | `COUNT` | `260` | Fewer looks calmer, more looks busier |
+| Number of stars | `COUNT` | `200` | Fewer looks calmer, more looks busier |
 | Arrangement | `SEED` | `1966` | Any other number gives a new sky |
-| Directions of drift | `GROUPS` | `6` | `10` for more variety |
-| How far stars drift (pixels) | `dist` | `15 + rand() * 25` (15 to 40) | `30 + rand() * 50` for more movement |
-| Drift speed (seconds per trip out and back) | `secs` | `40 + rand() * 50` (40 to 90) | `20 + rand() * 30` to go faster |
-| How many stars twinkle | `TWINKLE_SHARE` | `0.25` (a quarter) | `0` turns twinkling off |
+| Directions of drift | `GROUPS` | `10` | `6` for fewer directions |
+| How far stars drift (pixels) | `dist` | `30 + rand() * 50` (30 to 80) | `15 + rand() * 25` for less movement |
+| Drift speed (seconds per trip out and back) | `secs` | `20 + rand() * 30` (20 to 50) | `40 + rand() * 50` to go slower |
+| How many stars twinkle | `TWINKLE_SHARE` | `0.50` (half) | `0` turns twinkling off |
 | How dim a twinkle gets | `opacity * 0.25` | dims to a quarter | `0.1` deeper, `0.5` subtler |
 | Twinkle speed (seconds) | `2 + twinkle() * 4` | 2 to 6 | Smaller numbers are faster |
 

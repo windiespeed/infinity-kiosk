@@ -2598,43 +2598,355 @@
   ],
   "questions": [
     {
-      "id": "q-1",
-      "eventId": "evt-1958-nasa",
-      "prompt": "In what year did NASA begin operations?",
+      "id": "q-stennis-1901-1",
+      "eventId": "evt-stennis-1901",
+      "prompt": "In which Mississippi county did John C. Stennis grow up on a farm?",
       "choices": [
+        "Kemper County",
+        "Hancock County",
+        "Harrison County",
+        "Jackson County"
+      ],
+      "correctIndex": 0,
+      "explanation": "John C. Stennis was born on a farm near De Kalb in Kemper County, Mississippi, in 1901."
+    },
+    {
+      "id": "q-stennis-1901-2",
+      "eventId": "evt-stennis-1901",
+      "prompt": "Which Mississippi college, now Mississippi State University, did John C. Stennis attend?",
+      "choices": [
+        "Ole Miss",
+        "Jackson State",
+        "Delta State",
+        "Mississippi A&M"
+      ],
+      "correctIndex": 3,
+      "explanation": "Stennis studied at Mississippi A&M, which is now Mississippi State University."
+    },
+    {
+      "id": "q-stennis-1901-3",
+      "eventId": "evt-stennis-1901",
+      "prompt": "Where did John C. Stennis earn his law degree?",
+      "choices": [
+        "The University of Virginia",
+        "Harvard University",
+        "The University of Alabama",
+        "Georgia Tech"
+      ],
+      "correctIndex": 0,
+      "explanation": "After Mississippi A&M, Stennis earned a law degree from the University of Virginia."
+    },
+    {
+      "id": "q-vonbraun-1912-1",
+      "eventId": "evt-vonbraun-1912",
+      "prompt": "In what country was Wernher von Braun born in 1912?",
+      "choices": [
+        "Russia",
+        "France",
+        "Germany",
+        "The United States"
+      ],
+      "correctIndex": 2,
+      "explanation": "Wernher von Braun was born on March 23, 1912, in Wirsitz, Germany."
+    },
+    {
+      "id": "q-vonbraun-1912-2",
+      "eventId": "evt-vonbraun-1912",
+      "prompt": "What did teenage Wernher von Braun teach himself so he could understand rockets?",
+      "choices": [
+        "How to fly airplanes",
+        "Russian",
+        "Car repair",
+        "Advanced math"
+      ],
+      "correctIndex": 3,
+      "explanation": "As a teenager, von Braun read about rockets and space travel and taught himself advanced math to understand how they worked."
+    },
+    {
+      "id": "q-vonbraun-1912-3",
+      "eventId": "evt-vonbraun-1912",
+      "prompt": "What did young Wernher von Braun like to read about?",
+      "choices": [
+        "Rockets and space travel",
+        "Sailing ships",
+        "Dinosaurs",
+        "Railroads"
+      ],
+      "correctIndex": 0,
+      "explanation": "As a teenager, von Braun read about rockets and space travel."
+    },
+    {
+      "id": "q-peterson-1933-1",
+      "eventId": "evt-peterson-1933",
+      "prompt": "In which Mississippi town was astronaut Donald Peterson born?",
+      "choices": [
+        "Biloxi",
+        "Fayette",
+        "Winona",
+        "Meridian"
+      ],
+      "correctIndex": 2,
+      "explanation": "Donald Herod Peterson was born in Winona, Mississippi, on October 22, 1933."
+    },
+    {
+      "id": "q-peterson-1933-2",
+      "eventId": "evt-peterson-1933",
+      "prompt": "Which military academy did Donald Peterson graduate from in 1955?",
+      "choices": [
+        "The Naval Academy",
+        "The Air Force Academy",
+        "West Point",
+        "The Coast Guard Academy"
+      ],
+      "correctIndex": 2,
+      "explanation": "Peterson graduated from West Point in 1955."
+    },
+    {
+      "id": "q-peterson-1933-3",
+      "eventId": "evt-peterson-1933",
+      "prompt": "Donald Peterson later earned a master's degree in what subject?",
+      "choices": [
+        "Nuclear engineering",
+        "Geology",
+        "Medicine",
+        "Music"
+      ],
+      "correctIndex": 0,
+      "explanation": "Peterson later earned a master's degree in nuclear engineering."
+    },
+    {
+      "id": "q-peterson-1933-4",
+      "eventId": "evt-peterson-1933",
+      "prompt": "Donald Peterson grew up to make the first spacewalk of which program?",
+      "choices": [
+        "The Mercury program",
+        "The Space Shuttle program",
+        "The Gemini program",
+        "The Apollo program"
+      ],
+      "correctIndex": 1,
+      "explanation": "Peterson would grow up to make the first spacewalk of the Space Shuttle program."
+    },
+    {
+      "id": "q-haise-1933-1",
+      "eventId": "evt-haise-1933",
+      "prompt": "In which Mississippi city was astronaut Fred Haise born?",
+      "choices": [
+        "Winona",
+        "Biloxi",
+        "Fayette",
+        "Jackson"
+      ],
+      "correctIndex": 1,
+      "explanation": "Fred Wallace Haise Jr. was born in Biloxi on November 14, 1933."
+    },
+    {
+      "id": "q-haise-1933-2",
+      "eventId": "evt-haise-1933",
+      "prompt": "Fred Haise earned his aeronautical engineering degree from which university?",
+      "choices": [
+        "The University of Oklahoma",
+        "Mississippi State University",
+        "Georgia Tech",
+        "The University of Virginia"
+      ],
+      "correctIndex": 0,
+      "explanation": "Haise earned an aeronautical engineering degree with honors from the University of Oklahoma in 1959."
+    },
+    {
+      "id": "q-haise-1933-3",
+      "eventId": "evt-haise-1933",
+      "prompt": "Which junior college did Fred Haise attend after Biloxi High School?",
+      "choices": [
+        "Meridian Junior College",
+        "Hinds Junior College",
+        "Perkinston Junior College",
+        "Pearl River Junior College"
+      ],
+      "correctIndex": 2,
+      "explanation": "Haise graduated from Biloxi High School and attended Perkinston Junior College."
+    },
+    {
+      "id": "q-haise-1933-4",
+      "eventId": "evt-haise-1933",
+      "prompt": "Fred Haise would one day fly on which Apollo mission?",
+      "choices": [
+        "Apollo 7",
+        "Apollo 13",
+        "Apollo 11",
+        "Apollo 17"
+      ],
+      "correctIndex": 1,
+      "explanation": "Haise would fly on Apollo 13 and later pilot the shuttle Enterprise."
+    },
+    {
+      "id": "q-vonbraun-1930s-1",
+      "eventId": "evt-vonbraun-1930s",
+      "prompt": "What long-range missile did von Braun's team build in Germany?",
+      "choices": [
+        "The Saturn V",
+        "The V-2",
+        "The Jupiter C",
+        "The Redstone"
+      ],
+      "correctIndex": 1,
+      "explanation": "Von Braun led the German army's rocket team, which built the V-2, a long-range missile used in World War II."
+    },
+    {
+      "id": "q-vonbraun-1930s-2",
+      "eventId": "evt-vonbraun-1930s",
+      "prompt": "In what subject did Wernher von Braun earn a doctorate in 1934?",
+      "choices": [
+        "Medicine",
+        "History",
+        "Physics",
+        "Chemistry"
+      ],
+      "correctIndex": 2,
+      "explanation": "Von Braun earned a doctorate in physics in 1934."
+    },
+    {
+      "id": "q-vonbraun-1930s-3",
+      "eventId": "evt-vonbraun-1930s",
+      "prompt": "During which war was von Braun's V-2 missile used?",
+      "choices": [
+        "World War I",
+        "The Korean War",
+        "The Vietnam War",
+        "World War II"
+      ],
+      "correctIndex": 3,
+      "explanation": "The V-2 was a long-range missile used in World War II."
+    },
+    {
+      "id": "q-truly-1937-1",
+      "eventId": "evt-truly-1937",
+      "prompt": "In which Mississippi town was astronaut Richard Truly born?",
+      "choices": [
+        "Winona",
+        "Biloxi",
+        "Natchez",
+        "Fayette"
+      ],
+      "correctIndex": 3,
+      "explanation": "Richard Harrison Truly was born in Fayette, Mississippi, on November 12, 1937."
+    },
+    {
+      "id": "q-truly-1937-2",
+      "eventId": "evt-truly-1937",
+      "prompt": "Which university did Richard Truly graduate from in 1959?",
+      "choices": [
+        "Georgia Tech",
+        "West Point",
+        "The University of Oklahoma",
+        "Mississippi State University"
+      ],
+      "correctIndex": 0,
+      "explanation": "Truly earned an aeronautical engineering degree from Georgia Tech in 1959."
+    },
+    {
+      "id": "q-truly-1937-3",
+      "eventId": "evt-truly-1937",
+      "prompt": "Besides being a shuttle pilot and commander, what top job did Richard Truly later hold?",
+      "choices": [
+        "Head of NASA",
+        "Governor of Mississippi",
+        "U.S. Senator",
+        "President of Georgia Tech"
+      ],
+      "correctIndex": 0,
+      "explanation": "Truly would become a shuttle pilot, a shuttle commander, and later the head of NASA."
+    },
+    {
+      "id": "q-vonbraun-1945-1",
+      "eventId": "evt-vonbraun-1945",
+      "prompt": "In 1950, von Braun's team moved to which city to build rockets for the U.S. Army?",
+      "choices": [
+        "Houston, Texas",
+        "Biloxi, Mississippi",
+        "Huntsville, Alabama",
+        "Cape Canaveral, Florida"
+      ],
+      "correctIndex": 2,
+      "explanation": "In 1950 von Braun's team moved to Huntsville, Alabama, to build rockets for the U.S. Army."
+    },
+    {
+      "id": "q-vonbraun-1945-2",
+      "eventId": "evt-vonbraun-1945",
+      "prompt": "What was Explorer 1?",
+      "choices": [
+        "The first Moon lander",
+        "A Soviet rocket",
+        "The first space station",
+        "America's first satellite"
+      ],
+      "correctIndex": 3,
+      "explanation": "In 1958 von Braun's team's Jupiter C rocket launched Explorer 1, America's first satellite."
+    },
+    {
+      "id": "q-vonbraun-1945-3",
+      "eventId": "evt-vonbraun-1945",
+      "prompt": "Which rocket from von Braun's team launched Explorer 1?",
+      "choices": [
+        "Saturn V",
+        "Jupiter C",
+        "V-2",
+        "Atlas"
+      ],
+      "correctIndex": 1,
+      "explanation": "In 1958 his team's Jupiter C rocket launched Explorer 1."
+    },
+    {
+      "id": "q-vonbraun-1945-4",
+      "eventId": "evt-vonbraun-1945",
+      "prompt": "In what year did Wernher von Braun become a U.S. citizen?",
+      "choices": [
+        "1945",
+        "1950",
         "1955",
-        "1961",
-        "1958",
         "1969"
       ],
       "correctIndex": 2,
-      "explanation": "NASA began operations on October 1, 1958."
+      "explanation": "Von Braun became a U.S. citizen in 1955."
     },
     {
-      "id": "q-2",
-      "eventId": "evt-1961-shepard",
-      "prompt": "Who was the first American in space?",
+      "id": "q-stennis-1947-1",
+      "eventId": "evt-stennis-1947",
+      "prompt": "In what year did John C. Stennis win his election to the U.S. Senate?",
       "choices": [
-        "Alan Shepard",
-        "Neil Armstrong",
-        "John Glenn",
-        "Gus Grissom"
+        "1937",
+        "1947",
+        "1961",
+        "1988"
+      ],
+      "correctIndex": 1,
+      "explanation": "Stennis won a special election to the U.S. Senate in 1947."
+    },
+    {
+      "id": "q-stennis-1947-2",
+      "eventId": "evt-stennis-1947",
+      "prompt": "About how long did John C. Stennis serve in the U.S. Senate?",
+      "choices": [
+        "More than 41 years",
+        "About 6 years",
+        "About 12 years",
+        "About 20 years"
       ],
       "correctIndex": 0,
-      "explanation": "Alan Shepard flew aboard Freedom 7 on May 5, 1961, on a suborbital flight."
+      "explanation": "Stennis served in the Senate for more than 41 years, longer than any other senator from Mississippi."
     },
     {
-      "id": "q-3",
-      "eventId": "evt-1969-apollo11",
-      "prompt": "What was Apollo 11's main goal?",
+      "id": "q-stennis-1947-3",
+      "eventId": "evt-stennis-1947",
+      "prompt": "Senator Stennis became a powerful voice on committees about what?",
       "choices": [
-        "Orbit Mars",
-        "Launch a space station",
-        "Test a reusable spacecraft",
-        "Land people on the Moon and return them safely"
+        "Farming and fishing",
+        "The nation's budget and defense",
+        "Schools and libraries",
+        "Highways and railroads"
       ],
-      "correctIndex": 3,
-      "explanation": "Apollo 11 achieved the goal of landing astronauts on the Moon and returning them safely to Earth."
+      "correctIndex": 1,
+      "explanation": "Stennis became a powerful voice on the committees that decided the nation's budget and defense."
     },
     {
       "id": "q-4",
@@ -2650,95 +2962,316 @@
       "explanation": "Launched by the Soviet Union on October 4, 1957, Sputnik 1 became the first artificial satellite to orbit Earth."
     },
     {
-      "id": "q-5",
-      "eventId": "evt-1968-apollo8",
-      "prompt": "What milestone did Apollo 8 achieve in December 1968?",
+      "id": "q-1957-sputnik-1",
+      "eventId": "evt-1957-sputnik",
+      "prompt": "Which country launched Sputnik 1?",
       "choices": [
-        "The first crewed lunar landing",
-        "The first American spacewalk",
-        "The first Space Shuttle flight",
-        "The first crewed mission to orbit the Moon"
+        "The United States",
+        "The Soviet Union",
+        "Germany",
+        "France"
       ],
-      "correctIndex": 3,
-      "explanation": "Apollo 8 carried astronauts around the Moon, becoming the first crewed mission to orbit it. The crew did not land."
+      "correctIndex": 1,
+      "explanation": "Sputnik 1 was launched by the Soviet Union on October 4, 1957."
     },
     {
-      "id": "q-6",
-      "eventId": "evt-1981-sts1",
-      "prompt": "Which Space Shuttle flew NASA's first orbital Shuttle mission in 1981?",
+      "id": "q-1957-sputnik-2",
+      "eventId": "evt-1957-sputnik",
+      "prompt": "What did Sputnik 1 send back to Earth from orbit?",
       "choices": [
-        "Challenger",
-        "Discovery",
-        "Columbia",
-        "Atlantis"
-      ],
-      "correctIndex": 2,
-      "explanation": "Columbia flew STS-1 in April 1981, the first orbital test flight of NASA's Space Shuttle program."
-    },
-    {
-      "id": "q-7",
-      "eventId": "evt-1983-sally-ride",
-      "prompt": "What milestone did Sally Ride achieve aboard STS-7?",
-      "choices": [
-        "First American woman in space",
-        "First person to walk on the Moon",
-        "First woman to command the ISS",
-        "First Space Shuttle pilot"
+        "Radio signals",
+        "Photos of the Moon",
+        "Rock samples",
+        "Television shows"
       ],
       "correctIndex": 0,
-      "explanation": "Sally Ride became the first American woman in space when Challenger launched on June 18, 1983."
+      "explanation": "Sputnik 1 was a small satellite that transmitted radio signals from orbit."
     },
     {
-      "id": "q-8",
-      "eventId": "evt-1998-zarya",
-      "prompt": "What was Zarya's significance to the International Space Station?",
+      "id": "q-1957-sputnik-3",
+      "eventId": "evt-1957-sputnik",
+      "prompt": "The launch of Sputnik 1 marked the beginning of what?",
       "choices": [
-        "The first Space Shuttle",
-        "The Apollo 11 lunar module",
-        "A lunar rover",
-        "The first ISS module to reach orbit"
-      ],
-      "correctIndex": 3,
-      "explanation": "Zarya launched on November 20, 1998, and became the first module of the International Space Station."
-    },
-    {
-      "id": "q-9",
-      "eventId": "evt-2000-expedition1",
-      "prompt": "What did the arrival of Expedition 1 mark?",
-      "choices": [
-        "The first Space Shuttle flight",
-        "The start of continuous human residence aboard the ISS",
-        "The launch of the first ISS module",
-        "The first crewed lunar landing"
+        "The Shuttle era",
+        "The Space Age",
+        "The Apollo program",
+        "The International Space Station"
       ],
       "correctIndex": 1,
-      "explanation": "Expedition 1 arrived at the ISS on November 2, 2000, beginning continuous human presence aboard the station."
+      "explanation": "Sputnik 1 became the first artificial satellite to orbit Earth, marking the beginning of the Space Age."
     },
     {
-      "id": "q-10",
-      "eventId": "evt-2022-artemis1",
-      "prompt": "What was the main purpose of Artemis I?",
+      "id": "q-1958-explorer1-1",
+      "eventId": "evt-1958-explorer1",
+      "prompt": "What was special about Explorer 1?",
       "choices": [
-        "Carry astronauts to the Moon's surface",
-        "Build the International Space Station",
-        "Test the SLS rocket and Orion spacecraft on an uncrewed lunar flight",
-        "Deploy the Hubble Space Telescope"
+        "It was the first spacecraft to land on the Moon",
+        "It carried the first astronaut",
+        "It was the first U.S. satellite",
+        "It was the first space station"
       ],
       "correctIndex": 2,
-      "explanation": "Artemis I tested the Space Launch System rocket, Orion spacecraft, and supporting systems on an uncrewed mission around the Moon."
+      "explanation": "Explorer 1, launched on January 31, 1958, became the first U.S. satellite."
     },
     {
-      "id": "q-11",
-      "eventId": "evt-2026-artemis2",
-      "prompt": "What did Artemis II accomplish in 2026?",
+      "id": "q-1958-explorer1-2",
+      "eventId": "evt-1958-explorer1",
+      "prompt": "Explorer 1's data helped reveal radiation belts around Earth. What are they called?",
       "choices": [
-        "The first ISS module launch",
-        "The first crewed Artemis mission around the Moon",
-        "The final Space Shuttle flight",
-        "The first American satellite launch"
+        "The Kuiper belts",
+        "The Saturn rings",
+        "The Pearl River belts",
+        "The Van Allen belts"
+      ],
+      "correctIndex": 3,
+      "explanation": "Explorer 1's data helped reveal radiation belts around Earth later known as the Van Allen belts."
+    },
+    {
+      "id": "q-1958-explorer1-3",
+      "eventId": "evt-1958-explorer1",
+      "prompt": "Explorer 1's instruments were designed to study what?",
+      "choices": [
+        "The Moon's surface",
+        "Cosmic rays and conditions in orbit",
+        "Ocean temperatures",
+        "Weather on Mars"
       ],
       "correctIndex": 1,
-      "explanation": "Artemis II carried four astronauts around the Moon and returned them safely to Earth in April 2026."
+      "explanation": "Explorer 1 carried scientific instruments designed to study cosmic rays and other conditions in orbit."
+    },
+    {
+      "id": "q-1",
+      "eventId": "evt-1958-nasa",
+      "prompt": "In what year did NASA begin operations?",
+      "choices": [
+        "1955",
+        "1961",
+        "1958",
+        "1969"
+      ],
+      "correctIndex": 2,
+      "explanation": "NASA began operations on October 1, 1958."
+    },
+    {
+      "id": "q-1958-nasa-1",
+      "eventId": "evt-1958-nasa",
+      "prompt": "Which president signed the law that created NASA?",
+      "choices": [
+        "John F. Kennedy",
+        "Dwight D. Eisenhower",
+        "Ronald Reagan",
+        "Harry Truman"
+      ],
+      "correctIndex": 1,
+      "explanation": "President Dwight D. Eisenhower signed the National Aeronautics and Space Act in July 1958."
+    },
+    {
+      "id": "q-1958-nasa-2",
+      "eventId": "evt-1958-nasa",
+      "prompt": "What kind of agency was NASA created to be?",
+      "choices": [
+        "A branch of the Army",
+        "A civilian agency",
+        "A private company",
+        "A university"
+      ],
+      "correctIndex": 1,
+      "explanation": "The United States established NASA as its civilian agency for aeronautics and space exploration."
+    },
+    {
+      "id": "q-1958-nasa-3",
+      "eventId": "evt-1958-nasa",
+      "prompt": "What law created NASA in 1958?",
+      "choices": [
+        "The Moon Landing Act",
+        "The National Aeronautics and Space Act",
+        "The Rocket Safety Act",
+        "The Satellite Act"
+      ],
+      "correctIndex": 1,
+      "explanation": "President Eisenhower signed the National Aeronautics and Space Act in July 1958."
+    },
+    {
+      "id": "q-vonbraun-1960-1",
+      "eventId": "evt-vonbraun-1960",
+      "prompt": "In 1960, von Braun became director of which NASA center?",
+      "choices": [
+        "Marshall Space Flight Center",
+        "Stennis Space Center",
+        "Kennedy Space Center",
+        "Johnson Space Center"
+      ],
+      "correctIndex": 0,
+      "explanation": "In 1960 von Braun's team joined NASA, and he became director of the Marshall Space Flight Center."
+    },
+    {
+      "id": "q-vonbraun-1960-2",
+      "eventId": "evt-vonbraun-1960",
+      "prompt": "Von Braun was the chief architect of which giant rocket?",
+      "choices": [
+        "The Saturn V",
+        "The V-2",
+        "The Space Shuttle",
+        "The SLS"
+      ],
+      "correctIndex": 0,
+      "explanation": "Von Braun was the chief architect of the Saturn V, the giant rocket that would carry astronauts to the Moon."
+    },
+    {
+      "id": "q-vonbraun-1960-3",
+      "eventId": "evt-vonbraun-1960",
+      "prompt": "What was the Saturn V built to do?",
+      "choices": [
+        "Launch the first satellite",
+        "Carry astronauts to the Moon",
+        "Carry the Space Shuttle",
+        "Build the space station"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Saturn V was the giant rocket that would carry astronauts to the Moon."
+    },
+    {
+      "id": "q-1961-gagarin-1",
+      "eventId": "evt-1961-gagarin",
+      "prompt": "Who became the first human in space?",
+      "choices": [
+        "Alan Shepard",
+        "Yuri Gagarin",
+        "John Glenn",
+        "Neil Armstrong"
+      ],
+      "correctIndex": 1,
+      "explanation": "On April 12, 1961, Yuri Gagarin flew aboard Vostok 1 and became the first human in space."
+    },
+    {
+      "id": "q-1961-gagarin-2",
+      "eventId": "evt-1961-gagarin",
+      "prompt": "What was the name of Yuri Gagarin's spacecraft?",
+      "choices": [
+        "Vostok 1",
+        "Sputnik 1",
+        "Freedom 7",
+        "Friendship 7"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gagarin flew aboard Vostok 1 and completed one orbit of Earth."
+    },
+    {
+      "id": "q-1961-gagarin-3",
+      "eventId": "evt-1961-gagarin",
+      "prompt": "About how long did Yuri Gagarin's flight around Earth last?",
+      "choices": [
+        "About 15 minutes",
+        "About 108 minutes",
+        "About 5 hours",
+        "About 8 days"
+      ],
+      "correctIndex": 1,
+      "explanation": "Gagarin's flight around Earth lasted about 108 minutes."
+    },
+    {
+      "id": "q-2",
+      "eventId": "evt-1961-shepard",
+      "prompt": "Who was the first American in space?",
+      "choices": [
+        "Alan Shepard",
+        "Neil Armstrong",
+        "John Glenn",
+        "Gus Grissom"
+      ],
+      "correctIndex": 0,
+      "explanation": "Alan Shepard flew aboard Freedom 7 on May 5, 1961, on a suborbital flight."
+    },
+    {
+      "id": "q-1961-shepard-1",
+      "eventId": "evt-1961-shepard",
+      "prompt": "What was the name of Alan Shepard's spacecraft?",
+      "choices": [
+        "Friendship 7",
+        "Vostok 1",
+        "Columbia",
+        "Freedom 7"
+      ],
+      "correctIndex": 3,
+      "explanation": "Alan Shepard flew the Mercury spacecraft Freedom 7 on May 5, 1961."
+    },
+    {
+      "id": "q-1961-shepard-2",
+      "eventId": "evt-1961-shepard",
+      "prompt": "About how long was Alan Shepard's first spaceflight?",
+      "choices": [
+        "5 hours",
+        "8 days",
+        "15 minutes",
+        "108 minutes"
+      ],
+      "correctIndex": 2,
+      "explanation": "Shepard's 15-minute flight put the United States in the race to send people into space."
+    },
+    {
+      "id": "q-1961-shepard-3",
+      "eventId": "evt-1961-shepard",
+      "prompt": "How was Alan Shepard's flight different from Yuri Gagarin's?",
+      "choices": [
+        "It landed on the Moon",
+        "It did not go all the way around Earth",
+        "It carried three astronauts",
+        "It lasted several days"
+      ],
+      "correctIndex": 1,
+      "explanation": "Shepard flew a suborbital path. Unlike Gagarin's flight, his mission did not complete an orbit of Earth."
+    },
+    {
+      "id": "q-1961-kennedy-moon-goal-1",
+      "eventId": "evt-1961-kennedy-moon-goal",
+      "prompt": "Which president challenged the nation to land astronauts on the Moon?",
+      "choices": [
+        "Dwight D. Eisenhower",
+        "John F. Kennedy",
+        "Ronald Reagan",
+        "Richard Nixon"
+      ],
+      "correctIndex": 1,
+      "explanation": "In an address to Congress on May 25, 1961, President John F. Kennedy called for a crewed lunar landing."
+    },
+    {
+      "id": "q-1961-kennedy-moon-goal-2",
+      "eventId": "evt-1961-kennedy-moon-goal",
+      "prompt": "By when did President Kennedy want astronauts to land on the Moon?",
+      "choices": [
+        "Before the end of the 1960s",
+        "By 1958",
+        "By the year 2000",
+        "Before the end of the 1980s"
+      ],
+      "correctIndex": 0,
+      "explanation": "Kennedy called for a crewed lunar landing before the end of the 1960s."
+    },
+    {
+      "id": "q-1961-kennedy-moon-goal-3",
+      "eventId": "evt-1961-kennedy-moon-goal",
+      "prompt": "Kennedy's goal was to land astronauts on the Moon and do what else?",
+      "choices": [
+        "Return them safely to Earth",
+        "Build a city there",
+        "Leave them there for a year",
+        "Bring back a Moon rover"
+      ],
+      "correctIndex": 0,
+      "explanation": "Kennedy challenged the country to land astronauts on the Moon and return them safely before the decade ended."
+    },
+    {
+      "id": "q-1961-kennedy-moon-goal-4",
+      "eventId": "evt-1961-kennedy-moon-goal",
+      "prompt": "Five months after Kennedy's speech, NASA chose which place to test the Moon rocket?",
+      "choices": [
+        "Hancock County, Mississippi",
+        "Houston, Texas",
+        "Huntsville, Alabama",
+        "Cape Canaveral, Florida"
+      ],
+      "correctIndex": 0,
+      "explanation": "Five months later, NASA chose Hancock County, Mississippi, as the place to test the Moon rocket."
     },
     {
       "id": "q-12",
@@ -2754,6 +3287,240 @@
       "explanation": "The Pearl River site offered water routes for moving large rocket stages by barge and space for a buffer zone to protect nearby communities."
     },
     {
+      "id": "q-1961-pearl-river-site-1",
+      "eventId": "evt-1961-pearl-river-site",
+      "prompt": "In which Mississippi county did NASA build its rocket test site?",
+      "choices": [
+        "Kemper County",
+        "Hancock County",
+        "Harrison County",
+        "Hinds County"
+      ],
+      "correctIndex": 1,
+      "explanation": "On October 25, 1961, NASA announced it would build a rocket test site along the Pearl River in Hancock County, Mississippi."
+    },
+    {
+      "id": "q-1961-pearl-river-site-2",
+      "eventId": "evt-1961-pearl-river-site",
+      "prompt": "What is the Mississippi test site called today?",
+      "choices": [
+        "John C. Stennis Space Center",
+        "Kennedy Space Center",
+        "Marshall Space Flight Center",
+        "Johnson Space Center"
+      ],
+      "correctIndex": 0,
+      "explanation": "The site became the Mississippi Test Operations, known today as NASA's John C. Stennis Space Center."
+    },
+    {
+      "id": "q-1961-pearl-river-site-3",
+      "eventId": "evt-1961-pearl-river-site",
+      "prompt": "What did NASA need to test-fire at the new Mississippi site?",
+      "choices": [
+        "Airplane engines",
+        "Moon rovers",
+        "Saturn V rocket stages",
+        "Space suits"
+      ],
+      "correctIndex": 2,
+      "explanation": "NASA needed a remote place to test-fire the huge Saturn V rocket stages that would carry astronauts to the Moon."
+    },
+    {
+      "id": "q-1961-pearl-river-site-4",
+      "eventId": "evt-1961-pearl-river-site",
+      "prompt": "Why did NASA want a large buffer zone around the test site?",
+      "choices": [
+        "To grow crops for workers",
+        "To protect nearby towns from the noise",
+        "To land airplanes",
+        "To hide the rockets from spies"
+      ],
+      "correctIndex": 1,
+      "explanation": "The site had room for a large buffer zone to protect nearby towns from the noise."
+    },
+    {
+      "id": "q-1961-stennis-land-1",
+      "eventId": "evt-1961-stennis-land",
+      "prompt": "Which senator helped families who had to sell their land for the test site?",
+      "choices": [
+        "John C. Stennis",
+        "John Glenn",
+        "Thad Cochran",
+        "John F. Kennedy"
+      ],
+      "correctIndex": 0,
+      "explanation": "U.S. Senator John C. Stennis championed the test site and helped the families who had to sell their land."
+    },
+    {
+      "id": "q-1961-stennis-land-2",
+      "eventId": "evt-1961-stennis-land",
+      "prompt": "Which of these communities was moved to make room for the test site?",
+      "choices": [
+        "Biloxi",
+        "Gainesville",
+        "Winona",
+        "Fayette"
+      ],
+      "correctIndex": 1,
+      "explanation": "Building the site meant moving whole communities such as Gainesville, Logtown and Napoleon."
+    },
+    {
+      "id": "q-1961-stennis-land-3",
+      "eventId": "evt-1961-stennis-land",
+      "prompt": "Senator Stennis warned landowners to watch out for whom?",
+      "choices": [
+        "Land speculators",
+        "Reporters",
+        "Astronauts",
+        "Tourists"
+      ],
+      "correctIndex": 0,
+      "explanation": "Stennis spoke to landowners and warned them about land speculators."
+    },
+    {
+      "id": "q-1961-stennis-land-4",
+      "eventId": "evt-1961-stennis-land",
+      "prompt": "Senator Stennis said, \"There is always the thorn before the...\" what?",
+      "choices": [
+        "Storm",
+        "Rose",
+        "Harvest",
+        "Launch"
+      ],
+      "correctIndex": 1,
+      "explanation": "Stennis told displaced residents: \"There is always the thorn before the rose; you have got to make some sacrifices, but you will be taking part in greatness.\""
+    },
+    {
+      "id": "q-1962-glenn-1",
+      "eventId": "evt-1962-glenn",
+      "prompt": "Who became the first American to orbit Earth?",
+      "choices": [
+        "John Glenn",
+        "Alan Shepard",
+        "Yuri Gagarin",
+        "Fred Haise"
+      ],
+      "correctIndex": 0,
+      "explanation": "John Glenn launched aboard Friendship 7 on February 20, 1962, and orbited Earth."
+    },
+    {
+      "id": "q-1962-glenn-2",
+      "eventId": "evt-1962-glenn",
+      "prompt": "What was the name of John Glenn's spacecraft?",
+      "choices": [
+        "Freedom 7",
+        "Friendship 7",
+        "Vostok 1",
+        "Enterprise"
+      ],
+      "correctIndex": 1,
+      "explanation": "Glenn launched aboard Friendship 7 on February 20, 1962."
+    },
+    {
+      "id": "q-1962-glenn-3",
+      "eventId": "evt-1962-glenn",
+      "prompt": "How many times did John Glenn orbit Earth?",
+      "choices": [
+        "Three",
+        "One",
+        "Ten",
+        "Twenty"
+      ],
+      "correctIndex": 0,
+      "explanation": "Glenn completed three orbits of Earth before returning safely."
+    },
+    {
+      "id": "q-stennis-1962-1",
+      "eventId": "evt-stennis-1962",
+      "prompt": "About how many families were displaced to build the test site?",
+      "choices": [
+        "About 50",
+        "About 200",
+        "More than 10,000",
+        "Nearly 1,000"
+      ],
+      "correctIndex": 3,
+      "explanation": "Building the center displaced nearly 1,000 families."
+    },
+    {
+      "id": "q-stennis-1962-2",
+      "eventId": "evt-stennis-1962",
+      "prompt": "How many communities gave up their land for the test site?",
+      "choices": [
+        "Two",
+        "Five",
+        "Ten",
+        "Twenty"
+      ],
+      "correctIndex": 1,
+      "explanation": "Logtown, Gainesville, Santa Rosa, Napoleon and Westonia gave up their land for the test site."
+    },
+    {
+      "id": "q-stennis-1962-3",
+      "eventId": "evt-stennis-1962",
+      "prompt": "About how big is the buffer zone around the test stands?",
+      "choices": [
+        "About 125,000 acres",
+        "About 500 acres",
+        "About 13,800 acres",
+        "About 1 million acres"
+      ],
+      "correctIndex": 0,
+      "explanation": "NASA kept a 13,800-acre site for its test stands, surrounded by a buffer zone of about 125,000 acres."
+    },
+    {
+      "id": "q-stennis-1962-4",
+      "eventId": "evt-stennis-1962",
+      "prompt": "Which of these was one of the five communities that made way for the test site?",
+      "choices": [
+        "Biloxi",
+        "Waveland",
+        "Picayune",
+        "Logtown"
+      ],
+      "correctIndex": 3,
+      "explanation": "The land came from Logtown, Gainesville, Santa Rosa, Napoleon and Westonia."
+    },
+    {
+      "id": "q-vonbraun-1961-1",
+      "eventId": "evt-vonbraun-1961",
+      "prompt": "Von Braun said that to get to the Moon, \"we will have to go through...\" where?",
+      "choices": [
+        "Mississippi",
+        "Texas",
+        "Florida",
+        "Alabama"
+      ],
+      "correctIndex": 0,
+      "explanation": "Von Braun said that whatever way America got to the Moon, \"we will have to go through Mississippi to get there.\""
+    },
+    {
+      "id": "q-vonbraun-1961-2",
+      "eventId": "evt-vonbraun-1961",
+      "prompt": "Who did von Braun choose to build the Mississippi test site?",
+      "choices": [
+        "Jackson Balch Sr.",
+        "Navy Capt. William Fortune",
+        "Fred Haise",
+        "John C. Stennis"
+      ],
+      "correctIndex": 1,
+      "explanation": "Von Braun personally chose Navy Capt. William Fortune to build the Mississippi test site."
+    },
+    {
+      "id": "q-vonbraun-1961-3",
+      "eventId": "evt-vonbraun-1961",
+      "prompt": "What had to happen to the Saturn V's huge stages before they could fly?",
+      "choices": [
+        "They were tested on the ground",
+        "They were painted gold",
+        "They were tested on the Moon",
+        "They were flown by airplane"
+      ],
+      "correctIndex": 0,
+      "explanation": "To reach the Moon, the Saturn V's huge stages first had to be tested on the ground."
+    },
+    {
       "id": "q-13",
       "eventId": "evt-1963-construction",
       "prompt": "What happened in Mississippi on May 17, 1963?",
@@ -2765,6 +3532,175 @@
       ],
       "correctIndex": 0,
       "explanation": "Construction began at the Mississippi Test Operations site in Hancock County in May 1963."
+    },
+    {
+      "id": "q-1963-construction-1",
+      "eventId": "evt-1963-construction",
+      "prompt": "What was the area where the first trees were cut called?",
+      "choices": [
+        "Pearl Bayou",
+        "Moon Hollow",
+        "Rocket Ridge",
+        "Devil's Swamp"
+      ],
+      "correctIndex": 3,
+      "explanation": "On May 17, 1963, work crews cut the first trees in Devil's Swamp."
+    },
+    {
+      "id": "q-1963-construction-2",
+      "eventId": "evt-1963-construction",
+      "prompt": "About how deep did crews dig the foundations for the giant test stands?",
+      "choices": [
+        "About 5 feet",
+        "About 500 feet",
+        "About 50 feet",
+        "About 1 mile"
+      ],
+      "correctIndex": 2,
+      "explanation": "Crews dug foundations about 50 feet deep and drove steel beams nearly 100 feet deeper to hold them up."
+    },
+    {
+      "id": "q-1963-construction-3",
+      "eventId": "evt-1963-construction",
+      "prompt": "What did crews drive into the ground to hold up the test stands?",
+      "choices": [
+        "Wooden posts",
+        "Steel beams",
+        "Rocket engines",
+        "Concrete balls"
+      ],
+      "correctIndex": 1,
+      "explanation": "Crews drove steel beams nearly 100 feet deeper to hold up the giant test stands."
+    },
+    {
+      "id": "q-1963-von-braun-1",
+      "eventId": "evt-1963-von-braun",
+      "prompt": "What did people at the test site call Wernher von Braun?",
+      "choices": [
+        "The \"father of the MTF\"",
+        "The \"Rocket King\"",
+        "The \"Moon Man\"",
+        "The \"Swamp Captain\""
+      ],
+      "correctIndex": 0,
+      "explanation": "People at the site came to call him the \"father of the MTF,\" the Mississippi Test Facility."
+    },
+    {
+      "id": "q-1963-von-braun-2",
+      "eventId": "evt-1963-von-braun",
+      "prompt": "What did the letters MTF stand for?",
+      "choices": [
+        "Moon Travel Force",
+        "Main Testing Field",
+        "Marshall Training Fleet",
+        "Mississippi Test Facility"
+      ],
+      "correctIndex": 3,
+      "explanation": "MTF stood for the Mississippi Test Facility."
+    },
+    {
+      "id": "q-1963-von-braun-3",
+      "eventId": "evt-1963-von-braun",
+      "prompt": "In July 1962, what did von Braun approve for the Mississippi site?",
+      "choices": [
+        "The first Moon landing",
+        "A new name for NASA",
+        "The master test site plan",
+        "The Space Shuttle design"
+      ],
+      "correctIndex": 2,
+      "explanation": "Von Braun approved the master test site plan in July 1962."
+    },
+    {
+      "id": "q-1965-canals-1",
+      "eventId": "evt-1965-canals",
+      "prompt": "Why was the Mississippi test site built around canals?",
+      "choices": [
+        "Saturn V stages were too big to travel by road",
+        "To keep alligators away",
+        "To cool the rocket engines",
+        "So astronauts could practice swimming"
+      ],
+      "correctIndex": 0,
+      "explanation": "Saturn V stages were too big to travel by road, so the test site was built around canals."
+    },
+    {
+      "id": "q-1965-canals-2",
+      "eventId": "evt-1965-canals",
+      "prompt": "What carried the giant rocket stages through the canals?",
+      "choices": [
+        "Trains",
+        "Helicopters",
+        "Trucks",
+        "Barges"
+      ],
+      "correctIndex": 3,
+      "explanation": "Barges carried the giant rocket stages from the Pearl River through a system of canals right to the test stands."
+    },
+    {
+      "id": "q-1965-canals-3",
+      "eventId": "evt-1965-canals",
+      "prompt": "Which river did the barges travel from to reach the test site canals?",
+      "choices": [
+        "The Mississippi River",
+        "The Tennessee River",
+        "The Pascagoula River",
+        "The Pearl River"
+      ],
+      "correctIndex": 3,
+      "explanation": "Barges carried the rocket stages from the Pearl River through the canals to the test stands."
+    },
+    {
+      "id": "q-1965-canals-4",
+      "eventId": "evt-1965-canals",
+      "prompt": "What was the name of the tugboat that brought in fuel for the engines?",
+      "choices": [
+        "Saturn",
+        "Gemini",
+        "Pearl",
+        "Apollo"
+      ],
+      "correctIndex": 3,
+      "explanation": "Boats like the tugboat Apollo also brought in the liquid fuel the engines burned."
+    },
+    {
+      "id": "q-haise-1966-1",
+      "eventId": "evt-haise-1966",
+      "prompt": "How many astronauts were in the group NASA selected in April 1966, including Fred Haise?",
+      "choices": [
+        "3",
+        "7",
+        "19",
+        "50"
+      ],
+      "correctIndex": 2,
+      "explanation": "Haise was one of 19 astronauts NASA selected in April 1966."
+    },
+    {
+      "id": "q-haise-1966-2",
+      "eventId": "evt-haise-1966",
+      "prompt": "Fred Haise trained as backup lunar module pilot for Apollo 11 and which other mission?",
+      "choices": [
+        "Apollo 1",
+        "Apollo 8",
+        "Apollo 17",
+        "Apollo 13"
+      ],
+      "correctIndex": 1,
+      "explanation": "Haise trained as the backup lunar module pilot for Apollo 8 and Apollo 11."
+    },
+    {
+      "id": "q-haise-1966-3",
+      "eventId": "evt-haise-1966",
+      "prompt": "What was Fred Haise's job before NASA chose him as an astronaut?",
+      "choices": [
+        "A doctor",
+        "A senator",
+        "A military and NASA research pilot",
+        "A ship captain"
+      ],
+      "correctIndex": 2,
+      "explanation": "Haise spent years as a military and NASA research pilot before he was chosen."
     },
     {
       "id": "q-14",
@@ -2780,6 +3716,123 @@
       "explanation": "On April 23, 1966, a test version of the Saturn V's second stage fired for 15 seconds at the Mississippi test site."
     },
     {
+      "id": "q-1966-first-firing-1",
+      "eventId": "evt-1966-first-firing",
+      "prompt": "On which test stand did Mississippi fire its first rocket stage in 1966?",
+      "choices": [
+        "The B-2 test stand",
+        "The A-1 test stand",
+        "The B-1 test stand",
+        "The A-2 test stand"
+      ],
+      "correctIndex": 3,
+      "explanation": "A giant plume of vapor billowed skyward from the A-2 test stand during the April 23, 1966, firing."
+    },
+    {
+      "id": "q-1966-first-firing-2",
+      "eventId": "evt-1966-first-firing",
+      "prompt": "In a static firing, what happens to the rocket?",
+      "choices": [
+        "It is held down while its engines run",
+        "It flies to the Moon",
+        "It is dropped from an airplane",
+        "It is taken apart"
+      ],
+      "correctIndex": 0,
+      "explanation": "In a static firing, the rocket is held down while its engines run."
+    },
+    {
+      "id": "q-1966-first-firing-3",
+      "eventId": "evt-1966-first-firing",
+      "prompt": "How long did Mississippi's first rocket-stage firing last?",
+      "choices": [
+        "1 hour",
+        "8 minutes",
+        "15 seconds",
+        "15 minutes"
+      ],
+      "correctIndex": 2,
+      "explanation": "On April 23, 1966, the site fired a test version of the Saturn V's second stage for 15 seconds."
+    },
+    {
+      "id": "q-1966-surveyor1-1",
+      "eventId": "evt-1966-surveyor1",
+      "prompt": "What did Surveyor 1 do in 1966?",
+      "choices": [
+        "Carried astronauts to the Moon",
+        "Orbited Mars",
+        "Made a soft landing on the Moon",
+        "Became the first satellite"
+      ],
+      "correctIndex": 2,
+      "explanation": "Surveyor 1 launched on May 30, 1966, and landed on the Moon on June 2."
+    },
+    {
+      "id": "q-1966-surveyor1-2",
+      "eventId": "evt-1966-surveyor1",
+      "prompt": "What kind of spacecraft was Surveyor 1?",
+      "choices": [
+        "A crewed capsule",
+        "A space station",
+        "A space telescope",
+        "A robot lander"
+      ],
+      "correctIndex": 3,
+      "explanation": "A robot lander showed that the Moon's surface could hold up a spacecraft."
+    },
+    {
+      "id": "q-1966-surveyor1-3",
+      "eventId": "evt-1966-surveyor1",
+      "prompt": "What did Surveyor 1 show about the Moon's surface?",
+      "choices": [
+        "It was covered in water",
+        "It had liquid water",
+        "It was too hot to land on",
+        "It could hold up a spacecraft"
+      ],
+      "correctIndex": 3,
+      "explanation": "Surveyor 1 showed that the Moon's surface could hold up a spacecraft."
+    },
+    {
+      "id": "q-1967-apollo1-1",
+      "eventId": "evt-1967-apollo1",
+      "prompt": "What happened to the Apollo 1 crew in January 1967?",
+      "choices": [
+        "They were lost in a cabin fire during a ground test",
+        "They landed on the Moon",
+        "They orbited the Moon",
+        "They docked with a space station"
+      ],
+      "correctIndex": 0,
+      "explanation": "On January 27, 1967, a fire swept through the Apollo command module during a ground test, killing the crew."
+    },
+    {
+      "id": "q-1967-apollo1-2",
+      "eventId": "evt-1967-apollo1",
+      "prompt": "Which of these astronauts was a member of the Apollo 1 crew?",
+      "choices": [
+        "Neil Armstrong",
+        "Fred Haise",
+        "Gus Grissom",
+        "John Glenn"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Apollo 1 crew was Gus Grissom, Ed White, and Roger B. Chaffee."
+    },
+    {
+      "id": "q-1967-apollo1-3",
+      "eventId": "evt-1967-apollo1",
+      "prompt": "What did NASA change after the Apollo 1 fire?",
+      "choices": [
+        "The rocket's color",
+        "The name of NASA",
+        "The Moon-landing goal",
+        "Spacecraft design, procedures, and safety"
+      ],
+      "correctIndex": 3,
+      "explanation": "The tragedy led to major changes to spacecraft design, procedures, and safety before crewed Apollo flights resumed."
+    },
+    {
       "id": "q-15",
       "eventId": "evt-1967-first-stage",
       "prompt": "How many F-1 engines powered the Saturn V rocket's first stage?",
@@ -2791,6 +3844,435 @@
       ],
       "correctIndex": 1,
       "explanation": "The Saturn V first stage used five F-1 engines that together produced more than 7.5 million pounds of thrust."
+    },
+    {
+      "id": "q-1967-first-stage-1",
+      "eventId": "evt-1967-first-stage",
+      "prompt": "On which test stand did the Saturn V first stage fire in 1967?",
+      "choices": [
+        "The A-2 test stand",
+        "The A-1 test stand",
+        "The launch pad in Florida",
+        "The B-2 test stand"
+      ],
+      "correctIndex": 3,
+      "explanation": "On March 3, 1967, a test version of the Moon rocket's first stage fired on the B-2 test stand."
+    },
+    {
+      "id": "q-1967-first-stage-2",
+      "eventId": "evt-1967-first-stage",
+      "prompt": "How much thrust did the Saturn V first stage's five engines produce together?",
+      "choices": [
+        "About 1,000 pounds",
+        "More than 7.5 million pounds",
+        "About 75,000 pounds",
+        "About 500,000 pounds"
+      ],
+      "correctIndex": 1,
+      "explanation": "The five F-1 engines together produced more than 7.5 million pounds of thrust."
+    },
+    {
+      "id": "q-1967-first-stage-3",
+      "eventId": "evt-1967-first-stage",
+      "prompt": "Before the 1967 first-stage test, what did sound experts measure in nearby communities?",
+      "choices": [
+        "The rainfall",
+        "The traffic",
+        "The temperature",
+        "The noise"
+      ],
+      "correctIndex": 3,
+      "explanation": "Before the test, sound experts set up equipment in nearby communities to measure the noise."
+    },
+    {
+      "id": "q-stennis-1967-1",
+      "eventId": "evt-stennis-1967",
+      "prompt": "As Apollo testing wound down, who helped keep the Mississippi center open?",
+      "choices": [
+        "President Kennedy",
+        "Senator John C. Stennis",
+        "Neil Armstrong",
+        "Sally Ride"
+      ],
+      "correctIndex": 1,
+      "explanation": "As Apollo testing wound down, Senator Stennis helped keep the Mississippi center open."
+    },
+    {
+      "id": "q-stennis-1967-2",
+      "eventId": "evt-stennis-1967",
+      "prompt": "Who was the site manager who met with Senator Stennis and von Braun in 1967?",
+      "choices": [
+        "William Fortune",
+        "Jackson Balch Sr.",
+        "Fred Haise",
+        "James Fletcher"
+      ],
+      "correctIndex": 1,
+      "explanation": "Site manager Jackson Balch Sr. met with Senator Stennis and Wernher von Braun in 1967 about what came next."
+    },
+    {
+      "id": "q-stennis-1967-3",
+      "eventId": "evt-stennis-1967",
+      "prompt": "The Mississippi center grew into a multi-agency what?",
+      "choices": [
+        "\"Rocket town\"",
+        "\"Space village\"",
+        "\"Moon base\"",
+        "\"Federal city\""
+      ],
+      "correctIndex": 3,
+      "explanation": "Stennis's support helped the center survive and grow into the multi-agency \"federal city\" it is today."
+    },
+    {
+      "id": "q-1968-apollo7-1",
+      "eventId": "evt-1968-apollo7",
+      "prompt": "What was special about Apollo 7?",
+      "choices": [
+        "It landed on the Moon",
+        "It was the last Apollo flight",
+        "It carried no astronauts",
+        "It was the first crewed Apollo flight"
+      ],
+      "correctIndex": 3,
+      "explanation": "Launched on October 11, 1968, Apollo 7 was the first crewed mission of the Apollo program."
+    },
+    {
+      "id": "q-1968-apollo7-2",
+      "eventId": "evt-1968-apollo7",
+      "prompt": "Where did Apollo 7 test the Apollo spacecraft?",
+      "choices": [
+        "On the Moon",
+        "Around Mars",
+        "In Earth orbit",
+        "Underwater"
+      ],
+      "correctIndex": 2,
+      "explanation": "Apollo 7 tested the Apollo command and service module in Earth orbit with astronauts aboard."
+    },
+    {
+      "id": "q-1968-apollo7-3",
+      "eventId": "evt-1968-apollo7",
+      "prompt": "Apollo 7 helped restore confidence in the program after which tragedy?",
+      "choices": [
+        "The Apollo 1 fire",
+        "The Challenger accident",
+        "The Columbia accident",
+        "The Apollo 13 explosion"
+      ],
+      "correctIndex": 0,
+      "explanation": "Apollo 7 helped restore confidence in the program after the Apollo 1 tragedy."
+    },
+    {
+      "id": "q-1968-oao2-1",
+      "eventId": "evt-1968-oao2",
+      "prompt": "What was the nickname of the OAO-2 observatory?",
+      "choices": [
+        "Moonwalker",
+        "Stargazer",
+        "Skylab",
+        "Explorer"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Orbiting Astronomical Observatory 2 was nicknamed Stargazer."
+    },
+    {
+      "id": "q-1968-oao2-2",
+      "eventId": "evt-1968-oao2",
+      "prompt": "What kind of light did OAO-2 use to study stars?",
+      "choices": [
+        "Ultraviolet light",
+        "Radio waves",
+        "Candlelight",
+        "Sound waves"
+      ],
+      "correctIndex": 0,
+      "explanation": "OAO-2 made ultraviolet observations of stars from orbit."
+    },
+    {
+      "id": "q-1968-oao2-3",
+      "eventId": "evt-1968-oao2",
+      "prompt": "Why did OAO-2 study ultraviolet light from space instead of the ground?",
+      "choices": [
+        "Stars are closer in space",
+        "Earth's atmosphere blocks much ultraviolet light",
+        "It was cheaper",
+        "Telescopes don't work on the ground"
+      ],
+      "correctIndex": 1,
+      "explanation": "Earth's atmosphere blocks much ultraviolet light, so it can't be studied the same way from the ground."
+    },
+    {
+      "id": "q-5",
+      "eventId": "evt-1968-apollo8",
+      "prompt": "What milestone did Apollo 8 achieve in December 1968?",
+      "choices": [
+        "The first crewed lunar landing",
+        "The first American spacewalk",
+        "The first Space Shuttle flight",
+        "The first crewed mission to orbit the Moon"
+      ],
+      "correctIndex": 3,
+      "explanation": "Apollo 8 carried astronauts around the Moon, becoming the first crewed mission to orbit it. The crew did not land."
+    },
+    {
+      "id": "q-1968-apollo8-1",
+      "eventId": "evt-1968-apollo8",
+      "prompt": "Which of these astronauts flew on Apollo 8?",
+      "choices": [
+        "Neil Armstrong",
+        "Alan Shepard",
+        "Frank Borman",
+        "Fred Haise"
+      ],
+      "correctIndex": 2,
+      "explanation": "Frank Borman, Jim Lovell, and Bill Anders flew Apollo 8."
+    },
+    {
+      "id": "q-1968-apollo8-2",
+      "eventId": "evt-1968-apollo8",
+      "prompt": "On what date did Apollo 8 enter orbit around the Moon?",
+      "choices": [
+        "July 20, 1969",
+        "April 13, 1970",
+        "December 24, 1968",
+        "October 4, 1957"
+      ],
+      "correctIndex": 2,
+      "explanation": "Apollo 8 launched on December 21, 1968, and entered lunar orbit on December 24."
+    },
+    {
+      "id": "q-1968-apollo8-3",
+      "eventId": "evt-1968-apollo8",
+      "prompt": "Where were Apollo 8's Saturn V rocket stages tested?",
+      "choices": [
+        "On the Moon",
+        "Huntsville, Alabama",
+        "Houston, Texas",
+        "Hancock County, Mississippi"
+      ],
+      "correctIndex": 3,
+      "explanation": "Apollo 8's Saturn V rocket stages were tested in Hancock County, Mississippi."
+    },
+    {
+      "id": "q-1969-apollo10-1",
+      "eventId": "evt-1969-apollo10",
+      "prompt": "What was Apollo 10's job?",
+      "choices": [
+        "The first Moon landing",
+        "Testing the Space Shuttle",
+        "Building a space station",
+        "A full dress rehearsal for the Moon landing"
+      ],
+      "correctIndex": 3,
+      "explanation": "The Apollo 10 crew flew every step of a Moon landing except the landing itself."
+    },
+    {
+      "id": "q-1969-apollo10-2",
+      "eventId": "evt-1969-apollo10",
+      "prompt": "About how close did Apollo 10's lunar module get to the Moon's surface?",
+      "choices": [
+        "About nine miles",
+        "It landed",
+        "About 1,000 miles",
+        "About 100 feet"
+      ],
+      "correctIndex": 0,
+      "explanation": "The lunar module descended to about nine miles above the Moon's surface before returning to the command module."
+    },
+    {
+      "id": "q-1969-apollo10-3",
+      "eventId": "evt-1969-apollo10",
+      "prompt": "Apollo 10 tested procedures and systems for which upcoming mission?",
+      "choices": [
+        "Apollo 7",
+        "Apollo 11",
+        "Apollo 13",
+        "Apollo 17"
+      ],
+      "correctIndex": 1,
+      "explanation": "This full dress rehearsal tested procedures and systems for the upcoming Apollo 11 landing."
+    },
+    {
+      "id": "q-3",
+      "eventId": "evt-1969-apollo11",
+      "prompt": "What was Apollo 11's main goal?",
+      "choices": [
+        "Orbit Mars",
+        "Launch a space station",
+        "Test a reusable spacecraft",
+        "Land people on the Moon and return them safely"
+      ],
+      "correctIndex": 3,
+      "explanation": "Apollo 11 achieved the goal of landing astronauts on the Moon and returning them safely to Earth."
+    },
+    {
+      "id": "q-1969-apollo11-1",
+      "eventId": "evt-1969-apollo11",
+      "prompt": "Who were the first humans to walk on the Moon?",
+      "choices": [
+        "Fred Haise and Jim Lovell",
+        "John Glenn and Alan Shepard",
+        "Neil Armstrong and Buzz Aldrin",
+        "Frank Borman and Bill Anders"
+      ],
+      "correctIndex": 2,
+      "explanation": "Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon."
+    },
+    {
+      "id": "q-1969-apollo11-2",
+      "eventId": "evt-1969-apollo11",
+      "prompt": "Which Apollo 11 astronaut stayed in lunar orbit while the others walked on the Moon?",
+      "choices": [
+        "Michael Collins",
+        "Buzz Aldrin",
+        "Neil Armstrong",
+        "Jim Lovell"
+      ],
+      "correctIndex": 0,
+      "explanation": "Michael Collins remained in lunar orbit while Armstrong and Aldrin explored the surface."
+    },
+    {
+      "id": "q-1969-apollo11-3",
+      "eventId": "evt-1969-apollo11",
+      "prompt": "On what date did Apollo 11's lunar module land on the Moon?",
+      "choices": [
+        "December 24, 1968",
+        "April 13, 1970",
+        "December 11, 1972",
+        "July 20, 1969"
+      ],
+      "correctIndex": 3,
+      "explanation": "The Apollo 11 lunar module landed on July 20, 1969."
+    },
+    {
+      "id": "q-1969-apollo11-4",
+      "eventId": "evt-1969-apollo11",
+      "prompt": "Whose national goal did Apollo 11 achieve?",
+      "choices": [
+        "President Kennedy's",
+        "President Eisenhower's",
+        "President Reagan's",
+        "Senator Stennis's"
+      ],
+      "correctIndex": 0,
+      "explanation": "Apollo 11 achieved the national goal announced by President Kennedy."
+    },
+    {
+      "id": "q-truly-1969-1",
+      "eventId": "evt-truly-1969",
+      "prompt": "Before NASA, what kind of pilot was Richard Truly?",
+      "choices": [
+        "An airline pilot",
+        "A helicopter pilot",
+        "A crop duster",
+        "A Navy fighter pilot"
+      ],
+      "correctIndex": 3,
+      "explanation": "Truly was a Navy fighter pilot who made more than 300 aircraft carrier landings."
+    },
+    {
+      "id": "q-truly-1969-2",
+      "eventId": "evt-truly-1969",
+      "prompt": "About how many aircraft carrier landings did Richard Truly make?",
+      "choices": [
+        "About 3",
+        "About 30",
+        "More than 3,000",
+        "More than 300"
+      ],
+      "correctIndex": 3,
+      "explanation": "Truly made more than 300 aircraft carrier landings."
+    },
+    {
+      "id": "q-truly-1969-3",
+      "eventId": "evt-truly-1969",
+      "prompt": "Why did Richard Truly join NASA as an astronaut in 1969?",
+      "choices": [
+        "He won a contest",
+        "He built a rocket",
+        "The Air Force space station program he trained for was canceled",
+        "He was a senator"
+      ],
+      "correctIndex": 2,
+      "explanation": "Truly first trained for an Air Force space station program. When it was canceled in 1969, he joined NASA."
+    },
+    {
+      "id": "q-peterson-1969-1",
+      "eventId": "evt-peterson-1969",
+      "prompt": "Donald Peterson served on the support crew for which Apollo mission?",
+      "choices": [
+        "Apollo 11",
+        "Apollo 13",
+        "Apollo 16",
+        "Apollo 1"
+      ],
+      "correctIndex": 2,
+      "explanation": "Peterson became a NASA astronaut in 1969 and served on the support crew for Apollo 16."
+    },
+    {
+      "id": "q-peterson-1969-2",
+      "eventId": "evt-peterson-1969",
+      "prompt": "In what year did Donald Peterson become a NASA astronaut?",
+      "choices": [
+        "1959",
+        "1969",
+        "1983",
+        "1990"
+      ],
+      "correctIndex": 1,
+      "explanation": "Donald Peterson became a NASA astronaut in 1969."
+    },
+    {
+      "id": "q-peterson-1969-3",
+      "eventId": "evt-peterson-1969",
+      "prompt": "Before NASA, Peterson first trained for which program?",
+      "choices": [
+        "The Air Force's space station program",
+        "The Navy's submarine program",
+        "The Mercury program",
+        "The Soviet space program"
+      ],
+      "correctIndex": 0,
+      "explanation": "Like Truly, Peterson first trained for the Air Force's space station program."
+    },
+    {
+      "id": "q-vonbraun-1967-1",
+      "eventId": "evt-vonbraun-1967",
+      "prompt": "Von Braun said, \"One good test is worth a thousand...\" what?",
+      "choices": [
+        "Expert opinions",
+        "Rockets",
+        "Dollars",
+        "Astronauts"
+      ],
+      "correctIndex": 0,
+      "explanation": "Von Braun believed in thorough testing, saying, \"One good test is worth a thousand expert opinions.\""
+    },
+    {
+      "id": "q-vonbraun-1967-2",
+      "eventId": "evt-vonbraun-1967",
+      "prompt": "In 1970, von Braun moved to which city to lead NASA's planning?",
+      "choices": [
+        "Biloxi, Mississippi",
+        "Houston, Texas",
+        "Washington, D.C.",
+        "Paris, France"
+      ],
+      "correctIndex": 2,
+      "explanation": "In 1970 von Braun moved to Washington, D.C., to lead NASA's planning."
+    },
+    {
+      "id": "q-vonbraun-1967-3",
+      "eventId": "evt-vonbraun-1967",
+      "prompt": "In what year did Wernher von Braun retire from NASA?",
+      "choices": [
+        "1958",
+        "1969",
+        "1972",
+        "1986"
+      ],
+      "correctIndex": 2,
+      "explanation": "Von Braun retired from NASA in 1972."
     },
     {
       "id": "q-16",
@@ -2806,6 +4288,188 @@
       "explanation": "Fred Haise, a Biloxi native, served as the lunar module pilot on Apollo 13."
     },
     {
+      "id": "q-1970-haise-apollo13-1",
+      "eventId": "evt-1970-haise-apollo13",
+      "prompt": "What went wrong on Apollo 13 on the way to the Moon?",
+      "choices": [
+        "A tire went flat",
+        "The crew got lost",
+        "An oxygen tank exploded",
+        "The Moon was too dark"
+      ],
+      "correctIndex": 2,
+      "explanation": "On April 13, 1970, an oxygen tank exploded and damaged Apollo 13's service module."
+    },
+    {
+      "id": "q-1970-haise-apollo13-2",
+      "eventId": "evt-1970-haise-apollo13",
+      "prompt": "What did the Apollo 13 crew use as a \"lifeboat\"?",
+      "choices": [
+        "A parachute",
+        "The lunar module",
+        "A space station",
+        "The Space Shuttle"
+      ],
+      "correctIndex": 1,
+      "explanation": "The crew worked with Mission Control to save power and supplies and used the lunar module as a lifeboat."
+    },
+    {
+      "id": "q-1970-haise-apollo13-3",
+      "eventId": "evt-1970-haise-apollo13",
+      "prompt": "Which of these astronauts flew with Fred Haise on Apollo 13?",
+      "choices": [
+        "Jim Lovell",
+        "Neil Armstrong",
+        "Richard Truly",
+        "Sally Ride"
+      ],
+      "correctIndex": 0,
+      "explanation": "Jim Lovell, Jack Swigert and Fred Haise flew Apollo 13."
+    },
+    {
+      "id": "q-1970-haise-apollo13-4",
+      "eventId": "evt-1970-haise-apollo13",
+      "prompt": "What happened to the Apollo 13 crew in the end?",
+      "choices": [
+        "They landed on the Moon",
+        "They stayed in orbit for a year",
+        "They landed on Mars",
+        "They returned safely to Earth"
+      ],
+      "correctIndex": 3,
+      "explanation": "The crew returned safely to Earth on April 17, 1970."
+    },
+    {
+      "id": "q-1970-saturn-testing-ends-1",
+      "eventId": "evt-1970-saturn-testing-ends",
+      "prompt": "In what year did Mississippi finish testing Saturn V rocket stages?",
+      "choices": [
+        "1961",
+        "1966",
+        "1970",
+        "1981"
+      ],
+      "correctIndex": 2,
+      "explanation": "In 1970 the Mississippi Test Facility finished testing rocket stages for Apollo."
+    },
+    {
+      "id": "q-1970-saturn-testing-ends-2",
+      "eventId": "evt-1970-saturn-testing-ends",
+      "prompt": "Which astronaut, just back from Apollo 13, came to the ceremony ending Saturn V testing?",
+      "choices": [
+        "Neil Armstrong",
+        "Fred Haise",
+        "John Glenn",
+        "Sally Ride"
+      ],
+      "correctIndex": 1,
+      "explanation": "Fred Haise, just back from Apollo 13, returned to the Mississippi Test Facility for the ceremony."
+    },
+    {
+      "id": "q-1970-saturn-testing-ends-3",
+      "eventId": "evt-1970-saturn-testing-ends",
+      "prompt": "Who came with Fred Haise to the ceremony marking the end of Saturn V testing?",
+      "choices": [
+        "Wernher von Braun",
+        "President Kennedy",
+        "Yuri Gagarin",
+        "Richard Truly"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fred Haise returned to the Mississippi Test Facility with Wernher von Braun for the ceremony."
+    },
+    {
+      "id": "q-1972-apollo17-1",
+      "eventId": "evt-1972-apollo17",
+      "prompt": "What was special about Apollo 17?",
+      "choices": [
+        "It was the last Apollo Moon landing",
+        "It was the first Moon landing",
+        "It orbited Mars",
+        "It carried no crew"
+      ],
+      "correctIndex": 0,
+      "explanation": "Apollo 17 became the last crewed mission to land on the Moon during the Apollo program."
+    },
+    {
+      "id": "q-1972-apollo17-2",
+      "eventId": "evt-1972-apollo17",
+      "prompt": "Who became the first professional scientist to explore the Moon's surface?",
+      "choices": [
+        "Neil Armstrong",
+        "Harrison Schmitt",
+        "Fred Haise",
+        "Michael Collins"
+      ],
+      "correctIndex": 1,
+      "explanation": "Harrison Schmitt, a geologist, became the first professional scientist to explore the Moon's surface on Apollo 17."
+    },
+    {
+      "id": "q-1972-apollo17-3",
+      "eventId": "evt-1972-apollo17",
+      "prompt": "In which region of the Moon did Apollo 17 land?",
+      "choices": [
+        "The Sea of Tranquility",
+        "Taurus-Littrow",
+        "The far side",
+        "The south pole"
+      ],
+      "correctIndex": 1,
+      "explanation": "Apollo 17 landed in the Taurus-Littrow region on December 11, 1972."
+    },
+    {
+      "id": "q-1972-apollo17-4",
+      "eventId": "evt-1972-apollo17",
+      "prompt": "What kind of scientist was Harrison Schmitt?",
+      "choices": [
+        "A doctor",
+        "A chemist",
+        "An astronomer",
+        "A geologist"
+      ],
+      "correctIndex": 3,
+      "explanation": "Harrison Schmitt, a geologist, became the first professional scientist to explore the Moon."
+    },
+    {
+      "id": "q-1974-nstl-1",
+      "eventId": "evt-1974-nstl",
+      "prompt": "In 1974, the Mississippi Test Facility was renamed what?",
+      "choices": [
+        "Kennedy Space Center",
+        "The National Space Technology Laboratories",
+        "Marshall Space Flight Center",
+        "INFINITY Science Center"
+      ],
+      "correctIndex": 1,
+      "explanation": "In 1974 the Mississippi Test Facility was renamed the National Space Technology Laboratories."
+    },
+    {
+      "id": "q-1974-nstl-2",
+      "eventId": "evt-1974-nstl",
+      "prompt": "Which of these federal agencies moved in to work beside NASA at the site?",
+      "choices": [
+        "The U.S. Postal Service",
+        "The National Park Service",
+        "The FBI",
+        "The U.S. Navy"
+      ],
+      "correctIndex": 3,
+      "explanation": "Other federal agencies, including the U.S. Navy, moved in to work beside NASA."
+    },
+    {
+      "id": "q-1974-nstl-3",
+      "eventId": "evt-1974-nstl",
+      "prompt": "Soon after its 1974 renaming, the site would test the engines for what?",
+      "choices": [
+        "The Saturn V",
+        "The V-2",
+        "The Space Shuttle",
+        "The Hubble Space Telescope"
+      ],
+      "correctIndex": 2,
+      "explanation": "Soon after the renaming, the site would test the engines for the Space Shuttle."
+    },
+    {
       "id": "q-17",
       "eventId": "evt-1975-shuttle-engine",
       "prompt": "Where were the Space Shuttle Main Engines tested before flying?",
@@ -2817,6 +4481,45 @@
       ],
       "correctIndex": 0,
       "explanation": "Every Space Shuttle Main Engine that flew was tested in Mississippi before its flight."
+    },
+    {
+      "id": "q-1975-shuttle-engine-1",
+      "eventId": "evt-1975-shuttle-engine",
+      "prompt": "When was the first Space Shuttle Main Engine test in Mississippi?",
+      "choices": [
+        "April 23, 1966",
+        "May 19, 1975",
+        "April 12, 1981",
+        "July 29, 2009"
+      ],
+      "correctIndex": 1,
+      "explanation": "The first Space Shuttle Main Engine test in Mississippi happened on May 19, 1975."
+    },
+    {
+      "id": "q-1975-shuttle-engine-2",
+      "eventId": "evt-1975-shuttle-engine",
+      "prompt": "What was special about the Space Shuttle Main Engine's design?",
+      "choices": [
+        "It was designed to be reused flight after flight",
+        "It was used only once",
+        "It ran on gasoline",
+        "It was made of wood"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Space Shuttle Main Engine was designed to be reused flight after flight."
+    },
+    {
+      "id": "q-1975-shuttle-engine-3",
+      "eventId": "evt-1975-shuttle-engine",
+      "prompt": "Which of these test stands tested Space Shuttle Main Engines?",
+      "choices": [
+        "The Vostok stand",
+        "The Pearl River stand",
+        "The A-1 test stand",
+        "The Huntsville stand"
+      ],
+      "correctIndex": 2,
+      "explanation": "Every main engine that flew on the Space Shuttle was tested on the A-1, A-2 and B-1 test stands."
     },
     {
       "id": "q-18",
@@ -2832,6 +4535,136 @@
       "explanation": "Enterprise was used for approach and landing tests. It was carried by an aircraft and released so crews could test its glide and landing."
     },
     {
+      "id": "q-1977-enterprise-1",
+      "eventId": "evt-1977-enterprise",
+      "prompt": "Which two Mississippians flew the Space Shuttle Enterprise in its 1977 tests?",
+      "choices": [
+        "Donald Peterson and Richard Truly",
+        "Fred Haise and Richard Truly",
+        "John Glenn and Alan Shepard",
+        "Fred Haise and Neil Armstrong"
+      ],
+      "correctIndex": 1,
+      "explanation": "Fred Haise of Biloxi and Richard Truly of Fayette were two of the four pilots who flew Enterprise."
+    },
+    {
+      "id": "q-1977-enterprise-2",
+      "eventId": "evt-1977-enterprise",
+      "prompt": "What carried the shuttle Enterprise into the air for its landing tests?",
+      "choices": [
+        "A Saturn V",
+        "A Boeing 747",
+        "A helicopter",
+        "A hot-air balloon"
+      ],
+      "correctIndex": 1,
+      "explanation": "Enterprise was carried on top of a Boeing 747 and released in the air."
+    },
+    {
+      "id": "q-1977-enterprise-3",
+      "eventId": "evt-1977-enterprise",
+      "prompt": "What did the Enterprise tests prove?",
+      "choices": [
+        "The shuttle could reach the Moon",
+        "The shuttle could float on water",
+        "The shuttle could glide and land on a runway",
+        "The shuttle could fly without a crew"
+      ],
+      "correctIndex": 2,
+      "explanation": "Enterprise was released in the air so astronauts could prove the shuttle could glide and land on a runway."
+    },
+    {
+      "id": "q-1978-mpta-1",
+      "eventId": "evt-1978-mpta",
+      "prompt": "What did the Main Propulsion Test Article fire together on the B-2 stand?",
+      "choices": [
+        "One Saturn V engine",
+        "Five F-1 engines",
+        "Three main engines with an external fuel tank",
+        "The Hubble Space Telescope"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Main Propulsion Test Article was a Shuttle tail section with three main engines, attached to an external tank."
+    },
+    {
+      "id": "q-1978-mpta-2",
+      "eventId": "evt-1978-mpta",
+      "prompt": "On which test stand was the Shuttle's whole propulsion system fired?",
+      "choices": [
+        "The A-1 test stand",
+        "The B-2 test stand",
+        "The A-2 test stand",
+        "A launch pad in Florida"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Main Propulsion Test Article was fired on the B-2 test stand from 1978 to 1981."
+    },
+    {
+      "id": "q-1978-mpta-3",
+      "eventId": "evt-1978-mpta",
+      "prompt": "What did the Main Propulsion Test Article prove?",
+      "choices": [
+        "The shuttle could land on a runway",
+        "Astronauts could walk in space",
+        "The engines, tank and fuel lines worked together",
+        "The shuttle could reach the Moon"
+      ],
+      "correctIndex": 2,
+      "explanation": "It was fired from 1978 to 1981 to prove the engines, tank and fuel lines worked together."
+    },
+    {
+      "id": "q-6",
+      "eventId": "evt-1981-sts1",
+      "prompt": "Which Space Shuttle flew NASA's first orbital Shuttle mission in 1981?",
+      "choices": [
+        "Challenger",
+        "Discovery",
+        "Columbia",
+        "Atlantis"
+      ],
+      "correctIndex": 2,
+      "explanation": "Columbia flew STS-1 in April 1981, the first orbital test flight of NASA's Space Shuttle program."
+    },
+    {
+      "id": "q-1981-sts1-1",
+      "eventId": "evt-1981-sts1",
+      "prompt": "Which two astronauts flew the first Space Shuttle mission?",
+      "choices": [
+        "Fred Haise and Richard Truly",
+        "John Young and Robert Crippen",
+        "Neil Armstrong and Buzz Aldrin",
+        "Sally Ride and Guion Bluford"
+      ],
+      "correctIndex": 1,
+      "explanation": "Columbia launched on April 12, 1981, with astronauts John Young and Robert Crippen aboard."
+    },
+    {
+      "id": "q-1981-sts1-2",
+      "eventId": "evt-1981-sts1",
+      "prompt": "How did the first Space Shuttle flight return to Earth?",
+      "choices": [
+        "By parachute into the ocean",
+        "By landing on the Moon first",
+        "With a runway landing",
+        "It stayed in orbit"
+      ],
+      "correctIndex": 2,
+      "explanation": "The first Space Shuttle flight demonstrated its return as a runway landing."
+    },
+    {
+      "id": "q-1981-sts1-3",
+      "eventId": "evt-1981-sts1",
+      "prompt": "STS-1 began about how many decades of Space Shuttle missions?",
+      "choices": [
+        "One",
+        "Five",
+        "Three",
+        "Ten"
+      ],
+      "correctIndex": 2,
+      "explanation": "STS-1 was the first orbital test flight of NASA's Space Shuttle system, beginning three decades of shuttle missions."
+    },
+    {
       "id": "q-19",
       "eventId": "evt-1981-truly-sts2",
       "prompt": "What connection did Mississippi-born Richard Truly have to STS-2?",
@@ -2845,17 +4678,615 @@
       "explanation": "Richard Truly, born in Fayette, Mississippi, piloted Columbia on STS-2 in November 1981."
     },
     {
-      "id": "q-20",
-      "eventId": "evt-2012-infinity-opens",
-      "prompt": "What is INFINITY Science Center's connection to Mississippi's space program?",
+      "id": "q-1981-truly-sts2-1",
+      "eventId": "evt-1981-truly-sts2",
+      "prompt": "What was a first for STS-2?",
       "choices": [
-        "It is a spacecraft that orbits Earth",
-        "It is NASA's astronaut training capsule",
-        "It serves as a visitor center sharing the story of Stennis Space Center and Mississippi's role in space exploration",
-        "It is the launch site for every Space Shuttle"
+        "A spacecraft flew to orbit a second time",
+        "The first woman flew in space",
+        "The first Moon landing",
+        "The first night launch"
+      ],
+      "correctIndex": 0,
+      "explanation": "STS-2 was the first time a spacecraft flew to orbit a second time."
+    },
+    {
+      "id": "q-1981-truly-sts2-2",
+      "eventId": "evt-1981-truly-sts2",
+      "prompt": "Which shuttle did Richard Truly pilot on STS-2?",
+      "choices": [
+        "Challenger",
+        "Columbia",
+        "Enterprise",
+        "Atlantis"
+      ],
+      "correctIndex": 1,
+      "explanation": "Richard Truly was the pilot of STS-2 aboard Columbia in November 1981."
+    },
+    {
+      "id": "q-1983-peterson-sts6-1",
+      "eventId": "evt-1983-peterson-sts6",
+      "prompt": "What did Donald Peterson do on STS-6 that had never been done in the Shuttle program?",
+      "choices": [
+        "He made the first Shuttle spacewalk",
+        "He landed on the Moon",
+        "He commanded the shuttle",
+        "He launched Hubble"
+      ],
+      "correctIndex": 0,
+      "explanation": "Peterson and Story Musgrave made the first spacewalk of the Space Shuttle program."
+    },
+    {
+      "id": "q-1983-peterson-sts6-2",
+      "eventId": "evt-1983-peterson-sts6",
+      "prompt": "STS-6 was the first flight of which shuttle?",
+      "choices": [
+        "Columbia",
+        "Discovery",
+        "Enterprise",
+        "Challenger"
+      ],
+      "correctIndex": 3,
+      "explanation": "Peterson flew on STS-6 in April 1983, the first flight of Challenger."
+    },
+    {
+      "id": "q-1983-peterson-sts6-3",
+      "eventId": "evt-1983-peterson-sts6",
+      "prompt": "Who made the first Shuttle spacewalk with Donald Peterson?",
+      "choices": [
+        "Story Musgrave",
+        "Sally Ride",
+        "Richard Truly",
+        "John Young"
+      ],
+      "correctIndex": 0,
+      "explanation": "Peterson and Story Musgrave made the first spacewalk of the Space Shuttle program."
+    },
+    {
+      "id": "q-1983-peterson-sts6-4",
+      "eventId": "evt-1983-peterson-sts6",
+      "prompt": "What did Peterson and Musgrave test on their spacewalk?",
+      "choices": [
+        "A Moon rover",
+        "A new rocket engine",
+        "Suits and tools",
+        "A telescope"
       ],
       "correctIndex": 2,
-      "explanation": "INFINITY Science Center, located in Hancock County, Mississippi, shares the story of Stennis Space Center and the state's contributions to space exploration."
+      "explanation": "They tested the suits and tools that later astronauts used to build and repair things in space."
+    },
+    {
+      "id": "q-7",
+      "eventId": "evt-1983-sally-ride",
+      "prompt": "What milestone did Sally Ride achieve aboard STS-7?",
+      "choices": [
+        "First American woman in space",
+        "First person to walk on the Moon",
+        "First woman to command the ISS",
+        "First Space Shuttle pilot"
+      ],
+      "correctIndex": 0,
+      "explanation": "Sally Ride became the first American woman in space when Challenger launched on June 18, 1983."
+    },
+    {
+      "id": "q-1983-sally-ride-1",
+      "eventId": "evt-1983-sally-ride",
+      "prompt": "Which shuttle did Sally Ride fly aboard on STS-7?",
+      "choices": [
+        "Columbia",
+        "Challenger",
+        "Atlantis",
+        "Enterprise"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sally Ride flew aboard Challenger on STS-7."
+    },
+    {
+      "id": "q-1983-sally-ride-2",
+      "eventId": "evt-1983-sally-ride",
+      "prompt": "Besides carrying Sally Ride, what did STS-7 deploy?",
+      "choices": [
+        "The Hubble Space Telescope",
+        "A Moon lander",
+        "Communications satellites",
+        "The first ISS module"
+      ],
+      "correctIndex": 2,
+      "explanation": "STS-7 also deployed communications satellites and conducted experiments."
+    },
+    {
+      "id": "q-truly-1983-1",
+      "eventId": "evt-truly-1983",
+      "prompt": "What first did STS-8 achieve for the Shuttle program?",
+      "choices": [
+        "Its first night launch and landing",
+        "Its first spacewalk",
+        "Its first Moon landing",
+        "Its last flight"
+      ],
+      "correctIndex": 0,
+      "explanation": "STS-8 was the Shuttle program's first night launch and landing."
+    },
+    {
+      "id": "q-truly-1983-2",
+      "eventId": "evt-truly-1983",
+      "prompt": "Who was the first African American to fly in space, aboard STS-8?",
+      "choices": [
+        "Guion Bluford",
+        "John Young",
+        "Story Musgrave",
+        "Robert Crippen"
+      ],
+      "correctIndex": 0,
+      "explanation": "STS-8's crew included Guion Bluford, the first African American to fly in space."
+    },
+    {
+      "id": "q-truly-1983-3",
+      "eventId": "evt-truly-1983",
+      "prompt": "What was Richard Truly's role on STS-8?",
+      "choices": [
+        "Commander",
+        "Pilot of the Boeing 747",
+        "Mission Control director",
+        "Passenger"
+      ],
+      "correctIndex": 0,
+      "explanation": "Richard Truly commanded STS-8."
+    },
+    {
+      "id": "q-1986-challenger-1",
+      "eventId": "evt-1986-challenger",
+      "prompt": "How many crew members were lost in the Challenger accident?",
+      "choices": [
+        "Seven",
+        "Three",
+        "Two",
+        "Ten"
+      ],
+      "correctIndex": 0,
+      "explanation": "Challenger broke apart shortly after launch, killing all seven crew members."
+    },
+    {
+      "id": "q-1986-challenger-2",
+      "eventId": "evt-1986-challenger",
+      "prompt": "What happened to shuttle flights after the Challenger accident?",
+      "choices": [
+        "They stopped forever",
+        "They went to the Moon",
+        "Nothing changed",
+        "They paused while NASA made changes"
+      ],
+      "correctIndex": 3,
+      "explanation": "The accident led to a lengthy pause in shuttle flights and changes to the program's hardware, management, and safety practices."
+    },
+    {
+      "id": "q-1986-challenger-3",
+      "eventId": "evt-1986-challenger",
+      "prompt": "What was the mission name of Challenger's final flight?",
+      "choices": [
+        "STS-1",
+        "STS-51L",
+        "STS-135",
+        "STS-107"
+      ],
+      "correctIndex": 1,
+      "explanation": "On January 28, 1986, Challenger was lost shortly after liftoff on mission STS-51L."
+    },
+    {
+      "id": "q-1988-return-to-flight-1",
+      "eventId": "evt-1988-return-to-flight",
+      "prompt": "Which shuttle returned the program to flight in 1988?",
+      "choices": [
+        "Challenger",
+        "Discovery",
+        "Enterprise",
+        "Columbia"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Shuttle returned to flight on September 29, 1988, with the launch of Discovery on STS-26."
+    },
+    {
+      "id": "q-1988-return-to-flight-2",
+      "eventId": "evt-1988-return-to-flight",
+      "prompt": "What did engineers at Stennis do while NASA made the Shuttle safer?",
+      "choices": [
+        "Built a new launch pad",
+        "Trained astronauts to swim",
+        "Designed a Moon rover",
+        "Tested the main engines again and again"
+      ],
+      "correctIndex": 3,
+      "explanation": "Engineers at Stennis put the main engines through test after test while NASA made the Shuttle safer."
+    },
+    {
+      "id": "q-1988-return-to-flight-3",
+      "eventId": "evt-1988-return-to-flight",
+      "prompt": "What was the mission name of the Shuttle's 1988 return to flight?",
+      "choices": [
+        "STS-26",
+        "STS-1",
+        "STS-51L",
+        "STS-135"
+      ],
+      "correctIndex": 0,
+      "explanation": "Discovery launched on STS-26 on September 29, 1988."
+    },
+    {
+      "id": "q-1988-stennis-renamed-1",
+      "eventId": "evt-1988-stennis-renamed",
+      "prompt": "Which president renamed the center the John C. Stennis Space Center?",
+      "choices": [
+        "John F. Kennedy",
+        "Dwight D. Eisenhower",
+        "Richard Nixon",
+        "Ronald Reagan"
+      ],
+      "correctIndex": 3,
+      "explanation": "In May 1988, President Ronald Reagan honored the senator who had supported the site from the start."
+    },
+    {
+      "id": "q-1988-stennis-renamed-2",
+      "eventId": "evt-1988-stennis-renamed",
+      "prompt": "In what year did the center become the John C. Stennis Space Center?",
+      "choices": [
+        "1961",
+        "1974",
+        "1988",
+        "2012"
+      ],
+      "correctIndex": 2,
+      "explanation": "The center became the John C. Stennis Space Center in May 1988."
+    },
+    {
+      "id": "q-1988-stennis-renamed-3",
+      "eventId": "evt-1988-stennis-renamed",
+      "prompt": "Which Mississippi astronaut attended the 1988 dedication as a NASA leader?",
+      "choices": [
+        "Fred Haise",
+        "Richard Truly",
+        "Donald Peterson",
+        "John Glenn"
+      ],
+      "correctIndex": 1,
+      "explanation": "Mississippi astronaut Richard Truly, then NASA's associate administrator for space flight, attended the dedication."
+    },
+    {
+      "id": "q-1989-truly-administrator-1",
+      "eventId": "evt-1989-truly-administrator",
+      "prompt": "What job did Richard Truly take in 1989?",
+      "choices": [
+        "Governor of Mississippi",
+        "Shuttle pilot",
+        "Director of INFINITY",
+        "NASA Administrator, the head of NASA"
+      ],
+      "correctIndex": 3,
+      "explanation": "In 1989, Mississippi astronaut Richard Truly became the head of NASA."
+    },
+    {
+      "id": "q-1989-truly-administrator-2",
+      "eventId": "evt-1989-truly-administrator",
+      "prompt": "Richard Truly was the first person with what background to lead NASA?",
+      "choices": [
+        "A senator",
+        "A doctor",
+        "An astronaut",
+        "A teacher"
+      ],
+      "correctIndex": 2,
+      "explanation": "Truly was the first astronaut to lead the agency."
+    },
+    {
+      "id": "q-1989-truly-administrator-3",
+      "eventId": "evt-1989-truly-administrator",
+      "prompt": "Which telescope launched while Richard Truly led NASA?",
+      "choices": [
+        "The Webb Space Telescope",
+        "OAO-2",
+        "The Hubble Space Telescope",
+        "Explorer 1"
+      ],
+      "correctIndex": 2,
+      "explanation": "Truly led NASA during the launch of the Hubble Space Telescope."
+    },
+    {
+      "id": "q-1990-hubble-1",
+      "eventId": "evt-1990-hubble",
+      "prompt": "Which shuttle deployed the Hubble Space Telescope?",
+      "choices": [
+        "Atlantis",
+        "Columbia",
+        "Discovery",
+        "Challenger"
+      ],
+      "correctIndex": 2,
+      "explanation": "Space Shuttle Discovery launched on STS-31 and released Hubble into orbit on April 25, 1990."
+    },
+    {
+      "id": "q-1990-hubble-2",
+      "eventId": "evt-1990-hubble",
+      "prompt": "In what year was the Hubble Space Telescope released into orbit?",
+      "choices": [
+        "1968",
+        "1981",
+        "1990",
+        "2010"
+      ],
+      "correctIndex": 2,
+      "explanation": "Discovery released the Hubble Space Telescope into orbit on April 25, 1990."
+    },
+    {
+      "id": "q-1990-hubble-3",
+      "eventId": "evt-1990-hubble",
+      "prompt": "What has Hubble helped scientists study?",
+      "choices": [
+        "Stars, galaxies, and planets",
+        "Ocean currents",
+        "Earthquakes",
+        "Rocket engines"
+      ],
+      "correctIndex": 0,
+      "explanation": "Hubble has helped scientists study stars, galaxies, planets, and the evolution of the universe."
+    },
+    {
+      "id": "q-stennis-1995-1",
+      "eventId": "evt-stennis-1995",
+      "prompt": "Where did John C. Stennis go after retiring from the Senate?",
+      "choices": [
+        "Washington, D.C.",
+        "The University of Virginia",
+        "Mississippi State University",
+        "Stennis Space Center"
+      ],
+      "correctIndex": 2,
+      "explanation": "Stennis retired from the Senate in 1989 and returned to Mississippi State University."
+    },
+    {
+      "id": "q-stennis-1995-2",
+      "eventId": "evt-stennis-1995",
+      "prompt": "In what year did John C. Stennis retire from the Senate?",
+      "choices": [
+        "1947",
+        "1961",
+        "1989",
+        "1995"
+      ],
+      "correctIndex": 2,
+      "explanation": "Stennis retired from the Senate in 1989."
+    },
+    {
+      "id": "q-stennis-1995-3",
+      "eventId": "evt-stennis-1995",
+      "prompt": "How old was John C. Stennis when he died in 1995?",
+      "choices": [
+        "61",
+        "75",
+        "93",
+        "101"
+      ],
+      "correctIndex": 2,
+      "explanation": "Stennis died on April 23, 1995, at age 93."
+    },
+    {
+      "id": "q-1995-sts71-mir-1",
+      "eventId": "evt-1995-sts71-mir",
+      "prompt": "Which shuttle docked with Russia's Mir space station in 1995?",
+      "choices": [
+        "Discovery",
+        "Columbia",
+        "Enterprise",
+        "Atlantis"
+      ],
+      "correctIndex": 3,
+      "explanation": "During STS-71, Space Shuttle Atlantis docked with Mir on June 29, 1995."
+    },
+    {
+      "id": "q-1995-sts71-mir-2",
+      "eventId": "evt-1995-sts71-mir",
+      "prompt": "Which country's space station was Mir?",
+      "choices": [
+        "Japan's",
+        "Canada's",
+        "France's",
+        "Russia's"
+      ],
+      "correctIndex": 3,
+      "explanation": "Atlantis docked with Russia's Mir space station."
+    },
+    {
+      "id": "q-1995-sts71-mir-3",
+      "eventId": "evt-1995-sts71-mir",
+      "prompt": "The Shuttle-Mir mission helped build experience for what later project?",
+      "choices": [
+        "The Apollo program",
+        "The International Space Station",
+        "The Saturn V",
+        "The Mercury program"
+      ],
+      "correctIndex": 1,
+      "explanation": "The joint mission helped build experience for later international operations aboard the International Space Station."
+    },
+    {
+      "id": "q-stennisphere-1",
+      "eventId": "evt-stennisphere",
+      "prompt": "What was Stennis Space Center's visitor center called before INFINITY?",
+      "choices": [
+        "Rocket World",
+        "Space Camp",
+        "StenniSphere",
+        "Moon Base Mississippi"
+      ],
+      "correctIndex": 2,
+      "explanation": "Before INFINITY, Stennis Space Center's visitor center was StenniSphere."
+    },
+    {
+      "id": "q-stennisphere-2",
+      "eventId": "evt-stennisphere",
+      "prompt": "What was Science on a Sphere at StenniSphere?",
+      "choices": [
+        "A rocket engine",
+        "A Moon rock",
+        "A giant globe showing Earth's clouds moving",
+        "A planetarium dome"
+      ],
+      "correctIndex": 2,
+      "explanation": "Students could watch Earth's clouds move across Science on a Sphere, a giant globe."
+    },
+    {
+      "id": "q-stennisphere-3",
+      "eventId": "evt-stennisphere",
+      "prompt": "In what year did INFINITY Science Center become the official visitor center for Stennis?",
+      "choices": [
+        "1988",
+        "2001",
+        "2012",
+        "2021"
+      ],
+      "correctIndex": 2,
+      "explanation": "In 2012 INFINITY Science Center became the official visitor center for Stennis."
+    },
+    {
+      "id": "q-8",
+      "eventId": "evt-1998-zarya",
+      "prompt": "What was Zarya's significance to the International Space Station?",
+      "choices": [
+        "The first Space Shuttle",
+        "The Apollo 11 lunar module",
+        "A lunar rover",
+        "The first ISS module to reach orbit"
+      ],
+      "correctIndex": 3,
+      "explanation": "Zarya launched on November 20, 1998, and became the first module of the International Space Station."
+    },
+    {
+      "id": "q-1998-zarya-1",
+      "eventId": "evt-1998-zarya",
+      "prompt": "What was the name of the first International Space Station module?",
+      "choices": [
+        "Zarya",
+        "Destiny",
+        "Kibo",
+        "Columbus"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Zarya control module reached orbit on November 20, 1998, and began the assembly of the ISS."
+    },
+    {
+      "id": "q-1998-zarya-2",
+      "eventId": "evt-1998-zarya",
+      "prompt": "In what year did the first ISS module launch?",
+      "choices": [
+        "1981",
+        "1998",
+        "2000",
+        "2010"
+      ],
+      "correctIndex": 1,
+      "explanation": "Zarya launched on November 20, 1998."
+    },
+    {
+      "id": "q-1998-zarya-3",
+      "eventId": "evt-1998-zarya",
+      "prompt": "What did Zarya provide for the growing space station?",
+      "choices": [
+        "A window for viewing Earth",
+        "A robotic arm",
+        "Early power, propulsion, and control",
+        "Living space for six astronauts"
+      ],
+      "correctIndex": 2,
+      "explanation": "Zarya provided early power, propulsion, and control functions for the growing station."
+    },
+    {
+      "id": "q-9",
+      "eventId": "evt-2000-expedition1",
+      "prompt": "What did the arrival of Expedition 1 mark?",
+      "choices": [
+        "The first Space Shuttle flight",
+        "The start of continuous human residence aboard the ISS",
+        "The launch of the first ISS module",
+        "The first crewed lunar landing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Expedition 1 arrived at the ISS on November 2, 2000, beginning continuous human presence aboard the station."
+    },
+    {
+      "id": "q-2000-expedition1-1",
+      "eventId": "evt-2000-expedition1",
+      "prompt": "Who was the NASA astronaut on Expedition 1?",
+      "choices": [
+        "Alan Shepard",
+        "William Shepherd",
+        "Fred Haise",
+        "John Young"
+      ],
+      "correctIndex": 1,
+      "explanation": "NASA astronaut William Shepherd and cosmonauts Yuri Gidzenko and Sergei Krikalev made up Expedition 1."
+    },
+    {
+      "id": "q-2000-expedition1-2",
+      "eventId": "evt-2000-expedition1",
+      "prompt": "Since November 2000, how often have people lived aboard the ISS?",
+      "choices": [
+        "Only in summer",
+        "Once every ten years",
+        "Only on weekends",
+        "Continuously, without a break"
+      ],
+      "correctIndex": 3,
+      "explanation": "Crews have lived and worked on the station continuously since November 2, 2000."
+    },
+    {
+      "id": "q-2000-expedition1-3",
+      "eventId": "evt-2000-expedition1",
+      "prompt": "How many people were in the Expedition 1 crew?",
+      "choices": [
+        "One",
+        "Three",
+        "Seven",
+        "Ten"
+      ],
+      "correctIndex": 1,
+      "explanation": "Expedition 1 was William Shepherd, Yuri Gidzenko and Sergei Krikalev."
+    },
+    {
+      "id": "q-iss-ongoing-research-1",
+      "eventId": "evt-iss-ongoing-research",
+      "prompt": "What do astronauts on the ISS do experiments in?",
+      "choices": [
+        "Microgravity",
+        "Deep ocean water",
+        "Desert heat",
+        "Total darkness"
+      ],
+      "correctIndex": 0,
+      "explanation": "The ISS is a platform for international research in microgravity, Earth observation, technology, and human health."
+    },
+    {
+      "id": "q-iss-ongoing-research-2",
+      "eventId": "evt-iss-ongoing-research",
+      "prompt": "Why are some experiments done on the ISS instead of on Earth?",
+      "choices": [
+        "They are difficult or impossible to do on Earth",
+        "The ISS has more electricity",
+        "It is cheaper",
+        "Labs on Earth are closed"
+      ],
+      "correctIndex": 0,
+      "explanation": "Astronauts use the station to conduct experiments that are difficult or impossible to perform on Earth."
+    },
+    {
+      "id": "q-iss-ongoing-research-3",
+      "eventId": "evt-iss-ongoing-research",
+      "prompt": "Which of these is a research area on the ISS?",
+      "choices": [
+        "Deep-sea fishing",
+        "Volcano drilling",
+        "Farming cattle",
+        "Human health"
+      ],
+      "correctIndex": 3,
+      "explanation": "ISS research includes microgravity, Earth observation, technology, and human health."
     },
     {
       "id": "q-21",
@@ -2871,6 +5302,240 @@
       "explanation": "Canadarm2 is a robotic arm that helps crews assemble, maintain, and operate the International Space Station."
     },
     {
+      "id": "q-2001-iss-lab-arm-1",
+      "eventId": "evt-2001-iss-lab-arm",
+      "prompt": "What is Destiny on the International Space Station?",
+      "choices": [
+        "A robotic arm",
+        "The U.S. laboratory module",
+        "An observation window",
+        "A Russian spacecraft"
+      ],
+      "correctIndex": 1,
+      "explanation": "Destiny, the U.S. laboratory module, was installed in February 2001."
+    },
+    {
+      "id": "q-2001-iss-lab-arm-2",
+      "eventId": "evt-2001-iss-lab-arm",
+      "prompt": "During which Space Shuttle mission was Canadarm2 installed?",
+      "choices": [
+        "STS-1",
+        "STS-71",
+        "STS-135",
+        "STS-100"
+      ],
+      "correctIndex": 3,
+      "explanation": "Canadarm2 was installed during the STS-100 mission in April 2001."
+    },
+    {
+      "id": "q-2001-iss-lab-arm-3",
+      "eventId": "evt-2001-iss-lab-arm",
+      "prompt": "In what year did the ISS gain Destiny and Canadarm2?",
+      "choices": [
+        "1998",
+        "2001",
+        "2008",
+        "2010"
+      ],
+      "correctIndex": 1,
+      "explanation": "Destiny was installed in February 2001 and Canadarm2 in April 2001."
+    },
+    {
+      "id": "q-2003-columbia-1",
+      "eventId": "evt-2003-columbia",
+      "prompt": "When was the Space Shuttle Columbia lost?",
+      "choices": [
+        "During launch",
+        "During its return to Earth",
+        "On the Moon",
+        "While docked to Mir"
+      ],
+      "correctIndex": 1,
+      "explanation": "Columbia broke apart during reentry after a scientific research mission."
+    },
+    {
+      "id": "q-2003-columbia-2",
+      "eventId": "evt-2003-columbia",
+      "prompt": "What was the mission name of Columbia's final flight?",
+      "choices": [
+        "STS-1",
+        "STS-107",
+        "STS-51L",
+        "STS-135"
+      ],
+      "correctIndex": 1,
+      "explanation": "On February 1, 2003, Columbia was lost during its return to Earth after STS-107."
+    },
+    {
+      "id": "q-2003-columbia-3",
+      "eventId": "evt-2003-columbia",
+      "prompt": "How many crew members were lost aboard Columbia in 2003?",
+      "choices": [
+        "Three",
+        "Seven",
+        "Four",
+        "Twelve"
+      ],
+      "correctIndex": 1,
+      "explanation": "Columbia broke apart during reentry, killing all seven crew members."
+    },
+    {
+      "id": "q-2005-katrina-1",
+      "eventId": "evt-2005-katrina",
+      "prompt": "Which hurricane struck the Mississippi Gulf Coast on August 29, 2005?",
+      "choices": [
+        "Hurricane Camille",
+        "Hurricane Ida",
+        "Hurricane Andrew",
+        "Hurricane Katrina"
+      ],
+      "correctIndex": 3,
+      "explanation": "On August 29, 2005, Hurricane Katrina devastated Hancock County, including Waveland."
+    },
+    {
+      "id": "q-2005-katrina-2",
+      "eventId": "evt-2005-katrina",
+      "prompt": "Which town, where INFINITY stands today, was devastated by Hurricane Katrina?",
+      "choices": [
+        "Waveland",
+        "Fayette",
+        "Winona",
+        "Huntsville"
+      ],
+      "correctIndex": 0,
+      "explanation": "Katrina devastated Hancock County, including Waveland, where INFINITY stands today."
+    },
+    {
+      "id": "q-2005-katrina-3",
+      "eventId": "evt-2005-katrina",
+      "prompt": "How did Stennis Space Center help after Hurricane Katrina?",
+      "choices": [
+        "It closed forever",
+        "It became a shelter and a base for the recovery",
+        "It moved to Texas",
+        "It launched a rocket"
+      ],
+      "correctIndex": 1,
+      "explanation": "Stennis became a shelter for employees, their families and relief workers, and a base for the recovery."
+    },
+    {
+      "id": "q-2008-international-labs-1",
+      "eventId": "evt-2008-international-labs",
+      "prompt": "Which country or group built the Kibo laboratory?",
+      "choices": [
+        "Japan",
+        "Europe",
+        "Russia",
+        "Canada"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Japanese Kibo laboratory was added to the station in 2008."
+    },
+    {
+      "id": "q-2008-international-labs-2",
+      "eventId": "evt-2008-international-labs",
+      "prompt": "What was the name of the European laboratory added to the ISS in 2008?",
+      "choices": [
+        "Destiny",
+        "Zarya",
+        "Columbus",
+        "Tranquility"
+      ],
+      "correctIndex": 2,
+      "explanation": "The European Columbus laboratory was attached to the station in February 2008."
+    },
+    {
+      "id": "q-2008-international-labs-3",
+      "eventId": "evt-2008-international-labs",
+      "prompt": "What did the Columbus and Kibo laboratories add to the ISS?",
+      "choices": [
+        "More research space",
+        "A robotic arm",
+        "Rocket engines",
+        "A landing runway"
+      ],
+      "correctIndex": 0,
+      "explanation": "These laboratories provided additional research space and represented the contributions of international partners."
+    },
+    {
+      "id": "q-2009-last-ssme-test-1",
+      "eventId": "evt-2009-last-ssme-test",
+      "prompt": "When did Stennis fire a Space Shuttle Main Engine for the last time?",
+      "choices": [
+        "July 29, 2009",
+        "May 19, 1975",
+        "July 8, 2011",
+        "March 18, 2021"
+      ],
+      "correctIndex": 0,
+      "explanation": "On July 29, 2009, Stennis fired a Space Shuttle Main Engine for the last time."
+    },
+    {
+      "id": "q-2009-last-ssme-test-2",
+      "eventId": "evt-2009-last-ssme-test",
+      "prompt": "For how many years did Mississippi test every Space Shuttle main engine that flew?",
+      "choices": [
+        "5 years",
+        "10 years",
+        "34 years",
+        "60 years"
+      ],
+      "correctIndex": 2,
+      "explanation": "For 34 years, every main engine that flew on the Space Shuttle was tested in Mississippi."
+    },
+    {
+      "id": "q-2009-last-ssme-test-3",
+      "eventId": "evt-2009-last-ssme-test",
+      "prompt": "When Stennis ran its last Space Shuttle Main Engine test, what was the Shuttle program nearing?",
+      "choices": [
+        "Its end",
+        "Its first flight",
+        "Its first Moon landing",
+        "Its 100th year"
+      ],
+      "correctIndex": 0,
+      "explanation": "The final test closed out Mississippi's Shuttle engine work as the Shuttle program neared its end."
+    },
+    {
+      "id": "q-haise-2009-1",
+      "eventId": "evt-haise-2009",
+      "prompt": "What did Fred Haise give to Gorenflo Elementary School in Biloxi?",
+      "choices": [
+        "A Moon rock",
+        "A space suit",
+        "A rocket engine",
+        "A telescope"
+      ],
+      "correctIndex": 0,
+      "explanation": "Haise gave the Moon rock from his NASA award to the school to display."
+    },
+    {
+      "id": "q-haise-2009-2",
+      "eventId": "evt-haise-2009",
+      "prompt": "What award did NASA give Fred Haise in 2009?",
+      "choices": [
+        "The Ambassador of Exploration Award",
+        "The Nobel Prize",
+        "An Olympic medal",
+        "The Medal of Freedom"
+      ],
+      "correctIndex": 0,
+      "explanation": "NASA honored Haise with its Ambassador of Exploration Award on December 2, 2009."
+    },
+    {
+      "id": "q-haise-2009-3",
+      "eventId": "evt-haise-2009",
+      "prompt": "In which city is Gorenflo Elementary School?",
+      "choices": [
+        "Waveland",
+        "Biloxi",
+        "Fayette",
+        "Winona"
+      ],
+      "correctIndex": 1,
+      "explanation": "NASA honored Haise at Gorenflo Elementary School in Biloxi."
+    },
+    {
       "id": "q-22",
       "eventId": "evt-2010-cupola",
       "prompt": "What is the main purpose of the ISS Cupola?",
@@ -2882,6 +5547,292 @@
       ],
       "correctIndex": 3,
       "explanation": "The Cupola's seven windows provide views of Earth and space and help astronauts observe operations outside the station."
+    },
+    {
+      "id": "q-2010-cupola-1",
+      "eventId": "evt-2010-cupola",
+      "prompt": "How many windows does the ISS Cupola have?",
+      "choices": [
+        "One",
+        "Three",
+        "Seven",
+        "Twenty"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Cupola's seven windows provide views of Earth and space."
+    },
+    {
+      "id": "q-2010-cupola-2",
+      "eventId": "evt-2010-cupola",
+      "prompt": "The Cupola was delivered with which ISS module?",
+      "choices": [
+        "Zarya",
+        "Destiny",
+        "Kibo",
+        "Tranquility"
+      ],
+      "correctIndex": 3,
+      "explanation": "Delivered with the Tranquility module, the Cupola was installed on the ISS in February 2010."
+    },
+    {
+      "id": "q-2010-cupola-3",
+      "eventId": "evt-2010-cupola",
+      "prompt": "In what year was the Cupola installed on the ISS?",
+      "choices": [
+        "1998",
+        "2001",
+        "2010",
+        "2021"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Cupola was installed on the ISS in February 2010."
+    },
+    {
+      "id": "q-haise-2011-1",
+      "eventId": "evt-haise-2011",
+      "prompt": "Where do Moon trees come from?",
+      "choices": [
+        "Trees planted on the Moon",
+        "Seeds from Mars",
+        "Seeds carried around the Moon in 1971",
+        "Trees grown in space stations"
+      ],
+      "correctIndex": 2,
+      "explanation": "Moon trees descend from seeds Stuart Roosa carried around the Moon in 1971."
+    },
+    {
+      "id": "q-haise-2011-2",
+      "eventId": "evt-haise-2011",
+      "prompt": "Which astronaut carried the seeds that grew into Moon trees?",
+      "choices": [
+        "Fred Haise",
+        "Neil Armstrong",
+        "John Glenn",
+        "Stuart Roosa"
+      ],
+      "correctIndex": 3,
+      "explanation": "Moon trees descend from seeds Stuart Roosa carried around the Moon in 1971."
+    },
+    {
+      "id": "q-haise-2011-3",
+      "eventId": "evt-haise-2011",
+      "prompt": "Stuart Roosa flew on which Apollo mission?",
+      "choices": [
+        "Apollo 8",
+        "Apollo 11",
+        "Apollo 14",
+        "Apollo 17"
+      ],
+      "correctIndex": 2,
+      "explanation": "Rosemary Roosa is the daughter of Apollo 14 astronaut Stuart Roosa."
+    },
+    {
+      "id": "q-2011-sts135-1",
+      "eventId": "evt-2011-sts135",
+      "prompt": "Which shuttle flew the final Space Shuttle mission?",
+      "choices": [
+        "Discovery",
+        "Columbia",
+        "Enterprise",
+        "Atlantis"
+      ],
+      "correctIndex": 3,
+      "explanation": "Space Shuttle Atlantis launched the final Space Shuttle mission on July 8, 2011."
+    },
+    {
+      "id": "q-2011-sts135-2",
+      "eventId": "evt-2011-sts135",
+      "prompt": "What was the mission name of the final Space Shuttle flight?",
+      "choices": [
+        "STS-1",
+        "STS-107",
+        "STS-135",
+        "STS-26"
+      ],
+      "correctIndex": 2,
+      "explanation": "STS-135 closed out 30 years of Space Shuttle flights."
+    },
+    {
+      "id": "q-2011-sts135-3",
+      "eventId": "evt-2011-sts135",
+      "prompt": "How many years did NASA's Space Shuttle Program last?",
+      "choices": [
+        "5 years",
+        "10 years",
+        "30 years",
+        "50 years"
+      ],
+      "correctIndex": 2,
+      "explanation": "After STS-135 returned to Earth, NASA's 30-year Space Shuttle Program came to an end."
+    },
+    {
+      "id": "q-2011-sts135-4",
+      "eventId": "evt-2011-sts135",
+      "prompt": "Where did the final Space Shuttle mission carry supplies?",
+      "choices": [
+        "The Moon",
+        "Mir",
+        "The International Space Station",
+        "Hubble"
+      ],
+      "correctIndex": 2,
+      "explanation": "Atlantis carried supplies and equipment to the International Space Station on STS-135."
+    },
+    {
+      "id": "q-20",
+      "eventId": "evt-2012-infinity-opens",
+      "prompt": "What is INFINITY Science Center's connection to Mississippi's space program?",
+      "choices": [
+        "It is a spacecraft that orbits Earth",
+        "It is NASA's astronaut training capsule",
+        "It serves as a visitor center sharing the story of Stennis Space Center and Mississippi's role in space exploration",
+        "It is the launch site for every Space Shuttle"
+      ],
+      "correctIndex": 2,
+      "explanation": "INFINITY Science Center, located in Hancock County, Mississippi, shares the story of Stennis Space Center and the state's contributions to space exploration."
+    },
+    {
+      "id": "q-2012-infinity-opens-1",
+      "eventId": "evt-2012-infinity-opens",
+      "prompt": "In what year did INFINITY Science Center open its doors?",
+      "choices": [
+        "1961",
+        "1988",
+        "2001",
+        "2012"
+      ],
+      "correctIndex": 3,
+      "explanation": "INFINITY was founded in 2001 and opened in April 2012."
+    },
+    {
+      "id": "q-2012-infinity-opens-2",
+      "eventId": "evt-2012-infinity-opens",
+      "prompt": "What is INFINITY Science Center's mission?",
+      "choices": [
+        "Build, Launch, and Land",
+        "Test, Fire, and Fly",
+        "Read, Write, and Count",
+        "Inspire, Amaze, and Engage"
+      ],
+      "correctIndex": 3,
+      "explanation": "INFINITY's mission is to Inspire, Amaze, and Engage."
+    },
+    {
+      "id": "q-2012-infinity-opens-3",
+      "eventId": "evt-2012-infinity-opens",
+      "prompt": "In what year was INFINITY Science Center founded?",
+      "choices": [
+        "1974",
+        "1998",
+        "2001",
+        "2012"
+      ],
+      "correctIndex": 2,
+      "explanation": "INFINITY was founded in 2001 and opened in 2012."
+    },
+    {
+      "id": "q-2012-infinity-opens-4",
+      "eventId": "evt-2012-infinity-opens",
+      "prompt": "Besides space, what does INFINITY share the wonders of?",
+      "choices": [
+        "Sports and music",
+        "Cooking and farming",
+        "Cars and trains",
+        "Science and ocean exploration"
+      ],
+      "correctIndex": 3,
+      "explanation": "INFINITY was founded to share the wonders of science, space and ocean exploration with visitors of all ages."
+    },
+    {
+      "id": "q-2015-rs25-sls-1",
+      "eventId": "evt-2015-rs25-sls",
+      "prompt": "What is the RS-25 engine?",
+      "choices": [
+        "A Saturn V F-1 engine",
+        "A jet airplane engine",
+        "An upgraded Space Shuttle Main Engine",
+        "A car engine"
+      ],
+      "correctIndex": 2,
+      "explanation": "The RS-25 is an upgraded Space Shuttle Main Engine."
+    },
+    {
+      "id": "q-2015-rs25-sls-2",
+      "eventId": "evt-2015-rs25-sls",
+      "prompt": "How many RS-25 engines power the Space Launch System's core stage?",
+      "choices": [
+        "One",
+        "Four",
+        "Three",
+        "Five"
+      ],
+      "correctIndex": 1,
+      "explanation": "Four RS-25 engines power the core stage of the Space Launch System."
+    },
+    {
+      "id": "q-2015-rs25-sls-3",
+      "eventId": "evt-2015-rs25-sls",
+      "prompt": "In what year did Stennis begin testing RS-25 engines for the Space Launch System?",
+      "choices": [
+        "1975",
+        "2009",
+        "2015",
+        "2022"
+      ],
+      "correctIndex": 2,
+      "explanation": "In January 2015, Stennis began test-firing RS-25 engines for NASA's Space Launch System."
+    },
+    {
+      "id": "q-2015-rs25-sls-4",
+      "eventId": "evt-2015-rs25-sls",
+      "prompt": "Which program's astronauts does the Space Launch System carry toward the Moon?",
+      "choices": [
+        "Apollo",
+        "Artemis",
+        "Mercury",
+        "Gemini"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Space Launch System is the rocket that carries Artemis astronauts toward the Moon."
+    },
+    {
+      "id": "q-peterson-2018-1",
+      "eventId": "evt-peterson-2018",
+      "prompt": "Which Mississippi town was astronaut Donald Peterson from?",
+      "choices": [
+        "Biloxi",
+        "Fayette",
+        "Waveland",
+        "Winona"
+      ],
+      "correctIndex": 3,
+      "explanation": "Mississippi remembers the Winona native who made the Shuttle program's first spacewalk."
+    },
+    {
+      "id": "q-peterson-2018-2",
+      "eventId": "evt-peterson-2018",
+      "prompt": "In what year did Donald Peterson leave NASA?",
+      "choices": [
+        "1969",
+        "1984",
+        "1990",
+        "2018"
+      ],
+      "correctIndex": 1,
+      "explanation": "Peterson left NASA in 1984."
+    },
+    {
+      "id": "q-peterson-2018-3",
+      "eventId": "evt-peterson-2018",
+      "prompt": "What first is Donald Peterson remembered for?",
+      "choices": [
+        "The first Moon landing",
+        "The Shuttle program's first spacewalk",
+        "The first night launch",
+        "Leading NASA"
+      ],
+      "correctIndex": 1,
+      "explanation": "Mississippi remembers Peterson as the Winona native who made the Shuttle program's first spacewalk."
     },
     {
       "id": "q-23",
@@ -2897,19 +5848,6 @@
       "explanation": "On March 18, 2021, all four engines fired for more than eight minutes during the Green Run test at Stennis."
     },
     {
-      "id": "q-24",
-      "eventId": "evt-haise-2021",
-      "prompt": "Which Stennis test stand was renamed in honor of astronaut Fred Haise in 2021?",
-      "choices": [
-        "B-2 Test Stand",
-        "A-1 Test Stand",
-        "The ISS Cupola",
-        "The Saturn V launch tower"
-      ],
-      "correctIndex": 1,
-      "explanation": "NASA renamed Stennis's A-1 Test Stand the Fred Haise Test Stand on December 7, 2021."
-    },
-    {
       "id": "q-25",
       "eventId": "evt-2021-green-run",
       "prompt": "What is the relationship between the SLS rocket's RS-25 engines and the Space Shuttle program?",
@@ -2923,6 +5861,240 @@
       "explanation": "The SLS rocket uses upgraded RS-25 engines derived from the Space Shuttle Main Engines, which were also tested at Stennis."
     },
     {
+      "id": "q-2021-green-run-1",
+      "eventId": "evt-2021-green-run",
+      "prompt": "On which test stand did the Green Run test take place?",
+      "choices": [
+        "The B-2 test stand",
+        "The A-1 test stand",
+        "The A-2 test stand",
+        "A launch pad in Florida"
+      ],
+      "correctIndex": 0,
+      "explanation": "On March 18, 2021, all four engines fired for more than eight minutes on the B-2 test stand."
+    },
+    {
+      "id": "q-2021-green-run-2",
+      "eventId": "evt-2021-green-run",
+      "prompt": "What did the Green Run test prove?",
+      "choices": [
+        "The Saturn V could fly again",
+        "The Space Shuttle could land",
+        "The ISS was finished",
+        "The SLS core stage was ready to fly"
+      ],
+      "correctIndex": 3,
+      "explanation": "The Green Run test proved the core stage of the Space Launch System rocket was ready to fly."
+    },
+    {
+      "id": "q-2021-green-run-3",
+      "eventId": "evt-2021-green-run",
+      "prompt": "About how long before the Green Run were Saturn V stages tested on the same stand?",
+      "choices": [
+        "About 5 years",
+        "More than 50 years",
+        "About 20 years",
+        "More than 100 years"
+      ],
+      "correctIndex": 1,
+      "explanation": "More than 50 years after Saturn V stages were tested on the same stand, Mississippi helped send the next rocket toward the Moon."
+    },
+    {
+      "id": "q-24",
+      "eventId": "evt-haise-2021",
+      "prompt": "Which Stennis test stand was renamed in honor of astronaut Fred Haise in 2021?",
+      "choices": [
+        "B-2 Test Stand",
+        "A-1 Test Stand",
+        "The ISS Cupola",
+        "The Saturn V launch tower"
+      ],
+      "correctIndex": 1,
+      "explanation": "NASA renamed Stennis's A-1 Test Stand the Fred Haise Test Stand on December 7, 2021."
+    },
+    {
+      "id": "q-haise-2021-1",
+      "eventId": "evt-haise-2021",
+      "prompt": "When did NASA rename a Stennis test stand for Fred Haise?",
+      "choices": [
+        "April 13, 1970",
+        "May 19, 1975",
+        "April 1, 2026",
+        "December 7, 2021"
+      ],
+      "correctIndex": 3,
+      "explanation": "On December 7, 2021, NASA renamed Stennis's A-1 Test Stand the Fred Haise Test Stand."
+    },
+    {
+      "id": "q-haise-2021-2",
+      "eventId": "evt-haise-2021",
+      "prompt": "During Apollo, what did the A-1 test stand test?",
+      "choices": [
+        "Space Shuttle tiles",
+        "Saturn V second stages",
+        "Moon rovers",
+        "Space suits"
+      ],
+      "correctIndex": 1,
+      "explanation": "During Apollo, that stand tested Saturn V second stages, whose J-2 engines helped send Haise toward the Moon."
+    },
+    {
+      "id": "q-haise-2021-3",
+      "eventId": "evt-haise-2021",
+      "prompt": "What engines powered the Saturn V second stages tested on the A-1 stand?",
+      "choices": [
+        "RS-25 engines",
+        "J-2 engines",
+        "F-1 engines",
+        "V-2 engines"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Saturn V second stages had J-2 engines, which helped send Haise toward the Moon."
+    },
+    {
+      "id": "q-10",
+      "eventId": "evt-2022-artemis1",
+      "prompt": "What was the main purpose of Artemis I?",
+      "choices": [
+        "Carry astronauts to the Moon's surface",
+        "Build the International Space Station",
+        "Test the SLS rocket and Orion spacecraft on an uncrewed lunar flight",
+        "Deploy the Hubble Space Telescope"
+      ],
+      "correctIndex": 2,
+      "explanation": "Artemis I tested the Space Launch System rocket, Orion spacecraft, and supporting systems on an uncrewed mission around the Moon."
+    },
+    {
+      "id": "q-2022-artemis1-1",
+      "eventId": "evt-2022-artemis1",
+      "prompt": "Who was aboard Artemis I?",
+      "choices": [
+        "Four astronauts",
+        "No one; it was uncrewed",
+        "Fred Haise",
+        "Two cosmonauts"
+      ],
+      "correctIndex": 1,
+      "explanation": "The uncrewed Artemis I flight around the Moon paved the way for astronauts to follow."
+    },
+    {
+      "id": "q-2022-artemis1-2",
+      "eventId": "evt-2022-artemis1",
+      "prompt": "In what year did Artemis I launch?",
+      "choices": [
+        "2015",
+        "2021",
+        "2022",
+        "2026"
+      ],
+      "correctIndex": 2,
+      "explanation": "Artemis I launched on November 16, 2022."
+    },
+    {
+      "id": "q-2022-artemis1-3",
+      "eventId": "evt-2022-artemis1",
+      "prompt": "Where was Artemis I's core stage test-fired?",
+      "choices": [
+        "On the Moon",
+        "Kennedy Space Center in Florida",
+        "The ISS",
+        "Stennis Space Center in Mississippi"
+      ],
+      "correctIndex": 3,
+      "explanation": "Artemis I's core stage was test-fired at Stennis Space Center during the 2021 Green Run."
+    },
+    {
+      "id": "q-truly-2024-1",
+      "eventId": "evt-truly-2024",
+      "prompt": "Which Mississippi town was Richard Truly from?",
+      "choices": [
+        "Biloxi",
+        "Fayette",
+        "Winona",
+        "Waveland"
+      ],
+      "correctIndex": 1,
+      "explanation": "Mississippi remembers the Fayette native who flew the shuttle and led NASA."
+    },
+    {
+      "id": "q-truly-2024-2",
+      "eventId": "evt-truly-2024",
+      "prompt": "Richard Truly flew the shuttle and also led what?",
+      "choices": [
+        "The U.S. Senate",
+        "NASA",
+        "INFINITY Science Center",
+        "The U.S. Navy"
+      ],
+      "correctIndex": 1,
+      "explanation": "Mississippi remembers Truly as the Fayette native who flew the shuttle and led NASA."
+    },
+    {
+      "id": "q-truly-2024-3",
+      "eventId": "evt-truly-2024",
+      "prompt": "In what year did Richard Truly die?",
+      "choices": [
+        "1995",
+        "2009",
+        "2018",
+        "2024"
+      ],
+      "correctIndex": 3,
+      "explanation": "Truly died on February 27, 2024."
+    },
+    {
+      "id": "q-11",
+      "eventId": "evt-2026-artemis2",
+      "prompt": "What did Artemis II accomplish in 2026?",
+      "choices": [
+        "The first ISS module launch",
+        "The first crewed Artemis mission around the Moon",
+        "The final Space Shuttle flight",
+        "The first American satellite launch"
+      ],
+      "correctIndex": 1,
+      "explanation": "Artemis II carried four astronauts around the Moon and returned them safely to Earth in April 2026."
+    },
+    {
+      "id": "q-2026-artemis2-1",
+      "eventId": "evt-2026-artemis2",
+      "prompt": "How many astronauts flew on Artemis II?",
+      "choices": [
+        "One",
+        "Three",
+        "Four",
+        "Seven"
+      ],
+      "correctIndex": 2,
+      "explanation": "Artemis II carried four astronauts on the first crewed Artemis lunar flyby."
+    },
+    {
+      "id": "q-2026-artemis2-2",
+      "eventId": "evt-2026-artemis2",
+      "prompt": "Where were Artemis II's four RS-25 engines tested?",
+      "choices": [
+        "On the Moon",
+        "In Germany",
+        "Stennis Space Center in Mississippi",
+        "On the ISS"
+      ],
+      "correctIndex": 2,
+      "explanation": "Artemis II's four RS-25 engines were tested at Stennis Space Center in Mississippi."
+    },
+    {
+      "id": "q-2026-artemis2-3",
+      "eventId": "evt-2026-artemis2",
+      "prompt": "How did Artemis II end its mission?",
+      "choices": [
+        "It landed on a runway",
+        "It stayed on the Moon",
+        "It splashed down",
+        "It docked with the ISS"
+      ],
+      "correctIndex": 2,
+      "explanation": "Artemis II launched on April 1, 2026, and splashed down on April 10."
+    },
+    {
       "id": "q-26",
       "eventId": "evt-future-placeholder",
       "prompt": "Will NASA continue planning missions to return astronauts to the Moon through the Artemis program?",
@@ -2934,6 +6106,32 @@
       ],
       "correctIndex": 1,
       "explanation": "NASA's Artemis program includes plans for future lunar missions. These plans and their schedules may change as the program develops."
+    },
+    {
+      "id": "q-future-placeholder-1",
+      "eventId": "evt-future-placeholder",
+      "prompt": "Which Artemis mission does NASA plan to return astronauts to the Moon's surface?",
+      "choices": [
+        "Artemis I",
+        "Artemis II",
+        "Artemis IV",
+        "Apollo 18"
+      ],
+      "correctIndex": 2,
+      "explanation": "As of October 2026, NASA says Artemis IV is targeted for 2028 and intended to return astronauts to the lunar surface."
+    },
+    {
+      "id": "q-future-placeholder-2",
+      "eventId": "evt-future-placeholder",
+      "prompt": "As of October 2026, what is Artemis III planned to test in Earth orbit?",
+      "choices": [
+        "Landing on Mars",
+        "Docking with lunar-lander test articles",
+        "Building a new space station",
+        "Launching the Hubble telescope"
+      ],
+      "correctIndex": 1,
+      "explanation": "NASA describes Artemis III as a planned 2027 mission to test rendezvous and docking with lunar-lander test articles in Earth orbit. Plans can change."
     }
   ]
 }

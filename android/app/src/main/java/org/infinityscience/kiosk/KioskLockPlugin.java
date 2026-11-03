@@ -1,6 +1,8 @@
 package org.infinityscience.kiosk;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.provider.Settings;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -28,6 +30,39 @@ public class KioskLockPlugin extends Plugin {
     @PluginMethod
     public void remove(PluginCall call) {
         run(call, () -> KioskLock.remove(getActivity()));
+    }
+
+    /**
+     * Opens Android's Settings app, so staff can get out of the kiosk app (for example to
+     * change the Home app) on a kiosk where Android's bars can't be swiped in. While the
+     * kiosk lock is on, staff unlock for maintenance first.
+     */
+    @PluginMethod
+    public void openAndroidSettings(PluginCall call) {
+        Activity activity = getActivity();
+        if (KioskLock.isDeviceOwner(activity) && !KioskLock.inMaintenance()) {
+            call.reject("Tap Unlock for maintenance first.");
+            return;
+        }
+        activity.runOnUiThread(() -> {
+            try {
+                // A pinned app (Android's own screen pinning) can't open other apps. Try to
+                // unpin; Android may refuse, and then staff unpin by hand.
+                if (KioskLock.isLocked(activity)) {
+                    try {
+                        activity.stopLockTask();
+                    } catch (RuntimeException ignored) {
+                        // Still pinned.
+                    }
+                }
+                Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.startActivity(intent);
+                call.resolve(status());
+            } catch (RuntimeException e) {
+                call.reject(e.getMessage(), e);
+            }
+        });
     }
 
     // Lock task calls belong on the screen's own thread.
