@@ -17,7 +17,7 @@ export const TEAM = [
   { name: "Team Member Three", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
   { name: "Joshua Craven", role: "Technologist", photo: "joshua-craven.jpg", bio: "Joshua Craven is a technologist with a passion for creating interactive digital experiences that engage users.", link: "https://www.linkedin.com/in/joshualeecraven", linkLabel: "LinkedIn" },
   { name: "Team Member Five", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
-  { name: "Team Member Six", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
+  { name: "Zoe McGee", role: "Technologist", photo: "team-zoe.jpg", bio: "Zoe McGee is junior developer with a love of coding and cybersecurity.", link: "https://www.linkedin.com/in/zoe-mcgee-6983591b5/", linkLabel: "LinkedIn" },
 ];
 
 // Every photo in src/assets/team/, keyed by file name.
