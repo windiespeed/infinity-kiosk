@@ -62,7 +62,15 @@ export default function App() {
     <div className="flex h-dvh flex-col overflow-hidden">
       {!inAdmin && !isCompanion && <HiddenAdminTrigger />}
       {!inAdmin && kiosk.adminToken && <PreviewBar />}
-      <main className={`relative min-h-0 flex-1 overflow-y-auto ${kiosk.reach ? "pt-[30vh]" : ""}`}>
+      {/* Move content lower leaves the top of the screen empty. With Larger text also on,
+          the gap is smaller so every screen still fits above the bottom bar. */}
+      <main
+        // Phone pages scroll the whole page; tabIndex lets keyboard users scroll it too.
+        tabIndex={onPhonePage ? 0 : undefined}
+        className={`relative min-h-0 flex-1 overflow-y-auto ${
+          kiosk.reach ? (kiosk.textSize === "large" ? "pt-[15vh]" : "pt-[30vh]") : ""
+        }`}
+      >
         {!content ? (
           <PageStatus />
         ) : (

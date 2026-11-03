@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useContent } from "../hooks/useContent.jsx";
 import { useDialog } from "../hooks/useDialog.js";
 import { buttonClass } from "../lib/ui.js";
@@ -58,6 +58,30 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
   // the panel starts lower too and its read-aloud button stays within reach.
   const reach = useKiosk((s) => s.reach);
 
+  // Long event text can run below the bottom of the panel, and scrollbars are hidden
+  // on the kiosk, so a "More below" button shows whenever there's more to read.
+  const detailsRef = useRef(null);
+  const [moreBelow, setMoreBelow] = useState(false);
+  useEffect(() => {
+    const el = detailsRef.current;
+    if (!el) return undefined;
+    el.scrollTop = 0;
+    const check = () => setMoreBelow(el.scrollHeight - el.scrollTop - el.clientHeight > 4);
+    check();
+    el.addEventListener("scroll", check, { passive: true });
+    const observer = new ResizeObserver(check);
+    observer.observe(el);
+    if (el.firstElementChild) observer.observe(el.firstElementChild);
+    return () => {
+      el.removeEventListener("scroll", check);
+      observer.disconnect();
+    };
+  }, [event.id]);
+  const showMore = () => {
+    const el = detailsRef.current;
+    el?.scrollBy({ top: el.clientHeight * 0.7, behavior: reduceMotion ? "auto" : "smooth" });
+  };
+
   return (
     <div
       className="fixed inset-0 z-30 flex items-end bg-bg/70"
@@ -77,7 +101,8 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
       >
         {/* tabIndex lets keyboard users scroll long event text with the arrow keys. */}
         <div
-          className="overflow-y-auto px-8 pt-8"
+          ref={detailsRef}
+          className="min-h-0 overflow-y-auto px-8 pt-8"
           tabIndex={0}
           role="region"
           aria-label="Event details"
@@ -225,6 +250,21 @@ export default function EventPanel({ event, era, prev, next, onClose, onGo }) {
             )}
           </div>
         </div>
+
+        {moreBelow && (
+          <div className="pointer-events-none relative">
+            {/* Only over the text column, so it never covers the photo caption. */}
+            <div className="absolute bottom-0 left-0 right-0 flex h-28 items-end bg-linear-to-t from-surface to-transparent px-8 pb-2 md:right-1/2">
+              <button
+                type="button"
+                onClick={showMore}
+                className="pointer-events-auto inline-flex min-h-12 items-center gap-2 rounded-full border border-accent/60 bg-surface px-5 text-base font-bold text-accent btn-shade"
+              >
+                More below <span aria-hidden="true">↓</span>
+              </button>
+            </div>
+          </div>
+        )}
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-t-2 border-bg px-8 py-4">
           <button

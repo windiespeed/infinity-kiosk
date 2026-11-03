@@ -4,18 +4,23 @@ import { eraYears } from "../lib/format.js";
 import GoldRule from "../components/GoldRule.jsx";
 import CardImage from "../components/CardImage.jsx";
 import StarMarker from "../components/StarMarker.jsx";
+import { useCompact } from "../store/useKiosk.js";
 
 // Home screen: the whole timeline as era segments on a gold line, like the wall.
 // Upper area is display only; everything interactive sits in the lower part of the screen.
 export default function EraOverview() {
   const { eras, eventsForEra, eraCover, mediaUrl } = useContent();
+  // Larger text / Move content lower: a smaller title so the era cards stay on screen.
+  const { compact, tight } = useCompact();
 
   return (
-    <div className="flex min-h-full flex-col justify-between gap-6 px-10 py-6">
+    <div className={`flex min-h-full flex-col justify-between px-10 ${compact ? "gap-2 py-2" : "gap-6 py-6"}`}>
       <header>
-        <h1 className="text-7xl">The history of spaceflight</h1>
-        <GoldRule className="mt-5" />
-        <p className="mt-5 font-display text-3xl text-accent">Choose an era to explore</p>
+        <h1 className={compact ? "text-4xl" : "text-7xl"}>The history of spaceflight</h1>
+        <GoldRule className={compact ? "mt-3" : "mt-5"} />
+        {!tight && (
+          <p className={`font-display text-accent ${compact ? "mt-3 text-2xl" : "mt-5 text-3xl"}`}>Choose an era to explore</p>
+        )}
       </header>
 
       <div className="relative">
@@ -28,12 +33,21 @@ export default function EraOverview() {
                 <StarMarker className="absolute left-1/2 top-[0.625rem] hidden size-9 -translate-1/2 lg:block" />
                 <Link
                   to={`/era/${era.id}`}
-                  className="relative flex h-full min-h-48 flex-col justify-end overflow-hidden rounded-2xl border border-accent/25 panel transition-colors hover:border-accent"
+                  className={`relative flex h-full ${tight ? "min-h-28" : compact ? "min-h-36" : "min-h-48"} flex-col justify-end overflow-hidden rounded-2xl border border-accent/25 panel transition-colors hover:border-accent`}
                 >
                   {cover && <CardImage src={mediaUrl(cover)} />}
                   <span className="relative flex flex-col gap-1 p-4">
                     <span className="font-display text-xl font-bold text-accent">{eraYears(era)}</span>
-                    <span className="font-display text-base font-bold uppercase leading-snug text-accent [overflow-wrap:anywhere]">{era.title}</span>
+                    {/* Larger text: a smaller, hyphenated title so long words like "International"
+                        don't break in the middle on the narrow cards. */}
+                    <span
+                      lang="en"
+                      className={`font-display font-bold uppercase leading-snug text-accent ${
+                        compact ? "text-sm hyphens-auto" : "text-base [overflow-wrap:anywhere]"
+                      }`}
+                    >
+                      {era.title}
+                    </span>
                     <span className="text-base text-text-muted">{eventsForEra(era.id).length} events</span>
                   </span>
                 </Link>

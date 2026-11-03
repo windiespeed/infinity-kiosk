@@ -25,3 +25,12 @@ export const useKiosk = create((set) => ({
   removeDirty: () => set((s) => ({ adminDirty: Math.max(0, s.adminDirty - 1) })),
   resetVisitor: () => set({ ...visitorDefaults, adminToken: null, adminDirty: 0, busy: 0 }),
 }));
+
+// Larger text and Move content lower both leave less room on the 1080p screen, so
+// screens switch to a compact layout (smaller titles, secondary text left out) to keep
+// every button on screen with no scrolling. "tight" is both settings at once.
+export function useCompact() {
+  const large = useKiosk((s) => s.textSize === "large");
+  const reach = useKiosk((s) => s.reach);
+  return { compact: large || reach, tight: large && reach };
+}

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { buttonClass } from "../lib/ui.js";
-import { useKiosk } from "../store/useKiosk.js";
+import { useCompact, useKiosk } from "../store/useKiosk.js";
 import { stop } from "../lib/speech.js";
 import ReadAloudButton from "./ReadAloudButton.jsx";
 
@@ -19,6 +19,8 @@ export default function QuizQuestion({
   const resultRef = useRef(null);
 
   const readAloud = useKiosk((s) => s.readAloud);
+  // Larger text / Move content lower: smaller type and a shorter result strip.
+  const { compact, tight } = useCompact();
   const choicesText = question.choices.map((choice, index) => `Option ${index + 1}: ${choice}`).join(". ");
 
   const answered = selectedIndex !== null;
@@ -43,9 +45,11 @@ export default function QuizQuestion({
   }
 
   return (
-    <section className="mx-auto flex h-full min-h-0 w-full max-w-7xl flex-col gap-[2.5vh] px-6 py-[2.5vh] sm:px-10">
-      <div className="flex items-center justify-between gap-4">
-        <p className="text-lg font-semibold text-text-muted">
+    <section className={`mx-auto flex h-full min-h-0 w-full max-w-7xl flex-col px-6 sm:px-10 ${compact ? "gap-[1vh] py-[1vh]" : "gap-[2.5vh] py-[2.5vh]"}`}>
+      {/* With both Larger text and Move content lower, the progress bar alone shows
+          how far along the visitor is (screen readers hear it from the bar). */}
+      <div className={`flex items-center justify-between gap-4 ${tight && !readAloud ? "hidden" : ""}`}>
+        <p className={`text-lg font-semibold text-text-muted ${tight ? "sr-only" : ""}`}>
           {title && <>{title} · </>}Question {questionNumber} of {totalQuestions}
         </p>
 
@@ -61,7 +65,7 @@ export default function QuizQuestion({
       <div
         className="h-3 shrink-0 overflow-hidden rounded-full bg-surface/80"
         role="progressbar"
-        aria-label="Quiz progress"
+        aria-label={`Question ${questionNumber} of ${totalQuestions}`}
         aria-valuemin={0}
         aria-valuemax={totalQuestions}
         aria-valuenow={questionNumber}
@@ -75,11 +79,11 @@ export default function QuizQuestion({
       </div>
 
       {/* Long questions step down a size so they stay on two lines. */}
-      <h1 className={`text-3xl font-bold ${question.prompt.length > 60 ? "" : "sm:text-4xl"}`}>
+      <h1 className={`font-bold ${compact ? "text-2xl" : `text-3xl ${question.prompt.length > 60 ? "" : "sm:text-4xl"}`}`}>
         {question.prompt}
       </h1>
 
-      <div className="grid flex-1 auto-rows-fr gap-[2vh] md:grid-cols-2">
+      <div className={`grid flex-1 auto-rows-fr md:grid-cols-2 ${compact ? "gap-[1vh]" : "gap-[2vh]"}`}>
         {question.choices.map((choice, index) => {
           const isSelected = selectedIndex === index;
           const isWrong = isSelected && !isCorrect;
@@ -91,7 +95,7 @@ export default function QuizQuestion({
               type="button"
               className={buttonClass(
                 "secondary",
-                `h-full min-h-14 w-full justify-between text-left text-xl whitespace-normal ${isSelected ? "ring-2 ring-highlight" : ""
+                `h-full w-full justify-between text-left whitespace-normal ${tight ? "min-h-12" : "min-h-14"} ${compact ? "text-lg" : "text-xl"} ${isSelected ? "ring-2 ring-highlight" : ""
                 }`
               )}
               onClick={() => answerQuestion(index)}
@@ -111,10 +115,10 @@ export default function QuizQuestion({
         tabIndex={-1}
         aria-live="polite"
         aria-atomic="true"
-        className="flex min-h-[20vh] shrink-0 items-center gap-6 rounded-xl border-2 border-text-muted/50 px-6 py-4 focus:outline-none focus:ring-2 focus:ring-highlight"
+        className={`flex shrink-0 items-center gap-6 rounded-xl ${tight ? "min-h-[12vh]" : compact ? "min-h-[16vh]" : "min-h-[20vh]"} border-2 border-text-muted/50 px-6 py-4 focus:outline-none focus:ring-2 focus:ring-highlight`}
       >
         {!answered ? (
-          <p className="w-full text-center text-xl text-text-muted">
+          <p className={`w-full text-center text-text-muted ${compact ? "text-lg" : "text-xl"}`}>
             Choose an answer.
           </p>
         ) : (
@@ -132,7 +136,7 @@ export default function QuizQuestion({
                 </h2>
               )}
 
-              <p className="mt-2 text-lg">
+              <p className={`mt-2 ${compact ? "text-base" : "text-lg"}`}>
                 {question.explanation}
                 {!isCorrect && " Choose another answer to try again."}
               </p>
