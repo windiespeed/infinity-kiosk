@@ -1,9 +1,13 @@
 // The certificate link the kiosk's QR code opens on a visitor's phone.
 // Plain JavaScript (no Vite or React) so scripts/make-qr.mjs can use it too.
 
-// Where the certificate page lives when the settings don't say otherwise.
-// Change it here, or in Admin > Settings, once the mscoding.org page is ready.
-export const DEFAULT_CERTIFICATE_SITE = "https://windiespeed.github.io/infinity-kiosk";
+// Where the certificate page (<site>/certificate) lives when the settings don't say otherwise.
+// Staff can change it in Admin > Settings > Companion website.
+export const DEFAULT_CERTIFICATE_SITE = "https://mscoding.org/ISCProject";
+
+// The Meet the team page the About screen's QR code opens, used as is.
+// Staff can change it in Admin > Settings > Team page address.
+export const DEFAULT_TEAM_PAGE = "https://mscoding.org/ISCProject#team";
 
 // Site address without a trailing slash; falls back to the default when blank.
 export function certificateSite(site) {
@@ -21,9 +25,13 @@ export function certificateLink(site, { date, eraId } = {}) {
   return `${certificateSite(site)}/certificate${query ? `?${query}` : ""}`;
 }
 
-// <site>/team: the Meet the team page the About screen's QR code opens.
-export function teamLink(site) {
-  return `${certificateSite(site)}/team`;
+// The Meet the team page the About screen's QR code opens: the Team page address
+// exactly as typed; otherwise <Companion website>/team if one is set (our own
+// GitHub Pages copy has a /team page); otherwise DEFAULT_TEAM_PAGE.
+export function teamLink(site, teamPage) {
+  if (typeof teamPage === "string" && teamPage.trim()) return teamPage.trim();
+  if (typeof site === "string" && site.trim()) return `${certificateSite(site)}/team`;
+  return DEFAULT_TEAM_PAGE;
 }
 
 // Today's local date as YYYY-MM-DD.
