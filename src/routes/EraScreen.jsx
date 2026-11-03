@@ -7,7 +7,7 @@ import { buttonClass } from "../lib/ui.js";
 import { eraYears } from "../lib/format.js";
 import GoldRule from "../components/GoldRule.jsx";
 import StarMarker from "../components/StarMarker.jsx";
-import { useKiosk } from "../store/useKiosk.js";
+import { useCompact, useKiosk } from "../store/useKiosk.js";
 
 // One era: title on top, its events as a timeline in the lower part of the screen,
 // previous/next era buttons at the sides. /era/:eraId/event/:eventId opens the panel.
@@ -20,6 +20,7 @@ export default function EraScreen() {
   const lastOpened = useRef(null);
   const [more, setMore] = useState({ left: false, right: false });
   const reduceMotion = useKiosk((s) => s.reduceMotion);
+  const { compact } = useCompact();
 
   const era = eraById(eraId);
   const events = era ? eventsForEra(era.id) : [];
@@ -71,13 +72,18 @@ export default function EraScreen() {
   const eventPath = (ev) => `/era/${era.id}/event/${ev.id}`;
 
   return (
-    <div className="flex min-h-full flex-col justify-between gap-6 px-10 py-6">
+    <div className={`flex min-h-full flex-col justify-between px-10 ${compact ? "gap-2 py-2" : "gap-4 py-5"}`}>
+      {/* Larger text / Move content lower leave less room, so the header gets smaller
+          and drops the subtitle and intro paragraph to keep the
+          event cards on screen. */}
       <header>
-        <p className="font-display text-2xl font-bold text-accent">{eraYears(era)}</p>
-        <h1 className="mt-1 text-5xl">{era.title}</h1>
-        <GoldRule className="mt-5" />
-        <p className="mt-4 max-w-[50ch] font-display text-2xl text-accent">{era.subtitle}</p>
-        {era.overview && (
+        <p className={`font-display font-bold text-accent ${compact ? "text-xl" : "text-2xl"}`}>{eraYears(era)}</p>
+        <h1 className={`mt-1 ${compact ? "text-4xl" : "text-5xl"}`}>{era.title}</h1>
+        <GoldRule className={compact ? "mt-3" : "mt-4"} />
+        {!compact && (
+          <p className={`max-w-[50ch] font-display text-accent mt-3 text-2xl`}>{era.subtitle}</p>
+        )}
+        {era.overview && !compact && (
           <p className="mt-2 max-w-[90ch] text-base text-text-muted">
             {era.overview}
           </p>
@@ -101,7 +107,7 @@ export default function EraScreen() {
                   to={eventPath(ev)}
                   data-event-id={ev.id}
                   aria-current={ev.id === eventId ? "true" : undefined}
-                  className={`relative flex min-h-36 w-full flex-col justify-end overflow-hidden rounded-2xl panel text-center transition-colors md:w-60 ${ev.id === eventId ? "border-2 border-highlight" : "border border-accent/25 hover:border-accent"
+                  className={`relative flex ${compact ? "min-h-28" : "min-h-36"} w-full flex-col justify-end overflow-hidden rounded-2xl panel text-center transition-colors md:w-60 ${ev.id === eventId ? "border-2 border-highlight" : "border border-accent/25 hover:border-accent"
                     }`}
                 >
                   {eventCover(ev) && <CardImage src={mediaUrl(eventCover(ev))} />}

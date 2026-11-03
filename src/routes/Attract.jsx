@@ -154,13 +154,16 @@ export default function Attract() {
           </li>
         </ul>
 
-        <div className="mt-4 flex justify-center">
+        <div className="mt-4 flex flex-wrap justify-center gap-4">
           <button
             onClick={() => toggle("a11yOpen")}
             className={buttonClass("secondary")}
           >
             Accessibility options
           </button>
+          <Link to="/about" className={buttonClass("secondary")}>
+            About this exhibit
+          </Link>
         </div>
       </nav>
     </div>

@@ -21,6 +21,7 @@ export default function BottomNav() {
   const { pathname } = useLocation();
   const content = useContent();
   const a11yOpen = useKiosk((s) => s.a11yOpen);
+  const largeText = useKiosk((s) => s.textSize === "large");
   const toggle = useKiosk((s) => s.toggle);
   const startOver = useStartOver();
   const [confirming, setConfirming] = useState(false);
@@ -35,8 +36,15 @@ export default function BottomNav() {
           The International Space Station" wraps inside its button instead. */}
       <div className="min-w-[11rem] lg:min-w-0">
         {parent && (
-          <Link to={parent.to} className={buttonClass("primary", "leading-tight")}>
-            <span aria-hidden="true">‹</span> {parent.label}
+          // With Larger text a long label like "Back to The Apollo Missions" would wrap
+          // to four lines and make the bar taller, so it shows just "Back" (screen
+          // readers still hear where it goes).
+          <Link
+            to={parent.to}
+            aria-label={largeText ? parent.label : undefined}
+            className={buttonClass("primary", "leading-tight")}
+          >
+            <span aria-hidden="true">‹</span> {largeText ? "Back" : parent.label}
           </Link>
         )}
       </div>

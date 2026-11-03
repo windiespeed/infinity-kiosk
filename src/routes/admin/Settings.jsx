@@ -313,21 +313,6 @@ function RecoveryCode() {
             </button>
           </>
         )}
-        {(!lock.deviceOwner || lock.maintenance) && (
-          <>
-            <h3 className="mt-6 text-2xl">Leave the app</h3>
-            <p className="mt-2 text-text-muted">
-              Opens Android's Settings. To get Android's own home screen back, go to Apps → Default apps → Home app and
-              pick the kiosk's original launcher. Pressing Home otherwise brings you back here.
-            </p>
-            <button
-              onClick={() => run(openAndroidSettings, "")}
-              className={buttonClass("secondary", "mt-4")}
-            >
-              Open Android settings
-            </button>
-          </>
-        )}
         <p aria-live="polite" className="mt-2 text-text-muted">{status}</p>
       </section>
 
@@ -371,7 +356,7 @@ function KioskLockPanel() {
   };
 
   const state = !lock.deviceOwner
-    ? "The kiosk lock isn't set up on this kiosk. Visitors can still swipe in Android's bars. Setting it up needs a computer: see docs/KIOSK-LOCK.md."
+    ? "The kiosk lock isn't set up on this kiosk. The app still opens at startup as the Home app and hides Android's bars, but Android isn't fully locked. Setting up the lock needs a computer: see docs/KIOSK-LOCK.md."
     : lock.maintenance
       ? "Unlocked for maintenance. Android works normally until you lock it again or the kiosk restarts."
       : "Locked. Visitors can't leave the app.";

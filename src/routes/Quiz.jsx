@@ -9,6 +9,7 @@ import { useContent } from "../hooks/useContent.jsx";
 import { buttonClass } from "../lib/ui.js";
 import QuizQuestion from "../components/QuizQuestion.jsx";
 import RocketLaunch from "../components/RocketLaunch.jsx";
+import { useCompact } from "../store/useKiosk.js";
 
 // An era quiz asks this many of that era's questions, each about a different event.
 const ERA_QUIZ_LENGTH = 5;
@@ -65,6 +66,8 @@ function QuizRun({ title, intro, startLabel, pickQuestions, eraId, children }) {
   const [quizQuestions, setQuizQuestions] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [isLaunching, setIsLaunching] = useState(false);
+  // Larger text / Move content lower: smaller title and spacing so it all fits.
+  const { compact } = useCompact();
 
   const available = pickQuestions().length;
 
@@ -115,10 +118,14 @@ function QuizRun({ title, intro, startLabel, pickQuestions, eraId, children }) {
   }
 
   return (
-    <div className="flex h-full min-h-0 flex-col items-center justify-center gap-6 p-6 text-center sm:p-10">
-      <h1 className="text-4xl font-bold sm:text-6xl">{title}</h1>
+    <div
+      className={`flex h-full min-h-0 flex-col items-center justify-center text-center ${
+        compact ? "gap-2 px-4 py-2" : "gap-6 p-6 sm:p-10"
+      }`}
+    >
+      <h1 className={`font-bold ${compact ? "text-4xl" : "text-4xl sm:text-6xl"}`}>{title}</h1>
 
-      <p className="max-w-4xl text-xl text-text-muted">{intro}</p>
+      <p className={`max-w-4xl text-text-muted ${compact ? "text-lg" : "text-xl"}`}>{intro}</p>
 
       {available > 0 ? (
         <button
@@ -160,22 +167,30 @@ export function QuizHome() {
         questionsForTimeline(content.questions ?? [], eras, eventById)
       }
     >
-      <nav aria-label="Era quizzes" className="mt-6">
-        <p className="text-lg text-text-muted">Or take the quiz for one era:</p>
-        <ul className="mt-3 flex flex-wrap justify-center gap-3">
-          {eras.map((era) => (
-            <li key={era.id}>
-              <Link
-                to={`/quiz/era/${era.id}`}
-                className={buttonClass("secondary")}
-              >
-                {era.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <QuizEraLinks eras={eras} />
     </QuizRun>
+  );
+}
+
+// The era quiz buttons under the timeline challenge.
+function QuizEraLinks({ eras }) {
+  const { compact } = useCompact();
+  return (
+    <nav aria-label="Era quizzes" className={compact ? "" : "mt-6"}>
+      <p className="text-lg text-text-muted">Or take the quiz for one era:</p>
+      <ul className={`flex flex-wrap justify-center gap-3 ${compact ? "mt-2" : "mt-3"}`}>
+        {eras.map((era) => (
+          <li key={era.id}>
+            <Link
+              to={`/quiz/era/${era.id}`}
+              className={buttonClass("secondary")}
+            >
+              {era.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
 
@@ -183,6 +198,7 @@ export function QuizHome() {
 export function EraQuiz() {
   const { eraId } = useParams();
   const { content, eraById, eventById } = useContent();
+  const { compact } = useCompact();
 
   if (!content || !eraById || !eventById) {
     return (
@@ -210,7 +226,7 @@ export function EraQuiz() {
         )
       }
     >
-      <Link to="/quiz" className={buttonClass("secondary", "mt-6")}>
+      <Link to="/quiz" className={buttonClass("secondary", compact ? "mt-1" : "mt-6")}>
         Take the whole timeline challenge instead
       </Link>
     </QuizRun>
