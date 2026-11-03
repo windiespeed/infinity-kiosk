@@ -15,7 +15,7 @@ export const TEAM = [
   { name: "Team Member One", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
   { name: "Team Member Two", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
   { name: "Team Member Three", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
-  { name: "Team Member Four", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
+  { name: "Joshua Craven", role: "Code Developer", photo: "joshua-craven.jpg", bio: "Joshua Craven is a code developer with a passion for creating interactive digital experiences that engage users.", link: "https://www.linkedin.com/in/joshualeecraven", linkLabel: "LinkedIn" },
   { name: "Team Member Five", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
   { name: "Team Member Six", role: "Role", photo: null, bio: "A short bio for museum visitors goes here.", link: "", linkLabel: "LinkedIn" },
 ];
