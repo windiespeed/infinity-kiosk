@@ -356,7 +356,7 @@ function KioskLockPanel() {
   };
 
   const state = !lock.deviceOwner
-    ? "The kiosk lock isn't set up on this kiosk. Visitors can still swipe in Android's bars. Setting it up needs a computer: see docs/KIOSK-LOCK.md."
+    ? "The kiosk lock isn't set up on this kiosk. The app still opens at startup as the Home app and hides Android's bars, but Android isn't fully locked. Setting up the lock needs a computer: see docs/KIOSK-LOCK.md."
     : lock.maintenance
       ? "Unlocked for maintenance. Android works normally until you lock it again or the kiosk restarts."
       : "Locked. Visitors can't leave the app.";
