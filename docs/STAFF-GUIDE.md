@@ -51,7 +51,7 @@ A picture goes into the **Media** library first, then onto an event.
 
 1. **Admin → Settings → Kiosk lock.** If it says **Locked**, tap **Unlock for maintenance**.
 2. Tap **Open Android settings**.
-3. Go to **Apps → Default apps → Home app** and pick the kiosk's original launcher. Home now shows Android's apps.
+3. Go to **Apps → Default apps → Home app** and pick **Fanconn** (the kiosk's original home app). Home now shows Android's apps.
 4. When you're done, open **Settings** from Android's apps and set **Home app** back to **Infinity Kiosk**.
 
 If the button isn't there or doesn't work, plug a USB keyboard into the kiosk and press **Windows key + B** to open the web browser.
