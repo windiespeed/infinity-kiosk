@@ -114,12 +114,12 @@ export default function Attract() {
         <p className="font-display text-2xl tracking-[0.2em] text-accent uppercase">
           Infinity Science Center
         </p>
-        <h1 className="mx-auto mt-4 max-w-[22ch] text-7xl">
-          The history of spaceflight
+        <h1 className="mx-auto mt-4 max-w-[22ch] text-6xl">
+          Mississippi and the Race to the Moon
         </h1>
         <GoldRule className="mt-6 justify-center" />
         <p className="m-6 font-display text-3xl text-accent">
-          From the first satellites to tomorrow's missions
+          Hancock County’s Role in Powering the Apollo Era
         </p>
       </header>
 
