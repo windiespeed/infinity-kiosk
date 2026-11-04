@@ -56,4 +56,6 @@ A picture goes into the **Media** library first, then onto an event.
 
 If the button isn't there or doesn't work, plug a USB keyboard into the kiosk and press **Windows key + B** to open the web browser.
 
+**Remote access (RustDesk):** ask Windie for the kiosk's RustDesk ID and password, or see the printed staff guide. They are kept out of this public repo.
+
 **Keep the PIN and recovery code** somewhere safe, away from the kiosk. If both are lost, getting back in means erasing the kiosk.
