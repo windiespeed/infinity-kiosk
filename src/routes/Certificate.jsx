@@ -207,7 +207,7 @@ export default function Certificate() {
     link.download = "certificate.png";
     link.click();
     setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-    setStatus("Certificate downloaded.");
+    setStatus("Certificate downloaded. Look for certificate.png in your Downloads or Files app.");
   }
 
   if (!created) {
@@ -272,8 +272,28 @@ export default function Certificate() {
       <p className="sr-only">{alt}</p>
 
       <button type="button" onClick={save} className="mt-4 w-full rounded-lg bg-accent p-4 text-lg font-bold text-on-accent">
-        Save certificate as image
+        Save or share certificate
       </button>
+      <div className="mt-4 rounded-lg border border-text-muted/30 p-4 text-base">
+        <p className="font-bold">How to keep your certificate</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>
+            Tap <strong>Save or share certificate</strong>. On most phones a share menu opens.
+          </li>
+          <li>
+            To email it to yourself, pick your email app (like Gmail or Mail), type your own email
+            address, and send.
+          </li>
+          <li>
+            To keep it on your phone, pick <strong>Save image</strong>, <strong>Photos</strong> or{" "}
+            <strong>Files</strong>.
+          </li>
+          <li>
+            If no menu opens, the picture downloads instead. Find it in your Downloads or Files app,
+            then share it from there.
+          </li>
+        </ul>
+      </div>
       <button type="button" onClick={() => setCreated(false)} className="mt-3 w-full p-3 text-lg underline">
         Change name
       </button>
