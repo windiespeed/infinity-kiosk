@@ -95,7 +95,7 @@ Keeping your branch up to date with `main`: see **docs/GIT-CHEATSHEET.md**.
 Every merge to `main` publishes a read-only copy of the app to
 **https://windiespeed.github.io/infinity-kiosk/** (the "companion site"), so anyone can click through the current content and photos in a browser. Nothing can be saved there and the admin screens don't work. It's public, like the repo. The workflow is `.github/workflows/pages.yml`.
 
-**If the repo moves to another GitHub account or organization**, this address changes to `https://<new-owner>.github.io/infinity-kiosk/`, and GitHub does **not** redirect the old one. The kiosk's certificate and Meet the team QR codes would stop working. Right after a move:
+**If the repo moves to another GitHub account or organization**, this address changes to `https://<new-owner>.github.io/infinity-kiosk/`, and GitHub does **not** redirect the old one. Since November 2026 the kiosk's QR codes point to mscoding.org (the certificate at `https://mscoding.org/ISCProject/certificate`, the team at `https://mscoding.org/ISCProject#team`), so a move only matters if staff point them back here. Right after a move:
 
 1. In the moved repo, turn Pages back on: **Settings → Pages → Source: GitHub Actions**, then re-run the Pages workflow.
 2. On the kiosk, set **Admin → Settings → Companion website** to the new address (no app update needed).

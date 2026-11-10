@@ -160,6 +160,10 @@ export function settingsProblems(s, c) {
   if (s.certificateSite != null && !(isText(s.certificateSite) && /^https?:\/\/[^\s/]+\.[^\s]+$/.test(s.certificateSite))) {
     p.certificateSite = "Enter a full web address starting with https://, or leave it blank.";
   }
+  // Where the About screen's QR code sends phones, used exactly as typed (it may end in #team).
+  if (s.teamPage != null && !(isText(s.teamPage) && /^https?:\/\/[^\s/]+\.[^\s]+$/.test(s.teamPage))) {
+    p.teamPage = "Enter a full web address starting with https://, or leave it blank.";
+  }
   return p;
 }
 

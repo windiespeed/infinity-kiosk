@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router";
 import { useContent } from "../hooks/useContent.jsx";
 import { achievementText, todayIso } from "../lib/certificate.js";
 import logoUrl from "../assets/infinity-logo-white.png";
+import mcaLogoUrl from "../assets/mca-powered-by-next.png";
 
 const W = 1600;
 const H = 1131;
@@ -19,20 +20,28 @@ function cssVar(name, fallback) {
   return v || fallback;
 }
 
-// The logo and Montserrat must be ready before drawing, or the canvas uses a fallback font.
+function loadImage(src) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null); // draw without the logo rather than not at all
+    img.src = src;
+  });
+}
+
+// A font that fails to load must not stop the drawing (that leaves a blank image).
+const loadFont = (font) => Promise.resolve(document.fonts?.load(font)).catch(() => null);
+
+// The logos and Montserrat must be ready before drawing, or the canvas uses a fallback font.
 let assetsReady;
 function loadAssets() {
   assetsReady ??= Promise.all([
-    new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => resolve(img);
-      img.onerror = () => resolve(null); // draw without the logo rather than not at all
-      img.src = logoUrl;
-    }),
-    document.fonts?.load("700 64px Montserrat"),
-    document.fonts?.load("400 40px Montserrat"),
-    document.fonts?.load("italic 400 36px Montserrat"),
-  ]).then(([logo]) => logo);
+    loadImage(logoUrl),
+    loadImage(mcaLogoUrl),
+    loadFont("700 64px Montserrat"),
+    loadFont("400 40px Montserrat"),
+    loadFont("italic 400 36px Montserrat"),
+  ]).then(([infinity, mca]) => ({ infinity, mca }));
   return assetsReady;
 }
 
@@ -53,7 +62,7 @@ function spaced(ctx, px) {
 }
 
 // Wall style: charcoal-to-slate background, gold frame, headings and stars, white logo.
-function draw(canvas, logo, name, line, dateText) {
+function draw(canvas, logos, name, line, dateText) {
   const ctx = canvas.getContext("2d");
   const gold = cssVar("--color-accent", "#D9B15C");
   const muted = cssVar("--color-text-muted", "#B4C4DC");
@@ -72,6 +81,7 @@ function draw(canvas, logo, name, line, dateText) {
   ctx.fillStyle = gold;
   for (const [x, y] of [[62, 62], [W - 62, 62], [62, H - 62], [W - 62, H - 62]]) star(ctx, x, y, 30);
 
+  const logo = logos.infinity;
   if (logo) {
     const lw = 400;
     const lh = (logo.height / logo.width) * lw;
@@ -114,7 +124,18 @@ function draw(canvas, logo, name, line, dateText) {
 
   ctx.fillStyle = muted;
   ctx.font = "400 34px Montserrat, sans-serif";
-  if (dateText) ctx.fillText(dateText, W / 2, 960);
+  if (dateText) ctx.fillText(dateText, W / 2, 880);
+
+  // Builder credit: MCA Powered by NeXT, bottom center inside the frame.
+  if (logos.mca) {
+    ctx.font = "400 24px Montserrat, sans-serif";
+    spaced(ctx, 3);
+    ctx.fillText("KIOSK CREATED BY", W / 2, 935);
+    spaced(ctx, 0);
+    const mh = 100;
+    const mw = (logos.mca.width / logos.mca.height) * mh;
+    ctx.drawImage(logos.mca, (W - mw) / 2, 950, mw, mh);
+  }
 }
 
 export default function Certificate() {
@@ -144,8 +165,8 @@ export default function Certificate() {
   useEffect(() => {
     if (!created) return undefined;
     let current = true;
-    loadAssets().then((logo) => {
-      if (current && canvasRef.current) draw(canvasRef.current, logo, fullName, line, dateText);
+    loadAssets().then((logos) => {
+      if (current && canvasRef.current) draw(canvasRef.current, logos, fullName, line, dateText);
     });
     return () => {
       current = false;
@@ -186,7 +207,7 @@ export default function Certificate() {
     link.download = "certificate.png";
     link.click();
     setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-    setStatus("Certificate downloaded.");
+    setStatus("Certificate downloaded. Look for certificate.png in your Downloads or Files app.");
   }
 
   if (!created) {
@@ -226,6 +247,10 @@ export default function Certificate() {
             Create certificate
           </button>
         </form>
+        <div className="mt-12 flex flex-col items-center gap-2 text-text-muted">
+          <p className="text-xs uppercase tracking-[0.2em]">Kiosk created by</p>
+          <img src={mcaLogoUrl} alt="MCA Powered by NeXT" className="h-auto w-36" />
+        </div>
       </div>
     );
   }
@@ -247,8 +272,28 @@ export default function Certificate() {
       <p className="sr-only">{alt}</p>
 
       <button type="button" onClick={save} className="mt-4 w-full rounded-lg bg-accent p-4 text-lg font-bold text-on-accent">
-        Save certificate as image
+        Save or share certificate
       </button>
+      <div className="mt-4 rounded-lg border border-text-muted/30 p-4 text-base">
+        <p className="font-bold">How to keep your certificate</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>
+            Tap <strong>Save or share certificate</strong>. On most phones a share menu opens.
+          </li>
+          <li>
+            To email it to yourself, pick your email app (like Gmail or Mail), type your own email
+            address, and send.
+          </li>
+          <li>
+            To keep it on your phone, pick <strong>Save image</strong>, <strong>Photos</strong> or{" "}
+            <strong>Files</strong>.
+          </li>
+          <li>
+            If no menu opens, the picture downloads instead. Find it in your Downloads or Files app,
+            then share it from there.
+          </li>
+        </ul>
+      </div>
       <button type="button" onClick={() => setCreated(false)} className="mt-3 w-full p-3 text-lg underline">
         Change name
       </button>

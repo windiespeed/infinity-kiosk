@@ -45,6 +45,17 @@ A picture goes into the **Media** library first, then onto an event.
 
 **Backups (do this after every round of changes):** **Dashboard → Export backup**. It saves one .zip file to the kiosk's **Documents/InfinityKiosk** folder. Copy it to a USB drive or the shared Drive's **Kiosk-Backups** folder, with the date in the name. **Import backup** replaces all content with a backup (the current version is kept first).
 
-**Settings** holds the visitor timeout, the welcome screen video, the companion website (where the certificate and team QR codes point), **Change the staff PIN**, the **Recovery code**, and **Kiosk lock**. To install an app update, tap **Unlock for maintenance** first; restarting the kiosk locks it again. **Open Android settings** (under Kiosk lock) leaves the app for Android's Settings; it's there when the kiosk lock isn't set up, or after Unlock for maintenance.
+**Settings** holds the visitor timeout, the welcome screen video, the companion website (where the certificate QR code points), the team page address (where the About screen QR code points), **Change the staff PIN**, the **Recovery code**, and **Kiosk lock**. To install an app update, tap **Unlock for maintenance** first; restarting the kiosk locks it again.
+
+**Getting back to Android's home screen** (Infinity Kiosk is the kiosk's Home app, so Home always comes back to it):
+
+1. **Admin → Settings → Kiosk lock.** If it says **Locked**, tap **Unlock for maintenance**.
+2. Tap **Open Android settings**.
+3. Go to **Apps → Default apps → Home app** and pick **Fanconn** (the kiosk's original home app). Home now shows Android's apps.
+4. When you're done, open **Settings** from Android's apps and set **Home app** back to **Infinity Kiosk**.
+
+If the button isn't there or doesn't work, plug a USB keyboard into the kiosk and press **Windows key + B** to open the web browser.
+
+**Remote access (RustDesk):** ask Windie for the kiosk's RustDesk ID and password, or see the printed staff guide. They are kept out of this public repo.
 
 **Keep the PIN and recovery code** somewhere safe, away from the kiosk. If both are lost, getting back in means erasing the kiosk.
